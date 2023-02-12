@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 
+const isAnimate = ref(false);
 </script>
 
 <template>
@@ -30,8 +32,15 @@
               </ul>
             </div>
             <div class="actions">
-              <button class="actions__btn">register now in a few clicks!</button>
-              <button class="actions__btn">discord community</button>
+              <a 
+                @mouseover="isAnimate = true"
+                @mouseleave="isAnimate = false"
+                :class="{ 'animate': isAnimate }" 
+                class="actions__btn btn-register"
+              >
+                register now in a few clicks!
+              </a>
+              <a class="actions__btn btn-discord">discord community</a>
             </div>
           </div>
         </div>
@@ -93,11 +102,10 @@
 
 .hero__info {
   display: flex;
-  align-items: center;
 }
 
 .hero__stats {
-
+  margin-right: 90px;
 }
 
 .hero__list {
@@ -107,15 +115,31 @@
   list-style: none;
 
   .hero__item {
+    height: 160px;
     padding: 18px 32px;
     word-wrap: normal;
+    
+    span {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 25px;
+    }
+
+    h3 {
+      margin: 0;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 23px;
+      line-height: 33px;
+    }
   }
 
   .item-1 {
     position: relative;
     width: 200px;
     background-color: #2F4771;
-    
+
     &::after {
       content: "// stats";
       position: absolute;
@@ -141,13 +165,106 @@
 
   .item-2 {
     width: 280px;
-    padding: 18px 32px 50px 18px;
     background-color: #344F7F;
   }
 
   .item-3 {
     width: 200px;
     background-color: #3C5B90;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+
+  .actions__btn {
+    width: 540px;
+  }
+  
+  .btn-register {
+    position: relative;
+    padding: 30px 230px 62px 32px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: start;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: $main;
+    background-color: #E00087;
+    transition: all 0.3s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 30px;
+      bottom: 20px;
+      display: block;
+      width: 46px;
+      height: 20px;
+      background: url("@/assets/svg/arrow.svg") no-repeat;
+    }
+  }
+
+  .animate {
+    border-radius: 8px;
+  }
+
+  .animate::after {
+    animation: arrow 1.3s infinite;
+    animation-timing-function: ease;
+  }
+
+  @keyframes arrow {
+    0% {
+      left: 30px;
+    }
+
+    50% {
+      left: 40px;
+    }
+
+    100% {
+      left: 30px;
+    }
+  }
+
+  .btn-discord {
+    position: relative;
+    padding: 22px 82px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
+    background-color: #262626;
+    color: #9DBAEE;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-radius: 8px;
+      background-color: #9DBAEE;
+      color: #262626;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 32px;
+      bottom: 25px;
+      display: block;
+      width: 27px;
+      height: 20px;
+      background: url("@/assets/svg/discord.svg") no-repeat;
+      transition: all 0.3s ease;
+    }
+
+    &:hover::before {
+      background: url("@/assets/svg/discord-hover.svg") no-repeat;
+    }
   }
 }
 
