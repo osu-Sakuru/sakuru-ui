@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import ActionsBar from './ActionsBar/ActionsBar.vue';
 
-const isScrolled = ref(false)
+const isScrolled = ref(false);
 const scrollHandler = () => window.scrollY > 0 ? isScrolled.value = true : isScrolled.value = false;
 
 onMounted(() => window.addEventListener('scroll', scrollHandler));

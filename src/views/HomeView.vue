@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
-const isAnimate = ref(false);
 </script>
 
 <template>
   <main>
-    <div class="bg">
+    <!-- Hero -->
+    <section class="hero__bg">
       <div class="container">
         <div class="hero__wrapper">
           <div class="hero">
@@ -17,40 +15,103 @@ const isAnimate = ref(false);
           <div class="hero__info">
             <div class="hero__stats">
               <ul class="hero__list">
-                <li class="hero__item item-1">
+                <li class="hero__item hero__item-1">
                   <span>over</span>
                   <h3>2300+ registered players</h3>
                 </li>
-                <li class="hero__item item-2">
+                <li class="hero__item hero__item-2">
                   <span>more than</span>
                   <h3>2000 much favored beatmaps ranked</h3>
                 </li>
-                <li class="hero__item item-3">
+                <li class="hero__item hero__item-3">
                   <span>friendly</span>
                   <h3>community and support team</h3>
                 </li>
               </ul>
             </div>
             <div class="actions">
-              <a 
-                @mouseover="isAnimate = true"
-                @mouseleave="isAnimate = false"
-                :class="{ 'animate': isAnimate }" 
-                class="actions__btn btn-register"
+              <SignUpButton
+                :arrow="true"
               >
-                register now in a few clicks!
-              </a>
-              <a class="actions__btn btn-discord">discord community</a>
+                register now in a few <br> clicks!
+              </SignUpButton>
+              <a class="btn-discord">discord community</a>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+    <!-- Hero end -->
+    <!-- Features -->
+    <section class="features__bg">
+      <div class="features">
+        <div class="container">
+          <h2 class="features__title">Key features</h2>
+          <ul class="features__list">
+            <li class="features__item">
+              <img src="@/assets/img/cards-1.jpg" alt="osu! direct">
+              <h3>osu! direct</h3>
+              <p>Hassle-free in-game beatmap browsing and downloading</p>
+            </li>
+            <li class="features__item">
+              <img src="@/assets/img/cards-2.jpg" alt="performance point system">
+              <h3>Relax and autopilot performance points systems</h3>
+              <p>Try and see how far you can take your basic skills! Or perhaps farm some pp?</p>
+            </li>
+            <li class="features__item">
+              <img src="@/assets/img/cards-3.jpg" alt="leaderboards">
+              <h3>All leaderboards</h3>
+              <p>Open access to mod-filters, friend rankings and country rankings</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- Features end -->
+    <!-- Player quotes -->
+    <section class="player-quotes">
+      <div class="container">
+        <h2 class="player-quotes__title">Player quotes</h2>
+        <ul class="player-quotes__list">
+          <div>
+            <li class="player-quotes__item player-quotes__item-1">
+              <blockquote>I love playing relax, man.</blockquote>
+              <div>
+                <img src="@/assets/img/player-quote-sussymaster2003.png" alt="avatar">
+                <span>sussymaster2003</span>
+              </div>
+            </li>
+            <li class="player-quotes__item player-quotes__item-2">
+              <blockquote>I played here while being restricted, I am really happy I <br> found this server. It really helped preserve my passion <br> for the game &lt;3</blockquote>
+              <div>
+                <img src="@/assets/img/player-quote-juiinee.png" alt="avatar">
+                <span>Juiinee</span>
+              </div>
+            </li>
+          </div>
+          <li style="position: relative;" class="player-quotes__item player-quotes__item-3">
+            <blockquote>Sakuru has been a great use when I <br> needed to derust, felt no pressure to <br> perform!</blockquote>
+            <div>
+              <img src="@/assets/img/player-quote-magnatagamer123.png" alt="avatar">
+              <span>magnatagamer123</span>
+            </div>
+            <SignUpButton
+              :arrow="true"
+              class="player-quotes__btn"
+            >
+              sign up
+            </SignUpButton>
+          </li>
+        </ul>
+      </div>
+    </section>
   </main>
 </template>
 
 <style scoped lang="scss">
-.bg {
+
+// Hero section
+.hero__bg {
   position: relative;
 
   &::after {
@@ -68,7 +129,7 @@ const isAnimate = ref(false);
 }
 
 .hero__wrapper {
-  padding: 250px 0 270px 0;
+  padding: 250px 0 140px 0;
 }
 
 .hero {
@@ -135,7 +196,7 @@ const isAnimate = ref(false);
     }
   }
 
-  .item-1 {
+  .hero__item-1 {
     position: relative;
     width: 200px;
     background-color: #2F4771;
@@ -157,18 +218,18 @@ const isAnimate = ref(false);
       position: absolute;
       top: 0;
       right: 100%;
-      width: 330px;
+      width: 150%;
       height: 100%;
       background-color: inherit;
     }
   }
 
-  .item-2 {
+  .hero__item-2 {
     width: 280px;
     background-color: #344F7F;
   }
 
-  .item-3 {
+  .hero__item-3 {
     width: 200px;
     background-color: #3C5B90;
   }
@@ -177,60 +238,6 @@ const isAnimate = ref(false);
 .actions {
   display: flex;
   flex-direction: column;
-
-  .actions__btn {
-    width: 540px;
-  }
-  
-  .btn-register {
-    position: relative;
-    padding: 30px 230px 62px 32px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 33px;
-    text-align: start;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    color: $main;
-    background-color: #E00087;
-    transition: all 0.3s ease;
-
-    &::after {
-      content: "";
-      position: absolute;
-      left: 30px;
-      bottom: 20px;
-      display: block;
-      width: 46px;
-      height: 20px;
-      background: url("@/assets/svg/arrow.svg") no-repeat;
-    }
-  }
-
-  .animate {
-    border-radius: 8px;
-  }
-
-  .animate::after {
-    animation: arrow 1.3s infinite;
-    animation-timing-function: ease;
-  }
-
-  @keyframes arrow {
-    0% {
-      left: 30px;
-    }
-
-    50% {
-      left: 40px;
-    }
-
-    100% {
-      left: 30px;
-    }
-  }
 
   .btn-discord {
     position: relative;
@@ -267,5 +274,155 @@ const isAnimate = ref(false);
     }
   }
 }
+
+// Key Features
+
+.features__bg {
+  background: url("@/assets/svg/features-bg.svg") no-repeat center;
+  margin-bottom: 140px;
+}
+
+.features__title {
+  margin-bottom: 54px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 55px;
+}
+
+.features__list {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  list-style: none;
+}
+
+.features__item {
+  width: 407px;
+
+  h3 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 33px;
+  }
+
+  p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #B5B5B5;
+  }
+}
+
+// Player quotes section
+.player-quotes__title {
+  text-align: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 55px;
+}
+
+.player-quotes__list {
+  display: flex;
+  padding: 0;
+  list-style: none;
+
+  .player-quotes__item {
+    text-align: center;
+    width: 50%;
+    
+    blockquote {
+      margin: 0 0 21px 0;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 150%;
+    }
+
+    div {
+      display: flex;
+      justify-content: center;
+
+      span {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 150%;
+        color: $main-hover;
+      }
+
+      img {
+        margin-right: 12px;
+        border-radius: 4px;
+        transform: translateY(-3px);
+      }
+    }
+  }
+  
+  .player-quotes__item-1 {
+    position: relative;
+    width: 100%;
+    padding: 32px 188px;
+    background-color: #3C5B90;
+
+    &::before {
+      content: "";
+      position: absolute;
+      right: 75%;
+      bottom: -20%;
+      z-index: -1;
+      display: block;
+      width: 287px;
+      height: 249px;
+      background: url("@/assets/svg/bg-quote.svg") no-repeat;
+    }
+  }
+
+  .player-quotes__item-2 {
+    width: 100%;
+    padding: 42px 97px;
+    background-color: #2F4771;
+
+    blockquote {
+      font-style: italic;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 150%;
+    }
+  }
+
+  .player-quotes__item-3 {
+    position: relative;
+    padding: 100px;
+    background-color: #344F7F;
+
+    blockquote {
+      margin-bottom: 32px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      padding: 0;
+      top: 0;
+      left: 100%;
+      width: inherit;
+      height: 100%;
+      background-color: inherit;
+    }
+  }
+
+  .player-quotes__btn {
+    position: absolute;
+    top: 90%;
+    left: 20%;
+    width: 80%;
+  }
+}
+
 
 </style>

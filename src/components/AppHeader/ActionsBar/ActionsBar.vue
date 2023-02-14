@@ -9,7 +9,7 @@ const searchingHandler = () => {
   if (isSearching.value) {
     searchBar.value?.focus();
   }
-}
+};
 </script>
 
 <template>
