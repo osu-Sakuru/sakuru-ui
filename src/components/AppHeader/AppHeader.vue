@@ -7,7 +7,6 @@ const scrollHandler = () => window.scrollY > 0 ? isScrolled.value = true : isScr
 
 onMounted(() => window.addEventListener('scroll', scrollHandler));
 onUnmounted(() => window.removeEventListener('scroll', scrollHandler));
-
 </script>
 
 <template>
@@ -16,7 +15,7 @@ onUnmounted(() => window.removeEventListener('scroll', scrollHandler));
       <div class="header__wrapper">
         <div class="navigation__wrapper">
           <a class="logo" href="#">
-            <img src="@/assets/img/logo.svg" alt="sakuru-logo">
+            <img src="@/assets/svg/logo.svg" alt="sakuru-logo">
           </a>
           <nav>
             <ul class="nav__list">

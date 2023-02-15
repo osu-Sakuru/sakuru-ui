@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import HomeRecords from "@/components/HomeRecords/HomeRecords.vue";
+
 </script>
 
 <template>
@@ -30,12 +32,17 @@
               </ul>
             </div>
             <div class="actions">
-              <SignUpButton
+              <ActionButton
                 :arrow="true"
               >
                 register now in a few <br> clicks!
-              </SignUpButton>
-              <a class="btn-discord">discord community</a>
+              </ActionButton>
+              <SocialButton 
+                :iconUrl="`url('src/assets/svg/discord-icon.svg')`"
+                class="actions__discord"
+              >
+                discord community
+              </SocialButton>
             </div>
           </div>
         </div>
@@ -95,14 +102,45 @@
               <img src="@/assets/img/player-quote-magnatagamer123.png" alt="avatar">
               <span>magnatagamer123</span>
             </div>
-            <SignUpButton
+            <ActionButton
               :arrow="true"
               class="player-quotes__btn"
             >
               sign up
-            </SignUpButton>
+            </ActionButton>
           </li>
         </ul>
+      </div>
+    </section>
+    <!-- Player quotes end -->
+    <!-- PP Records -->
+    <HomeRecords>
+    </HomeRecords>
+    <!-- PP Records end -->
+    <section class="contacts">
+      <div class="container">
+        <h2 class="contacts__title">Contacts and media</h2>
+        <div class="contacts__links">
+          <SocialButton
+            :iconUrl="'url(\'src/assets/svg/discord-icon.svg\')'"
+            class="contacts__btn "
+          >
+            discord community
+          </SocialButton>
+          <SocialButton
+            :iconUrl="'url(\'src/assets/svg/email-icon.svg\')'"
+            class="contacts__btn"
+            href="mailto:team@sakuru.pw"
+          >
+            team@sakuru.pw
+          </SocialButton>
+          <SocialButton
+            :iconUrl="'url(\'src/assets/svg/youtube-icon.svg\')'"
+            class="contacts__btn youtube"
+          >
+            youtube channel
+          </SocialButton>
+        </div>
       </div>
     </section>
   </main>
@@ -113,6 +151,8 @@
 // Hero section
 .hero__bg {
   position: relative;
+  padding: 250px 0 75px 0;
+  
 
   &::after {
     content: "";
@@ -126,10 +166,6 @@
     background: url("@/assets/img/home-bg.jpg") no-repeat center top;
     opacity: 15%;
   }
-}
-
-.hero__wrapper {
-  padding: 250px 0 140px 0;
 }
 
 .hero {
@@ -238,48 +274,22 @@
 .actions {
   display: flex;
   flex-direction: column;
-
-  .btn-discord {
-    position: relative;
+  
+  .actions__discord {
     padding: 22px 82px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 27px;
-    background-color: #262626;
     color: #9DBAEE;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
+    
     &:hover {
-      border-radius: 8px;
       background-color: #9DBAEE;
       color: #262626;
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      left: 32px;
-      bottom: 25px;
-      display: block;
-      width: 27px;
-      height: 20px;
-      background: url("@/assets/svg/discord.svg") no-repeat;
-      transition: all 0.3s ease;
-    }
-
-    &:hover::before {
-      background: url("@/assets/svg/discord-hover.svg") no-repeat;
     }
   }
 }
 
 // Key Features
-
 .features__bg {
   background: url("@/assets/svg/features-bg.svg") no-repeat center;
-  margin-bottom: 140px;
+  padding: 75px 0;
 }
 
 .features__title {
@@ -318,7 +328,12 @@
 }
 
 // Player quotes section
+.player-quotes {
+  padding: 75px 0;
+}
+
 .player-quotes__title {
+  margin-bottom: 80px;
   text-align: center;
   font-style: normal;
   font-weight: 700;
@@ -378,7 +393,7 @@
       display: block;
       width: 287px;
       height: 249px;
-      background: url("@/assets/svg/bg-quote.svg") no-repeat;
+      background: url("@/assets/svg/player-quotes-bg.svg") no-repeat;
     }
   }
 
@@ -424,5 +439,55 @@
   }
 }
 
+// Contacts section
+.contacts {
+  position: relative;
+  padding: 160px 0 205px 0;
 
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    display: block;
+    width: 100%;
+    height: 800px;
+    background: url("@/assets/svg/contacts-bg.svg") no-repeat center top;
+  }
+}
+
+.contacts__title {
+  margin-bottom: 32px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 44px;
+}
+
+.contacts__links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contacts__btn {
+  width: 420px;
+  padding: 22px 82px;
+  color: $main-hover;
+
+  &:hover {
+    color: #262626;
+    background-color: $main-hover;
+  }
+}
+
+.youtube {
+  position: relative;
+  color: #FF6969;
+
+  &:hover {
+    color: #262626;
+    background-color: #FF6969;
+  }
+}
 </style>

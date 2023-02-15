@@ -1,5 +1,7 @@
-import SignUpButton from "./SignUpButton.vue";
+import ActionButton from "./ActionButton.vue";
+import SocialButton from "./SocialButton.vue";
 
 export default [
-  SignUpButton,
+  ActionButton,
+  SocialButton,
 ];

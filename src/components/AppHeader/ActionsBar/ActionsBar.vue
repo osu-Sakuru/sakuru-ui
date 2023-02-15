@@ -94,12 +94,12 @@ const searchingHandler = () => {
         display: block;
         width: 20px;
         height: 20px;
-        background: url("./img/search-icon.svg") no-repeat;
+        background: url("@/assets/svg/search-icon.svg") no-repeat;
         transition: all 0.3s ease;
       }
 
       &:hover::after {
-        background: url("./img/search-hover-icon.svg");
+        background: url("@/assets/svg/search-icon-hover.svg");
       }
     }
   }
@@ -162,11 +162,11 @@ const searchingHandler = () => {
 
     &::after {
       left: 60px;
-      background: url("./img/login-icon.svg");
+      background: url("@/assets/svg/login-icon.svg");
     }
 
     &:hover::after {
-      background: url("./img/login-hover-icon.svg");
+      background: url("@/assets/svg/login-icon-hover.svg");
     }
   }
 }
