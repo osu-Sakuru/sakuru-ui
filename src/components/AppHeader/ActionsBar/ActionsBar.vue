@@ -1,42 +1,64 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, type Ref } from 'vue';
 
 const isSearching = ref(false);
-const searchBar = ref<null | { focus: () => null }>(null);
+const searchBar = ref<null | { focus: () => null, blur: () => null }>(null);
 
 const searchingHandler = () => {
-  isSearching.value = !isSearching.value;
-  if (isSearching.value) {
-    searchBar.value?.focus();
-  }
+  // can't follow the link without timeout 
+  setTimeout(() => {
+    isSearching.value = !isSearching.value;
+    if (isSearching.value) {
+      searchBar.value?.focus();
+    } else {
+      searchBar.value?.blur();
+    }
+  }, 100);
 };
+
+interface ISearchResult {
+  id: number,
+  value: string
+}
+  
+const results: Ref<ISearchResult[]> = ref([]);
+
+const mockArr = [
+  { id: 2, value: "ladno" },
+  { id: 2, value: "ladno" },
+  { id: 2, value: "ladno" },
+  { id: 2, value: "ladno" },
+  { id: 2, value: "ladno" },
+];
+
+results.value.push(...mockArr); // mock
+
 </script>
 
 <template>
   <div class="actions__wrapper">
     <a href="#" class="support__icon">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2.5 10H5.625L6.875 8.125L9.375 11.875L10.625 10H12.5" stroke="white" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M2.19643 7.49949C2.19052 7.39587 2.18754 7.29187 2.1875 7.1875C2.18766 6.24854 2.51301 5.33862 3.10824 4.61243C3.70347 3.88625 4.53183 3.38863 5.45249 3.20417C6.37315 3.01972 7.32928 3.15982 8.15832 3.60065C8.98736 4.04148 9.63814 4.75584 10 5.62226L9.99999 5.62227C10.3619 4.75584 11.0126 4.04149 11.8417 3.60065C12.6707 3.15982 13.6268 3.01972 14.5475 3.20417C15.4682 3.38863 16.2965 3.88625 16.8918 4.61243C17.487 5.33862 17.8123 6.24854 17.8125 7.1875C17.8125 12.5 10 16.875 10 16.875C10 16.875 6.87932 15.1274 4.58262 12.5001" stroke="white" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </a>
-    <div :class="{'search-active': isSearching}" class="search__box">
-      <span
-        @click="searchingHandler"
-        :class="{'inactive': isSearching, 'move': isSearching }" 
-        class="text"
-      >
-        Search
-      </span>
-      <input
-        @focusout="searchingHandler"
-        :class="{'search-active': isSearching }"
-        ref="searchBar"
-        class="search__bar"
-        placeholder="Start typing..."
-      />
+    <div @click="searchingHandler" class="searchbox" :class="{ 'hover': !isSearching }">
+      <form @submit.prevent class="searchbar__wrapper" :class="{ 'active': isSearching }" >
+        <input @focusout="searchingHandler" ref="searchBar" @click.stop class="searchbar" type="text" placeholder="Start typing . . .">
+        <ul class="searchbar__results">
+          <li v-show="isSearching" v-for="result in results.slice(0, 5)" :key="result.id">
+            <!-- TODO: finish with styling result -->
+            <!-- idk how result supposed to look, i'll think about it later -->
+            <a @click.stop href="https://google.com">
+              {{ result.value }}
+            </a>
+          </li>
+        </ul>
+      </form>
     </div>
     <button class="btn log__icon">Login</button>
+    <!-- TODO: add here a lang switcher -->
   </div>
 </template>
 
@@ -48,7 +70,7 @@ const searchingHandler = () => {
   .support__icon {
     margin-right: 58px;
     cursor: pointer;
-    transform: translateY(4px);
+    transform: translateY(3px);
     transition: all 0.5 ease;
 
     &:hover {
@@ -59,76 +81,114 @@ const searchingHandler = () => {
     }
   }
 
-  .search__box {
+  .searchbox {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100px;
-    height: 45px;
-    margin-right: 60px;
-    transition: all 0.4s ease;
-
-    .text {
+    margin-right: 24px;
+    
+    &::before {
+      content: "Search";
       position: absolute;
-      right: 25px;
-      z-index: 1;
+      right: 43px;
+      top: 9px;
+      z-index: 11;
       font-style: normal;
       font-weight: 600;
       font-size: 20px;
       line-height: 27px;
-      color: $main;
       cursor: pointer;
       transition: all 0.3s ease;
+    }
 
-      &:hover {
-        color: $main-hover;
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 4px;
-        left: 73px;
-        z-index: 10;
-        display: block;
-        width: 20px;
-        height: 20px;
-        background: url("@/assets/svg/search-icon.svg") no-repeat;
-        transition: all 0.3s ease;
-      }
-
-      &:hover::after {
-        background: url("@/assets/svg/search-icon-hover.svg");
-      }
+    &::after {
+      content: "";
+      position: absolute;
+      right: 15px;
+      top: 13px;
+      z-index: 12;
+      opacity: 100;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      background: url("@/assets/svg/search-icon-hover.svg") no-repeat;
+      transition: all 0.3s ease;
     }
   }
 
-  .search__bar {
-    position: absolute;
-    width: 100%;
+  .searchbar__wrapper {
+    position: relative;
+    display: flex;
+    width: 120px;
     height: 100%;
-    padding: 10px;
     opacity: 0;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 25px;
-    outline: none;
-    border: none;
-    color: $main;
+    pointer-events: none;
     background-color: #484848;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
+  }
 
-    &::placeholder {
-      color: #B5B5B5;
+  .searchbar {
+    width: 100%;
+    padding: 10px 45px 10px 10px;
+    font-style: normal;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    color: $main;
+    background: transparent;
+    
+    ::placeholder {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 33px;
+    }
+  }
+  
+  .active {
+    width: 250px;
+    opacity: 1;
+    z-index: 12;
+    pointer-events: all;
+    border: solid 1px $main-hover;
+  }
+
+  .hover {
+    &::after {
+      background: url("@/assets/svg/search-icon.svg") no-repeat;
+    }
+
+    &:hover {
+      color: $main-hover;
+    }
+
+    &:hover::after {
+      background: url("@/assets/svg/search-icon-hover.svg") no-repeat;
     }
   }
 
-  .search-active {
-    z-index: 10;
-    width: 230px;
-    opacity: 100;
+  .searchbar__results {
+    position: absolute;
+    top: 102%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    background-color: beige;
+
+    li {
+      background-color: #484848;
+      transition: all 0.1s ease;
+      
+      &:hover {
+        background-color: #3e3e3e;
+      }
+
+      a {
+        display: block;
+        padding: 5px;
+        text-decoration: none;
+        color: $main;
+      }
+    }
   }
 
   .btn {
