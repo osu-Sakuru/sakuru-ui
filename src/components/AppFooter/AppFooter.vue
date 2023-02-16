@@ -3,6 +3,7 @@
       <div class="container">
         <div class="footer__content-wrapper">
           <ul class="footer__list">
+            <!-- TODO: make this shit looks better -->
             <li class="footer__item"><a href="">Links</a></li>
             <li class="footer__item"><a href="">Beatmaps</a></li>
             <li class="footer__item"><a href="">Connect</a></li>
