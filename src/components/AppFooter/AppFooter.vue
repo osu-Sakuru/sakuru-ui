@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="footer__copyright">
-        &copy; 2020-2021 Sakuru.pw is not affiliated with ppy Pty Ltd in any way. "osu!" is a trademark of ppy Pty Ltd.
+        &copy; 2020-{{ new Date().getFullYear() }} Sakuru.pw is not affiliated with ppy Pty Ltd in any way. "osu!" is a trademark of ppy Pty Ltd.
       </div>
   </footer>
 </template>

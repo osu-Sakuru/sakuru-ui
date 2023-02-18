@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia';
+import { defineStore } from "pinia";
 
-export const useCounterStore = defineStore('counter', {
+export const useUserStore = defineStore("user", {
   state: () => {
     return { count: 0 };
   },
@@ -9,4 +9,6 @@ export const useCounterStore = defineStore('counter', {
       this.count++;
     },
   },
+
+  persist: true,
 });
