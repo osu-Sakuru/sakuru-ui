@@ -2,7 +2,8 @@
 
 interface ImportMetaEnv {
     readonly VITE_APP_TITLE: string
-    readonly API_ENDPOINT: string
+    readonly VITE_BACKEND_ENDPOINT: string
+    readonly VITE_BANCHO_ENDPOINT: string
     // more env variables...
 }
   

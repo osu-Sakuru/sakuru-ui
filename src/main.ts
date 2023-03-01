@@ -8,10 +8,14 @@ import components from "@/components/UI";
 import i18n from './i18n';
 import axios from 'axios';
 
-export const axiosInstance = axios.create({
-  baseURL: import.meta.env.API_ENDPOINT,
+export const backendApi = axios.create({
+  baseURL: import.meta.env.VITE_BACKEND_ENDPOINT,
   timeout: 5000,
   withCredentials: true,
+});
+export const banchoApi = axios.create({
+  baseURL: import.meta.env.VITE_BANCHO_API,
+  timeout: 5000,
 });
 
 const app = createApp(App);

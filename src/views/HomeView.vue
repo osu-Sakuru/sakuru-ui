@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import HomeRecords from "@/components/HomeRecords/HomeRecords.vue";
+import { backendApi, banchoApi } from "@/main";
+
+const serverStats = await (await backendApi.get("/stats")).data;
+const playersStatus = await (await banchoApi.get("/players/status")).data.data;
 
 </script>
 
@@ -10,20 +14,20 @@ import HomeRecords from "@/components/HomeRecords/HomeRecords.vue";
       <div class="container">
         <div class="hero__wrapper">
           <div class="hero">
-            <span>Welcome to</span>
+            <span>{{ $t('unlogged_welcometo') }}</span>
             <h1>Sakuru.pw</h1>
-            <h2>osu! server created for your joy</h2>
+            <h2>{{ $t('unlogged_welcometext') }}</h2>
           </div>
           <div class="hero__info">
             <div class="hero__stats">
               <ul class="hero__list">
                 <li class="hero__item hero__item-1">
-                  <span>over</span>
-                  <h3>2300+ registered players</h3>
+                  <span>{{ $t('unlogged_over') }}</span>
+                  <h3>{{ serverStats.playersCount }}+ {{ $t('unlogged_registered_players') }}</h3>
                 </li>
                 <li class="hero__item hero__item-2">
-                  <span>more than</span>
-                  <h3>2000 much favored beatmaps ranked</h3>
+                  <span>{{ $t('unlogged_more_than') }}</span>
+                  <h3>{{ serverStats.customRankedMapsCount }} {{ $t('unlogged_beatmaps_ranked') }}</h3>
                 </li>
                 <li class="hero__item hero__item-3">
                   <span>friendly</span>

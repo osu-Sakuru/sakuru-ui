@@ -1,1 +1,8 @@
-{}
+{
+    "unlogged_welcometo": "Welcome to",
+    "unlogged_welcometext": "osu! server created for your joy",
+    "unlogged_over": "over",
+    "unlogged_registered_players": "registered players",
+    "unlogged_more_than": "more than",
+    "unlogged_beatmaps_ranked": "much favored beatmaps ranked"
+}
