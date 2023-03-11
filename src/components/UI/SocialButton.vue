@@ -7,12 +7,16 @@ export default defineComponent({
     iconUrl: {
       type: String,
       required: true,
-    }
+    },
+    noHover: {
+      type: Boolean,
+      required: false,
+    },
   },
   methods: {
     makeIconHover(iconUrl: string): string {
       // edits path to hover icon
-      return iconUrl.replace(".svg')", "-hover.svg')");
+      return this.noHover ? iconUrl : iconUrl.replace(".svg')", "-hover.svg')");
     },
   }
 });
@@ -27,7 +31,7 @@ export default defineComponent({
 <style lang="scss" scoped>
   .btn {
     position: relative;
-    display: block;
+    display: flex;
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
@@ -46,7 +50,7 @@ export default defineComponent({
       content: "";
       position: absolute;
       left: 32px;
-      bottom: 20px;
+      align-self: center;
       display: block;
       width: 32px;
       height: 32px;

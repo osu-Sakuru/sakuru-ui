@@ -11,18 +11,18 @@ const link = ref("url('/src/assets/img/idk.jpg')");
 <template>
   <section class="our-records">
     <div class="container">
-      <h2 class="our-records__title">Our Records</h2>
+      <h2 class="our-records__title">{{ $t('unlogged_records') }}</h2>
       <div class="our-records__scores">
         <div class="our-records__vanilla record-square">
           <div>
             <h3>{{ penis }} pp</h3>
-            <span>Set by {{ nick }}</span>
+            <span>{{ $t('unlogged_records_setby') }} {{ nick }}</span>
           </div>
         </div>
         <div class="our-records__relax record-square">
           <div>
             <h3>{{ penis }} pp</h3>
-            <span>Set by {{ nick }}</span>
+            <span>{{ $t('unlogged_records_setby') }} {{ nick }}</span>
           </div>
         </div>
       </div>

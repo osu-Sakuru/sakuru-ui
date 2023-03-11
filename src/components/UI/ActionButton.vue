@@ -33,7 +33,7 @@ const props = defineProps({
   position: relative;
   padding: 30px 280px 62px 32px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 24px;
   line-height: 33px;
   text-align: start;
@@ -48,6 +48,11 @@ const props = defineProps({
     border-radius: 8px;
     background-color: #D6007F;
   }
+
+}
+
+.green {
+  color: green;
 }
 
 .arrow {
