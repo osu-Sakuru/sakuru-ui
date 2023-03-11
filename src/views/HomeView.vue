@@ -1,9 +1,11 @@
+<!-- eslint-disable vue/no-v-text-v-html-on-component -->
 <script setup lang="ts">
 import HomeRecords from "@/components/HomeRecords/HomeRecords.vue";
+import HomeContacts from "@/components/HomeContacts/HomeContacts.vue";
 import { backendApi, banchoApi } from "@/main";
 
-const serverStats = await (await backendApi.get("/stats")).data;
-const playersStatus = await (await banchoApi.get("/players/status")).data.data;
+const serverStats = await (await backendApi.get("/server_stats")).data;
+// const playersStatus = await (await banchoApi.get("/players/status")).data.data;
 
 </script>
 
@@ -23,29 +25,30 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
               <ul class="hero__list">
                 <li class="hero__item hero__item-1">
                   <span>{{ $t('unlogged_over') }}</span>
-                  <h3>{{ serverStats.playersCount }}+ {{ $t('unlogged_registered_players') }}</h3>
+                  <h3>{{ serverStats.players_total }}+ {{ $t('unlogged_registered_players') }}</h3>
                 </li>
                 <li class="hero__item hero__item-2">
                   <span>{{ $t('unlogged_more_than') }}</span>
-                  <h3>{{ serverStats.customRankedMapsCount }} {{ $t('unlogged_beatmaps_ranked') }}</h3>
+                  <h3>{{ serverStats.custom_ranked_maps_count }} {{ $t('unlogged_beatmaps_ranked') }}</h3>
                 </li>
                 <li class="hero__item hero__item-3">
-                  <span>friendly</span>
-                  <h3>community and support team</h3>
+                  <span>{{ $t('unlogged_friendly') }}</span>
+                  <h3>{{ $t('unlogged_community') }}</h3>
                 </li>
               </ul>
             </div>
             <div class="actions">
               <ActionButton
                 :arrow="true"
+                class="actions__register"
               >
-                register now in a few <br> clicks!
+                {{ $t('unlogged_action_button', { players_online: serverStats.players_online }) }}
               </ActionButton>
               <SocialButton 
                 :iconUrl="`url('src/assets/svg/discord-icon.svg')`"
                 class="actions__discord"
               >
-                discord community
+                {{ $t('contacts_discord') }}
               </SocialButton>
             </div>
           </div>
@@ -57,22 +60,22 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
     <section class="features__bg">
       <div class="features">
         <div class="container">
-          <h2 class="features__title">Key features</h2>
+          <h2 class="features__title">{{ $t('unlogged_features') }}</h2>
           <ul class="features__list">
             <li class="features__item">
               <img src="@/assets/img/cards-1.jpg" alt="osu! direct">
               <h3>osu! direct</h3>
-              <p>Hassle-free in-game beatmap browsing and downloading</p>
+              <p>{{ $t('unlogged_directtext') }}</p>
             </li>
             <li class="features__item">
               <img src="@/assets/img/cards-2.jpg" alt="performance point system">
-              <h3>Relax and autopilot performance points systems</h3>
-              <p>Try and see how far you can take your basic skills! Or perhaps farm some pp?</p>
+              <h3>{{ $t('unlogged_pp_systems') }}</h3>
+              <p>{{ $t('unlogged_pp_systemstext') }}</p>
             </li>
             <li class="features__item">
               <img src="@/assets/img/cards-3.jpg" alt="leaderboards">
-              <h3>All leaderboards</h3>
-              <p>Open access to mod-filters, friend rankings and country rankings</p>
+              <h3>{{ $t('unlogged_leaderboards') }}</h3>
+              <p>{{ $t('unlogged_leaderboardstext') }}</p>
             </li>
           </ul>
         </div>
@@ -82,18 +85,18 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
     <!-- Player quotes -->
     <section class="player-quotes">
       <div class="container">
-        <h2 class="player-quotes__title">Player quotes</h2>
+        <h2 class="player-quotes__title">{{ $t('unlogged_players_quotes') }}</h2>
         <ul class="player-quotes__list">
           <div>
             <li class="player-quotes__item player-quotes__item-1">
-              <blockquote>I love playing relax, man.</blockquote>
+              <blockquote>{{ $t('unlogged_quote1') }}</blockquote>
               <div>
                 <img src="@/assets/img/player-quote-sussymaster2003.png" alt="avatar">
                 <span>sussymaster2003</span>
               </div>
             </li>
             <li class="player-quotes__item player-quotes__item-2">
-              <blockquote>I played here while being restricted, I am really happy I <br> found this server. It really helped preserve my passion <br> for the game &lt;3</blockquote>
+              <blockquote v-html="$t('unlogged_quote2')"></blockquote>
               <div>
                 <img src="@/assets/img/player-quote-juiinee.png" alt="avatar">
                 <span>Juiinee</span>
@@ -101,7 +104,7 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
             </li>
           </div>
           <li style="position: relative;" class="player-quotes__item player-quotes__item-3">
-            <blockquote>Sakuru has been a great use when I <br> needed to derust, felt no pressure to <br> perform!</blockquote>
+            <blockquote v-html="$t('unlogged_quote3')"></blockquote>
             <div>
               <img src="@/assets/img/player-quote-magnatagamer123.png" alt="avatar">
               <span>magnatagamer123</span>
@@ -110,7 +113,7 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
               :arrow="true"
               class="player-quotes__btn"
             >
-              sign up
+              {{ $t('unlogged_quote_action') }}
             </ActionButton>
           </li>
         </ul>
@@ -118,35 +121,9 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
     </section>
     <!-- Player quotes end -->
     <!-- PP Records -->
-    <HomeRecords>
-    </HomeRecords>
+    <HomeRecords />
     <!-- PP Records end -->
-    <section class="contacts">
-      <div class="container">
-        <h2 class="contacts__title">Contacts and media</h2>
-        <div class="contacts__links">
-          <SocialButton
-            :iconUrl="'url(\'src/assets/svg/discord-icon.svg\')'"
-            class="contacts__btn "
-          >
-            discord community
-          </SocialButton>
-          <SocialButton
-            :iconUrl="'url(\'src/assets/svg/email-icon.svg\')'"
-            class="contacts__btn"
-            href="mailto:team@sakuru.pw"
-          >
-            team@sakuru.pw
-          </SocialButton>
-          <SocialButton
-            :iconUrl="'url(\'src/assets/svg/youtube-icon.svg\')'"
-            class="contacts__btn youtube"
-          >
-            youtube channel
-          </SocialButton>
-        </div>
-      </div>
-    </section>
+    <HomeContacts />
   </main>
 </template>
 
@@ -216,7 +193,7 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
   list-style: none;
 
   .hero__item {
-    height: 160px;
+    min-height: 160px;
     padding: 18px 32px;
     word-wrap: normal;
     
@@ -225,6 +202,7 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
       font-weight: 400;
       font-size: 18px;
       line-height: 25px;
+      word-wrap: break-word;
     }
 
     h3 {
@@ -233,12 +211,13 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
       font-weight: 700;
       font-size: 23px;
       line-height: 33px;
+      word-wrap: break-word;
     }
   }
 
   .hero__item-1 {
     position: relative;
-    width: 200px;
+    max-width: 260px;
     background-color: #2F4771;
 
     &::after {
@@ -258,19 +237,19 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
       position: absolute;
       top: 0;
       right: 100%;
-      width: 150%;
+      width: 300px;
       height: 100%;
       background-color: inherit;
     }
   }
 
   .hero__item-2 {
-    width: 280px;
+    // width: 280px;
     background-color: #344F7F;
   }
 
   .hero__item-3 {
-    width: 200px;
+    max-width: 200px;
     background-color: #3C5B90;
   }
 }
@@ -278,7 +257,12 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
 .actions {
   display: flex;
   flex-direction: column;
-  
+
+  .actions__register {
+    padding: 30px 240px 62px 32px;
+    min-height: 160px;
+  }
+
   .actions__discord {
     padding: 22px 82px;
     color: #9DBAEE;
@@ -352,7 +336,6 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
 
   .player-quotes__item {
     text-align: center;
-    width: 50%;
     
     blockquote {
       margin: 0 0 21px 0;
@@ -384,7 +367,7 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
   
   .player-quotes__item-1 {
     position: relative;
-    width: 100%;
+    width: 660px;
     padding: 32px 188px;
     background-color: #3C5B90;
 
@@ -402,7 +385,7 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
   }
 
   .player-quotes__item-2 {
-    width: 100%;
+    width: 660px;
     padding: 42px 97px;
     background-color: #2F4771;
 
@@ -429,7 +412,7 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
       padding: 0;
       top: 0;
       left: 100%;
-      width: inherit;
+      width: 340px;
       height: 100%;
       background-color: inherit;
     }
@@ -440,58 +423,6 @@ const playersStatus = await (await banchoApi.get("/players/status")).data.data;
     top: 90%;
     left: 20%;
     width: 80%;
-  }
-}
-
-// Contacts section
-.contacts {
-  position: relative;
-  padding: 160px 0 205px 0;
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    display: block;
-    width: 100%;
-    height: 800px;
-    background: url("@/assets/svg/contacts-bg.svg") no-repeat center top;
-  }
-}
-
-.contacts__title {
-  margin-bottom: 32px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 44px;
-}
-
-.contacts__links {
-  display: flex;
-  justify-content: space-between;
-}
-
-.contacts__btn {
-  width: 420px;
-  padding: 22px 82px;
-  color: $main-hover;
-
-  &:hover {
-    color: #262626;
-    background-color: $main-hover;
-  }
-}
-
-.youtube {
-  position: relative;
-  color: #FF6969;
-
-  &:hover {
-    color: #262626;
-    background-color: #FF6969;
   }
 }
 </style>

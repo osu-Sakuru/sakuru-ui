@@ -16,6 +16,8 @@ const searchingHandler = () => {
   }, 100);
 };
 
+const menuHandler = () => menuActive.value = !menuActive.value;
+
 interface ISearchResult {
   id: number,
   value: string
@@ -32,6 +34,9 @@ const mockArr = [
 ];
 
 results.value.push(...mockArr); // mock
+
+const isAuth = true;
+const menuActive = ref(false);
 
 </script>
 
@@ -57,7 +62,22 @@ results.value.push(...mockArr); // mock
         </ul>
       </form>
     </div>
-    <button class="btn log__icon">Login</button>
+    <div 
+      @mouseover="menuHandler" 
+      @mouseout="menuHandler"
+      v-if="isAuth" 
+      class="actions__btn-wrapper"
+    >
+      <div >
+        <button :class="{ 'menu-hover': menuActive }" class="btn actions__btn-account">Account</button>
+        <img src="@/assets/svg/avatar-placeholder.svg" alt="avatar">
+        <ul v-show="menuActive" class="actions__btn-list searchbar__results">
+          <!-- same as searching results, wait for marks design -->
+          <li>Suka</li>
+        </ul>
+      </div>
+    </div>
+    <button v-else class="btn log__icon">Login</button>
     <!-- TODO: add here a lang switcher -->
   </div>
 </template>
@@ -216,6 +236,37 @@ results.value.push(...mockArr); // mock
       transition: all 0.3s ease;
     }
   }
+  
+  .actions__btn-wrapper {
+    position: relative;
+  }
+
+  .actions__btn-wrapper > div {
+    display: flex;
+    justify-content: center;
+    margin-right: 40px;
+  }
+
+  .actions__btn-account {
+    margin-right: 10px;
+
+    &::after {
+      left: 130px;
+      top: 6px;
+      background: url("@/assets/svg/down-arrow.svg");
+    }
+  }
+  
+  .menu-hover {
+    color: $main-hover;
+    cursor: default;
+
+    &::after {
+      transform: rotate(180deg);
+      background: url("@/assets/svg/down-arrow-hover.svg");
+    }
+  }
+
 
   .log__icon {
     margin-right: 30px;
