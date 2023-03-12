@@ -6,9 +6,9 @@ import AppFooter from "./components/AppFooter/AppFooter.vue";
 
 <template>
   <AppHeader />
-    <Suspense>
-      <RouterView />
-    </Suspense>
+  <Suspense>
+    <RouterView />
+  </Suspense>
   <AppFooter />
 </template>
 

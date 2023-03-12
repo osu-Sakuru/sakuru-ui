@@ -1,7 +1,7 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 export default defineComponent({
-  name: "ActionButton"
+  name: "ActionButton",
 });
 </script>
 
@@ -18,10 +18,10 @@ const props = defineProps({
 </script>
 
 <template>
-  <a 
+  <a
     @mouseover="isAnimate = true"
     @mouseleave="isAnimate = false"
-    :class="{ 'animate': isAnimate && props.arrow, 'arrow': props.arrow }" 
+    :class="{ animate: isAnimate && props.arrow, arrow: props.arrow }"
     class="btn-register"
   >
     <slot></slot>
@@ -41,14 +41,13 @@ const props = defineProps({
   border: none;
   cursor: pointer;
   color: $main;
-  background-color: #E00087;
+  background-color: #e00087;
   transition: all 0.3s ease;
 
   &:hover {
     border-radius: 8px;
-    background-color: #D6007F;
+    background-color: #d6007f;
   }
-
 }
 
 .green {

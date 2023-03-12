@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import ActionsBar from './ActionsBar/ActionsBar.vue';
+import { ref, onMounted, onUnmounted } from "vue";
+import ActionsBar from "./ActionsBar/ActionsBar.vue";
 
 const isScrolled = ref(false);
-const scrollHandler = () => window.scrollY > 0 ? isScrolled.value = true : isScrolled.value = false;
+const scrollHandler = () =>
+  window.scrollY > 0 ? (isScrolled.value = true) : (isScrolled.value = false);
 
-onMounted(() => window.addEventListener('scroll', scrollHandler));
-onUnmounted(() => window.removeEventListener('scroll', scrollHandler));
+onMounted(() => window.addEventListener("scroll", scrollHandler));
+onUnmounted(() => window.removeEventListener("scroll", scrollHandler));
 </script>
 
 <template>
-  <header class="fixed" :class="{'header__bg': isScrolled }">
+  <header class="fixed" :class="{ header__bg: isScrolled }">
     <div class="container">
       <div class="header__wrapper">
         <div class="navigation__wrapper">
           <a class="logo" href="#">
-            <img src="@/assets/svg/logo.svg" alt="sakuru-logo">
+            <img src="@/assets/svg/logo.svg" alt="sakuru-logo" />
           </a>
           <nav>
             <ul class="nav__list">

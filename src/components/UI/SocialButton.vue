@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "SocialButton",
@@ -18,7 +18,7 @@ export default defineComponent({
       // edits path to hover icon
       return this.noHover ? iconUrl : iconUrl.replace(".svg')", "-hover.svg')");
     },
-  }
+  },
 });
 </script>
 
@@ -29,38 +29,38 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-  .btn {
-    position: relative;
-    display: flex;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 27px;
-    text-align: left;
-    text-decoration: none;
-    background-color: #262626;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.btn {
+  position: relative;
+  display: flex;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: left;
+  text-decoration: none;
+  background-color: #262626;
+  cursor: pointer;
+  transition: all 0.3s ease;
 
-    &:hover {
-      border-radius: 8px;
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      left: 32px;
-      align-self: center;
-      display: block;
-      width: 32px;
-      height: 32px;
-      background: v-bind(iconUrl) no-repeat;
-      transition: all 0.3s ease;
-    }
-
-    &:hover::before {
-      // v-bind variable should contain a string like "url('/path/to/img')"
-      background: v-bind(makeIconHover(iconUrl)) no-repeat;
-    }
+  &:hover {
+    border-radius: 8px;
   }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 32px;
+    align-self: center;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: v-bind(iconUrl) no-repeat;
+    transition: all 0.3s ease;
+  }
+
+  &:hover::before {
+    // v-bind variable should contain a string like "url('/path/to/img')"
+    background: v-bind(makeIconHover(iconUrl)) no-repeat;
+  }
+}
 </style>

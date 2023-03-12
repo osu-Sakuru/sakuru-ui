@@ -1,28 +1,49 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import type { IServerRecords } from "@/interfaces/serverRecords.interface";
+import { backendApi } from "@/main";
 
-const nick = ref("Hoshi");
-const penis = ref(99.9);
-
-const link = ref("url('/src/assets/img/idk.jpg')");
-
+const { data: serverRecords } = await backendApi.get<IServerRecords>(
+  "/server_records"
+);
 </script>
 
 <template>
   <section class="our-records">
     <div class="container">
-      <h2 class="our-records__title">{{ $t('unlogged_records') }}</h2>
+      <h2 class="our-records__title">{{ $t("unlogged_records") }}</h2>
       <div class="our-records__scores">
-        <div class="our-records__vanilla record-square">
+        <div
+          class="our-records__vanilla record-square"
+          :style="{
+            backgroundImage:
+              'url(https://assets.ppy.sh/beatmaps/' +
+              serverRecords.standard.set_id +
+              '/covers/list@2x.jpg)',
+          }"
+        >
           <div>
-            <h3>{{ penis }} pp</h3>
-            <span>{{ $t('unlogged_records_setby') }} {{ nick }}</span>
+            <h3>{{ serverRecords.standard.pp.toFixed(0) }} pp</h3>
+            <a :href="serverRecords.standard.user_link"
+              >{{ $t("unlogged_records_setby") }}
+              {{ serverRecords.standard.username }}</a
+            >
           </div>
         </div>
-        <div class="our-records__relax record-square">
+        <div
+          class="our-records__relax record-square"
+          :style="{
+            backgroundImage:
+              'url(https://assets.ppy.sh/beatmaps/' +
+              serverRecords.relax.set_id +
+              '/covers/list@2x.jpg)',
+          }"
+        >
           <div>
-            <h3>{{ penis }} pp</h3>
-            <span>{{ $t('unlogged_records_setby') }} {{ nick }}</span>
+            <h3>{{ serverRecords.relax.pp.toFixed(0) }} pp</h3>
+            <a :href="serverRecords.relax.user_link"
+              >{{ $t("unlogged_records_setby") }}
+              {{ serverRecords.relax.username }}</a
+            >
           </div>
         </div>
       </div>
@@ -38,7 +59,6 @@ const link = ref("url('/src/assets/img/idk.jpg')");
   align-items: center;
   padding: 140px 0 75px 0;
   text-align: center;
-  
 }
 
 .our-records__title {
@@ -58,7 +78,7 @@ const link = ref("url('/src/assets/img/idk.jpg')");
     font-weight: 700;
     font-size: 48px;
     line-height: 66px;
-    color: #2D2D2D;
+    color: #2d2d2d;
   }
 }
 
@@ -74,7 +94,7 @@ const link = ref("url('/src/assets/img/idk.jpg')");
   height: 400px;
   background-color: #555;
   text-align: left;
-  
+
   &::before {
     position: absolute;
     top: 0;
@@ -86,9 +106,9 @@ const link = ref("url('/src/assets/img/idk.jpg')");
     font-weight: 600;
     font-size: 24px;
     line-height: 33px;
-    background-color: #E00087;
+    background-color: #e00087;
   }
-  
+
   &::after {
     content: "";
     position: absolute;
@@ -99,14 +119,18 @@ const link = ref("url('/src/assets/img/idk.jpg')");
     width: 100%;
     height: 100%;
     pointer-events: none;
-    background: linear-gradient(0deg, rgba(0,0,0, 0.9) 0%, rgba(248,248,249, 0) 100%);
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(248, 248, 249, 0) 100%
+    );
   }
 
   div {
     align-self: flex-end;
     padding: 25px;
   }
-  
+
   h3 {
     position: relative;
     z-index: 2;
@@ -117,7 +141,7 @@ const link = ref("url('/src/assets/img/idk.jpg')");
     line-height: 44px;
   }
 
-  span {
+  a {
     position: relative;
     z-index: 2;
     font-style: normal;
@@ -130,7 +154,9 @@ const link = ref("url('/src/assets/img/idk.jpg')");
 .our-records__vanilla {
   // v-bind variable should contain a string like "url('/path/to/img')"
   margin-right: 42px;
-  background: v-bind(link) no-repeat;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
 
   &::before {
     content: "Vanilla";
@@ -139,7 +165,9 @@ const link = ref("url('/src/assets/img/idk.jpg')");
 
 .our-records__relax {
   // v-bind variable should contain a string like "url('/path/to/img')"
-  background: v-bind(link);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
 
   &::before {
     content: "Relax";

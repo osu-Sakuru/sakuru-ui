@@ -1,12 +1,11 @@
 <script lang="ts" setup>
-import { backendApi } from '@/main';
-import { ref } from 'vue';
+import { backendApi } from "@/main";
+import { useUserStore } from "@/stores/user";
 
 const serverStats = await backendApi.get("/server_stats");
 const streamers = await backendApi.get("/twitch/streamers");
 
-const name =  ref('dench');
-
+const userStore = useUserStore();
 </script>
 
 <template>
@@ -14,21 +13,26 @@ const name =  ref('dench');
     <div class="container">
       <div class="hero__wrapper">
         <div class="hero">
-          <h1>{{ $t('loggedin_welcome') }} {{ name }}</h1>
+          <h1>{{ $t("loggedin_welcome") }} {{ userStore.user.name }}</h1>
         </div>
         <div class="hero__info">
           <div class="hero__stats">
             <ul class="hero__list">
               <li class="hero__item hero__item-1">
-                <span>{{ $t('loggedin_online', serverStats.data.players_online) }}</span>
-                <h3>{{ serverStats.data.players_online }} {{ $t('loggedin_players') }}</h3>
+                <span>{{
+                  $t("loggedin_online", serverStats.data.players_online)
+                }}</span>
+                <h3>
+                  {{ serverStats.data.players_online }}
+                  {{ $t("loggedin_players") }}
+                </h3>
               </li>
               <li class="hero__item hero__item-2">
-                <span>{{ $t('loggedin_lobbies') }}</span>
+                <span>{{ $t("loggedin_lobbies") }}</span>
                 <h3>{{ serverStats.data.multiplayer_matches }}</h3>
               </li>
               <li class="hero__item hero__item-3">
-                <span>{{ $t('loggedin_streams') }}</span>
+                <span>{{ $t("loggedin_streams") }}</span>
                 <h3>{{ streamers.data.total }}</h3>
               </li>
             </ul>
@@ -39,7 +43,7 @@ const name =  ref('dench');
               :noHover="true"
               class="actions__connect"
             >
-              {{ $t('loggedin_connect_button') }}
+              {{ $t("loggedin_connect_button") }}
             </SocialButton>
             <SocialButton
               :iconUrl="`url('src/assets/svg/discord-icon.svg')`"
@@ -59,7 +63,6 @@ const name =  ref('dench');
 .hero__bg {
   position: relative;
   padding: 190px 0 75px 0;
-  
 
   &::after {
     content: "";
@@ -105,7 +108,7 @@ const name =  ref('dench');
     min-height: 94px;
     padding: 18px 32px;
     word-wrap: normal;
-    
+
     span {
       font-style: normal;
       font-weight: 400;
@@ -127,7 +130,7 @@ const name =  ref('dench');
   .hero__item-1 {
     position: relative;
     width: 200px;
-    background-color: #2F4771;
+    background-color: #2f4771;
 
     &::after {
       content: "// stats";
@@ -138,7 +141,7 @@ const name =  ref('dench');
       font-weight: 700;
       font-size: 48px;
       line-height: 66px;
-      color: #2D2D2D;
+      color: #2d2d2d;
     }
 
     &::before {
@@ -154,37 +157,37 @@ const name =  ref('dench');
 
   .hero__item-2 {
     width: 280px;
-    background-color: #344F7F;
+    background-color: #344f7f;
   }
 
   .hero__item-3 {
     width: 200px;
-    background-color: #3C5B90;
+    background-color: #3c5b90;
   }
 }
 
 .actions {
   display: flex;
   flex-direction: column;
-  
+
   .actions__connect {
     width: 540px;
     padding: 34px 82px;
     color: $main;
-    background-color: #E00087;
+    background-color: #e00087;
 
     &:hover {
       border-radius: 8px;
-      background-color: #D6007F;
+      background-color: #d6007f;
     }
   }
 
   .actions__discord {
     padding: 22px 82px;
-    color: #9DBAEE;
-    
+    color: #9dbaee;
+
     &:hover {
-      background-color: #9DBAEE;
+      background-color: #9dbaee;
       color: #262626;
     }
   }

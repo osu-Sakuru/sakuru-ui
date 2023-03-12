@@ -1,11 +1,9 @@
-<!-- eslint-disable vue/no-v-text-v-html-on-component -->
 <script setup lang="ts">
 import HomeRecords from "@/components/HomeRecords/HomeRecords.vue";
 import HomeContacts from "@/components/HomeContacts/HomeContacts.vue";
 import { backendApi } from "@/main";
 
-const serverStats = await (await backendApi.get("/server_stats")).data;
-
+const { data: serverStats } = await backendApi.get("/server_stats");
 </script>
 
 <template>
@@ -15,39 +13,46 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
       <div class="container">
         <div class="hero__wrapper">
           <div class="hero">
-            <span>{{ $t('unlogged_welcometo') }}</span>
+            <span>{{ $t("unlogged_welcometo") }}</span>
             <h1>Sakuru.pw</h1>
-            <h2>{{ $t('unlogged_welcometext') }}</h2>
+            <h2>{{ $t("unlogged_welcometext") }}</h2>
           </div>
           <div class="hero__info">
             <div class="hero__stats">
               <ul class="hero__list">
                 <li class="hero__item hero__item-1">
-                  <span>{{ $t('unlogged_over') }}</span>
-                  <h3>{{ serverStats.players_total }}+ {{ $t('unlogged_registered_players') }}</h3>
+                  <span>{{ $t("unlogged_over") }}</span>
+                  <h3>
+                    {{ serverStats.players_total }}+
+                    {{ $t("unlogged_registered_players") }}
+                  </h3>
                 </li>
                 <li class="hero__item hero__item-2">
-                  <span>{{ $t('unlogged_more_than') }}</span>
-                  <h3>{{ serverStats.custom_ranked_maps_count }} {{ $t('unlogged_beatmaps_ranked') }}</h3>
+                  <span>{{ $t("unlogged_more_than") }}</span>
+                  <h3>
+                    {{ serverStats.custom_ranked_maps_count }}
+                    {{ $t("unlogged_beatmaps_ranked") }}
+                  </h3>
                 </li>
                 <li class="hero__item hero__item-3">
-                  <span>{{ $t('unlogged_friendly') }}</span>
-                  <h3>{{ $t('unlogged_community') }}</h3>
+                  <span>{{ $t("unlogged_friendly") }}</span>
+                  <h3>{{ $t("unlogged_community") }}</h3>
                 </li>
               </ul>
             </div>
             <div class="actions">
-              <ActionButton
-                :arrow="true"
-                class="actions__register"
-              >
-                {{ $t('unlogged_action_button', { players_online: serverStats.players_online }) }}
+              <ActionButton :arrow="true" class="actions__register">
+                {{
+                  $t("unlogged_action_button", {
+                    players_online: serverStats.players_online,
+                  })
+                }}
               </ActionButton>
-              <SocialButton 
+              <SocialButton
                 :iconUrl="`url('src/assets/svg/discord-icon.svg')`"
                 class="actions__discord"
               >
-                {{ $t('contacts_discord') }}
+                {{ $t("contacts_discord") }}
               </SocialButton>
             </div>
           </div>
@@ -59,22 +64,25 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
     <section class="features__bg">
       <div class="features">
         <div class="container">
-          <h2 class="features__title">{{ $t('unlogged_features') }}</h2>
+          <h2 class="features__title">{{ $t("unlogged_features") }}</h2>
           <ul class="features__list">
             <li class="features__item">
-              <img src="@/assets/img/cards-1.jpg" alt="osu! direct">
+              <img src="@/assets/img/cards-1.jpg" alt="osu! direct" />
               <h3>osu! direct</h3>
-              <p>{{ $t('unlogged_directtext') }}</p>
+              <p>{{ $t("unlogged_directtext") }}</p>
             </li>
             <li class="features__item">
-              <img src="@/assets/img/cards-2.jpg" alt="performance point system">
-              <h3>{{ $t('unlogged_pp_systems') }}</h3>
-              <p>{{ $t('unlogged_pp_systemstext') }}</p>
+              <img
+                src="@/assets/img/cards-2.jpg"
+                alt="performance point system"
+              />
+              <h3>{{ $t("unlogged_pp_systems") }}</h3>
+              <p>{{ $t("unlogged_pp_systemstext") }}</p>
             </li>
             <li class="features__item">
-              <img src="@/assets/img/cards-3.jpg" alt="leaderboards">
-              <h3>{{ $t('unlogged_leaderboards') }}</h3>
-              <p>{{ $t('unlogged_leaderboardstext') }}</p>
+              <img src="@/assets/img/cards-3.jpg" alt="leaderboards" />
+              <h3>{{ $t("unlogged_leaderboards") }}</h3>
+              <p>{{ $t("unlogged_leaderboardstext") }}</p>
             </li>
           </ul>
         </div>
@@ -84,35 +92,52 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
     <!-- Player quotes -->
     <section class="player-quotes">
       <div class="container">
-        <h2 class="player-quotes__title">{{ $t('unlogged_players_quotes') }}</h2>
+        <h2 class="player-quotes__title">
+          {{ $t("unlogged_players_quotes") }}
+        </h2>
         <ul class="player-quotes__list">
           <div>
             <li class="player-quotes__item player-quotes__item-1">
-              <blockquote>{{ $t('unlogged_quote1') }}</blockquote>
+              <blockquote>
+                Sakuru, the private server that has a place in my heart.
+              </blockquote>
               <div>
-                <img src="@/assets/img/player-quote-sussymaster2003.png" alt="avatar">
-                <span>sussymaster2003</span>
+                <img
+                  src="@/assets/img/player-quote-sussymaster2003.png"
+                  alt="avatar"
+                />
+                <span>YumiNee</span>
               </div>
             </li>
             <li class="player-quotes__item player-quotes__item-2">
-              <blockquote v-html="$t('unlogged_quote2')"></blockquote>
+              <blockquote>
+                Sakuru, the private server that has a place in my heart.
+              </blockquote>
               <div>
-                <img src="@/assets/img/player-quote-juiinee.png" alt="avatar">
-                <span>Juiinee</span>
+                <img src="@/assets/img/player-quote-juiinee.png" alt="avatar" />
+                <span>YumiNee</span>
               </div>
             </li>
           </div>
-          <li style="position: relative;" class="player-quotes__item player-quotes__item-3">
-            <blockquote v-html="$t('unlogged_quote3')"></blockquote>
+          <li
+            style="position: relative"
+            class="player-quotes__item player-quotes__item-3"
+          >
+            <blockquote>
+              Sakuru, the private server that has a place in my heart. The
+              community is as good as the server itself. The server owner is one
+              of the best I know. Now back with a more refreshing design. I can
+              hardly wait to play it again after such a long time.
+            </blockquote>
             <div>
-              <img src="@/assets/img/player-quote-magnatagamer123.png" alt="avatar">
-              <span>magnatagamer123</span>
+              <img
+                src="@/assets/img/player-quote-magnatagamer123.png"
+                alt="avatar"
+              />
+              <span>YumiNee</span>
             </div>
-            <ActionButton
-              :arrow="true"
-              class="player-quotes__btn"
-            >
-              {{ $t('unlogged_quote_action') }}
+            <ActionButton :arrow="true" class="player-quotes__btn">
+              {{ $t("unlogged_quote_action") }}
             </ActionButton>
           </li>
         </ul>
@@ -127,12 +152,10 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
 </template>
 
 <style scoped lang="scss">
-
 // Hero section
 .hero__bg {
   position: relative;
   padding: 250px 0 75px 0;
-  
 
   &::after {
     content: "";
@@ -157,7 +180,7 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
     font-weight: 600;
     font-size: 24px;
     line-height: 33px;
-    color: #7E7E7E;
+    color: #7e7e7e;
   }
 
   h1 {
@@ -195,7 +218,7 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
     min-height: 160px;
     padding: 18px 32px;
     word-wrap: normal;
-    
+
     span {
       font-style: normal;
       font-weight: 400;
@@ -217,7 +240,7 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
   .hero__item-1 {
     position: relative;
     max-width: 260px;
-    background-color: #2F4771;
+    background-color: #2f4771;
 
     &::after {
       content: "// stats";
@@ -228,7 +251,7 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
       font-weight: 700;
       font-size: 48px;
       line-height: 66px;
-      color: #2D2D2D;
+      color: #2d2d2d;
     }
 
     &::before {
@@ -244,12 +267,12 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
 
   .hero__item-2 {
     // width: 280px;
-    background-color: #344F7F;
+    background-color: #344f7f;
   }
 
   .hero__item-3 {
     max-width: 200px;
-    background-color: #3C5B90;
+    background-color: #3c5b90;
   }
 }
 
@@ -264,10 +287,10 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
 
   .actions__discord {
     padding: 22px 82px;
-    color: #9DBAEE;
-    
+    color: #9dbaee;
+
     &:hover {
-      background-color: #9DBAEE;
+      background-color: #9dbaee;
       color: #262626;
     }
   }
@@ -310,7 +333,7 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
     font-weight: 400;
     font-size: 18px;
     line-height: 25px;
-    color: #B5B5B5;
+    color: #b5b5b5;
   }
 }
 
@@ -335,7 +358,7 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
 
   .player-quotes__item {
     text-align: center;
-    
+
     blockquote {
       margin: 0 0 21px 0;
       font-style: italic;
@@ -363,12 +386,12 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
       }
     }
   }
-  
+
   .player-quotes__item-1 {
     position: relative;
     width: 660px;
     padding: 32px 188px;
-    background-color: #3C5B90;
+    background-color: #3c5b90;
 
     &::before {
       content: "";
@@ -386,7 +409,7 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
   .player-quotes__item-2 {
     width: 660px;
     padding: 42px 97px;
-    background-color: #2F4771;
+    background-color: #2f4771;
 
     blockquote {
       font-style: italic;
@@ -399,7 +422,7 @@ const serverStats = await (await backendApi.get("/server_stats")).data;
   .player-quotes__item-3 {
     position: relative;
     padding: 100px;
-    background-color: #344F7F;
+    background-color: #344f7f;
 
     blockquote {
       margin-bottom: 32px;
