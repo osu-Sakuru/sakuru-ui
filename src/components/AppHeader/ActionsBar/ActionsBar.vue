@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref, type Ref } from 'vue';
+import { useUserStore } from '@/stores/user';
+
+const userStore = useUserStore();
 
 const isSearching = ref(false);
 const searchBar = ref<null | { focus: () => null, blur: () => null }>(null);
-
 const searchingHandler = () => {
   // can't follow the link without timeout 
   setTimeout(() => {
@@ -35,7 +37,6 @@ const mockArr = [
 
 results.value.push(...mockArr); // mock
 
-const isAuth = true;
 const menuActive = ref(false);
 
 </script>
@@ -65,7 +66,7 @@ const menuActive = ref(false);
     <div 
       @mouseover="menuHandler" 
       @mouseout="menuHandler"
-      v-if="isAuth" 
+      v-if="userStore.isLoggedIn"
       class="actions__btn-wrapper"
     >
       <div >

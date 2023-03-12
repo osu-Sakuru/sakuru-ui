@@ -1,11 +1,11 @@
 <script lang="ts" setup>
+import { backendApi } from '@/main';
 import { ref } from 'vue';
 
-const name =  ref('dench');
+const serverStats = await backendApi.get("/server_stats");
+const streamers = await backendApi.get("/twitch/streamers");
 
-const playersCount = ref(1),
-      lobbiesCount = ref(1),
-      streamsCount = ref(1);
+const name =  ref('dench');
 
 </script>
 
@@ -20,18 +20,16 @@ const playersCount = ref(1),
           <div class="hero__stats">
             <ul class="hero__list">
               <li class="hero__item hero__item-1">
-                <span>{{ $t('loggedin_online') }}</span>
-                <!-- <h3>{{ serverStats.playersCount }}+ {{ $t('loggedin_online') }}</h3> -->
-                <h3>{{ playersCount }} {{ $t('loggedin_players') }}</h3>
+                <span>{{ $t('loggedin_online', serverStats.data.players_online) }}</span>
+                <h3>{{ serverStats.data.players_online }} {{ $t('loggedin_players') }}</h3>
               </li>
               <li class="hero__item hero__item-2">
                 <span>{{ $t('loggedin_lobbies') }}</span>
-                <!-- <h3>{{ serverStats.customRankedMapsCount }} {{ $t('loggedin_lobbies') }}</h3> -->
-                <h3>{{ lobbiesCount }}</h3>
+                <h3>{{ serverStats.data.multiplayer_matches }}</h3>
               </li>
               <li class="hero__item hero__item-3">
                 <span>{{ $t('loggedin_streams') }}</span>
-                <h3>{{ streamsCount }}</h3>
+                <h3>{{ streamers.data.total }}</h3>
               </li>
             </ul>
           </div>

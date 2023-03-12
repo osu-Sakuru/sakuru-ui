@@ -2,10 +2,9 @@
 <script setup lang="ts">
 import HomeRecords from "@/components/HomeRecords/HomeRecords.vue";
 import HomeContacts from "@/components/HomeContacts/HomeContacts.vue";
-import { backendApi, banchoApi } from "@/main";
+import { backendApi } from "@/main";
 
 const serverStats = await (await backendApi.get("/server_stats")).data;
-// const playersStatus = await (await banchoApi.get("/players/status")).data.data;
 
 </script>
 

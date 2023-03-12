@@ -26,7 +26,7 @@
   "contacts_youtube": "youtube channel",
   "loggedin_welcome": "Welcome back, ",
   "loggedin_online": "online",
-  "loggedin_players": "players",
+  "loggedin_players": "player | players",
   "loggedin_lobbies": "multiplayer lobbies",
   "loggedin_streams": "livestreams",
   "loggedin_connect_button": "how to connect"
