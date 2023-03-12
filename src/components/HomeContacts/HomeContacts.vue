@@ -3,13 +3,13 @@
 <template>
   <section class="contacts">
     <div class="container">
-      <h2 class="contacts__title">{{ $t("contacts") }}</h2>
+      <h2 class="contacts__title">{{ $t('contacts') }}</h2>
       <div class="contacts__links">
         <SocialButton
           :iconUrl="'url(\'src/assets/svg/discord-icon.svg\')'"
           class="contacts__btn"
         >
-          {{ $t("contacts_discord") }}
+          {{ $t('contacts_discord') }}
         </SocialButton>
         <SocialButton
           :iconUrl="'url(\'src/assets/svg/email-icon.svg\')'"
@@ -22,7 +22,7 @@
           :iconUrl="'url(\'src/assets/svg/youtube-icon.svg\')'"
           class="contacts__btn youtube"
         >
-          {{ $t("contacts_youtube") }}
+          {{ $t('contacts_youtube') }}
         </SocialButton>
       </div>
     </div>
@@ -35,7 +35,7 @@
   padding: 160px 0 205px 0;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     bottom: 0;
@@ -43,7 +43,7 @@
     display: block;
     width: 100%;
     height: 800px;
-    background: url("@/assets/svg/contacts-bg.svg") no-repeat center top;
+    background: url('@/assets/svg/contacts-bg.svg') no-repeat center top;
   }
 }
 

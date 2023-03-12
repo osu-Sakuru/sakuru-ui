@@ -1,12 +1,12 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 export default defineComponent({
-  name: "ActionButton",
+  name: 'ActionButton',
 });
 </script>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue';
 
 const isAnimate = ref(false);
 const props = defineProps({
@@ -56,14 +56,14 @@ const props = defineProps({
 
 .arrow {
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 30px;
     bottom: 20px;
     display: block;
     width: 46px;
     height: 20px;
-    background: url("@/assets/svg/arrow.svg") no-repeat;
+    background: url('@/assets/svg/arrow.svg') no-repeat;
   }
 }
 

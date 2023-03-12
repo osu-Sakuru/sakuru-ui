@@ -1,8 +1,8 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: "SocialButton",
+  name: 'SocialButton',
   props: {
     iconUrl: {
       type: String,
@@ -47,7 +47,7 @@ export default defineComponent({
   }
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 32px;
     align-self: center;

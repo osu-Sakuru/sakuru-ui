@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import type { IServerRecords } from "@/interfaces/serverRecords.interface";
-import { backendApi } from "@/main";
+import type { IServerRecords } from '@/interfaces/serverRecords.interface';
+import { backendApi } from '@/main';
 
 const { data: serverRecords } = await backendApi.get<IServerRecords>(
-  "/server_records"
+  '/server_records',
 );
 </script>
 
 <template>
   <section class="our-records">
     <div class="container">
-      <h2 class="our-records__title">{{ $t("unlogged_records") }}</h2>
+      <h2 class="our-records__title">{{ $t('unlogged_records') }}</h2>
       <div class="our-records__scores">
         <div
           class="our-records__vanilla record-square"
@@ -24,7 +24,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
           <div>
             <h3>{{ serverRecords.standard.pp.toFixed(0) }} pp</h3>
             <a :href="serverRecords.standard.user_link"
-              >{{ $t("unlogged_records_setby") }}
+              >{{ $t('unlogged_records_setby') }}
               {{ serverRecords.standard.username }}</a
             >
           </div>
@@ -41,7 +41,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
           <div>
             <h3>{{ serverRecords.relax.pp.toFixed(0) }} pp</h3>
             <a :href="serverRecords.relax.user_link"
-              >{{ $t("unlogged_records_setby") }}
+              >{{ $t('unlogged_records_setby') }}
               {{ serverRecords.relax.username }}</a
             >
           </div>
@@ -70,7 +70,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
   line-height: 55px;
 
   &::before {
-    content: "// #1s";
+    content: '// #1s';
     position: absolute;
     left: -250px;
     top: 230px;
@@ -110,7 +110,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
   }
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -159,7 +159,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
   background-position: 50% 50%;
 
   &::before {
-    content: "Vanilla";
+    content: 'Vanilla';
   }
 }
 
@@ -170,7 +170,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
   background-position: 50% 50%;
 
   &::before {
-    content: "Relax";
+    content: 'Relax';
   }
 }
 </style>

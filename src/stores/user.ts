@@ -1,10 +1,10 @@
-import type { StateOptions } from "@/interfaces/stateOptions.interface";
-import type { User } from "@/interfaces/user.interface";
-import { backendApi } from "@/main";
-import type { AxiosResponse } from "axios";
-import { defineStore } from "pinia";
+import type { StateOptions } from '@/interfaces/stateOptions.interface';
+import type { User } from '@/interfaces/user.interface';
+import { backendApi } from '@/main';
+import type { AxiosResponse } from 'axios';
+import { defineStore } from 'pinia';
 
-export const useUserStore = defineStore("user", {
+export const useUserStore = defineStore('user', {
   state: () =>
     ({
       isLoggedIn: false,
@@ -15,11 +15,11 @@ export const useUserStore = defineStore("user", {
     async login(username: string, password: string): Promise<void> {
       try {
         const request: AxiosResponse<User> = await backendApi.post(
-          "/auth/login",
+          '/auth/login',
           {
             username: username,
             password: password,
-          }
+          },
         );
 
         if (request && request.status < 400) {
@@ -27,7 +27,7 @@ export const useUserStore = defineStore("user", {
 
           this.isLoggedIn = true;
         } else {
-          console.log("Wotefak mazafak xD");
+          console.log('Wotefak mazafak xD');
         }
       } catch (error: unknown) {
         console.log(error);
@@ -36,7 +36,7 @@ export const useUserStore = defineStore("user", {
     async logout(): Promise<void> {
       try {
         const request: AxiosResponse<void> = await backendApi.get(
-          "/auth/logout"
+          '/auth/logout',
         );
 
         if (request && request.status < 400) {
@@ -44,7 +44,7 @@ export const useUserStore = defineStore("user", {
 
           this.isLoggedIn = false;
         } else {
-          console.log("Wotefak mazafak xD");
+          console.log('Wotefak mazafak xD');
         }
       } catch (error) {
         console.log(error);

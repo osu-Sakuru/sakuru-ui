@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, type Ref } from "vue";
-import { useUserStore } from "@/stores/user";
+import { ref, type Ref } from 'vue';
+import { useUserStore } from '@/stores/user';
 
 const userStore = useUserStore();
 
@@ -28,11 +28,11 @@ interface ISearchResult {
 const results: Ref<ISearchResult[]> = ref([]);
 
 const mockArr = [
-  { id: 2, value: "ladno" },
-  { id: 2, value: "ladno" },
-  { id: 2, value: "ladno" },
-  { id: 2, value: "ladno" },
-  { id: 2, value: "ladno" },
+  { id: 2, value: 'ladno' },
+  { id: 2, value: 'ladno' },
+  { id: 2, value: 'ladno' },
+  { id: 2, value: 'ladno' },
+  { id: 2, value: 'ladno' },
 ];
 
 results.value.push(...mockArr); // mock
@@ -148,7 +148,7 @@ const menuActive = ref(false);
     margin-right: 24px;
 
     &::before {
-      content: "Search";
+      content: 'Search';
       position: absolute;
       right: 43px;
       top: 9px;
@@ -162,7 +162,7 @@ const menuActive = ref(false);
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       right: 15px;
       top: 13px;
@@ -171,7 +171,7 @@ const menuActive = ref(false);
       width: 20px;
       height: 20px;
       cursor: pointer;
-      background: url("@/assets/svg/search-icon-hover.svg") no-repeat;
+      background: url('@/assets/svg/search-icon-hover.svg') no-repeat;
       transition: all 0.3s ease;
     }
   }
@@ -215,7 +215,7 @@ const menuActive = ref(false);
 
   .hover {
     &::after {
-      background: url("@/assets/svg/search-icon.svg") no-repeat;
+      background: url('@/assets/svg/search-icon.svg') no-repeat;
     }
 
     &:hover {
@@ -223,7 +223,7 @@ const menuActive = ref(false);
     }
 
     &:hover::after {
-      background: url("@/assets/svg/search-icon-hover.svg") no-repeat;
+      background: url('@/assets/svg/search-icon-hover.svg') no-repeat;
     }
   }
 
@@ -270,7 +270,7 @@ const menuActive = ref(false);
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 4px;
       width: 20px;
@@ -295,7 +295,7 @@ const menuActive = ref(false);
     &::after {
       left: 130px;
       top: 6px;
-      background: url("@/assets/svg/down-arrow.svg");
+      background: url('@/assets/svg/down-arrow.svg');
     }
   }
 
@@ -305,7 +305,7 @@ const menuActive = ref(false);
 
     &::after {
       transform: rotate(180deg);
-      background: url("@/assets/svg/down-arrow-hover.svg");
+      background: url('@/assets/svg/down-arrow-hover.svg');
     }
   }
 
@@ -314,11 +314,11 @@ const menuActive = ref(false);
 
     &::after {
       left: 60px;
-      background: url("@/assets/svg/login-icon.svg");
+      background: url('@/assets/svg/login-icon.svg');
     }
 
     &:hover::after {
-      background: url("@/assets/svg/login-icon-hover.svg");
+      background: url('@/assets/svg/login-icon-hover.svg');
     }
   }
 }

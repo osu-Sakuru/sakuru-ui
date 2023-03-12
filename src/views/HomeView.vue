@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import HomeRecords from "@/components/HomeRecords/HomeRecords.vue";
-import HomeContacts from "@/components/HomeContacts/HomeContacts.vue";
-import { backendApi } from "@/main";
+import HomeRecords from '@/components/HomeRecords/HomeRecords.vue';
+import HomeContacts from '@/components/HomeContacts/HomeContacts.vue';
+import { backendApi } from '@/main';
 
-const { data: serverStats } = await backendApi.get("/server_stats");
+const { data: serverStats } = await backendApi.get('/server_stats');
 </script>
 
 <template>
@@ -13,37 +13,37 @@ const { data: serverStats } = await backendApi.get("/server_stats");
       <div class="container">
         <div class="hero__wrapper">
           <div class="hero">
-            <span>{{ $t("unlogged_welcometo") }}</span>
+            <span>{{ $t('unlogged_welcometo') }}</span>
             <h1>Sakuru.pw</h1>
-            <h2>{{ $t("unlogged_welcometext") }}</h2>
+            <h2>{{ $t('unlogged_welcometext') }}</h2>
           </div>
           <div class="hero__info">
             <div class="hero__stats">
               <ul class="hero__list">
                 <li class="hero__item hero__item-1">
-                  <span>{{ $t("unlogged_over") }}</span>
+                  <span>{{ $t('unlogged_over') }}</span>
                   <h3>
                     {{ serverStats.players_total }}+
-                    {{ $t("unlogged_registered_players") }}
+                    {{ $t('unlogged_registered_players') }}
                   </h3>
                 </li>
                 <li class="hero__item hero__item-2">
-                  <span>{{ $t("unlogged_more_than") }}</span>
+                  <span>{{ $t('unlogged_more_than') }}</span>
                   <h3>
                     {{ serverStats.custom_ranked_maps_count }}
-                    {{ $t("unlogged_beatmaps_ranked") }}
+                    {{ $t('unlogged_beatmaps_ranked') }}
                   </h3>
                 </li>
                 <li class="hero__item hero__item-3">
-                  <span>{{ $t("unlogged_friendly") }}</span>
-                  <h3>{{ $t("unlogged_community") }}</h3>
+                  <span>{{ $t('unlogged_friendly') }}</span>
+                  <h3>{{ $t('unlogged_community') }}</h3>
                 </li>
               </ul>
             </div>
             <div class="actions">
               <ActionButton :arrow="true" class="actions__register">
                 {{
-                  $t("unlogged_action_button", {
+                  $t('unlogged_action_button', {
                     players_online: serverStats.players_online,
                   })
                 }}
@@ -52,7 +52,7 @@ const { data: serverStats } = await backendApi.get("/server_stats");
                 :iconUrl="`url('src/assets/svg/discord-icon.svg')`"
                 class="actions__discord"
               >
-                {{ $t("contacts_discord") }}
+                {{ $t('contacts_discord') }}
               </SocialButton>
             </div>
           </div>
@@ -64,25 +64,25 @@ const { data: serverStats } = await backendApi.get("/server_stats");
     <section class="features__bg">
       <div class="features">
         <div class="container">
-          <h2 class="features__title">{{ $t("unlogged_features") }}</h2>
+          <h2 class="features__title">{{ $t('unlogged_features') }}</h2>
           <ul class="features__list">
             <li class="features__item">
               <img src="@/assets/img/cards-1.jpg" alt="osu! direct" />
               <h3>osu! direct</h3>
-              <p>{{ $t("unlogged_directtext") }}</p>
+              <p>{{ $t('unlogged_directtext') }}</p>
             </li>
             <li class="features__item">
               <img
                 src="@/assets/img/cards-2.jpg"
                 alt="performance point system"
               />
-              <h3>{{ $t("unlogged_pp_systems") }}</h3>
-              <p>{{ $t("unlogged_pp_systemstext") }}</p>
+              <h3>{{ $t('unlogged_pp_systems') }}</h3>
+              <p>{{ $t('unlogged_pp_systemstext') }}</p>
             </li>
             <li class="features__item">
               <img src="@/assets/img/cards-3.jpg" alt="leaderboards" />
-              <h3>{{ $t("unlogged_leaderboards") }}</h3>
-              <p>{{ $t("unlogged_leaderboardstext") }}</p>
+              <h3>{{ $t('unlogged_leaderboards') }}</h3>
+              <p>{{ $t('unlogged_leaderboardstext') }}</p>
             </li>
           </ul>
         </div>
@@ -93,7 +93,7 @@ const { data: serverStats } = await backendApi.get("/server_stats");
     <section class="player-quotes">
       <div class="container">
         <h2 class="player-quotes__title">
-          {{ $t("unlogged_players_quotes") }}
+          {{ $t('unlogged_players_quotes') }}
         </h2>
         <ul class="player-quotes__list">
           <div>
@@ -137,7 +137,7 @@ const { data: serverStats } = await backendApi.get("/server_stats");
               <span>YumiNee</span>
             </div>
             <ActionButton :arrow="true" class="player-quotes__btn">
-              {{ $t("unlogged_quote_action") }}
+              {{ $t('unlogged_quote_action') }}
             </ActionButton>
           </li>
         </ul>
@@ -158,7 +158,7 @@ const { data: serverStats } = await backendApi.get("/server_stats");
   padding: 250px 0 75px 0;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -166,7 +166,7 @@ const { data: serverStats } = await backendApi.get("/server_stats");
     display: block;
     width: 100%;
     height: 100%;
-    background: url("@/assets/img/home-bg.jpg") no-repeat center top;
+    background: url('@/assets/img/home-bg.jpg') no-repeat center top;
     opacity: 15%;
   }
 }
@@ -243,7 +243,7 @@ const { data: serverStats } = await backendApi.get("/server_stats");
     background-color: #2f4771;
 
     &::after {
-      content: "// stats";
+      content: '// stats';
       position: absolute;
       left: 0;
       top: 105%;
@@ -255,7 +255,7 @@ const { data: serverStats } = await backendApi.get("/server_stats");
     }
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       right: 100%;
@@ -298,7 +298,7 @@ const { data: serverStats } = await backendApi.get("/server_stats");
 
 // Key Features
 .features__bg {
-  background: url("@/assets/svg/features-bg.svg") no-repeat center;
+  background: url('@/assets/svg/features-bg.svg') no-repeat center;
   padding: 75px 0;
 }
 
@@ -394,7 +394,7 @@ const { data: serverStats } = await backendApi.get("/server_stats");
     background-color: #3c5b90;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       right: 75%;
       bottom: -20%;
@@ -402,7 +402,7 @@ const { data: serverStats } = await backendApi.get("/server_stats");
       display: block;
       width: 287px;
       height: 249px;
-      background: url("@/assets/svg/player-quotes-bg.svg") no-repeat;
+      background: url('@/assets/svg/player-quotes-bg.svg') no-repeat;
     }
   }
 
@@ -429,7 +429,7 @@ const { data: serverStats } = await backendApi.get("/server_stats");
     }
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       padding: 0;
       top: 0;

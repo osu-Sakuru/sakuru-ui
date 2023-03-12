@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { backendApi } from "@/main";
-import { useUserStore } from "@/stores/user";
+import { backendApi } from '@/main';
+import { useUserStore } from '@/stores/user';
 
-const serverStats = await backendApi.get("/server_stats");
-const streamers = await backendApi.get("/twitch/streamers");
+const serverStats = await backendApi.get('/server_stats');
+const streamers = await backendApi.get('/twitch/streamers');
 
 const userStore = useUserStore();
 </script>
@@ -13,26 +13,26 @@ const userStore = useUserStore();
     <div class="container">
       <div class="hero__wrapper">
         <div class="hero">
-          <h1>{{ $t("loggedin_welcome") }} {{ userStore.user.name }}</h1>
+          <h1>{{ $t('loggedin_welcome') }} {{ userStore.user.name }}</h1>
         </div>
         <div class="hero__info">
           <div class="hero__stats">
             <ul class="hero__list">
               <li class="hero__item hero__item-1">
                 <span>{{
-                  $t("loggedin_online", serverStats.data.players_online)
+                  $t('loggedin_online', serverStats.data.players_online)
                 }}</span>
                 <h3>
                   {{ serverStats.data.players_online }}
-                  {{ $t("loggedin_players") }}
+                  {{ $t('loggedin_players') }}
                 </h3>
               </li>
               <li class="hero__item hero__item-2">
-                <span>{{ $t("loggedin_lobbies") }}</span>
+                <span>{{ $t('loggedin_lobbies') }}</span>
                 <h3>{{ serverStats.data.multiplayer_matches }}</h3>
               </li>
               <li class="hero__item hero__item-3">
-                <span>{{ $t("loggedin_streams") }}</span>
+                <span>{{ $t('loggedin_streams') }}</span>
                 <h3>{{ streamers.data.total }}</h3>
               </li>
             </ul>
@@ -43,7 +43,7 @@ const userStore = useUserStore();
               :noHover="true"
               class="actions__connect"
             >
-              {{ $t("loggedin_connect_button") }}
+              {{ $t('loggedin_connect_button') }}
             </SocialButton>
             <SocialButton
               :iconUrl="`url('src/assets/svg/discord-icon.svg')`"
@@ -65,7 +65,7 @@ const userStore = useUserStore();
   padding: 190px 0 75px 0;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -73,7 +73,7 @@ const userStore = useUserStore();
     display: block;
     width: 100%;
     height: 100%;
-    background: url("@/assets/img/homeloggedin-bg.jpg") no-repeat center top;
+    background: url('@/assets/img/homeloggedin-bg.jpg') no-repeat center top;
     opacity: 15%;
   }
 }
@@ -133,7 +133,7 @@ const userStore = useUserStore();
     background-color: #2f4771;
 
     &::after {
-      content: "// stats";
+      content: '// stats';
       position: absolute;
       left: 0;
       top: 105%;
@@ -145,7 +145,7 @@ const userStore = useUserStore();
     }
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       right: 100%;

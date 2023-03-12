@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
-import ActionsBar from "./ActionsBar/ActionsBar.vue";
+import { ref, onMounted, onUnmounted } from 'vue';
+import ActionsBar from './ActionsBar/ActionsBar.vue';
 
 const isScrolled = ref(false);
 const scrollHandler = () =>
   window.scrollY > 0 ? (isScrolled.value = true) : (isScrolled.value = false);
 
-onMounted(() => window.addEventListener("scroll", scrollHandler));
-onUnmounted(() => window.removeEventListener("scroll", scrollHandler));
+onMounted(() => window.addEventListener('scroll', scrollHandler));
+onUnmounted(() => window.removeEventListener('scroll', scrollHandler));
 </script>
 
 <template>
@@ -90,7 +90,7 @@ onUnmounted(() => window.removeEventListener("scroll", scrollHandler));
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 5%;
       top: 95%;
