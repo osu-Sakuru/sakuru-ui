@@ -6,14 +6,14 @@ const userStore = useUserStore();
 
 const isSearching = ref(false);
 const searchBar = ref<null | { focus: () => null; blur: () => null }>(null);
+const menuActive = ref(false);
+
 const searchingHandler = () => {
   // can't follow the link without timeout
   setTimeout(() => {
     isSearching.value = !isSearching.value;
     if (isSearching.value) {
       searchBar.value?.focus();
-    } else {
-      searchBar.value?.blur();
     }
   }, 100);
 };
@@ -36,8 +36,6 @@ const mockArr = [
 ];
 
 results.value.push(...mockArr); // mock
-
-const menuActive = ref(false);
 </script>
 
 <template>
@@ -78,8 +76,8 @@ const menuActive = ref(false);
       >
         <input
           @focusout="searchingHandler"
-          ref="searchBar"
           @click.stop
+          ref="searchBar"
           class="searchbar"
           type="text"
           placeholder="Start typing . . ."
@@ -120,7 +118,6 @@ const menuActive = ref(false);
       </div>
     </div>
     <button v-else class="btn log__icon">Login</button>
-    <!-- TODO: add here a lang switcher -->
   </div>
 </template>
 
@@ -286,7 +283,7 @@ const menuActive = ref(false);
   .actions__btn-wrapper > div {
     display: flex;
     justify-content: center;
-    margin-right: 40px;
+    margin-right: 35px;
   }
 
   .actions__btn-account {

@@ -33,5 +33,6 @@
   },
   "editor.tabSize": 2,
   "prettier.singleQuote": true,
-  "prettier.trailingComma": "all",
+"prettier.trailingComma": "all",
+"vue3snippets.enable-compile-vue-file-on-did-save-code": false,
 }

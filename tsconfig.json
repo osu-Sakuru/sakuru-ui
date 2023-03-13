@@ -5,9 +5,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "target": "ES2021",
+    "lib": ["ES2021"]
   },
-
   "references": [
     {
       "path": "./tsconfig.config.json"

@@ -12,7 +12,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
     <div class="container">
       <h2 class="our-records__title">{{ $t('unlogged_records') }}</h2>
       <div class="our-records__scores">
-        <div
+        <RouterLink :to="'/u/3'"
           class="our-records__vanilla record-square"
           :style="{
             backgroundImage:
@@ -23,29 +23,30 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
         >
           <div>
             <h3>{{ serverRecords.standard.pp.toFixed(0) }} pp</h3>
-            <a :href="serverRecords.standard.user_link"
+            <RouterLink :to="serverRecords.standard.user_link"
               >{{ $t('unlogged_records_setby') }}
-              {{ serverRecords.standard.username }}</a
+              {{ serverRecords.standard.username }}</RouterLink
             >
           </div>
-        </div>
-        <div
+        </RouterLink>
+        <RouterLink :to="'/u/3'"
           class="our-records__relax record-square"
           :style="{
             backgroundImage:
               'url(https://assets.ppy.sh/beatmaps/' +
               serverRecords.relax.set_id +
               '/covers/list@2x.jpg)',
+            
           }"
         >
           <div>
             <h3>{{ serverRecords.relax.pp.toFixed(0) }} pp</h3>
-            <a :href="serverRecords.relax.user_link"
+            <RouterLink :to="serverRecords.relax.user_link"
               >{{ $t('unlogged_records_setby') }}
-              {{ serverRecords.relax.username }}</a
+              {{ serverRecords.relax.username }}</RouterLink
             >
           </div>
-        </div>
+        </RouterLink>
       </div>
     </div>
   </section>
@@ -94,6 +95,8 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
   height: 400px;
   background-color: #555;
   text-align: left;
+  text-decoration: none;
+  color: $main;
 
   &::before {
     position: absolute;
@@ -148,6 +151,13 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
     font-weight: 400;
     font-size: 24px;
     line-height: 33px;
+    text-decoration: none;
+    color: $main;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $main-hover;
+    }
   }
 }
 
@@ -157,6 +167,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
+  // transform: scale(1.05);
 
   &::before {
     content: 'Vanilla';

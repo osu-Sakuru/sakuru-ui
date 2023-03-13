@@ -92,10 +92,7 @@ const userStore = useUserStore();
 
 .hero__info {
   display: flex;
-}
-
-.hero__stats {
-  margin-right: 90px;
+  justify-content: space-between;
 }
 
 .hero__list {

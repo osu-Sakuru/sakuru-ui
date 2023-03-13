@@ -19,9 +19,16 @@
         </a>
       </div>
     </div>
-    <div class="footer__copyright">
-      &copy; 2020-{{ new Date().getFullYear() }} Sakuru.pw is not affiliated
-      with ppy Pty Ltd in any way. "osu!" is a trademark of ppy Pty Ltd.
+    <div class="footer__copyright-bg">
+      <div class="container">
+        <div class="footer__copyright">
+          <div>
+            &copy; 2020-{{ new Date().getFullYear() }} Sakuru.pw is not affiliated
+            with ppy Pty Ltd in any way. "osu!" is a trademark of ppy Pty Ltd.
+          </div>
+          <LangSwitcher />
+        </div>
+      </div>
     </div>
   </footer>
 </template>
@@ -68,9 +75,14 @@
   height: 31px;
 }
 
-.footer__copyright {
-  text-align: center;
+.footer__copyright-bg {
   padding: 48px 0;
   background-color: #151515;
+}
+
+.footer__copyright {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>
