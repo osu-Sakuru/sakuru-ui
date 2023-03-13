@@ -1,38 +1,53 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { Locales, LOCALES } from '@/locales/locales.defaults';
+import { useUserStore } from '@/stores/user';
+import { ref } from 'vue';
+import i18n from '@/locales/locales.main';
+
 export default defineComponent({
   name: 'LangSwitcher',
 });
 </script>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import i18n from '@/i18n';
+const userStore = useUserStore();
 
-const langHashMap: Map<"ua" | "en", string> = new Map([
-  ['ua', '🇺🇦 Ukrainian'],
-  ['en', '🇺🇸 English'],
-]);
+const setLocale = (locale: Locales): void => {
+  i18n.global.locale.value = locale;
+  userStore.language = locale;
+};
+const getLocaleAlfa2 = (locale: string): string => {
+  return locale.substring(3, 5).toLocaleLowerCase();
+};
 
 const menuActive = ref(false);
-
-const menuHandler = () => menuActive.value = !menuActive.value;
+const menuHandler = () => (menuActive.value = !menuActive.value);
 </script>
 
 <template>
-  <div
-    @mouseover="menuHandler"
-    @mouseout="menuHandler"
-    class="lang__switcher"
-  >
-    <div  
-      class="lang__select"
-      :class="{ 'menu-active': menuActive }"
-    >
-      {{ langHashMap.get(i18n.global.locale.value) }}
+  <div @mouseover="menuHandler" @mouseout="menuHandler" class="lang__switcher">
+    <div class="lang__select" :class="{ 'menu-active': menuActive }">
+      <img
+        :src="
+          'src/assets/svg/flags/' +
+          getLocaleAlfa2(i18n.global.locale.value) +
+          '.svg'
+        "
+      />
+      {{ LOCALES[i18n.global.locale.value].caption }}
     </div>
     <ul v-show="menuActive" class="lang__options">
-      <li @click="i18n.global.locale.value = lang" v-for="[lang, value] in langHashMap.entries()" :key="lang">{{ value }}</li>
+      <li
+        v-for="locale in LOCALES"
+        @click="setLocale(locale.value)"
+        :key="locale.value"
+      >
+        <img
+          :src="'src/assets/svg/flags/' + getLocaleAlfa2(locale.value) + '.svg'"
+        />
+        {{ locale.caption }}
+      </li>
     </ul>
   </div>
 </template>
@@ -44,10 +59,15 @@ const menuHandler = () => menuActive.value = !menuActive.value;
   flex-direction: column;
   margin-left: 20px;
   cursor: default;
+
+  img {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 .lang__select {
-  width: 150px;
+  max-width: fit-content;
   display: flex;
   padding: 10px;
   padding-right: 30px;
@@ -58,7 +78,7 @@ const menuHandler = () => menuActive.value = !menuActive.value;
   line-height: 25px;
   border: #252525 1px solid;
   border-radius: 4px;
-  
+
   &::after {
     content: '';
     align-self: center;
@@ -66,12 +86,14 @@ const menuHandler = () => menuActive.value = !menuActive.value;
     position: absolute;
     width: 20px;
     height: 20px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     background: url('@/assets/svg/down-arrow.svg');
   }
 }
 
+
 .lang__options {
+  width: 100%;
   position: absolute;
   bottom: 100%;
   padding: 0;
@@ -80,7 +102,6 @@ const menuHandler = () => menuActive.value = !menuActive.value;
 }
 
 .lang__options > li {
-  width: 150px;
   padding: 10px;
   font-style: normal;
   font-weight: 700;
@@ -96,6 +117,10 @@ const menuHandler = () => menuActive.value = !menuActive.value;
 }
 
 .menu-active {
+  &::after {
+    transform: rotate(180deg);
+  }
+
   border-radius: 0;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;

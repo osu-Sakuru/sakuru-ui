@@ -4,15 +4,15 @@
       <div class="footer__content-wrapper">
         <ul class="footer__list">
           <!-- TODO: make this shit looks better -->
-          <li class="footer__item"><a href="">Links</a></li>
-          <li class="footer__item"><a href="">Beatmaps</a></li>
-          <li class="footer__item"><a href="">Connect</a></li>
-          <li class="footer__item"><a href="">Discord server</a></li>
-          <li class="footer__item"><a href="">YouTube channel</a></li>
-          <li class="footer__item"><a href="">Leaderboards</a></li>
-          <li class="footer__item"><a href="">Clans</a></li>
-          <li class="footer__item"><a href="">Info</a></li>
-          <li class="footer__item"><a href="">Email</a></li>
+          <li class="footer__item"><a href="">{{ $t('footer.links') }}</a></li>
+          <li class="footer__item"><a href="">{{ $t('footer.beatmaps') }}</a></li>
+          <li class="footer__item"><a href="">{{ $t('footer.connect') }}</a></li>
+          <li class="footer__item"><a href="">{{ $t('footer.discord') }}</a></li>
+          <li class="footer__item"><a href="">{{ $t('footer.youtube') }}</a></li>
+          <li class="footer__item"><a href="">{{ $t('footer.leaderboards') }}</a></li>
+          <li class="footer__item"><a href="">{{ $t('footer.clans') }}</a></li>
+          <li class="footer__item"><a href="">{{ $t('footer.info') }}</a></li>
+          <li class="footer__item"><a href="">{{ $t('footer.email') }}</a></li>
         </ul>
         <a class="footer__vote" href="">
           <img src="@/assets/img/topg.jpg" alt="topg.org" />
@@ -23,8 +23,9 @@
       <div class="container">
         <div class="footer__copyright">
           <div>
-            &copy; 2020-{{ new Date().getFullYear() }} Sakuru.pw is not affiliated
-            with ppy Pty Ltd in any way. "osu!" is a trademark of ppy Pty Ltd.
+            &copy; 2020-{{ new Date().getFullYear() }} Sakuru.pw is not
+            affiliated with ppy Pty Ltd in any way. "osu!" is a trademark of ppy
+            Pty Ltd.
           </div>
           <LangSwitcher />
         </div>

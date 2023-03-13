@@ -1,0 +1,59 @@
+{
+  "navbar": {
+    "leaderboards": "Лідерборди",
+    "clans": "Клани",
+    "beatmaps": "Бітмапи",
+    "info": "Інформація",
+    "connect": "Підключитися",
+    "search": "Шукати",
+    "login": "Увійти",
+    "logout": "Вийти"
+  },
+  "home_loggedout": {
+    "welcome": "Ласкаво просимо до",
+    "welcome_text": "osu! сервер, створений для вашої радості",
+    "over": "понад",
+    "registered_players": "зареєстрованих гравців",
+    "more_than": "більше ніж",
+    "beatmaps_ranked": "найбільш улюблених мап ранкнуті",
+    "friendly": "дружня",
+    "community": "спільнота та команда підтримки",
+    "action_button": "зареєструйтеся зараз і приєднайтеся до інших {players_online} гравців онлайн!",
+    "features": "Основні переваги",
+    "direct_text": "Безпроблемний перегляд і завантаження мап у грі",
+    "pp_systems": "PP системи для Relax і Autopilot",
+    "pp_systems_text": "Спробуйте й подивіться, як далеко ви можете просунути свої базові навички! Або, можливо, пофармити трохи pp?",
+    "leaderboards": "Усі лідерборди",
+    "leaderboards_text": "Відкритий доступ до мод-фільтрів, рейтингу друзів і рейтингу країн",
+    "players_quotes": "Що говорять гравці",
+    "quote_action": "зареєструватися",
+    "records": "Наші Рекорди",
+    "records_setby": "Поставив"
+  },
+  "home_loggedin": {
+    "welcome": "З поверненням, ",
+    "online": "онлайн",
+    "players": "гравець | гравців",
+    "lobbies": "мульті лоббі",
+    "streams": "стримів",
+    "connect_button": "як підключитися"
+  },
+  "meta": {
+    "contacts": {
+      "caption": "Контакти та медіа",
+      "discord": "discord спільнота",
+      "youtube": "youtube канал"
+    }
+  },
+  "footer": {
+    "links": "Посиллання",
+    "beatmaps": "Бітмапи",
+    "connect": "Підключитися",
+    "discord": "Discord сервер",
+    "youtube": "YouTube канал",
+    "leaderboards": "Лідерборди",
+    "clans": "Клани",
+    "info": "Інформація",
+    "email": "Пошта"
+  }
+}

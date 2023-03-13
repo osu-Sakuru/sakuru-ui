@@ -5,7 +5,7 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 import App from './App.vue';
 import router from './router';
 import components from '@/components/UI';
-import i18n from './i18n';
+import i18n from './locales/locales.main';
 import axios from 'axios';
 
 export const backendApi = axios.create({

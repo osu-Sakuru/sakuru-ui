@@ -20,11 +20,11 @@ onUnmounted(() => window.removeEventListener('scroll', scrollHandler));
           </a>
           <nav>
             <ul class="nav__list">
-              <li class="nav__link"><a href="#">Leaderboards</a></li>
-              <li class="nav__link"><a href="#">Clans</a></li>
-              <li class="nav__link"><a href="#">Beatmaps</a></li>
-              <li class="nav__link"><a href="#">Info</a></li>
-              <li class="nav__link"><a href="#">Connect</a></li>
+              <li class="nav__link"><a href="#">{{ $t('navbar.leaderboards') }}</a></li>
+              <li class="nav__link"><a href="#">{{ $t('navbar.clans') }}</a></li>
+              <li class="nav__link"><a href="#">{{ $t('navbar.beatmaps') }}</a></li>
+              <li class="nav__link"><a href="#">{{ $t('navbar.info') }}</a></li>
+              <li class="nav__link"><a href="#">{{ $t('navbar.connect') }}</a></li>
             </ul>
           </nav>
         </div>

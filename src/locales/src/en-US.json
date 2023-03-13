@@ -1,0 +1,59 @@
+{
+  "navbar": {
+    "leaderboards": "Leaderboards",
+    "clans": "Clans",
+    "beatmaps": "Beatmaps",
+    "info": "Info",
+    "connect": "Connect",
+    "search": "Search",
+    "login": "Login",
+    "logout": "Logout"   
+  },
+  "home_loggedout": {
+    "welcome": "Welcome to",
+    "welcome_text": "osu! server created for your joy",
+    "over": "over",
+    "registered_players": "registered players",
+    "more_than": "more than",
+    "beatmaps_ranked": "much favored beatmaps ranked",
+    "friendly": "friendly",
+    "community": "community and support team",
+    "action_button": "register now and join the other {players_online} players online!",               
+    "features": "Key features",
+    "direct_text": "Hassle-free in-game beatmap browsing and downloading",
+    "pp_systems": "Relax and autopilot performance points systems",
+    "pp_systems_text": "Try and see how far you can take your basic skills! Or perhaps farm some pp?",
+    "leaderboards": "All leaderboards",
+    "leaderboards_text": "Open access to mod-filters, friend rankings and country rankings",
+    "players_quotes": "Player quotes",
+    "quote_action": "sign up",
+    "records": "Our Records",
+    "records_setby": "Set by"
+  },
+  "home_loggedin": {
+    "welcome": "Welcome back, ",
+    "online": "online",
+    "players": "player | players",
+    "lobbies": "multiplayer lobbies",
+    "streams": "livestreams",
+    "connect_button": "how to connect"
+  },
+  "meta": {
+    "contacts": {
+      "caption": "Contacts and media",
+      "discord": "discord community",
+      "youtube": "youtube channel"
+    }
+  },
+  "footer": {
+    "links": "Links",
+    "beatmaps": "Beatmaps",
+    "connect": "Connect",
+    "discord": "Discord server",
+    "youtube": "YouTube channel",
+    "leaderboards": "Leaderboards",
+    "clans": "Clans",
+    "info": "Info",
+    "email": "Email"
+  }
+}

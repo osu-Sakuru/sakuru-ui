@@ -10,9 +10,10 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
 <template>
   <section class="our-records">
     <div class="container">
-      <h2 class="our-records__title">{{ $t('unlogged_records') }}</h2>
+      <h2 class="our-records__title">{{ $t('home_loggedout.records') }}</h2>
       <div class="our-records__scores">
-        <RouterLink :to="'/u/3'"
+        <RouterLink
+          :to="'/u/3'"
           class="our-records__vanilla record-square"
           :style="{
             backgroundImage:
@@ -23,26 +24,26 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
         >
           <div>
             <h3>{{ serverRecords.standard.pp.toFixed(0) }} pp</h3>
-            <RouterLink :to="serverRecords.standard.user_link"
-              >{{ $t('unlogged_records_setby') }}
+            <RouterLink :to="'/u/' + serverRecords.standard.userid"
+              >{{ $t('home_loggedout.records_setby') }}
               {{ serverRecords.standard.username }}</RouterLink
             >
           </div>
         </RouterLink>
-        <RouterLink :to="'/u/3'"
+        <RouterLink
+          :to="'/u/3'"
           class="our-records__relax record-square"
           :style="{
             backgroundImage:
               'url(https://assets.ppy.sh/beatmaps/' +
               serverRecords.relax.set_id +
               '/covers/list@2x.jpg)',
-            
           }"
         >
           <div>
             <h3>{{ serverRecords.relax.pp.toFixed(0) }} pp</h3>
-            <RouterLink :to="serverRecords.relax.user_link"
-              >{{ $t('unlogged_records_setby') }}
+            <RouterLink :to="'/u/' + serverRecords.relax.userid"
+              >{{ $t('home_loggedout.records_setby') }}
               {{ serverRecords.relax.username }}</RouterLink
             >
           </div>

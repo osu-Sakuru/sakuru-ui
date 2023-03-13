@@ -3,13 +3,13 @@
 <template>
   <section class="contacts">
     <div class="container">
-      <h2 class="contacts__title">{{ $t('contacts') }}</h2>
+      <h2 class="contacts__title">{{ $t('meta.contacts.caption') }}</h2>
       <div class="contacts__links">
         <SocialButton
           :iconUrl="'url(\'src/assets/svg/discord-icon.svg\')'"
           class="contacts__btn"
         >
-          {{ $t('contacts_discord') }}
+          {{ $t('meta.contacts.discord') }}
         </SocialButton>
         <SocialButton
           :iconUrl="'url(\'src/assets/svg/email-icon.svg\')'"
@@ -22,7 +22,7 @@
           :iconUrl="'url(\'src/assets/svg/youtube-icon.svg\')'"
           class="contacts__btn youtube"
         >
-          {{ $t('contacts_youtube') }}
+          {{ $t('meta.contacts.youtube') }}
         </SocialButton>
       </div>
     </div>

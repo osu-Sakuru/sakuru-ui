@@ -2,6 +2,11 @@
 import { RouterView } from 'vue-router';
 import AppHeader from '@/components/AppHeader/AppHeader.vue';
 import AppFooter from './components/AppFooter/AppFooter.vue';
+import i18n from '@/locales/locales.main';
+import { useUserStore } from './stores/user';
+
+const userStore = useUserStore();
+i18n.global.locale.value = userStore.language;
 </script>
 
 <template>

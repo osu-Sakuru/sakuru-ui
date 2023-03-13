@@ -14,22 +14,28 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  to: {
+    type: String,
+    required: true,
+  }
 });
+
+console.log(props);
 </script>
 
 <template>
-  <a
+  <RouterLink :to="props.to"
     @mouseover="isAnimate = true"
     @mouseleave="isAnimate = false"
     :class="{ animate: isAnimate && props.arrow, arrow: props.arrow }"
-    class="btn-register"
+    class="btn-action"
   >
     <slot></slot>
-  </a>
+  </RouterLink>
 </template>
 
 <style lang="scss" scoped>
-.btn-register {
+.btn-action {
   position: relative;
   font-style: normal;
   font-weight: 500;
@@ -42,6 +48,7 @@ const props = defineProps({
   color: $main;
   background-color: #e00087;
   transition: all 0.3s ease;
+  text-decoration: none;
 
   &:hover {
     border-radius: 8px;

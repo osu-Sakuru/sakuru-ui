@@ -1,14 +1,12 @@
 import { createI18n } from 'vue-i18n';
-import ua from './locales/ua.json';
-import en from './locales/en.json';
+import { defaultLocale, messages } from '.';
 
 export default createI18n({
   legacy: false,
-  locale: 'ua',
-  fallbackLocale: 'en',
+  locale: defaultLocale,
+  fallbackLocale: defaultLocale,
   messages: {
-    ua,
-    en,
+    ...messages
   },
   globalInjection: true,
 });
