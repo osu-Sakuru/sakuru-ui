@@ -41,7 +41,11 @@ const { data: serverStats } = await backendApi.get('/server_stats');
               </ul>
             </div>
             <div class="actions">
-              <ActionButton to="/register" :arrow="true" class="actions__register">
+              <ActionButton
+                to="/register"
+                :arrow="true"
+                class="actions__register"
+              >
                 {{
                   $t('home_loggedout.action_button', {
                     players_online: serverStats.players_online,
@@ -136,7 +140,11 @@ const { data: serverStats } = await backendApi.get('/server_stats');
               />
               <span>YumiNee</span>
             </div>
-            <ActionButton to="/register" :arrow="true" class="player-quotes__btn">
+            <ActionButton
+              to="/register"
+              :arrow="true"
+              class="player-quotes__btn"
+            >
               {{ $t('home_loggedout.quote_action') }}
             </ActionButton>
           </li>

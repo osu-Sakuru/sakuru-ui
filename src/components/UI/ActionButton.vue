@@ -17,14 +17,15 @@ const props = defineProps({
   to: {
     type: String,
     required: true,
-  }
+  },
 });
 
 console.log(props);
 </script>
 
 <template>
-  <RouterLink :to="props.to"
+  <RouterLink
+    :to="props.to"
     @mouseover="isAnimate = true"
     @mouseleave="isAnimate = false"
     :class="{ animate: isAnimate && props.arrow, arrow: props.arrow }"

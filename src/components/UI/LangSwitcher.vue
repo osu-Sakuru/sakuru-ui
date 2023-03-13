@@ -91,7 +91,6 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
   }
 }
 
-
 .lang__options {
   width: 100%;
   position: absolute;

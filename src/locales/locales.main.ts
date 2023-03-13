@@ -6,7 +6,7 @@ export default createI18n({
   locale: defaultLocale,
   fallbackLocale: defaultLocale,
   messages: {
-    ...messages
+    ...messages,
   },
   globalInjection: true,
 });

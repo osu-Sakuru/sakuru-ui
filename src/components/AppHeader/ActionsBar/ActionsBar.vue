@@ -145,7 +145,7 @@ results.value.push(...mockArr); // mock
     margin-right: 24px;
 
     &::before {
-      content: "Search";
+      content: 'Search';
       position: absolute;
       right: 43px;
       top: 9px;

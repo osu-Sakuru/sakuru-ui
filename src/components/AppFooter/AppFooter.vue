@@ -4,15 +4,33 @@
       <div class="footer__content-wrapper">
         <ul class="footer__list">
           <!-- TODO: make this shit looks better -->
-          <li class="footer__item"><a href="">{{ $t('footer.links') }}</a></li>
-          <li class="footer__item"><a href="">{{ $t('footer.beatmaps') }}</a></li>
-          <li class="footer__item"><a href="">{{ $t('footer.connect') }}</a></li>
-          <li class="footer__item"><a href="">{{ $t('footer.discord') }}</a></li>
-          <li class="footer__item"><a href="">{{ $t('footer.youtube') }}</a></li>
-          <li class="footer__item"><a href="">{{ $t('footer.leaderboards') }}</a></li>
-          <li class="footer__item"><a href="">{{ $t('footer.clans') }}</a></li>
-          <li class="footer__item"><a href="">{{ $t('footer.info') }}</a></li>
-          <li class="footer__item"><a href="">{{ $t('footer.email') }}</a></li>
+          <li class="footer__item">
+            <a href="">{{ $t('footer.links') }}</a>
+          </li>
+          <li class="footer__item">
+            <a href="">{{ $t('footer.beatmaps') }}</a>
+          </li>
+          <li class="footer__item">
+            <a href="">{{ $t('footer.connect') }}</a>
+          </li>
+          <li class="footer__item">
+            <a href="">{{ $t('footer.discord') }}</a>
+          </li>
+          <li class="footer__item">
+            <a href="">{{ $t('footer.youtube') }}</a>
+          </li>
+          <li class="footer__item">
+            <a href="">{{ $t('footer.leaderboards') }}</a>
+          </li>
+          <li class="footer__item">
+            <a href="">{{ $t('footer.clans') }}</a>
+          </li>
+          <li class="footer__item">
+            <a href="">{{ $t('footer.info') }}</a>
+          </li>
+          <li class="footer__item">
+            <a href="">{{ $t('footer.email') }}</a>
+          </li>
         </ul>
         <a class="footer__vote" href="">
           <img src="@/assets/img/topg.jpg" alt="topg.org" />
