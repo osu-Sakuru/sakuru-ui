@@ -1,0 +1,59 @@
+{
+  "navbar": {
+    "leaderboards": "Liderlik Tablosu",
+    "clans": "Klanlar",
+    "beatmaps": "Beatmapler",
+    "info": "Bilgi",
+    "connect": "Bağlan",
+    "search": "Ara",
+    "login": "Giriş Yap",
+    "logout": "Çıkış Yap"   
+  },
+  "home_loggedout": {
+    "welcome": "Hoş geldin",
+    "welcome_text": "osu! sunucusu keyfiniz için yapıldı",
+    "over": "",
+    "registered_players": "{players_registered}+ kayıtlı oyuncu",
+    "more_than": "",
+    "beatmaps_ranked": "ranked olan havalı mapler",
+    "friendly": "arkadaşça",
+    "community": "toplum ve destek eki̇bi̇",
+    "action_button": "şi̇mdi̇ kaydolun ve di̇ğer {players_online} oyunculara katılın!",               
+    "features": "Temel özellikler",
+    "direct_text": "Sorunsuz oyun içi beatmap arama ve indirme",
+    "pp_systems": "Relax ve autopilot performans puan sistemleri",
+    "pp_systems_text": "Temel becerilerinizi ne kadar ileri götürebileceğinizi deneyin ve görün! Ya da belki biraz pp farmlarsın?",
+    "leaderboards": "Tüm liderlik tabloları",
+    "leaderboards_text": "Mod filtrelerine, arkadaş sıralamalarına ve ülke sıralamalarına açık erişim",
+    "players_quotes": "Oyunculardan alıntılar",
+    "quote_action": "kayıt ol",
+    "records": "Rekorlar",
+    "records_setby": "Şu oyuncu tarafından:"
+  },
+  "home_loggedin": {
+    "welcome": "Tekrar hoşgeldin, ",
+    "online": "çevrimiçi",
+    "players": "oyuncu | oyuncular",
+    "lobbies": "çok oyunculu lobiler",
+    "streams": "canlı yayınlar",
+    "connect_button": "nasıl bağlanılır"
+  },
+  "meta": {
+    "contacts": {
+      "caption": "İletişim ve medya",
+      "discord": "discord topluluğu",
+      "youtube": "youtube kanalı"
+    }
+  },
+  "footer": {
+    "links": "Linkler",
+    "beatmaps": "Beatmapler",
+    "connect": "Bağlan",
+    "discord": "Discord sunucusu",
+    "youtube": "YouTube kanalı",
+    "leaderboards": "Liderlik tablosu",
+    "clans": "Klanlar",
+    "info": "Bilgi",
+    "email": "Email"
+  }
+}
