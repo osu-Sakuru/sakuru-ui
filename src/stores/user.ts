@@ -1,6 +1,7 @@
 import type { StateOptions } from '@/interfaces/stateOptions.interface';
 import type { User } from '@/interfaces/user.interface';
-import { Locales } from '@/locales/locales.defaults';
+import { DEFAULT_LOCALE } from '@/locales';
+import { LANGUAGES } from '@/locales/locales.defaults';
 import { backendApi } from '@/main';
 import type { AxiosResponse } from 'axios';
 import { defineStore } from 'pinia';
@@ -10,7 +11,7 @@ export const useUserStore = defineStore('user', {
     ({
       isLoggedIn: false,
       user: {},
-      language: Locales.EN,
+      language: LANGUAGES.get(DEFAULT_LOCALE),
     } as StateOptions),
   getters: {},
   actions: {

@@ -1,10 +1,10 @@
 import { createI18n } from 'vue-i18n';
-import { defaultLocale, messages } from '.';
+import { DEFAULT_LOCALE, messages } from '.';
 
 export default createI18n({
   legacy: false,
-  locale: defaultLocale,
-  fallbackLocale: defaultLocale,
+  locale: DEFAULT_LOCALE,
+  fallbackLocale: DEFAULT_LOCALE,
   messages: {
     ...messages,
   },

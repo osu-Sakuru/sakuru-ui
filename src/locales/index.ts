@@ -1,13 +1,13 @@
-import { Locales } from './locales.defaults';
+import { LocalesEnum } from './locales.defaults';
 
 import en from './src/en-US.json';
 import ua from './src/ua-UA.json';
 import tr from './src/tr-TR.json';
 
 export const messages = {
-  [Locales.EN]: en,
-  [Locales.UA]: ua,
-  [Locales.TR]: tr,
+  [LocalesEnum.en_US]: en,
+  [LocalesEnum.ua_UA]: ua,
+  [LocalesEnum.tr_TR]: tr,
 };
 
-export const defaultLocale = Locales.EN;
+export const DEFAULT_LOCALE = LocalesEnum.en_US;

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Locales, LOCALES } from '@/locales/locales.defaults';
+import { LocalesEnum, LANGUAGES } from '@/locales/locales.defaults';
 import { useUserStore } from '@/stores/user';
 import { ref } from 'vue';
 import i18n from '@/locales/locales.main';
@@ -13,12 +13,9 @@ export default defineComponent({
 <script setup lang="ts">
 const userStore = useUserStore();
 
-const setLocale = (locale: Locales): void => {
+const setLocale = (locale: LocalesEnum): void => {
   i18n.global.locale.value = locale;
-  userStore.language = locale;
-};
-const getLocaleAlfa2 = (locale: string): string => {
-  return locale.substring(3, 5).toLocaleLowerCase();
+  userStore.language = LANGUAGES.get(locale)!;
 };
 
 const menuActive = ref(false);
@@ -28,24 +25,16 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
 <template>
   <div @mouseover="menuHandler" @mouseout="menuHandler" class="lang__switcher">
     <div class="lang__select" :class="{ 'menu-active': menuActive }">
-      <img
-        :src="
-          'src/assets/svg/flags/' +
-          getLocaleAlfa2(i18n.global.locale.value) +
-          '.svg'
-        "
-      />
-      {{ LOCALES[i18n.global.locale.value].caption }}
+      <img :src="`src/assets/svg/flags/${userStore.language.alfa2}.svg`" />
+      {{ userStore.language.caption }}
     </div>
     <ul v-show="menuActive" class="lang__options">
       <li
-        v-for="locale in LOCALES"
+        v-for="locale in LANGUAGES.values()"
         @click="setLocale(locale.value)"
         :key="locale.value"
       >
-        <img
-          :src="'src/assets/svg/flags/' + getLocaleAlfa2(locale.value) + '.svg'"
-        />
+        <img :src="`src/assets/svg/flags/${locale.alfa2}.svg`" />
         {{ locale.caption }}
       </li>
     </ul>

@@ -6,7 +6,7 @@ import i18n from '@/locales/locales.main';
 import { useUserStore } from './stores/user';
 
 const userStore = useUserStore();
-i18n.global.locale.value = userStore.language;
+i18n.global.locale.value = userStore.language.value;
 </script>
 
 <template>

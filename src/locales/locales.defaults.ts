@@ -1,11 +1,28 @@
-export enum Locales {
-  EN = 'en-US',
-  UA = 'ua-UA',
-  TR = 'tr-TR',
+export interface Locale {
+  value: LocalesEnum;
+  caption: string;
+  alfa2: string;
 }
 
-export const LOCALES = {
-  [Locales.EN]: { value: Locales.EN, caption: 'English (US)' },
-  [Locales.UA]: { value: Locales.UA, caption: 'Українська' },
-  [Locales.TR]: { value: Locales.TR, caption: 'Türkçe' },
-};
+export enum LocalesEnum {
+  en_US = 'en_US',
+  ua_UA = 'ua_UA',
+  tr_TR = 'tr_TR',
+}
+
+export const LANGUAGES: Map<LocalesEnum, Locale> = new Map<LocalesEnum, Locale>(
+  [
+    [
+      LocalesEnum.en_US,
+      { value: LocalesEnum.en_US, caption: 'English (US)', alfa2: 'us' },
+    ],
+    [
+      LocalesEnum.ua_UA,
+      { value: LocalesEnum.ua_UA, caption: 'Українська', alfa2: 'ua' },
+    ],
+    [
+      LocalesEnum.tr_TR,
+      { value: LocalesEnum.tr_TR, caption: 'Türkçe', alfa2: 'tr' },
+    ],
+  ],
+);
