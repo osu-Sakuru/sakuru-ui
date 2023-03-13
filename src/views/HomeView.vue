@@ -33,8 +33,11 @@ const { data: serverStats } = await backendApi.get('/server_stats');
                 <li class="hero__item hero__item-2">
                   <span>{{ $t('home_loggedout.more_than') }}</span>
                   <h3>
-                    {{ serverStats.custom_ranked_maps_count }}
-                    {{ $t('home_loggedout.beatmaps_ranked') }}
+                    {{
+                      $t('home_loggedout.beatmaps_ranked', {
+                        beatmaps_ranked: serverStats.custom_ranked_maps_count,
+                      })
+                    }}
                   </h3>
                 </li>
                 <li class="hero__item hero__item-3">
