@@ -23,8 +23,11 @@ const { data: serverStats } = await backendApi.get('/server_stats');
                 <li class="hero__item hero__item-1">
                   <span>{{ $t('home_loggedout.over') }}</span>
                   <h3>
-                    {{ serverStats.players_total }}+
-                    {{ $t('home_loggedout.registered_players') }}
+                    {{
+                      $t('home_loggedout.registered_players', {
+                        players_registered: serverStats.players_total,
+                      })
+                    }}
                   </h3>
                 </li>
                 <li class="hero__item hero__item-2">
