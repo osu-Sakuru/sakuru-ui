@@ -3,6 +3,8 @@ import { ref, type Ref } from 'vue';
 
 const isSearching = ref(false);
 const searchBar = ref<null | { focus: () => null, blur: () => null }>(null);
+const isAuth = true;
+const menuActive = ref(false);
 
 const searchingHandler = () => {
   // can't follow the link without timeout 
@@ -11,7 +13,7 @@ const searchingHandler = () => {
     if (isSearching.value) {
       searchBar.value?.focus();
     } else {
-      searchBar.value?.blur();
+      // searchBar.value?.blur();
     }
   }, 100);
 };
@@ -35,8 +37,6 @@ const mockArr = [
 
 results.value.push(...mockArr); // mock
 
-const isAuth = true;
-const menuActive = ref(false);
 
 </script>
 
@@ -68,7 +68,7 @@ const menuActive = ref(false);
       v-if="isAuth" 
       class="actions__btn-wrapper"
     >
-      <div >
+      <div>
         <button :class="{ 'menu-hover': menuActive }" class="btn actions__btn-account">Account</button>
         <img src="@/assets/svg/avatar-placeholder.svg" alt="avatar">
         <ul v-show="menuActive" class="actions__btn-list searchbar__results">
@@ -78,7 +78,6 @@ const menuActive = ref(false);
       </div>
     </div>
     <button v-else class="btn log__icon">Login</button>
-    <!-- TODO: add here a lang switcher -->
   </div>
 </template>
 
@@ -244,7 +243,7 @@ const menuActive = ref(false);
   .actions__btn-wrapper > div {
     display: flex;
     justify-content: center;
-    margin-right: 40px;
+    margin-right: 35px;
   }
 
   .actions__btn-account {

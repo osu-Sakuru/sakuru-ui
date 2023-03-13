@@ -31,7 +31,6 @@ const props = defineProps({
 <style lang="scss" scoped>
 .btn-register {
   position: relative;
-  padding: 30px 280px 62px 32px;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
