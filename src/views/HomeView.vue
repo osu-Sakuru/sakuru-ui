@@ -109,7 +109,10 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
           <div>
             <li class="player-quotes__item player-quotes__item-1">
               <blockquote>
-                Sakuru, the private server that has a place in my heart.
+                community is as good as the server itself. The server owner is
+                one of the best I know. Now back with a more refreshing design.
+                I can hardly wait to play it again after such a long
+                time.3333333333
               </blockquote>
               <div>
                 <img
@@ -121,7 +124,10 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
             </li>
             <li class="player-quotes__item player-quotes__item-2">
               <blockquote>
-                Sakuru, the private server that has a place in my heart.
+                community is as good as the server itself. The server owner is
+                one of the best I know. Now back with a more refreshing design.
+                I can hardly wait to play it again after such a long
+                time.3333333333
               </blockquote>
               <div>
                 <img src="@/assets/img/player-quote-juiinee.png" alt="avatar" />
@@ -137,7 +143,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
               Sakuru, the private server that has a place in my heart. The
               community is as good as the server itself. The server owner is one
               of the best I know. Now back with a more refreshing design. I can
-              hardly wait to play it again after such a long time.
+              hardly wait to play it again after such a long time.3333333333
             </blockquote>
             <div>
               <img
@@ -158,9 +164,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
       </div>
     </section>
     <!-- Player quotes end -->
-    <!-- PP Records -->
     <HomeRecords />
-    <!-- PP Records end -->
     <HomeContacts />
   </main>
 </template>
@@ -370,8 +374,15 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
   padding: 0;
   list-style: none;
 
+  & > div {
+    width: 50%;
+  }
+
   .player-quotes__item {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     blockquote {
       margin: 0 0 21px 0;
@@ -403,15 +414,22 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
 
   .player-quotes__item-1 {
     position: relative;
-    width: 660px;
-    padding: 32px 188px;
+    height: 50%;
+    padding: 42px 97px;
     background-color: #3c5b90;
+
+    blockquote {
+      font-style: italic;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 150%;
+    }
 
     &::before {
       content: '';
       position: absolute;
       right: 75%;
-      bottom: -20%;
+      top: -70px;
       z-index: -1;
       display: block;
       width: 287px;
@@ -421,7 +439,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
   }
 
   .player-quotes__item-2 {
-    width: 660px;
+    height: 50%;
     padding: 42px 97px;
     background-color: #2f4771;
 
@@ -435,6 +453,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
 
   .player-quotes__item-3 {
     position: relative;
+    width: 50%;
     padding: 100px;
     background-color: #344f7f;
 
