@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { ref, type Ref } from 'vue';
 import { useUserStore } from '@/stores/user';
+import AppModal from '@/components/AppModal/AppModal.vue';
 
 const userStore = useUserStore();
 
 const isSearching = ref(false);
 const searchBar = ref<null | { focus: () => null; blur: () => null }>(null);
 const menuActive = ref(false);
+const modalActive = ref(false);
 
 const searchingHandler = () => {
   // can't follow the link without timeout
@@ -19,6 +21,7 @@ const searchingHandler = () => {
 };
 
 const menuHandler = () => (menuActive.value = !menuActive.value);
+const modalHandler = () => (modalActive.value = !modalActive.value);
 
 interface ISearchResult {
   id: number;
@@ -117,7 +120,12 @@ results.value.push(...mockArr); // mock
         </ul>
       </div>
     </div>
-    <button v-else class="btn log__icon">{{ $t('navbar.login') }}</button>
+    <div v-else>
+      <button @click="modalHandler" :class="{'modalActive': modalActive}" class="btn log__icon">
+        {{ $t('navbar.login') }}
+      </button>
+      <AppModal v-if="modalActive" @close="modalHandler" />
+    </div>
   </div>
 </template>
 
@@ -317,6 +325,11 @@ results.value.push(...mockArr); // mock
     &:hover::after {
       background: url('@/assets/svg/login-icon-hover.svg');
     }
+  }
+
+  .modalActive {
+    position: relative;
+    z-index: 20;
   }
 }
 </style>

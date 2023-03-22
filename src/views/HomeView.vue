@@ -3,7 +3,7 @@ import HomeRecords from '@/components/HomeRecords/HomeRecords.vue';
 import HomeContacts from '@/components/HomeContacts/HomeContacts.vue';
 import { backendApi } from '@/main';
 
-const { data: serverStats } = await backendApi.get('/server_stats');
+const { data: serverStats } = await backendApi.get('/statistics/server_stats');
 </script>
 
 <template>

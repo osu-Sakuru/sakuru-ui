@@ -1,13 +1,9 @@
-interface IModeRecord {
-  username: string;
-  userid: number;
-  user_link: string;
-  pp: number;
-  set_id: number;
-  beatmap_id: number;
-}
-
 export interface IServerRecords {
-  relax: IModeRecord;
-  standard: IModeRecord;
+  name: string;
+  pp_val: number;
+  mode: number;
+  user_id: number;
+  play_time: Date;
+  bmap_id: number;
+  set_id: number;
 }

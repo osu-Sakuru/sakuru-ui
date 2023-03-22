@@ -9,6 +9,14 @@
     "login": "Login",
     "logout": "Logout"   
   },
+  "modal": {
+    "username": "username",
+    "password": "password",
+    "not_reg": "not registered?",
+    "sign_up": "sign up now",
+    "login_btn": "login",
+    "forgot": "Forgot password?"
+  },
   "home_loggedout": {
     "welcome": "Welcome to",
     "welcome_text": "osu! server created for your joy",

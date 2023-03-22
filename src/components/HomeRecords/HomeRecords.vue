@@ -2,9 +2,45 @@
 import type { IServerRecords } from '@/interfaces/serverRecords.interface';
 import { backendApi } from '@/main';
 
-const { data: serverRecords } = await backendApi.get<IServerRecords>(
-  '/server_records',
-);
+const relaxRecords = {
+  name: 'dench',
+  pp_val: 123,
+  mode: 228,
+  user_id: 232,
+  play_time: '2023-03-22T00:01:28.908Z',
+  bmap_id: 3970781,
+  set_id: 1923494,
+};
+
+const vanillaRecords = {
+  name: 'dench',
+  pp_val: 123,
+  mode: 228,
+  user_id: 232,
+  play_time: '2023-03-22T00:01:28.908Z',
+  bmap_id: 3970781,
+  set_id: 1923494,
+};
+
+// const { data: relaxRecords } = await backendApi.get<IServerRecords>(
+//   '/statistics/server_records',
+//   {
+//     params: {
+//       mode: "std",
+//       mods: "rx"
+//     }
+//   }
+// );
+
+// const { data: vanillaRecords } = await backendApi.get<IServerRecords>(
+//   '/statistics/server_records',
+//   {
+//     params: {
+//       mode: "std",
+//       mods: "vn"
+//     }
+//   }
+// );
 </script>
 
 <template>
@@ -18,15 +54,15 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
           :style="{
             backgroundImage:
               'url(https://assets.ppy.sh/beatmaps/' +
-              serverRecords.standard.set_id +
+              vanillaRecords.set_id +
               '/covers/list@2x.jpg)',
           }"
         >
           <div>
-            <h3>{{ serverRecords.standard.pp.toFixed(0) }} pp</h3>
-            <RouterLink :to="'/u/' + serverRecords.standard.userid"
+            <h3>{{ vanillaRecords.pp_val.toFixed(0) }} pp</h3>
+            <RouterLink :to="'/u/' + vanillaRecords.user_id"
               >{{ $t('home_loggedout.records_setby') }}
-              {{ serverRecords.standard.username }}</RouterLink
+              {{ vanillaRecords.name }}</RouterLink
             >
           </div>
         </RouterLink>
@@ -36,15 +72,15 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
           :style="{
             backgroundImage:
               'url(https://assets.ppy.sh/beatmaps/' +
-              serverRecords.relax.set_id +
+              relaxRecords.set_id +
               '/covers/list@2x.jpg)',
           }"
         >
           <div>
-            <h3>{{ serverRecords.relax.pp.toFixed(0) }} pp</h3>
-            <RouterLink :to="'/u/' + serverRecords.relax.userid"
+            <h3>{{ relaxRecords.pp_val.toFixed(0) }} pp</h3>
+            <RouterLink :to="'/u/' + relaxRecords.user_id"
               >{{ $t('home_loggedout.records_setby') }}
-              {{ serverRecords.relax.username }}</RouterLink
+              {{ relaxRecords.name }}</RouterLink
             >
           </div>
         </RouterLink>
