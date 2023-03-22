@@ -3,29 +3,29 @@
 <template>
   <div @click="$emit('close')" class="modal-bg">
     <div class="container">
-    <div class="modal__wrapper" @click.stop>
-      <form class="modal">
-        <div class="modal__input">
-          <label for="username">{{ $t('modal.username') }}</label>
-          <input name="username" class="modal__input" type="text" />
-        </div>
-        <div class="modal__input">
-          <label for="password">{{ $t('modal.password') }}</label>
-          <input name="password" class="modal__input" type="password" />
-        </div>
-        <div class="modal__btns-wrapper">
-          <div class="btns">
-            <img src="@/assets/svg/modal-hand.svg" alt="hand" />
-            <span class="modal__sign-up">
-              <span>{{ $t('modal.not_reg') }}</span>
-              <a href="">{{ $t('modal.sign_up') }}</a>
-            </span>
+      <div class="modal__wrapper" @click.stop>
+        <form class="modal">
+          <div class="modal__input">
+            <label for="username">{{ $t('modal.username') }}</label>
+            <input name="username" class="modal__input" type="text" />
           </div>
-          <button>login</button>
-        </div>
-        <a class="modal__forgot" href="">{{ $t('modal.forgot') }}</a>
-      </form>
-    </div>
+          <div class="modal__input">
+            <label for="password">{{ $t('modal.password') }}</label>
+            <input name="password" class="modal__input" type="password" />
+          </div>
+          <div class="modal__btns-wrapper">
+            <div class="btns">
+              <img src="@/assets/svg/modal-hand.svg" alt="hand" />
+              <span class="modal__sign-up">
+                <span>{{ $t('modal.not_reg') }}</span>
+                <a href="">{{ $t('modal.sign_up') }}</a>
+              </span>
+            </div>
+            <button>login</button>
+          </div>
+          <a class="modal__forgot" href="">{{ $t('modal.forgot') }}</a>
+        </form>
+      </div>
     </div>
   </div>
 </template>

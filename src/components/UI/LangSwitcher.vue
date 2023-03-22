@@ -45,18 +45,20 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
 .lang__switcher {
   position: relative;
   display: flex;
+  min-width: 150px;
   flex-direction: column;
   margin-left: 20px;
   cursor: default;
 
   img {
+    display: block;
     width: 25px;
     height: 25px;
+    margin-right: 5px;
   }
 }
 
 .lang__select {
-  max-width: fit-content;
   display: flex;
   padding: 10px;
   padding-right: 30px;
@@ -90,6 +92,9 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
 }
 
 .lang__options > li {
+  display: flex;
+  min-width: 150px;
+  align-items: center;
   padding: 10px;
   font-style: normal;
   font-weight: 700;

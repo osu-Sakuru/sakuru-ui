@@ -9,6 +9,7 @@ const isSearching = ref(false);
 const searchBar = ref<null | { focus: () => null; blur: () => null }>(null);
 const menuActive = ref(false);
 const modalActive = ref(false);
+const hover = ref(false);
 
 const searchingHandler = () => {
   // can't follow the link without timeout
@@ -22,6 +23,7 @@ const searchingHandler = () => {
 
 const menuHandler = () => (menuActive.value = !menuActive.value);
 const modalHandler = () => (modalActive.value = !modalActive.value);
+const hoverHandler = () => (hover.value = !hover.value);
 
 interface ISearchResult {
   id: number;
@@ -93,9 +95,7 @@ results.value.push(...mockArr); // mock
           >
             <!-- TODO: finish with styling result -->
             <!-- idk how result supposed to look, i'll think about it later -->
-            <a @click.stop href="https://google.com">
-              {{ result.value }}
-            </a>
+            <a @click.stop href="https://google.com"> {{ result.value }} </a>``
           </li>
         </ul>
       </form>
@@ -120,11 +120,29 @@ results.value.push(...mockArr); // mock
         </ul>
       </div>
     </div>
-    <div v-else>
-      <button @click="modalHandler" :class="{'modalActive': modalActive}" class="btn log__icon">
+    <div
+      @mouseover="hoverHandler"
+      @mouseout="hoverHandler"
+      class="log__btn-wrapper"
+      v-else
+    >
+      <button
+        @click="modalHandler"
+        :class="{ modalActive: modalActive, 'log__btn-hover': hover }"
+        class="btn"
+      >
         {{ $t('navbar.login') }}
       </button>
-      <AppModal v-if="modalActive" @close="modalHandler" />
+      <i
+        :class="{ modalActive: modalActive, 'log__btn-hover': hover }"
+        class="log__icon"
+      ></i>
+      <AppModal
+        @mouseover.stop
+        @mouseout.stop
+        v-if="modalActive"
+        @close="modalHandler"
+      />
     </div>
   </div>
 </template>
@@ -269,19 +287,6 @@ results.value.push(...mockArr); // mock
     background: transparent;
     color: $main;
     transition: all 0.3s ease;
-
-    &:hover {
-      color: $main-hover;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 4px;
-      width: 20px;
-      height: 20px;
-      transition: all 0.3s ease;
-    }
   }
 
   .actions__btn-wrapper {
@@ -314,15 +319,29 @@ results.value.push(...mockArr); // mock
     }
   }
 
+  .log__btn-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
   .log__icon {
-    margin-right: 30px;
+    margin: 0 30px 0 10px;
+    transform: translateY(2px);
 
     &::after {
-      left: 60px;
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
       background: url('@/assets/svg/login-icon.svg');
+      transition: all 0.3s ease;
     }
+  }
 
-    &:hover::after {
+  .log__btn-hover {
+    color: $main-hover;
+
+    &::after {
       background: url('@/assets/svg/login-icon-hover.svg');
     }
   }
