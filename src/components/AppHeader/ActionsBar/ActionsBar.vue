@@ -128,18 +128,17 @@ results.value.push(...mockArr); // mock
     >
       <button
         @click="modalHandler"
-        :class="{ modalActive: modalActive, 'log__btn-hover': hover }"
+        :class="{ 'modalActive': modalActive, 'log__btn-hover': hover }"
         class="btn"
       >
         {{ $t('navbar.login') }}
       </button>
       <i
-        :class="{ modalActive: modalActive, 'log__btn-hover': hover }"
+        @click="modalHandler"
+        :class="{ 'modalActive': modalActive, 'log__btn-hover': hover }"
         class="log__icon"
       ></i>
       <AppModal
-        @mouseover.stop
-        @mouseout.stop
         v-if="modalActive"
         @close="modalHandler"
       />
@@ -279,6 +278,7 @@ results.value.push(...mockArr); // mock
   .btn {
     position: relative;
     padding: 0;
+    padding-right: 10px;
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -325,8 +325,8 @@ results.value.push(...mockArr); // mock
   }
 
   .log__icon {
-    margin: 0 30px 0 10px;
     transform: translateY(2px);
+    cursor: pointer;
 
     &::after {
       content: '';

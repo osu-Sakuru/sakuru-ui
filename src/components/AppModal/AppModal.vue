@@ -1,7 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue';
+import NotificationErr from '../NotificationErr/NotificationErr.vue';
+
+const emits = defineEmits(['close']);
+const suka = "ssawe;mafwlm;kfwelmfwkl;flkewm\nasdl,adas";
+
+const showPass = ref(false);
+const showPasshandler = () => {
+  showPass.value = !showPass.value;
+};
+</script>
 
 <template>
-  <div @click="$emit('close')" class="modal-bg">
+  <NotificationErr :errMsg="suka ? suka : ''" :onLeft="true" />
+  <div @mouseover.stop @mouseout.stop @click="emits('close')" class="modal-bg">
     <div class="container">
       <div class="modal__wrapper" @click.stop>
         <form class="modal">
@@ -11,7 +23,8 @@
           </div>
           <div class="modal__input">
             <label for="password">{{ $t('modal.password') }}</label>
-            <input name="password" class="modal__input" type="password" />
+            <input ref="passInput" name="password" class="modal__input" :type="showPass ? 'text' : 'password'" />
+            <i @click="showPasshandler" :class="{ 'show-pass': showPass }"></i>
           </div>
           <div class="modal__btns-wrapper">
             <div class="btns">
@@ -33,8 +46,8 @@
 <style lang="scss" scoped>
 .modal-bg {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   z-index: 19;
@@ -88,6 +101,7 @@
 
 .modal__input {
   position: relative;
+  display: flex;
   width: 100%;
   height: 88px;
   margin-bottom: 8px;
@@ -116,12 +130,28 @@
     background: #484848;
     color: #ffffff;
   }
+
+  i {
+    content: '';
+    display: block;
+    align-self: center;
+    position: absolute;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    background: url('@/assets/svg/pass-eye-off.svg');
+    cursor: pointer;
+  }
+}
+
+.show-pass {
+  background: url('@/assets/svg/pass-eye-on.svg') !important;
 }
 
 .modal__btns-wrapper {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 35px;
+  margin: 8px 0 35px 0;
 }
 
 .btns {
