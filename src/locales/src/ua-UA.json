@@ -21,7 +21,7 @@
     "welcome": "Ласкаво просимо до",
     "welcome_text": "osu! сервер, створений для вашої радості",
     "over": "понад",
-    "registered_players": "зареєстрованих гравців",
+    "registered_players": "{players_registered}+ зареєстрованих гравців",
     "more_than": "більше ніж",
     "beatmaps_ranked": "{beatmaps_ranked} найбільш улюблених мап ранкнуті",
     "friendly": "дружня",

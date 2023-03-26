@@ -1,46 +1,18 @@
 <script setup lang="ts">
+import { GameModes } from '@/enums/GameModes.enum';
 import type { IServerRecords } from '@/interfaces/serverRecords.interface';
 import { backendApi } from '@/main';
 
-const relaxRecords = {
-  name: 'dench',
-  pp_val: 123,
-  mode: 228,
-  user_id: 232,
-  play_time: '2023-03-22T00:01:28.908Z',
-  bmap_id: 3970781,
-  set_id: 1923494,
-};
+const { data: serverRecords } = await backendApi.get<IServerRecords>(
+  '/statistics/server_records',
+  {
+    params: {
+      'mode[]': [GameModes.VANILLA_OSU, GameModes.RELAX_OSU].join(','),
+    },
+  },
+);
 
-const vanillaRecords = {
-  name: 'dench',
-  pp_val: 123,
-  mode: 228,
-  user_id: 232,
-  play_time: '2023-03-22T00:01:28.908Z',
-  bmap_id: 3970781,
-  set_id: 1923494,
-};
-
-// const { data: relaxRecords } = await backendApi.get<IServerRecords>(
-//   '/statistics/server_records',
-//   {
-//     params: {
-//       mode: "std",
-//       mods: "rx"
-//     }
-//   }
-// );
-
-// const { data: vanillaRecords } = await backendApi.get<IServerRecords>(
-//   '/statistics/server_records',
-//   {
-//     params: {
-//       mode: "std",
-//       mods: "vn"
-//     }
-//   }
-// );
+console.log(serverRecords);
 </script>
 
 <template>
@@ -54,15 +26,18 @@ const vanillaRecords = {
           :style="{
             backgroundImage:
               'url(https://assets.ppy.sh/beatmaps/' +
-              vanillaRecords.set_id +
+              serverRecords[GameModes.VANILLA_OSU]?.set_id +
               '/covers/list@2x.jpg)',
           }"
         >
           <div>
-            <h3>{{ vanillaRecords.pp_val.toFixed(0) }} pp</h3>
-            <RouterLink :to="'/u/' + vanillaRecords.user_id"
+            <h3>
+              {{ serverRecords[GameModes.VANILLA_OSU]?.pp.toFixed(0) }} pp
+            </h3>
+            <RouterLink
+              :to="'/u/' + serverRecords[GameModes.VANILLA_OSU]?.userid"
               >{{ $t('home_loggedout.records_setby') }}
-              {{ vanillaRecords.name }}</RouterLink
+              {{ serverRecords[GameModes.VANILLA_OSU]?.username }}</RouterLink
             >
           </div>
         </RouterLink>
@@ -72,15 +47,15 @@ const vanillaRecords = {
           :style="{
             backgroundImage:
               'url(https://assets.ppy.sh/beatmaps/' +
-              relaxRecords.set_id +
+              serverRecords[GameModes.RELAX_OSU]?.set_id +
               '/covers/list@2x.jpg)',
           }"
         >
           <div>
-            <h3>{{ relaxRecords.pp_val.toFixed(0) }} pp</h3>
-            <RouterLink :to="'/u/' + relaxRecords.user_id"
+            <h3>{{ serverRecords[GameModes.RELAX_OSU]?.pp.toFixed(0) }} pp</h3>
+            <RouterLink :to="'/u/' + serverRecords[GameModes.RELAX_OSU]?.userid"
               >{{ $t('home_loggedout.records_setby') }}
-              {{ relaxRecords.name }}</RouterLink
+              {{ serverRecords[GameModes.RELAX_OSU]?.username }}</RouterLink
             >
           </div>
         </RouterLink>
