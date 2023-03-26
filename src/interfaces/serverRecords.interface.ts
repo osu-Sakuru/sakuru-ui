@@ -1,13 +1,13 @@
-interface IModeRecord {
-  username: string;
-  userid: number;
-  user_link: string;
-  pp: number;
-  set_id: number;
-  beatmap_id: number;
-}
+import type { GameModes } from '@/enums/GameModes.enum';
 
-export interface IServerRecords {
-  relax: IModeRecord;
-  standard: IModeRecord;
-}
+export type ServerRecord = {
+  username: string;
+  pp: number;
+  userid: number;
+  beatmap_id: number;
+  set_id: number;
+};
+
+export type IServerRecords = {
+  [key in GameModes]?: ServerRecord;
+};

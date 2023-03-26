@@ -1,10 +1,18 @@
 <script setup lang="ts">
+import { GameModes } from '@/enums/GameModes.enum';
 import type { IServerRecords } from '@/interfaces/serverRecords.interface';
 import { backendApi } from '@/main';
 
 const { data: serverRecords } = await backendApi.get<IServerRecords>(
-  '/server_records',
+  '/statistics/server_records',
+  {
+    params: {
+      'mode[]': [GameModes.VANILLA_OSU, GameModes.RELAX_OSU].join(','),
+    },
+  },
 );
+
+console.log(serverRecords);
 </script>
 
 <template>
@@ -18,15 +26,18 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
           :style="{
             backgroundImage:
               'url(https://assets.ppy.sh/beatmaps/' +
-              serverRecords.standard.set_id +
+              serverRecords[GameModes.VANILLA_OSU]?.set_id +
               '/covers/list@2x.jpg)',
           }"
         >
           <div>
-            <h3>{{ serverRecords.standard.pp.toFixed(0) }} pp</h3>
-            <RouterLink :to="'/u/' + serverRecords.standard.userid"
+            <h3>
+              {{ serverRecords[GameModes.VANILLA_OSU]?.pp.toFixed(0) }} pp
+            </h3>
+            <RouterLink
+              :to="'/u/' + serverRecords[GameModes.VANILLA_OSU]?.userid"
               >{{ $t('home_loggedout.records_setby') }}
-              {{ serverRecords.standard.username }}</RouterLink
+              {{ serverRecords[GameModes.VANILLA_OSU]?.username }}</RouterLink
             >
           </div>
         </RouterLink>
@@ -36,15 +47,15 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
           :style="{
             backgroundImage:
               'url(https://assets.ppy.sh/beatmaps/' +
-              serverRecords.relax.set_id +
+              serverRecords[GameModes.RELAX_OSU]?.set_id +
               '/covers/list@2x.jpg)',
           }"
         >
           <div>
-            <h3>{{ serverRecords.relax.pp.toFixed(0) }} pp</h3>
-            <RouterLink :to="'/u/' + serverRecords.relax.userid"
+            <h3>{{ serverRecords[GameModes.RELAX_OSU]?.pp.toFixed(0) }} pp</h3>
+            <RouterLink :to="'/u/' + serverRecords[GameModes.RELAX_OSU]?.userid"
               >{{ $t('home_loggedout.records_setby') }}
-              {{ serverRecords.relax.username }}</RouterLink
+              {{ serverRecords[GameModes.RELAX_OSU]?.username }}</RouterLink
             >
           </div>
         </RouterLink>
