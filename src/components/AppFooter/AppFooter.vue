@@ -2,36 +2,37 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__content-wrapper">
-        <ul class="footer__list">
-          <!-- TODO: make this shit looks better -->
-          <li class="footer__item">
-            <a href="">{{ $t('footer.links') }}</a>
-          </li>
-          <li class="footer__item">
-            <a href="">{{ $t('footer.beatmaps') }}</a>
-          </li>
-          <li class="footer__item">
-            <a href="">{{ $t('footer.connect') }}</a>
-          </li>
-          <li class="footer__item">
-            <a href="">{{ $t('footer.discord') }}</a>
-          </li>
-          <li class="footer__item">
-            <a href="">{{ $t('footer.youtube') }}</a>
-          </li>
-          <li class="footer__item">
-            <a href="">{{ $t('footer.leaderboards') }}</a>
-          </li>
-          <li class="footer__item">
-            <a href="">{{ $t('footer.clans') }}</a>
-          </li>
-          <li class="footer__item">
-            <a href="">{{ $t('footer.info') }}</a>
-          </li>
-          <li class="footer__item">
-            <a href="">{{ $t('footer.email') }}</a>
-          </li>
-        </ul>
+        <div>
+          <ul class="footer__list">
+            <li class="footer__item">
+              <a href="">{{ $t('footer.links') }}</a>
+            </li>
+            <li class="footer__item">
+              <a href="">{{ $t('footer.beatmaps') }}</a>
+            </li>
+            <li class="footer__item">
+              <a href="">{{ $t('footer.connect') }}</a>
+            </li>
+            <li class="footer__item">
+              <a href="">{{ $t('footer.discord') }}</a>
+            </li>
+            <li class="footer__item">
+              <a href="">{{ $t('footer.youtube') }}</a>
+            </li>
+            <li class="footer__item">
+              <a href="">{{ $t('footer.leaderboards') }}</a>
+            </li>
+            <li class="footer__item">
+              <a href="">{{ $t('footer.clans') }}</a>
+            </li>
+            <li class="footer__item">
+              <a href="">{{ $t('footer.info') }}</a>
+            </li>
+            <li class="footer__item">
+              <a href="">{{ $t('footer.email') }}</a>
+            </li>
+          </ul>
+        </div>
         <a class="footer__vote" href="">
           <img src="@/assets/img/topg.jpg" alt="topg.org" />
         </a>
@@ -57,19 +58,21 @@
   display: flex;
   justify-content: space-between;
   padding: 54px 0;
+
+  div {
+    width: 70%;
+  }
 }
 
 .footer__list {
-  width: 60%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 170px);
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
 .footer__item {
-  margin-right: 36px;
-  display: inline-block;
-
   a {
     font-style: normal;
     font-weight: 500;
