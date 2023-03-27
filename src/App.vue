@@ -18,7 +18,9 @@ onMounted(() => {
 <template>
   <AppHeader />
   <Suspense>
-    <RouterView />
+    <main>
+      <RouterView />
+    </main>
   </Suspense>
   <AppFooter />
 </template>
