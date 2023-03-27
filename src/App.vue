@@ -12,7 +12,9 @@ i18n.global.locale.value = userStore.language.value;
 <template>
   <AppHeader />
   <Suspense>
-    <RouterView />
+    <main>
+      <RouterView />
+    </main>
   </Suspense>
   <AppFooter />
 </template>
