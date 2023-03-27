@@ -2,16 +2,29 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import ActionsBar from './ActionsBar/ActionsBar.vue';
 
+const isShow = ref(true);
+
 const isScrolled = ref(false);
 const scrollHandler = () =>
   window.scrollY > 0 ? (isScrolled.value = true) : (isScrolled.value = false);
 
-onMounted(() => window.addEventListener('scroll', scrollHandler));
-onUnmounted(() => window.removeEventListener('scroll', scrollHandler));
+const hideHeader = () => (isShow.value = false);
+const showHeader = () => (isShow.value = true);
+
+onMounted(() => {
+  window.addEventListener('hideHeader', hideHeader);
+  window.addEventListener('showHeader', showHeader);
+  window.addEventListener('scroll', scrollHandler);
+});
+onUnmounted(() => {
+  window.removeEventListener('hideHeader', hideHeader);
+  window.removeEventListener('showHeader', showHeader);
+  window.removeEventListener('scroll', scrollHandler);
+});
 </script>
 
 <template>
-  <header class="fixed" :class="{ header__bg: isScrolled }">
+  <header v-if="isShow" class="fixed" :class="{ header__bg: isScrolled }">
     <div class="container">
       <div class="header__wrapper">
         <div class="navigation__wrapper">

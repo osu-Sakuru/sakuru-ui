@@ -1,5 +1,23 @@
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue';
+
+const isShow = ref(true);
+
+const hideFooter = () => (isShow.value = false);
+const showFooter = () => (isShow.value = true);
+
+onMounted(() => {
+  window.addEventListener('hideFooter', hideFooter);
+  window.addEventListener('showFooter', showFooter);
+});
+onUnmounted(() => {
+  window.removeEventListener('hideFooter', hideFooter);
+  window.removeEventListener('showFooter', showFooter);
+});
+</script>
+
 <template>
-  <footer class="footer">
+  <footer v-if="isShow" class="footer">
     <div class="container">
       <div class="footer__content-wrapper">
         <div>
