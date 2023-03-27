@@ -12,6 +12,8 @@
   "modal": {
     "username": "ім'я користувача",
     "password": "пароль",
+    "confirm_password": "підтвердьте пароль",
+    "email": "електронна пошта",
     "not_reg": "не зареєстрований?",
     "sign_up": "зареєструватися зараз",
     "login_btn": "увійти",
@@ -45,6 +47,16 @@
     "lobbies": "мульті лоббі",
     "streams": "стримів",
     "connect_button": "як підключитися"
+  },
+  "register": {
+    "registration": "Реєстрація",
+    "post_registration": "Ласкаво просимо на sakuru.pw!",
+    "note": "підказка",
+    "note_message": "Будь ласка, активуйте свій обліковий запис, увійшовши з гри.", 
+    "step": "крок",
+    "continue": "продовжити",
+    "back": "назад",
+    "already_have_account": "Є обліковий запис? Увійти"
   },
   "meta": {
     "contacts": {

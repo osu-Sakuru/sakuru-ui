@@ -15,9 +15,7 @@ onUnmounted(() => window.removeEventListener('scroll', scrollHandler));
     <div class="container">
       <div class="header__wrapper">
         <div class="navigation__wrapper">
-          <a class="logo" href="#">
-            <img src="@/assets/svg/logo.svg" alt="sakuru-logo" />
-          </a>
+          <AppLogo />
           <nav>
             <ul class="nav__list">
               <li class="nav__link">
@@ -66,11 +64,6 @@ onUnmounted(() => window.removeEventListener('scroll', scrollHandler));
   display: flex;
   align-items: center;
   margin-right: 10px;
-}
-
-.logo {
-  height: 84px;
-  margin-right: 24px;
 }
 
 .nav__list {
