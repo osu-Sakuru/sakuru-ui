@@ -1752,10 +1752,12 @@ pify@^3.0.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
   integrity sha512-C3FsVNH1udSEX48gGX1xfvwTWfsYWj5U+8/uK15BGzIGrKoUpghX8hWZwa/OFnakBiiVNmBvemTJR5mcy7iPcg==
 
-pinia-plugin-persistedstate@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-3.0.2.tgz#c604591442d23ba3a86eaf8156f019812d59038e"
-  integrity sha512-84vPyUhPA/8Pr+1mT1ioNb2d8z4tvdgYRqMQf8xyauOVBKjo0ZcRBwPQBV7ZAJG43Kwar43nXG2jU+ZMvAFFRQ==
+pinia-plugin-persistedstate-2@^2.0.14:
+  version "2.0.14"
+  resolved "https://registry.yarnpkg.com/pinia-plugin-persistedstate-2/-/pinia-plugin-persistedstate-2-2.0.14.tgz#fa188eb3a5ccaf589eb4b4db4e6923597fd0fdce"
+  integrity sha512-IsBTVhzaaJWm3woUPezW6cZYVkXML2PqTzBwGn9yfvSq4zc+jHAdBLfaOr7uOdIrVMMA12dLClrb6FBI4x6Zzw==
+  dependencies:
+    shvl "^3.0.0"
 
 pinia@^2.0.28:
   version "2.0.30"
@@ -1942,6 +1944,11 @@ shell-quote@^1.6.1:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.8.0.tgz#20d078d0eaf71d54f43bd2ba14a1b5b9bfa5c8ba"
   integrity sha512-QHsz8GgQIGKlRi24yFc6a6lN69Idnx634w49ay6+jA5yFh7a1UY+4Rp6HPx/L/1zcEDPEij8cIsiqR6bQsE5VQ==
+
+shvl@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/shvl/-/shvl-3.0.0.tgz#63b8e888730c24a779f8c574305924a144efc35e"
+  integrity sha512-5IomAM3ykE/g9K9L6lhODc+TpCuN03rrhlboegeKyyfh66DDdpRD5JN37DYhNHH+RaYjiIDx64K/Ms/xQYOR5w==
 
 side-channel@^1.0.4:
   version "1.0.4"

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import NotificationErr from '../NotificationErr/NotificationErr.vue';
 
 const emits = defineEmits(['close']);
 const suka = "ssawe;mafwlm;kfwelmfwkl;flkewm\nasdl,adas";

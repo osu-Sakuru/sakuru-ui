@@ -11,7 +11,7 @@ export const useUserStore = defineStore('user', {
     ({
       isLoggedIn: false,
       user: {},
-      language: LANGUAGES.get(DEFAULT_LOCALE),
+      language: Object.assign({}, LANGUAGES.get(DEFAULT_LOCALE)),
     } as StateOptions),
   getters: {},
   actions: {
@@ -54,5 +54,4 @@ export const useUserStore = defineStore('user', {
       }
     },
   },
-  persist: true,
 });

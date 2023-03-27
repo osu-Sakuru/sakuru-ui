@@ -1,6 +1,6 @@
 import { createApp, type Component } from 'vue';
 import { createPinia } from 'pinia';
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
+import { createPersistedStatePlugin } from 'pinia-plugin-persistedstate-2';
 
 import App from './App.vue';
 import router from './router';
@@ -21,7 +21,9 @@ export const banchoApi = axios.create({
 const app = createApp(App);
 const pinia = createPinia();
 
-pinia.use(piniaPluginPersistedstate);
+pinia.use((ctx) => {
+  createPersistedStatePlugin()(ctx);
+});
 
 app.use(pinia);
 

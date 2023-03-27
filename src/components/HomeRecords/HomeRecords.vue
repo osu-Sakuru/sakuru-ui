@@ -11,8 +11,6 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
     },
   },
 );
-
-console.log(serverRecords);
 </script>
 
 <template>
