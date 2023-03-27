@@ -128,20 +128,17 @@ results.value.push(...mockArr); // mock
     >
       <button
         @click="modalHandler"
-        :class="{ 'modalActive': modalActive, 'log__btn-hover': hover }"
+        :class="{ modalActive: modalActive, 'log__btn-hover': hover }"
         class="btn"
       >
         {{ $t('navbar.login') }}
       </button>
       <i
         @click="modalHandler"
-        :class="{ 'modalActive': modalActive, 'log__btn-hover': hover }"
+        :class="{ modalActive: modalActive, 'log__btn-hover': hover }"
         class="log__icon"
       ></i>
-      <AppModal
-        v-if="modalActive"
-        @close="modalHandler"
-      />
+      <AppModal v-if="modalActive" @close="modalHandler" />
     </div>
   </div>
 </template>

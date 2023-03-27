@@ -4,9 +4,15 @@ import AppHeader from '@/components/AppHeader/AppHeader.vue';
 import AppFooter from './components/AppFooter/AppFooter.vue';
 import i18n from '@/locales/locales.main';
 import { useUserStore } from './stores/user';
+import { onMounted } from 'vue';
 
 const userStore = useUserStore();
 i18n.global.locale.value = userStore.language.value;
+
+onMounted(() => {
+  window.dispatchEvent(new Event('showHeader'));
+  window.dispatchEvent(new Event('showFooter'));
+});
 </script>
 
 <template>

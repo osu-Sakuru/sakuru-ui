@@ -2,8 +2,8 @@
 import { backendApi } from '@/main';
 import { useUserStore } from '@/stores/user';
 
-const serverStats = await backendApi.get('/server_stats');
-const streamers = await backendApi.get('/twitch/streamers');
+const { data: serverStats } = await backendApi.get('/statistics/server_stats');
+// const streamers = await backendApi.get('/twitch/streamers');
 
 const userStore = useUserStore();
 </script>
@@ -13,27 +13,27 @@ const userStore = useUserStore();
     <div class="container">
       <div class="hero__wrapper">
         <div class="hero">
-          <h1>{{ $t('loggedin_welcome') }} {{ userStore.user.name }}</h1>
+          <h1>{{ $t('home_loggedin.welcome') }} {{ userStore.user.name }}</h1>
         </div>
         <div class="hero__info">
           <div class="hero__stats">
             <ul class="hero__list">
               <li class="hero__item hero__item-1">
                 <span>{{
-                  $t('loggedin_online', serverStats.data.players_online)
+                  $t('home_loggedin.online', serverStats.players_online)
                 }}</span>
                 <h3>
-                  {{ serverStats.data.players_online }}
-                  {{ $t('loggedin_players') }}
+                  {{ serverStats.players_online }}
+                  {{ $t('home_loggedin.players') }}
                 </h3>
               </li>
               <li class="hero__item hero__item-2">
-                <span>{{ $t('loggedin_lobbies') }}</span>
-                <h3>{{ serverStats.data.multiplayer_matches }}</h3>
+                <span>{{ $t('home_loggedin.lobbies') }}</span>
+                <h3>{{ serverStats.multiplayer_matches }}</h3>
               </li>
               <li class="hero__item hero__item-3">
-                <span>{{ $t('loggedin_streams') }}</span>
-                <h3>{{ streamers.data.total }}</h3>
+                <span>{{ $t('home_loggedin.streams') }}</span>
+                <h3>{{ 228 }}</h3>
               </li>
             </ul>
           </div>
@@ -43,7 +43,7 @@ const userStore = useUserStore();
               :noHover="true"
               class="actions__connect"
             >
-              {{ $t('loggedin_connect_button') }}
+              {{ $t('home_loggedin.connect_button') }}
             </SocialButton>
             <SocialButton
               :iconUrl="`url('src/assets/svg/discord-icon.svg')`"

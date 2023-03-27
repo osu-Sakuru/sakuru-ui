@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 
 const emits = defineEmits(['close']);
-const suka = "ssawe;mafwlm;kfwelmfwkl;flkewm\nasdl,adas";
+const suka = 'ssawe;mafwlm;kfwelmfwkl;flkewm\nasdl,adas';
 
 const showPass = ref(false);
 const showPasshandler = () => {
@@ -22,7 +22,12 @@ const showPasshandler = () => {
           </div>
           <div class="modal__input">
             <label for="password">{{ $t('modal.password') }}</label>
-            <input ref="passInput" name="password" class="modal__input" :type="showPass ? 'text' : 'password'" />
+            <input
+              ref="passInput"
+              name="password"
+              class="modal__input"
+              :type="showPass ? 'text' : 'password'"
+            />
             <i @click="showPasshandler" :class="{ 'show-pass': showPass }"></i>
           </div>
           <div class="modal__btns-wrapper">
