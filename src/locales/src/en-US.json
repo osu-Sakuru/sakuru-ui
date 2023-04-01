@@ -12,6 +12,8 @@
   "modal": {
     "username": "username",
     "password": "password",
+    "confirm_password": "confirm password",
+    "email": "e-mail",
     "not_reg": "not registered?",
     "sign_up": "sign up now",
     "login_btn": "login",
@@ -45,6 +47,16 @@
     "lobbies": "multiplayer lobbies",
     "streams": "livestreams",
     "connect_button": "how to connect"
+  },
+  "register": {
+    "registration": "Registration",
+    "post_registration": "Welcome to sakuru.pw!",
+    "note": "hint",
+    "note_message": "Please, activate your account by logging in from the game.", 
+    "step": "step",
+    "continue": "continue",
+    "back": "back",
+    "already_have_account": "Have an account? Sign in"
   },
   "meta": {
     "contacts": {
