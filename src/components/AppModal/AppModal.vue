@@ -30,12 +30,20 @@ const showPasshandler = () => {
               <img src="@/assets/svg/modal-hand.svg" alt="hand" />
               <span class="modal__sign-up">
                 <span>{{ $t('modal.not_reg') }}</span>
-                <a href="">{{ $t('modal.sign_up') }}</a>
+                <RouterLink @click="emits('close')" to="/register">{{
+                  $t('modal.sign_up')
+                }}</RouterLink>
               </span>
             </div>
             <button>login</button>
           </div>
-          <a class="modal__forgot" href="">{{ $t('modal.forgot') }}</a>
+          <RouterLink
+            @click="emits('close')"
+            class="modal__forgot"
+            to="/forgot"
+          >
+            {{ $t('modal.forgot') }}</RouterLink
+          >
         </form>
       </div>
     </div>
@@ -183,6 +191,11 @@ const showPasshandler = () => {
     line-height: 27px;
     text-decoration: none;
     color: $main-hover;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $secondary;
+    }
   }
 }
 
@@ -195,5 +208,10 @@ const showPasshandler = () => {
   line-height: 25px;
   text-decoration: none;
   color: $main-hover;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $secondary;
+  }
 }
 </style>
