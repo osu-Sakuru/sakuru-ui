@@ -18,6 +18,11 @@ const props = defineProps({
     default: '',
     required: true,
   },
+  modelValue: {
+    type: String,
+    default: '',
+    required: true,
+  },
 });
 
 const showPass = ref(false);
@@ -29,9 +34,21 @@ const showPasshandler = () => {
 <template>
   <div class="form__input">
     <label :for="props.name">{{ $t(`modal.${props.name}`) }}</label>
-    <input v-if="!props.forPasswd" :name="props.name" type="text" />
+    <input
+      v-if="!props.forPasswd"
+      :value="modelValue"
+      @input="
+        $emit('update:modelValue', ($event.target as HTMLInputElement).value)
+      "
+      :name="props.name"
+      type="text"
+    />
     <input
       v-if="props.forPasswd"
+      :value="modelValue"
+      @input="
+        $emit('update:modelValue', ($event.target as HTMLInputElement).value)
+      "
       :name="props.name"
       :type="showPass ? 'text' : 'password'"
     />

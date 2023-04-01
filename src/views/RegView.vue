@@ -1,8 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import FormStep from '@/components/FormStep/FormStep.vue';
 
 const step = ref(1);
+onMounted(() => {
+  window.dispatchEvent(new Event('hideHeader'));
+  window.dispatchEvent(new Event('hideFooter'));
+});
+onUnmounted(() => {
+  window.dispatchEvent(new Event('showHeader'));
+  window.dispatchEvent(new Event('showFooter'));
+});
 </script>
 
 <template>
@@ -58,7 +66,7 @@ const step = ref(1);
         $t('register.already_have_account')
       }}</RouterLink>
     </form>
-    <AppLogo class="reg__logo"/>
+    <AppLogo class="reg__logo" />
   </div>
 </template>
 

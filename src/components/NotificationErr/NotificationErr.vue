@@ -38,7 +38,9 @@ const reverseAnimation = props.onLeft
   padding: 20px;
   background-color: #ff6969;
   animation: show ease;
-  animation-duration: 1.2s;
+  animation-duration: 0.5s;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 @keyframes show {
