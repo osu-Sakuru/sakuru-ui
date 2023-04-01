@@ -1,18 +1,69 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import NotificationErr from '../NotificationErr/NotificationErr.vue';
+import { NotificatonTypes, type Error } from '../../interfaces/error.interface';
+import { useUserStore } from '@/stores/user';
+import { useRouter } from 'vue-router';
+
+const userStore = useUserStore();
+const errors = ref<Error[]>([]);
+const router = useRouter();
 
 const emits = defineEmits(['close']);
-const wat = 'asdasdas';
+
+const username = ref('');
+const password = ref('');
+
+const handleLogin = async () => {
+  const res = await userStore.login(username.value, password.value);
+  if (!res) {
+    emits('close');
+    router.push('/home');
+  } else {
+    if (res.response)
+      errors.value.push({
+        message: res.response.data.message,
+        label: 'Re-check your credentials.',
+        type: NotificatonTypes.ERROR,
+      });
+  }
+};
+// watch(username, (newUsername) => {
+//   console.log(newUsername);
+
+//   if (newUsername.length < 3) {
+//     errors.value.push({
+//       message: 'Username must be at least 3 characters.',
+//       label: 'Wrong username.',
+//       type: NotificatonTypes.ERROR,
+//     });
+//   } else {
+//     errors.value = errors.value.filter(
+//       (err) => err.message !== 'Username must be at least 3 characters.',
+//     );
+//   }
+
+//   return true;
+// });
 </script>
 
 <template>
-  <NotificationErr :errMsg="wat ? wat : ''" :onLeft="true" />
+  <NotificationErr
+    v-for="error of errors"
+    :errMsg="error.message"
+    :onLeft="true"
+    :key="error.message"
+  />
   <div @mouseover.stop @mouseout.stop @click="emits('close')" class="modal-bg">
     <div class="container">
       <div class="modal__wrapper" @click.stop>
         <form class="modal">
-          <FormInput :name="'username'"></FormInput>
-          <FormInput :forPasswd="true" :name="'password'"></FormInput>
+          <FormInput v-model="username" :name="'username'"></FormInput>
+          <FormInput
+            v-model="password"
+            :forPasswd="true"
+            :name="'password'"
+          ></FormInput>
           <div class="modal__btns-wrapper">
             <div class="btns">
               <img src="@/assets/svg/modal-hand.svg" alt="hand" />
@@ -23,7 +74,7 @@ const wat = 'asdasdas';
                 }}</RouterLink>
               </span>
             </div>
-            <button>login</button>
+            <button @click.prevent="handleLogin">login</button>
           </div>
           <RouterLink
             @click="emits('close')"

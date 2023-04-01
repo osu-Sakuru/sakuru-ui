@@ -2,8 +2,10 @@
 import { ref, type Ref } from 'vue';
 import { useUserStore } from '@/stores/user';
 import AppModal from '@/components/AppModal/AppModal.vue';
+import { useRouter } from 'vue-router';
 
 const userStore = useUserStore();
+const router = useRouter();
 
 const isSearching = ref(false);
 const searchBar = ref<null | { focus: () => null; blur: () => null }>(null);
@@ -111,12 +113,19 @@ results.value.push(...mockArr); // mock
           :class="{ 'menu-hover': menuActive }"
           class="btn actions__btn-account"
         >
-          Account
+          {{ userStore.user.name }}
         </button>
-        <img src="@/assets/svg/avatar-placeholder.svg" alt="avatar" />
+        <img :src="'https://a.dev.lol/' + userStore.user.id" alt="avatar" />
         <ul v-show="menuActive" class="actions__btn-list searchbar__results">
           <!-- same as searching results, wait for marks design -->
-          <li>Suka</li>
+          <li
+            @click.prevent="
+              userStore.logout();
+              router.push('/');
+            "
+          >
+            Logout
+          </li>
         </ul>
       </div>
     </div>

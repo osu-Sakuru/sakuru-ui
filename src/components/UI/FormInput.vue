@@ -2,6 +2,7 @@
 import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'FormInput',
+  emits: ['update:modelValue'],
 });
 </script>
 
@@ -18,11 +19,7 @@ const props = defineProps({
     default: '',
     required: true,
   },
-  modelValue: {
-    type: String,
-    default: '',
-    required: true,
-  },
+  modelValue: String,
 });
 
 const showPass = ref(false);
@@ -36,7 +33,6 @@ const showPasshandler = () => {
     <label :for="props.name">{{ $t(`modal.${props.name}`) }}</label>
     <input
       v-if="!props.forPasswd"
-      :value="modelValue"
       @input="
         $emit('update:modelValue', ($event.target as HTMLInputElement).value)
       "
@@ -45,7 +41,6 @@ const showPasshandler = () => {
     />
     <input
       v-if="props.forPasswd"
-      :value="modelValue"
       @input="
         $emit('update:modelValue', ($event.target as HTMLInputElement).value)
       "

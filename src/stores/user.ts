@@ -1,9 +1,10 @@
+import type { IErrorResponse } from '@/interfaces/errorResponse.interface';
 import type { StateOptions } from '@/interfaces/stateOptions.interface';
 import type { User } from '@/interfaces/user.interface';
 import { DEFAULT_LOCALE } from '@/locales';
 import { LANGUAGES } from '@/locales/locales.defaults';
 import { backendApi } from '@/main';
-import type { AxiosResponse } from 'axios';
+import type { AxiosError, AxiosResponse } from 'axios';
 import { defineStore } from 'pinia';
 
 export const useUserStore = defineStore('user', {
@@ -15,7 +16,10 @@ export const useUserStore = defineStore('user', {
     } as StateOptions),
   getters: {},
   actions: {
-    async login(username: string, password: string): Promise<void> {
+    async login(
+      username: string,
+      password: string,
+    ): Promise<AxiosError<IErrorResponse> | void> {
       try {
         const request: AxiosResponse<User> = await backendApi.post(
           '/auth/login',
@@ -30,27 +34,16 @@ export const useUserStore = defineStore('user', {
 
           this.isLoggedIn = true;
         } else {
-          console.log('Wotefak mazafak xD');
+          console.log(request);
         }
       } catch (error: unknown) {
-        console.log(error);
+        return error as AxiosError<IErrorResponse>;
       }
     },
-    async logout(): Promise<void> {
-      try {
-        const request: AxiosResponse<void> = await backendApi.get(
-          '/auth/logout',
-        );
-
-        if (request && request.status < 400) {
-          this.user = {} as User;
-
-          this.isLoggedIn = false;
-        } else {
-          console.log('Wotefak mazafak xD');
-        }
-      } catch (error) {
-        console.log(error);
+    logout(): void {
+      if (this.isLoggedIn) {
+        this.user = {} as User;
+        this.isLoggedIn = false;
       }
     },
   },

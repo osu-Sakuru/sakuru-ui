@@ -41,7 +41,6 @@ router.beforeEach(
       if (!userStore.isLoggedIn) {
         next({
           path: '/login',
-          query: { redirect: to.fullPath },
         });
       } else {
         next();
@@ -50,7 +49,6 @@ router.beforeEach(
       if (userStore.isLoggedIn) {
         next({
           path: '/home',
-          query: { redirect: to.fullPath },
         });
       } else {
         next();
