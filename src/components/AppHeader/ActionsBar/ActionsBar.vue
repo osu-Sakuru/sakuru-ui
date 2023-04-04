@@ -42,12 +42,12 @@ const mockArr = [
   { id: 2, value: 'ladno' },
 ];
 
-results.value.push(...mockArr); // mock
+results.value.push(...mockArr);
 </script>
 
 <template>
   <div class="actions__wrapper">
-    <a href="#" class="support__icon">
+    <RouterLink to="/support" class="support__icon">
       <svg
         width="25"
         height="25"
@@ -70,7 +70,7 @@ results.value.push(...mockArr); // mock
           stroke-linejoin="round"
         />
       </svg>
-    </a>
+    </RouterLink>
     <div
       @click="searchingHandler"
       class="searchbox"
@@ -97,7 +97,7 @@ results.value.push(...mockArr); // mock
           >
             <!-- TODO: finish with styling result -->
             <!-- idk how result supposed to look, i'll think about it later -->
-            <a @click.stop href="https://google.com"> {{ result.value }} </a>``
+            <RouterLink @click.stop to="/"> {{ result.value }} </RouterLink>``
           </li>
         </ul>
       </form>
@@ -115,7 +115,15 @@ results.value.push(...mockArr); // mock
         >
           {{ userStore.user.name }}
         </button>
-        <img :src="'https://a.dev.lol/' + userStore.user.id" alt="avatar" />
+        <img
+          class="actions__avatar"
+          :src="'https://a.gowno.py/' + userStore.user.id"
+          alt="avatar"
+        />
+        <i
+          :class="{ 'menu-hover': menuActive }"
+          class="actions__account-icon"
+        ></i>
         <ul v-show="menuActive" class="actions__btn-list searchbar__results">
           <!-- same as searching results, wait for marks design -->
           <li
@@ -302,16 +310,25 @@ results.value.push(...mockArr); // mock
   .actions__btn-wrapper > div {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-right: 35px;
   }
 
-  .actions__btn-account {
-    margin-right: 10px;
+  .actions__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
 
+  .actions__account-icon {
     &::after {
-      left: 130px;
-      top: 6px;
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
       background: url('@/assets/svg/down-arrow.svg');
+      transition: transform 0.3s ease;
     }
   }
 

@@ -23,30 +23,47 @@ const props = defineProps({
 });
 
 const showPass = ref(false);
+const isAnimate = ref(false);
+const input = ref<HTMLInputElement>();
+
 const showPasshandler = () => {
   showPass.value = !showPass.value;
+};
+
+const animatePlaceholder = () => {
+  if (input.value?.value.length == 0) {
+    isAnimate.value = !isAnimate.value;
+  }
 };
 </script>
 
 <template>
   <div class="form__input">
-    <label :for="props.name">{{ $t(`modal.${props.name}`) }}</label>
     <input
       v-if="!props.forPasswd"
+      @focus="animatePlaceholder"
+      @focusout="animatePlaceholder"
       @input="
         $emit('update:modelValue', ($event.target as HTMLInputElement).value)
       "
       :name="props.name"
       type="text"
+      ref="input"
     />
     <input
       v-if="props.forPasswd"
+      @focus="animatePlaceholder"
+      @focusout="animatePlaceholder"
       @input="
         $emit('update:modelValue', ($event.target as HTMLInputElement).value)
       "
       :name="props.name"
       :type="showPass ? 'text' : 'password'"
+      ref="input"
     />
+    <label :class="{ animate: isAnimate }" :for="props.name">{{
+      $t(`modal.${props.name}`)
+    }}</label>
     <i
       v-if="props.forPasswd"
       @click="showPasshandler"
@@ -64,14 +81,16 @@ const showPasshandler = () => {
 
   label {
     position: absolute;
-    top: 18px;
+    top: 28px;
     left: 32px;
     z-index: 1;
     font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 19px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 33px;
     color: $secondary;
+    transition: all 0.3s ease-out;
+    pointer-events: none;
   }
 
   input {
@@ -85,6 +104,14 @@ const showPasshandler = () => {
     outline: none;
     background: #484848;
     color: #ffffff;
+  }
+
+  .animate {
+    top: 18px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
   }
 
   i {
