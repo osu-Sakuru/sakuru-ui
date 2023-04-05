@@ -58,7 +58,7 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 .fixed {
   position: fixed;
-  z-index: 10;
+  z-index: $zindex-fixed;
   width: 100%;
   transition: all 0.3s ease-out;
 }
