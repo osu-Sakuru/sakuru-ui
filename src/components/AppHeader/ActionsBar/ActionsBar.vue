@@ -155,7 +155,7 @@ results.value.push(...mockArr);
         :class="{ modalActive: modalActive, 'log__btn-hover': hover }"
         class="log__icon"
       ></i>
-      <AppModal v-if="modalActive" @close="modalHandler" />
+      <AppModal :show="modalActive" @close="modalHandler" />
     </div>
   </div>
 </template>
@@ -244,7 +244,7 @@ results.value.push(...mockArr);
   .active {
     width: 250px;
     opacity: 1;
-    z-index: 12;
+    z-index: $zindex-dropdown;
     pointer-events: all;
     border: solid 1px $main-hover;
   }
@@ -371,7 +371,7 @@ results.value.push(...mockArr);
 
   .modalActive {
     position: relative;
-    z-index: 20;
+    z-index: $zindex-ontop;
   }
 }
 </style>

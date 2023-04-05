@@ -10,6 +10,9 @@ const errors = ref<Error[]>([]);
 const router = useRouter();
 
 const emits = defineEmits(['close']);
+const props = defineProps({
+  show: Boolean
+});
 
 const username = ref('');
 const password = ref('');
@@ -47,49 +50,50 @@ const handleLogin = async () => {
 // });
 </script>
 
-// TODO: make an appear animation
 <template>
-  <NotificationErr
-    v-for="error of errors"
-    :errMsg="error.message"
-    :onLeft="true"
-    :key="error.message"
-  />
-  <div @mouseover.stop @mouseout.stop @click="emits('close')" class="modal-bg">
-    <div class="container">
-      <div class="modal__wrapper" @click.stop>
-        <form class="modal">
-          <FormInput v-model="username" :name="'username'"></FormInput>
-          <FormInput
-            v-model="password"
-            :forPasswd="true"
-            :name="'password'"
-          ></FormInput>
-          <div class="modal__btns-wrapper">
-            <div class="btns">
-              <img src="@/assets/svg/modal-hand.svg" alt="hand" />
-              <span class="modal__sign-up">
-                <span>{{ $t('modal.not_reg') }}</span>
-                <RouterLink @click="emits('close')" to="/register">{{
-                  $t('modal.sign_up')
-                }}</RouterLink>
-              </span>
+    <NotificationErr
+      v-for="error of errors"
+      :errMsg="error.message"
+      :onLeft="true"
+      :key="error.message"
+    />
+    <Transition name="fade">
+    <div v-if="props.show" @mouseover.stop @mouseout.stop @click="emits('close')" class="modal-bg">
+      <div class="container">
+        <div class="modal__wrapper" @click.stop>
+          <form class="modal">
+            <FormInput v-model="username" :name="'username'"></FormInput>
+            <FormInput
+              v-model="password"
+              :forPasswd="true"
+              :name="'password'"
+            ></FormInput>
+            <div class="modal__btns-wrapper">
+              <div class="btns">
+                <img src="@/assets/svg/modal-hand.svg" alt="hand" />
+                <span class="modal__sign-up">
+                  <span>{{ $t('modal.not_reg') }}</span>
+                  <RouterLink @click="emits('close')" to="/register">{{
+                    $t('modal.sign_up')
+                  }}</RouterLink>
+                </span>
+              </div>
+              <button @click.prevent="handleLogin">
+                {{ $t('modal.login_btn') }}
+              </button>
             </div>
-            <button @click.prevent="handleLogin">
-              {{ $t('modal.login_btn') }}
-            </button>
-          </div>
-          <RouterLink
-            @click="emits('close')"
-            class="modal__forgot"
-            to="/forgot"
-          >
-            {{ $t('modal.forgot') }}</RouterLink
-          >
-        </form>
+            <RouterLink
+              @click="emits('close')"
+              class="modal__forgot"
+              to="/forgot"
+            >
+              {{ $t('modal.forgot') }}</RouterLink
+            >
+          </form>
+        </div>
       </div>
     </div>
-  </div>
+    </Transition>
 </template>
 
 <style lang="scss" scoped>
@@ -99,7 +103,7 @@ const handleLogin = async () => {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 19;
+  z-index: $zindex-modal;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -206,5 +210,36 @@ const handleLogin = async () => {
   &:hover {
     color: $secondary;
   }
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+.fade-leave-active {
+  transition-delay: 0.15s;
+}
+
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+// animation for modal__wrapper
+.fade-enter-active .modal__wrapper,
+.fade-leave-active .modal__wrapper { 
+  transition: all 0.3s ease-in-out;
+}
+
+.fade-enter-active .modal__wrapper {
+	transition-delay: 0.15s; // delay before modal__wrapper appear
+}
+
+.fade-enter-from .modal__wrapper,
+.fade-leave-to .modal__wrapper {
+  transform: translateY(30px);
+  opacity: 0.001;
 }
 </style>
