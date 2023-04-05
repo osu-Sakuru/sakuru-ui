@@ -47,6 +47,7 @@ const handleLogin = async () => {
 // });
 </script>
 
+// TODO: make an appear animation
 <template>
   <NotificationErr
     v-for="error of errors"
@@ -74,7 +75,9 @@ const handleLogin = async () => {
                 }}</RouterLink>
               </span>
             </div>
-            <button @click.prevent="handleLogin">login</button>
+            <button @click.prevent="handleLogin">
+              {{ $t('modal.login_btn') }}
+            </button>
           </div>
           <RouterLink
             @click="emits('close')"
@@ -182,6 +185,7 @@ const handleLogin = async () => {
     text-decoration: none;
     color: $main-hover;
     transition: color 0.3s ease;
+
     &:hover {
       color: $secondary;
     }
@@ -198,6 +202,7 @@ const handleLogin = async () => {
   text-decoration: none;
   color: $main-hover;
   transition: color 0.3s ease;
+
   &:hover {
     color: $secondary;
   }

@@ -28,7 +28,7 @@ onUnmounted(() => {
     <div class="container">
       <div class="header__wrapper">
         <div class="navigation__wrapper">
-          <AppLogo />
+          <AppLogo class="logo" />
           <nav>
             <ul class="nav__list">
               <li class="nav__link">
@@ -77,6 +77,10 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   margin-right: 10px;
+}
+
+.logo {
+  margin-right: 24px;
 }
 
 .nav__list {

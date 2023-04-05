@@ -45,7 +45,7 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
 .lang__switcher {
   position: relative;
   display: flex;
-  min-width: 150px;
+  min-width: 170px;
   flex-direction: column;
   margin-left: 20px;
   cursor: default;
@@ -93,7 +93,6 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
 
 .lang__options > li {
   display: flex;
-  min-width: 150px;
   align-items: center;
   padding: 10px;
   font-style: normal;
@@ -102,6 +101,10 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
   line-height: 25px;
   background-color: #232322;
   cursor: pointer;
+
+  &:hover {
+    background-color: #363635;
+  }
 }
 
 .lang__options > li:nth-child(1) {

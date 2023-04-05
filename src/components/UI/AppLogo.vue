@@ -13,6 +13,5 @@ export default {
 <style lang="scss" scoped>
 .logo {
   height: 84px;
-  margin-right: 24px;
 }
 </style>

@@ -27,7 +27,6 @@ const props = defineProps({
 </template>
 
 <style lang="scss" scoped>
-// TODO: clean up
 .icon {
   display: flex;
   flex-direction: column;
