@@ -1,11 +1,20 @@
 <script setup lang="ts">
-import { ref, type Ref } from 'vue';
+import { inject, onMounted, onUnmounted, ref, type Ref } from 'vue';
 import { useUserStore } from '@/stores/user';
 import AppModal from '@/components/AppModal/AppModal.vue';
 import { useRouter } from 'vue-router';
+import { backendApi } from '@/main';
+import type { User } from '@/interfaces/user.interface';
+import type { AxiosError, AxiosResponse } from 'axios';
+import type { VueCookies } from 'vue-cookies';
 
 const userStore = useUserStore();
 const router = useRouter();
+const cookies = inject<VueCookies>('$cookies');
+
+const userAvatar = userStore.isLoggedIn
+  ? `https://a.${import.meta.env.VITE_APP_DOMAIN}/${userStore.user.id}`
+  : `https://a.${import.meta.env.VITE_APP_DOMAIN}/default.jpg`;
 
 const isSearching = ref(false);
 const searchBar = ref<null | { focus: () => null; blur: () => null }>(null);
@@ -27,22 +36,44 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
 const modalHandler = () => (modalActive.value = !modalActive.value);
 const hoverHandler = () => (hover.value = !hover.value);
 
-interface ISearchResult {
-  id: number;
-  value: string;
-}
+const results: Ref<User[]> = ref([]);
+const currentTimeout = ref<null | number>(null);
+const search = (query: string) => {
+  if (currentTimeout.value) return;
 
-const results: Ref<ISearchResult[]> = ref([]);
+  if (query.length < 3) {
+    results.value = [];
+    return;
+  }
 
-const mockArr = [
-  { id: 2, value: 'ladno' },
-  { id: 2, value: 'ladno' },
-  { id: 2, value: 'ladno' },
-  { id: 2, value: 'ladno' },
-  { id: 2, value: 'ladno' },
-];
+  currentTimeout.value = setTimeout(() => {
+    backendApi
+      .get('/users/search', {
+        params: {
+          query: query,
+          limit: 10,
+        },
+      })
+      .catch((reason: AxiosError<User[]>) => {
+        results.value = [];
+        return reason.response!;
+      })
+      .then((response: AxiosResponse<User[]>) => {
+        results.value = response.data;
+      })
+      .finally(() => {
+        currentTimeout.value = null;
+      });
+  }, 350);
+};
 
-results.value.push(...mockArr);
+onMounted(() => {
+  modalActive.value = false;
+});
+
+onUnmounted(() => {
+  modalActive.value = false;
+});
 </script>
 
 <template>
@@ -72,6 +103,7 @@ results.value.push(...mockArr);
       </svg>
     </RouterLink>
     <div
+      v-if="userStore.isLoggedIn"
       @click="searchingHandler"
       class="searchbox"
       :class="{ hover: !isSearching }"
@@ -82,8 +114,13 @@ results.value.push(...mockArr);
         :class="{ active: isSearching }"
       >
         <input
-          @focusout="searchingHandler"
+          @focusout="
+            searchingHandler();
+            results = [];
+            ($event.target as HTMLInputElement).value = '';
+          "
           @click.stop
+          @input="search(($event.target as HTMLInputElement).value)"
           ref="searchBar"
           class="searchbar"
           type="text"
@@ -91,13 +128,14 @@ results.value.push(...mockArr);
         />
         <ul class="searchbar__results">
           <li
-            v-show="isSearching"
-            v-for="result in results.slice(0, 5)"
+            v-show="isSearching && results.length > 0"
+            v-for="result in results"
             :key="result.id"
           >
-            <!-- TODO: finish with styling result -->
-            <!-- idk how result supposed to look, i'll think about it later -->
-            <RouterLink @click.stop to="/"> {{ result.value }} </RouterLink>``
+            <img :src="userAvatar" classs="actions__avatar" />
+            <RouterLink :to="'/users/' + result.id">
+              {{ result.name }}
+            </RouterLink>
           </li>
         </ul>
       </form>
@@ -115,11 +153,7 @@ results.value.push(...mockArr);
         >
           {{ userStore.user.name }}
         </button>
-        <img
-          class="actions__avatar"
-          :src="'https://a.gowno.py/' + userStore.user.id"
-          alt="avatar"
-        />
+        <img class="actions__avatar" :src="userAvatar" alt="avatar" />
         <i
           :class="{ 'menu-hover': menuActive }"
           class="actions__account-icon"
@@ -129,7 +163,8 @@ results.value.push(...mockArr);
           <li
             @click.prevent="
               userStore.logout();
-              router.push('/');
+              router.replace('/');
+              cookies?.remove('token');
             "
           >
             Logout

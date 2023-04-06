@@ -7,6 +7,7 @@ import router from './router';
 import components from '@/components/UI';
 import i18n from './locales/locales.main';
 import axios from 'axios';
+import VueCookies from 'vue-cookies';
 
 export const backendApi = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_ENDPOINT,
@@ -25,6 +26,7 @@ pinia.use((ctx) => {
   createPersistedStatePlugin()(ctx);
 });
 
+app.use(VueCookies);
 app.use(pinia);
 
 import { useUserStore } from '@/stores/user';

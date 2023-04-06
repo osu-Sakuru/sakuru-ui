@@ -11,7 +11,7 @@ const router = useRouter();
 
 const emits = defineEmits(['close']);
 const props = defineProps({
-  show: Boolean
+  show: Boolean,
 });
 
 const username = ref('');
@@ -51,14 +51,20 @@ const handleLogin = async () => {
 </script>
 
 <template>
-    <NotificationErr
-      v-for="error of errors"
-      :errMsg="error.message"
-      :onLeft="true"
-      :key="error.message"
-    />
-    <Transition name="fade">
-    <div v-if="props.show" @mouseover.stop @mouseout.stop @click="emits('close')" class="modal-bg">
+  <NotificationErr
+    v-for="error of errors"
+    :errMsg="error.message"
+    :onLeft="true"
+    :key="error.message"
+  />
+  <Transition name="fade">
+    <div
+      v-if="props.show"
+      @mouseover.stop
+      @mouseout.stop
+      @click="emits('close')"
+      class="modal-bg"
+    >
       <div class="container">
         <div class="modal__wrapper" @click.stop>
           <form class="modal">
@@ -93,7 +99,7 @@ const handleLogin = async () => {
         </div>
       </div>
     </div>
-    </Transition>
+  </Transition>
 </template>
 
 <style lang="scss" scoped>
@@ -212,7 +218,8 @@ const handleLogin = async () => {
   }
 }
 
-.fade-enter-from, .fade-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 
@@ -220,21 +227,23 @@ const handleLogin = async () => {
   transition-delay: 0.15s;
 }
 
-.fade-enter-to, .fade-leave-from {
+.fade-enter-to,
+.fade-leave-from {
   opacity: 1;
 }
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.5s ease;
 }
 
 // animation for modal__wrapper
 .fade-enter-active .modal__wrapper,
-.fade-leave-active .modal__wrapper { 
+.fade-leave-active .modal__wrapper {
   transition: all 0.3s ease-in-out;
 }
 
 .fade-enter-active .modal__wrapper {
-	transition-delay: 0.15s; // delay before modal__wrapper appear
+  transition-delay: 0.15s; // delay before modal__wrapper appear
 }
 
 .fade-enter-from .modal__wrapper,
