@@ -69,22 +69,14 @@ router.beforeEach(
             userStore.isLoggedIn = true;
             userStore.user = response.data;
 
-            if (to.meta.requiresAuth === undefined) {
-              next({
-                path: '/home',
-              });
-            } else {
-              next();
-            }
+            next({
+              path: '/home',
+            });
           });
       } else if (userStore.isLoggedIn) {
-        if (to.meta.requiresAuth === undefined) {
-          next({
-            path: '/home',
-          });
-        } else {
-          next();
-        }
+        next({
+          path: '/home',
+        });
       } else {
         next();
       }
