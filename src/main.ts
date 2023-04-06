@@ -32,6 +32,7 @@ app.use(pinia);
 import { useUserStore } from '@/stores/user';
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
 const userStore = useUserStore();
+const { $cookies } = app.config.globalProperties;
 
 router.beforeEach(
   (
@@ -41,17 +42,49 @@ router.beforeEach(
   ) => {
     if (to.matched.some((record) => record.meta.requiresAuth)) {
       if (!userStore.isLoggedIn) {
-        next({
-          path: '/login',
-        });
+        if ($cookies?.get('token')) {
+          backendApi
+            .get('/users/me')
+            .catch()
+            .then((response) => {
+              userStore.isLoggedIn = true;
+              userStore.user = response.data;
+
+              next();
+            });
+        } else {
+          next({
+            path: '/',
+          });
+        }
       } else {
         next();
       }
     } else {
-      if (userStore.isLoggedIn) {
-        next({
-          path: '/home',
-        });
+      if ($cookies?.get('token') && !userStore.isLoggedIn) {
+        backendApi
+          .get('/users/me')
+          .catch()
+          .then((response) => {
+            userStore.isLoggedIn = true;
+            userStore.user = response.data;
+
+            if (to.meta.requiresAuth === undefined) {
+              next({
+                path: '/home',
+              });
+            } else {
+              next();
+            }
+          });
+      } else if (userStore.isLoggedIn) {
+        if (to.meta.requiresAuth === undefined) {
+          next({
+            path: '/home',
+          });
+        } else {
+          next();
+        }
       } else {
         next();
       }
