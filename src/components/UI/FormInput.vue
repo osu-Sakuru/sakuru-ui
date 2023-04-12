@@ -83,7 +83,7 @@ const animatePlaceholder = () => {
     position: absolute;
     top: 28px;
     left: 32px;
-    z-index: 1;
+    z-index: $zindex-dropdown;
     font-style: normal;
     font-weight: 600;
     font-size: 24px;

@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { inject, onMounted, onUnmounted, ref, type Ref } from 'vue';
+import { inject, onMounted, onUnmounted, ref } from 'vue';
 import { useUserStore } from '@/stores/user';
-import AppModal from '@/components/AppModal/AppModal.vue';
 import { useRouter } from 'vue-router';
-import { backendApi } from '@/main';
-import type { User } from '@/interfaces/user.interface';
-import type { AxiosError, AxiosResponse } from 'axios';
 import type { VueCookies } from 'vue-cookies';
+import AppModal from '@/components/AppModal/AppModal.vue';
+import SearchBar from '@/components/SearchBar/SearchBar.vue';
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -16,56 +14,13 @@ const userAvatar = userStore.isLoggedIn
   ? `https://a.${import.meta.env.VITE_APP_DOMAIN}/${userStore.user.id}`
   : `https://a.${import.meta.env.VITE_APP_DOMAIN}/default.jpg`;
 
-const isSearching = ref(false);
-const searchBar = ref<null | { focus: () => null; blur: () => null }>(null);
 const menuActive = ref(false);
 const modalActive = ref(false);
 const hover = ref(false);
 
-const searchingHandler = () => {
-  // can't follow the link without timeout
-  setTimeout(() => {
-    isSearching.value = !isSearching.value;
-    if (isSearching.value) {
-      searchBar.value?.focus();
-    }
-  }, 100);
-};
-
 const menuHandler = () => (menuActive.value = !menuActive.value);
 const modalHandler = () => (modalActive.value = !modalActive.value);
 const hoverHandler = () => (hover.value = !hover.value);
-
-const results: Ref<User[]> = ref([]);
-const currentTimeout = ref<null | number>(null);
-const search = (query: string) => {
-  if (currentTimeout.value) return;
-
-  if (query.length < 3) {
-    results.value = [];
-    return;
-  }
-
-  currentTimeout.value = setTimeout(() => {
-    backendApi
-      .get('/users/search', {
-        params: {
-          query: query,
-          limit: 10,
-        },
-      })
-      .catch((reason: AxiosError<User[]>) => {
-        results.value = [];
-        return reason.response!;
-      })
-      .then((response: AxiosResponse<User[]>) => {
-        results.value = response.data;
-      })
-      .finally(() => {
-        currentTimeout.value = null;
-      });
-  }, 350);
-};
 
 onMounted(() => {
   modalActive.value = false;
@@ -102,44 +57,7 @@ onUnmounted(() => {
         />
       </svg>
     </RouterLink>
-    <div
-      v-if="userStore.isLoggedIn"
-      @click="searchingHandler"
-      class="searchbox"
-      :class="{ hover: !isSearching }"
-    >
-      <form
-        @submit.prevent
-        class="searchbar__wrapper"
-        :class="{ active: isSearching }"
-      >
-        <input
-          @focusout="
-            searchingHandler();
-            results = [];
-            ($event.target as HTMLInputElement).value = '';
-          "
-          @click.stop
-          @input="search(($event.target as HTMLInputElement).value)"
-          ref="searchBar"
-          class="searchbar"
-          type="text"
-          placeholder="Start typing . . ."
-        />
-        <ul class="searchbar__results">
-          <li
-            v-show="isSearching && results.length > 0"
-            v-for="result in results"
-            :key="result.id"
-          >
-            <img :src="userAvatar" classs="actions__avatar" />
-            <RouterLink :to="'/users/' + result.id">
-              {{ result.name }}
-            </RouterLink>
-          </li>
-        </ul>
-      </form>
-    </div>
+    <SearchBar />
     <div
       @mouseover="menuHandler"
       @mouseout="menuHandler"
@@ -201,125 +119,15 @@ onUnmounted(() => {
   align-items: center;
 
   .support__icon {
-    margin-right: 58px;
+    margin-right: 70px;
     cursor: pointer;
     transform: translateY(3px);
-    transition: all 0.5 ease;
+    transition: all 0.3s ease;
 
     &:hover {
       svg > path {
         stroke: $main-hover;
         transition: all 0.3s ease;
-      }
-    }
-  }
-
-  .searchbox {
-    position: relative;
-    margin-right: 24px;
-
-    &::before {
-      content: 'Search';
-      position: absolute;
-      right: 43px;
-      top: 9px;
-      z-index: 11;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 20px;
-      line-height: 27px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      right: 15px;
-      top: 13px;
-      z-index: 12;
-      opacity: 100;
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-      background: url('@/assets/svg/search-icon-hover.svg') no-repeat;
-      transition: all 0.3s ease;
-    }
-  }
-
-  .searchbar__wrapper {
-    position: relative;
-    display: flex;
-    width: 120px;
-    height: 100%;
-    opacity: 0;
-    pointer-events: none;
-    background-color: #484848;
-    transition: all 0.5s ease;
-  }
-
-  .searchbar {
-    width: 100%;
-    padding: 10px 45px 10px 10px;
-    font-style: normal;
-    font-weight: 400;
-    border: none;
-    outline: none;
-    color: $main;
-    background: transparent;
-
-    ::placeholder {
-      font-style: normal;
-      font-weight: 600;
-      font-size: 24px;
-      line-height: 33px;
-    }
-  }
-
-  .active {
-    width: 250px;
-    opacity: 1;
-    z-index: $zindex-dropdown;
-    pointer-events: all;
-    border: solid 1px $main-hover;
-  }
-
-  .hover {
-    &::after {
-      background: url('@/assets/svg/search-icon.svg') no-repeat;
-    }
-
-    &:hover {
-      color: $main-hover;
-    }
-
-    &:hover::after {
-      background: url('@/assets/svg/search-icon-hover.svg') no-repeat;
-    }
-  }
-
-  .searchbar__results {
-    position: absolute;
-    top: 102%;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    background-color: beige;
-
-    li {
-      background-color: #484848;
-      transition: all 0.1s ease;
-
-      &:hover {
-        background-color: #3e3e3e;
-      }
-
-      a {
-        display: block;
-        padding: 5px;
-        text-decoration: none;
-        color: $main;
       }
     }
   }
@@ -383,7 +191,7 @@ onUnmounted(() => {
   }
 
   .log__icon {
-    transform: translateY(2px);
+    transform: translateY(1px);
     cursor: pointer;
 
     &::after {

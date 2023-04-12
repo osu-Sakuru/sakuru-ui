@@ -112,7 +112,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 2;
+    z-index: $zindex-dropdown;
     display: block;
     padding: 15px 35px;
     font-style: normal;
@@ -127,7 +127,6 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
     display: block;
     width: 100%;
     height: 100%;
@@ -146,7 +145,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
 
   h3 {
     position: relative;
-    z-index: 2;
+    z-index: $zindex-dropdown;
     margin: 0 0 10px 0;
     font-style: normal;
     font-weight: 600;
@@ -156,7 +155,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
 
   a {
     position: relative;
-    z-index: 2;
+    z-index: $zindex-dropdown;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;

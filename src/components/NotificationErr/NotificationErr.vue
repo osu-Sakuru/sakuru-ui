@@ -33,7 +33,7 @@ const reverseAnimation = props.onLeft
   top: 40px;
   right: 0;
   left: v-bind(side);
-  z-index: 100;
+  z-index: $zindex-notification;
   width: 400px;
   padding: 20px;
   background-color: #ff6969;
