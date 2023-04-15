@@ -68,7 +68,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 140px 0 75px 0;
+  padding: 140px 0 75px;
   text-align: center;
 }
 
@@ -146,7 +146,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
   h3 {
     position: relative;
     z-index: $zindex-dropdown;
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
     font-style: normal;
     font-weight: 600;
     font-size: 32px;

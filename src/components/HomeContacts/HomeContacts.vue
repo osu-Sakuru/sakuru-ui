@@ -32,7 +32,7 @@
 <style lang="scss" scoped>
 .contacts {
   position: relative;
-  padding: 160px 0 205px 0;
+  padding: 160px 0 205px;
 
   &::after {
     content: '';

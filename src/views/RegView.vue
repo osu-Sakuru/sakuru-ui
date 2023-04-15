@@ -203,7 +203,7 @@ onUnmounted(() => {
 }
 
 .reg__title {
-  margin: 160px 0 50px 0;
+  margin: 160px 0 50px;
   font-style: normal;
   font-weight: 700;
   font-size: 64px;
@@ -218,8 +218,8 @@ onUnmounted(() => {
 }
 
 .reg__note {
-  padding: 18px 32px 18px;
-  margin: 0 0 8px 0;
+  padding: 18px 32px;
+  margin: 0 0 8px;
   text-align: left;
   color: #ffffff;
   background-color: #262626;
@@ -324,7 +324,7 @@ onUnmounted(() => {
   // animation
   .initial {
     width: 0;
-    padding: 26px 0px 26px 0px;
+    padding: 26px 0px;
     margin: 0;
     opacity: 0;
     overflow: hidden;
