@@ -62,7 +62,7 @@ const userStore = useUserStore();
 // Hero section
 .hero__bg {
   position: relative;
-  padding: 190px 0 75px 0;
+  padding: 190px 0 75px;
 
   &::after {
     content: '';

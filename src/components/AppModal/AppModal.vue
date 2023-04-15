@@ -161,7 +161,7 @@ const handleLogin = async () => {
 .modal__btns-wrapper {
   display: flex;
   justify-content: space-between;
-  margin: 8px 0 35px 0;
+  margin: 8px 0 35px;
 }
 
 .btns {
