@@ -1,3 +1,4 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/osu-sakuru/sakuru-ui/badge)](https://www.codefactor.io/repository/github/osu-sakuru/sakuru-ui)
 # Sakuru-UI
 
 I will **NOT** provide any help nor advices how to use this on your project, I made this repo public because I feel like some people might use structure, or general idea of my project for their own projects.
