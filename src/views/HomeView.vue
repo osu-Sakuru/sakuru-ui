@@ -173,7 +173,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
 // Hero section
 .hero__bg {
   position: relative;
-  padding: 250px 0 75px 0;
+  padding: 250px 0 75px;
 
   &::after {
     content: '';
@@ -385,7 +385,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
     justify-content: center;
 
     blockquote {
-      margin: 0 0 21px 0;
+      margin: 0 0 21px;
       font-style: italic;
       font-weight: 700;
       font-size: 24px;
