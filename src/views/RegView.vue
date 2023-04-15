@@ -1,8 +1,91 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 import FormStep from '@/components/FormStep/FormStep.vue';
+import { object, string, ValidationError, ref as YupRef } from 'yup';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n({ useScope: 'global' });
 const step = ref(1);
+
+const errors = ref<{
+  [key: string]: string;
+}>({});
+
+const username = ref(''),
+  email = ref(''),
+  password = ref(''),
+  confirm_password = ref('');
+const regsiterShape = object().shape({
+  username: string()
+    .required(t('register.validation.username.required'))
+    .min(3, t('register.validation.username.min'))
+    .max(16, t('register.validation.username.max'))
+    .test({
+      name: 'is-valid',
+      test: (value) => {
+        return /^[a-zA-Z0-9_]+$/.test(value);
+      },
+      message: t('register.validation.username.invalid'),
+    })
+    .test({
+      name: 'is-unique',
+      test: (value) => {
+        // TODO: check if username is unique
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(true);
+          }, 1000);
+        });
+      },
+      message: t('register.validation.username.unique'),
+    }),
+  email: string()
+    .required(t('register.validation.email.required'))
+    .email(t('register.validation.email.invalid')),
+  password: string()
+    .required(t('register.validation.password.required'))
+    .min(8, t('register.validation.password.min'))
+    .max(32, t('register.validation.password.max')),
+  confirm_password: string()
+    .required(t('register.validation.password.confirmed'))
+    .oneOf([YupRef('password')], t('register.validation.password.confirmed')),
+});
+
+const validate = (field: string) => {
+  regsiterShape
+    .validateAt(field, {
+      username: username.value,
+      email: email.value,
+      password: password.value,
+      confirm_password: confirm_password.value,
+    })
+    .catch((err: ValidationError) => {
+      errors.value[field] = err.message;
+    })
+    .then((res) => {
+      if (res) delete errors.value[field];
+    });
+};
+
+const register = async () => {
+  regsiterShape
+    .validate(
+      {
+        username: username.value,
+        email: email.value,
+        password: password.value,
+        confirm_password: confirm_password.value,
+      },
+      { abortEarly: false },
+    )
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 onMounted(() => {
   window.dispatchEvent(new Event('hideHeader'));
   window.dispatchEvent(new Event('hideFooter'));
@@ -24,12 +107,34 @@ onUnmounted(() => {
     </h1>
     <form class="reg__form" @submit.prevent>
       <FormStep v-if="step == 1">
-        <FormInput :name="'username'" />
-        <FormInput :name="'email'" />
+        <FormInput
+          v-model="username"
+          :name="'username'"
+          @keyup="validate('username')"
+          @blur="validate('username')"
+        />
+        <FormInput
+          v-model="email"
+          :name="'email'"
+          @keyup="validate('email')"
+          @blur="validate('email')"
+        />
       </FormStep>
       <FormStep v-if="step == 2">
-        <FormInput :forPasswd="true" :name="'password'" />
-        <FormInput :forPasswd="true" :name="'confirm_password'" />
+        <FormInput
+          v-model="password"
+          :forPasswd="true"
+          :name="'password'"
+          @keyup="validate('password')"
+          @blur="validate('password')"
+        />
+        <FormInput
+          v-model="confirm_password"
+          :forPasswd="true"
+          :name="'confirm_password'"
+          @keyup="validate('confirm_password')"
+          @blur="validate('confirm_password')"
+        />
       </FormStep>
       <FormStep v-if="step == 3">
         <div class="reg__note">
@@ -54,7 +159,7 @@ onUnmounted(() => {
           </div>
         </div>
         <button
-          @click="step++"
+          @click="step <= 2 ? step++ : register()"
           :disabled="step == 3"
           class="reg__btn btn-continue"
           :class="{ initial: step == 3 }"
@@ -62,6 +167,10 @@ onUnmounted(() => {
           {{ $t('register.continue') }}
         </button>
       </div>
+      <!-- TODO: add error messages -->
+      <ul v-for="error of errors" :key="error">
+        <li>{{ error }}</li>
+      </ul>
       <RouterLink class="reg__link" to="/">{{
         $t('register.already_have_account')
       }}</RouterLink>

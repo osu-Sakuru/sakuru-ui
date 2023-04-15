@@ -14,7 +14,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
         <div class="hero__wrapper">
           <div class="hero">
             <span>{{ $t('home_loggedout.welcome') }}</span>
-            <h1>Sakuru.pw</h1>
+            <h1>Sakuru</h1>
             <h2>{{ $t('home_loggedout.welcome_text') }}</h2>
           </div>
           <div class="hero__info">

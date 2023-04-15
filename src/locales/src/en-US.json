@@ -50,13 +50,32 @@
   },
   "register": {
     "registration": "Registration",
-    "post_registration": "Welcome to sakuru.pw!",
+    "post_registration": "Welcome to Sakuru!",
     "note": "hint",
     "note_message": "Please, activate your account by logging in from the game.", 
     "step": "step",
     "continue": "continue",
     "back": "back",
-    "already_have_account": "Have an account? Sign in"
+    "already_have_account": "Have an account? Sign in",
+    "validation": {
+      "username": {
+        "required": "Username is required.",
+        "min": "Username must be at least 3 characters long.",
+        "max": "Username must be at most 16 characters long.",
+        "unique": "Username is already taken.",
+        "invalid": "The username must contain Latin letters and numbers only."
+      },
+      "password": {
+        "required": "Password is required.",
+        "min": "Password must be at least 8 characters long.",
+        "max": "Password must be at most 32 characters long.",
+        "confirmed": "Password confirmation does not match."
+      },
+      "email": {
+        "required": "Email is required.",
+        "invalid": "Email must be a valid email address."
+      }
+    }
   },
   "meta": {
     "contacts": {

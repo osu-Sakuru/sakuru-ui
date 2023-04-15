@@ -59,23 +59,12 @@ const search = (query: string) => {
 </script>
 
 <template>
-  <div
-    @mouseover="hover = true"
-    @mouseout="hover = false"
-    
-    class="searchbox"
-  >
+  <div @mouseover="hover = true" @mouseout="hover = false" class="searchbox">
     <div @click="searchingHandler" class="search__button-wrapper">
-      <button
-        class="search__button"
-        :class="{ hover: hover }"
-      >
+      <button class="search__button" :class="{ hover: hover }">
         {{ $t('navbar.search') }}
       </button>
-      <i
-        class="search__icon"
-        :class="{ hover: hover || isSearching }"
-      ></i>
+      <i class="search__icon" :class="{ hover: hover || isSearching }"></i>
     </div>
     <form
       @submit.prevent
@@ -101,9 +90,7 @@ const search = (query: string) => {
           v-show="isSearching && results.length > 0"
           v-for="result in results"
           :key="result.id"
-          @click="
-            results = [];
-          "
+          @click="results = []"
         >
           <RouterLink :to="'/users/' + result.id">
             <img :src="userAvatar" />

@@ -57,7 +57,7 @@ onUnmounted(() => {
         />
       </svg>
     </RouterLink>
-    <SearchBar />
+    <SearchBar v-if="userStore.isLoggedIn"></SearchBar>
     <div
       @mouseover="menuHandler"
       @mouseout="menuHandler"

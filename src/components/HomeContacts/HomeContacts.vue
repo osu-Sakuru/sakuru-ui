@@ -14,9 +14,9 @@
         <SocialButton
           :iconUrl="'url(\'src/assets/svg/email-icon.svg\')'"
           class="contacts__btn"
-          href="mailto:team@sakuru.pw"
+          href="mailto:team@sakuru.cc"
         >
-          team@sakuru.pw
+          team@sakuru.cc
         </SocialButton>
         <SocialButton
           :iconUrl="'url(\'src/assets/svg/youtube-icon.svg\')'"

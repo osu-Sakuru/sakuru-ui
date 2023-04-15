@@ -60,7 +60,7 @@ onUnmounted(() => {
       <div class="container">
         <div class="footer__copyright">
           <div>
-            &copy; 2020-{{ new Date().getFullYear() }} Sakuru.pw is not
+            &copy; 2020-{{ new Date().getFullYear() }} Sakuru.cc is not
             affiliated with ppy Pty Ltd in any way. "osu!" is a trademark of ppy
             Pty Ltd.
           </div>
