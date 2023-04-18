@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import NotificationErr from '../NotificationErr/NotificationErr.vue';
+import AppNotification from '@/components/AppNotification/AppNotification.vue';
 import { NotificatonTypes, type Error } from '../../interfaces/error.interface';
 import { useUserStore } from '@/stores/user';
 import { useRouter } from 'vue-router';
@@ -51,10 +51,10 @@ const handleLogin = async () => {
 </script>
 
 <template>
-  <NotificationErr
+  <AppNotification
     v-for="error of errors"
-    :errMsg="error.message"
-    :onLeft="true"
+    :message="error.message"
+    :onLeftSide="true"
     :key="error.message"
   />
   <Transition name="fade">

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
-import FormStep from '@/components/FormStep/FormStep.vue';
 import { object, string, ValidationError, ref as YupRef } from 'yup';
 import { useI18n } from 'vue-i18n';
+import FormStep from '@/components/FormStep/FormStep.vue';
+import AppNotification from '@/components/AppNotification/AppNotification.vue';
 
 const { t } = useI18n({ useScope: 'global' });
 const step = ref(1);
@@ -94,6 +95,7 @@ onUnmounted(() => {
   window.dispatchEvent(new Event('showHeader'));
   window.dispatchEvent(new Event('showFooter'));
 });
+
 </script>
 
 <template>
@@ -144,7 +146,7 @@ onUnmounted(() => {
       </FormStep>
       <div class="reg__stepper">
         <button
-          @click="step--"
+          @click="() => { step--; errors = {}}"
           :disabled="step == 1"
           class="reg__btn btn-back initial"
           :class="{ 'initial-fadeIn': step == 2 }"
@@ -160,16 +162,26 @@ onUnmounted(() => {
         </div>
         <button
           @click="step <= 2 ? step++ : register()"
-          :disabled="step == 3"
+          :disabled="Object.keys(errors).length > 0"
           class="reg__btn btn-continue"
-          :class="{ initial: step == 3 }"
+          :class="{ initial: step == 3, disabled: Object.keys(errors).length > 0 }"
         >
           {{ $t('register.continue') }}
         </button>
       </div>
       <!-- TODO: add error messages -->
-      <ul v-for="error of errors" :key="error">
-        <li>{{ error }}</li>
+      <ul class="reg__error-wrapper">
+        <TransitionGroup name="list">
+          <li
+            v-for="error of errors"
+            :key="error"
+          >
+            <AppNotification
+              :floating="false"
+              :message="error"
+            />
+          </li>
+        </TransitionGroup>
       </ul>
       <RouterLink class="reg__link" to="/">{{
         $t('register.already_have_account')
@@ -180,13 +192,14 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss" scoped>
+
 .reg-bg {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 
   &::after {
     content: '';
@@ -320,6 +333,14 @@ onUnmounted(() => {
       background-color: #d6007f;
     }
   }
+  
+  .disabled { 
+    background-color: #B5B5B5;
+
+    &:hover {
+      background-color: #B5B5B5;
+    }
+  }
 
   // animation
   .initial {
@@ -368,6 +389,34 @@ onUnmounted(() => {
       }
     }
   }
+}
+
+
+.reg__error-wrapper {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  
+  & > li {
+    margin-top: 10px;
+  }
+}
+
+.list-move,
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.list-leave-active {
+  width: 540px;
+  position: absolute;
 }
 
 .reg__logo {
