@@ -7,6 +7,8 @@ interface ImportMetaEnv {
     readonly VITE_BACKEND_ENDPOINT: string
     readonly VITE_BANCHO_ENDPOINT: string
     readonly VITE_BANCHO_API: string
+
+    readonly VITE_RECAPTCHA_V3_SITE_KEY: string
     // more env variables...
 }
   

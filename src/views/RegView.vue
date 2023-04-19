@@ -5,7 +5,9 @@ import { useI18n } from 'vue-i18n';
 import FormStep from '@/components/FormStep/FormStep.vue';
 import AppNotification from '@/components/AppNotification/AppNotification.vue';
 import { backendApi } from '@/main';
+import { useChallengeV3 } from 'vue-recaptcha';
 
+const { execute } = useChallengeV3('submit');
 const { t } = useI18n({ useScope: 'global' });
 const step = ref(1);
 
@@ -70,18 +72,6 @@ const regsiterShape = object().shape({
         return /^[a-zA-Z0-9_]+$/.test(value);
       },
       message: t('register.validation.username.invalid'),
-    })
-    .test({
-      name: 'is-unique',
-      test: (value) => {
-        // TODO: check if username is unique
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            resolve(true);
-          }, 1000);
-        });
-      },
-      message: t('register.validation.username.unique'),
     }),
   email: string()
     .required(t('register.validation.email.required'))
@@ -114,7 +104,7 @@ const validate = (field: string) => {
     });
 };
 
-const register = async () => {
+const register = () => {
   regsiterShape
     .validate(
       {
@@ -125,19 +115,26 @@ const register = async () => {
       },
       { abortEarly: false },
     )
-    .then((res) => {
+    .then(async (res) => {
       if (res && canContinue()) {
-        backendApi
-          .post('/register', {
-            username: username.value,
-            email: email.value,
-            password: password.value,
+        execute()
+          .catch(() => {
+            errors.value['register'] = t('register.validation.captcha');
           })
-          .catch((err) => {
-            errors.value['register'] = err.response.data.message;
-          })
-          .then((res) => {
-            if (res) step.value = 3;
+          .then((captchaResponse) => {
+            backendApi
+              .post('/register', {
+                username: username.value,
+                email: email.value,
+                password: password.value,
+                captcha: captchaResponse,
+              })
+              .catch((err) => {
+                errors.value['register'] = t(err.response.data.message);
+              })
+              .then((res) => {
+                if (res) step.value = 3;
+              });
           });
       }
     })

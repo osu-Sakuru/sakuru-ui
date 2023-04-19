@@ -7,6 +7,7 @@ import { useUserStore } from './stores/user';
 import { inject, onMounted } from 'vue';
 import { backendApi } from './main';
 import type { VueCookies } from 'vue-cookies';
+import { useRecaptchaProvider } from 'vue-recaptcha';
 
 const userStore = useUserStore();
 const cookies = inject<VueCookies>('$cookies');
@@ -29,6 +30,8 @@ onMounted(() => {
     },
   );
 });
+
+useRecaptchaProvider();
 </script>
 
 <template>

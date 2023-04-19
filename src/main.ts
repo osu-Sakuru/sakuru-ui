@@ -1,6 +1,12 @@
-import { createApp, type Component } from 'vue';
+import { createApp, type Component, onMounted } from 'vue';
 import { createPinia } from 'pinia';
 import { createPersistedStatePlugin } from 'pinia-plugin-persistedstate-2';
+import {
+  createPlugin,
+  defineScriptLoader,
+  toQueryString,
+  type RecaptchaParams,
+} from 'vue-recaptcha';
 
 import App from './App.vue';
 import router from './router';
@@ -19,6 +25,30 @@ export const banchoApi = axios.create({
   timeout: 5000,
 });
 
+const loadScript = defineScriptLoader(
+  (options: {
+    recaptchaApiURL: string;
+    params: RecaptchaParams;
+    nonce: string | undefined;
+  }) => {
+    return () => {
+      onMounted(() => {
+        const script = document.createElement('script');
+
+        script.src = `${options.recaptchaApiURL}?${toQueryString(
+          options.params,
+        )}`;
+        script.async = true;
+        script.defer = true;
+
+        if (options.nonce) script.nonce = options.nonce;
+
+        document.head.append(script);
+      });
+    };
+  },
+);
+
 const app = createApp(App);
 const pinia = createPinia();
 
@@ -28,6 +58,9 @@ pinia.use((ctx) => {
 
 app.use(VueCookies);
 app.use(pinia);
+app.use(createPlugin(loadScript), {
+  v3SiteKey: import.meta.env.VITE_RECAPTCHA_V3_SITE_KEY,
+});
 
 import { useUserStore } from '@/stores/user';
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
