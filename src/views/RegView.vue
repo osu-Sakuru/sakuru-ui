@@ -1,21 +1,64 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref, watch } from 'vue';
 import { object, string, ValidationError, ref as YupRef } from 'yup';
 import { useI18n } from 'vue-i18n';
 import FormStep from '@/components/FormStep/FormStep.vue';
 import AppNotification from '@/components/AppNotification/AppNotification.vue';
+import { backendApi } from '@/main';
 
 const { t } = useI18n({ useScope: 'global' });
 const step = ref(1);
 
+watch(
+  () => step.value,
+  () => {
+    isEnabledButton.value = canContinue();
+  },
+);
+
 const errors = ref<{
   [key: string]: string;
 }>({});
+const isEnabledButton = ref(false);
 
 const username = ref(''),
   email = ref(''),
   password = ref(''),
   confirm_password = ref('');
+
+const canContinue = () => {
+  switch (step.value) {
+    case 1:
+      if (
+        Object.keys(errors.value).length === 0 &&
+        username.value !== '' &&
+        email.value !== ''
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    case 2:
+      if (
+        Object.keys(errors.value).length === 0 &&
+        password.value !== '' &&
+        confirm_password.value !== ''
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    case 3:
+      if (Object.keys(errors.value).length === 0) {
+        return true;
+      } else {
+        return false;
+      }
+    default:
+      return false;
+  }
+};
+
 const regsiterShape = object().shape({
   username: string()
     .required(t('register.validation.username.required'))
@@ -65,6 +108,9 @@ const validate = (field: string) => {
     })
     .then((res) => {
       if (res) delete errors.value[field];
+    })
+    .finally(() => {
+      isEnabledButton.value = canContinue();
     });
 };
 
@@ -80,10 +126,25 @@ const register = async () => {
       { abortEarly: false },
     )
     .then((res) => {
-      console.log(res);
+      if (res && canContinue()) {
+        backendApi
+          .post('/register', {
+            username: username.value,
+            email: email.value,
+            password: password.value,
+          })
+          .catch((err) => {
+            errors.value['register'] = err.response.data.message;
+          })
+          .then((res) => {
+            if (res) step.value = 3;
+          });
+      }
     })
-    .catch((err) => {
-      console.log(err);
+    .catch((err: ValidationError) => {
+      err.inner.forEach((error) => {
+        if (error.path) errors.value[error.path] = error.message;
+      });
     });
 };
 
@@ -95,7 +156,6 @@ onUnmounted(() => {
   window.dispatchEvent(new Event('showHeader'));
   window.dispatchEvent(new Event('showFooter'));
 });
-
 </script>
 
 <template>
@@ -146,7 +206,12 @@ onUnmounted(() => {
       </FormStep>
       <div class="reg__stepper">
         <button
-          @click="() => { step--; errors = {}}"
+          @click="
+            () => {
+              step--;
+              errors = {};
+            }
+          "
           :disabled="step == 1"
           class="reg__btn btn-back initial"
           :class="{ 'initial-fadeIn': step == 2 }"
@@ -161,10 +226,10 @@ onUnmounted(() => {
           </div>
         </div>
         <button
-          @click="step <= 2 ? step++ : register()"
-          :disabled="Object.keys(errors).length > 0"
+          @click="step !== 2 ? step++ : register()"
+          :disabled="!isEnabledButton"
           class="reg__btn btn-continue"
-          :class="{ initial: step == 3, disabled: Object.keys(errors).length > 0 }"
+          :class="{ initial: step == 3, disabled: !isEnabledButton }"
         >
           {{ $t('register.continue') }}
         </button>
@@ -172,14 +237,8 @@ onUnmounted(() => {
       <!-- TODO: add error messages -->
       <ul class="reg__error-wrapper">
         <TransitionGroup name="list">
-          <li
-            v-for="error of errors"
-            :key="error"
-          >
-            <AppNotification
-              :floating="false"
-              :message="error"
-            />
+          <li v-for="error of errors" :key="error">
+            <AppNotification :floating="false" :message="error" />
           </li>
         </TransitionGroup>
       </ul>
@@ -187,12 +246,13 @@ onUnmounted(() => {
         $t('register.already_have_account')
       }}</RouterLink>
     </form>
-    <AppLogo class="reg__logo" />
+    <transition>
+      <AppLogo class="reg__logo" />
+    </transition>
   </div>
 </template>
 
 <style lang="scss" scoped>
-
 .reg-bg {
   position: relative;
   display: flex;
@@ -333,12 +393,12 @@ onUnmounted(() => {
       background-color: #d6007f;
     }
   }
-  
-  .disabled { 
-    background-color: #B5B5B5;
+
+  .disabled {
+    background-color: #b5b5b5;
 
     &:hover {
-      background-color: #B5B5B5;
+      background-color: #b5b5b5;
     }
   }
 
@@ -391,12 +451,11 @@ onUnmounted(() => {
   }
 }
 
-
 .reg__error-wrapper {
   list-style: none;
   padding: 0;
   margin: 10px 0;
-  
+
   & > li {
     margin-top: 10px;
   }

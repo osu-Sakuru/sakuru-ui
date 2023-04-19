@@ -26,6 +26,8 @@ const showPass = ref(false);
 const isAnimate = ref(false);
 const input = ref<HTMLInputElement>();
 
+props.modelValue === '' ? (isAnimate.value = false) : (isAnimate.value = true);
+
 const showPasshandler = () => {
   showPass.value = !showPass.value;
 };
@@ -47,6 +49,7 @@ const animatePlaceholder = () => {
         $emit('update:modelValue', ($event.target as HTMLInputElement).value)
       "
       :name="props.name"
+      :value="props.modelValue"
       type="text"
       ref="input"
     />
@@ -58,6 +61,7 @@ const animatePlaceholder = () => {
         $emit('update:modelValue', ($event.target as HTMLInputElement).value)
       "
       :name="props.name"
+      :value="props.modelValue"
       :type="showPass ? 'text' : 'password'"
       ref="input"
     />

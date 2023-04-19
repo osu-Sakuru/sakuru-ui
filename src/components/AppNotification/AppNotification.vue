@@ -58,15 +58,15 @@ const reverseAnimation = props.onLeftSide
   width: 100%;
   padding: 20px;
   text-align: left;
-  background-color: #DC7392;
+  background-color: #dc7392;
   animation: show ease;
   animation-duration: 0.5s;
-  
+
   i {
     width: 30px;
     height: 30px;
     flex-shrink: 0;
-    background: url("@/assets/svg/notification-error.svg") no-repeat;
+    background: url('@/assets/svg/notification-error.svg') no-repeat;
     background-size: contain;
   }
 
@@ -101,6 +101,4 @@ const reverseAnimation = props.onLeftSide
     opacity: 100;
   }
 }
-
-
 </style>

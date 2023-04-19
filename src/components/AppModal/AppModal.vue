@@ -19,6 +19,7 @@ const password = ref('');
 
 const handleLogin = async () => {
   const res = await userStore.login(username.value, password.value);
+
   if (!res) {
     emits('close');
     router.push('/home');
@@ -31,23 +32,6 @@ const handleLogin = async () => {
       });
   }
 };
-// watch(username, (newUsername) => {
-//   console.log(newUsername);
-
-//   if (newUsername.length < 3) {
-//     errors.value.push({
-//       message: 'Username must be at least 3 characters.',
-//       label: 'Wrong username.',
-//       type: NotificatonTypes.ERROR,
-//     });
-//   } else {
-//     errors.value = errors.value.filter(
-//       (err) => err.message !== 'Username must be at least 3 characters.',
-//     );
-//   }
-
-//   return true;
-// });
 </script>
 
 <template>
