@@ -327,7 +327,7 @@ onUnmounted(() => {
   line-height: 25px;
   text-decoration: none;
   color: $main-hover;
-  transition: color 0.3s ease;
+  transition: color 0.3s linear;
 
   &:hover {
     color: $secondary;
@@ -347,7 +347,7 @@ onUnmounted(() => {
     line-height: 27px;
     border: none;
     outline: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s linear;
   }
   .btn-back {
     position: relative;
@@ -412,7 +412,7 @@ onUnmounted(() => {
     margin: 0;
     opacity: 0;
     overflow: hidden;
-    transition: all 0.6s ease;
+    transition: all 0.3s linear;
   }
 
   .initial-fadeIn {
@@ -427,7 +427,7 @@ onUnmounted(() => {
     align-items: center;
     width: 100%;
     background-color: #344f7f;
-    transition: all 0.5s ease;
+    transition: all 0.3s linear;
 
     div {
       display: flex;
@@ -467,7 +467,7 @@ onUnmounted(() => {
 .list-move,
 .list-enter-active,
 .list-leave-active {
-  transition: all 0.5s ease;
+  transition: all 0.3s linear;
 }
 
 .list-enter-from,
