@@ -115,7 +115,7 @@ const register = () => {
       },
       { abortEarly: false },
     )
-    .then(async (res) => {
+    .then((res) => {
       if (res && canContinue()) {
         execute()
           .catch(() => {
@@ -123,11 +123,12 @@ const register = () => {
           })
           .then((captchaResponse) => {
             backendApi
-              .post('/register', {
+              .post('/users', {
                 username: username.value,
                 email: email.value,
                 password: password.value,
-                captcha: captchaResponse,
+                confirm_password: confirm_password.value,
+                captcha_token: captchaResponse,
               })
               .catch((err) => {
                 errors.value['register'] = t(err.response.data.message);

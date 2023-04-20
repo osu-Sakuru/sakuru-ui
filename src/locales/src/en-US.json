@@ -58,11 +58,14 @@
     "back": "back",
     "already_have_account": "Have an account? Sign in",
     "validation": {
+      "recaptcha": {
+        "invalid": "You didn't pass the captcha. You are a robot, aren't you?"
+      },
       "username": {
         "required": "Username is required.",
         "min": "Username must be at least 3 characters long.",
         "max": "Username must be at most 16 characters long.",
-        "unique": "Username is already taken.",
+        "exists": "Username is already taken.",
         "invalid": "The username must contain Latin letters and numbers only."
       },
       "password": {
@@ -73,7 +76,8 @@
       },
       "email": {
         "required": "Email is required.",
-        "invalid": "Email must be a valid email address."
+        "invalid": "Email must be a valid email address.",
+        "exists": "Email is already taken. Try to login or reset your password."
       }
     }
   },
