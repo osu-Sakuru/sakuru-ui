@@ -1,4 +1,4 @@
-export enum NotificatonTypes {
+export enum NotificationTypes {
   SUCCESS = 'success',
   WARN = 'warn',
   ERROR = 'error',
@@ -8,5 +8,5 @@ export enum NotificatonTypes {
 export type Error = {
   message: string;
   label?: string;
-  type: NotificatonTypes;
+  type: NotificationTypes;
 };
