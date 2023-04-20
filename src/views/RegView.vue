@@ -460,22 +460,21 @@ onUnmounted(() => {
 
   & > .li {
     margin-top: 10px;
-    overflow: hidden;
   }
 }
 
 .list-move,
 .list-enter-active,
 .list-leave-active {
-  transition: all 5s ease;
+  transition: all 0.5s ease;
 }
 
 .list-enter-from,
 .list-leave-to {
   height: 0px;
-  opacity: 0;
-  transform: translateY(-100px);
   margin-top: 0px;
+  opacity: 0;
+  transform: translateX(30px);
 }
 
 .list-leave-from,
@@ -486,10 +485,9 @@ onUnmounted(() => {
 
 .list-leave-active {
   width: 540px;
-  margin-top: 0px;
 }
 
 .reg__logo {
-  margin-top: 170px;
+  margin-top: 70px;
 }
 </style>
