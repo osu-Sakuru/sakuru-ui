@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import AppNotification from '@/components/AppNotification/AppNotification.vue';
-import { NotificatonTypes, type Error } from '../../interfaces/error.interface';
+import { NotificationTypes, type Error } from '../../interfaces/error.interface';
 import { useUserStore } from '@/stores/user';
 import { useRouter } from 'vue-router';
 
@@ -28,7 +28,7 @@ const handleLogin = async () => {
       errors.value.push({
         message: res.response.data.message,
         label: 'Re-check your credentials.',
-        type: NotificatonTypes.ERROR,
+        type: NotificationTypes.ERROR,
       });
   }
 };
@@ -36,6 +36,7 @@ const handleLogin = async () => {
 
 <template>
   <AppNotification
+    :type="'error'"
     v-for="error of errors"
     :message="error.message"
     :onLeftSide="true"

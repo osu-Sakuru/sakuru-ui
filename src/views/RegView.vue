@@ -6,6 +6,7 @@ import FormStep from '@/components/FormStep/FormStep.vue';
 import AppNotification from '@/components/AppNotification/AppNotification.vue';
 import { backendApi } from '@/main';
 import { useChallengeV3 } from 'vue-recaptcha';
+import { NotificationTypes } from "@/interfaces/error.interface";
 
 const { execute } = useChallengeV3('submit');
 const { t } = useI18n({ useScope: 'global' });
@@ -232,21 +233,24 @@ onUnmounted(() => {
           {{ $t('register.continue') }}
         </button>
       </div>
-      <!-- TODO: add error messages -->
-      <ul class="reg__error-wrapper">
-        <TransitionGroup name="list">
-          <li v-for="error of errors" :key="error">
-            <AppNotification :floating="false" :message="error" />
+        <TransitionGroup class="reg__error-wrapper" name="list" tag="ul">
+          <li
+            class="li"
+            v-for="error of errors"
+            :key="error"
+          >
+            <AppNotification
+              :type="NotificationTypes.ERROR"
+              :floating="false"
+              :message="error"
+            />
           </li>
         </TransitionGroup>
-      </ul>
       <RouterLink class="reg__link" to="/">{{
         $t('register.already_have_account')
       }}</RouterLink>
     </form>
-    <transition>
-      <AppLogo class="reg__logo" />
-    </transition>
+    <AppLogo class="reg__logo" />
   </div>
 </template>
 
@@ -257,7 +261,7 @@ onUnmounted(() => {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
 
   &::after {
     content: '';
@@ -452,28 +456,37 @@ onUnmounted(() => {
 .reg__error-wrapper {
   list-style: none;
   padding: 0;
-  margin: 10px 0;
+  margin: 0;
 
-  & > li {
+  & > .li {
     margin-top: 10px;
+    overflow: hidden;
   }
 }
 
 .list-move,
 .list-enter-active,
 .list-leave-active {
-  transition: all 0.5s ease;
+  transition: all 5s ease;
 }
 
 .list-enter-from,
 .list-leave-to {
+  height: 0px;
   opacity: 0;
-  transform: translateX(30px);
+  transform: translateY(-100px);
+  margin-top: 0px;
+}
+
+.list-leave-from,
+.list-enter-to {
+  height: 70px;
+  margin-top: 10px;
 }
 
 .list-leave-active {
   width: 540px;
-  position: absolute;
+  margin-top: 0px;
 }
 
 .reg__logo {

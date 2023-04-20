@@ -2,7 +2,7 @@
 const props = defineProps({
   type: {
     type: String,
-    // required: true,
+    required: true,
   },
   message: {
     type: String,
@@ -17,6 +17,31 @@ const props = defineProps({
     default: false,
   },
 });
+
+const notificationStyle: {
+  [key: string]: {
+    icon: string
+    backgroundColor: string
+  } 
+} = {
+  success: {
+    icon: "url('src/assets/svg/notification-success.svg')",
+    backgroundColor: "#79CF92"
+  },
+  info: {
+    icon: "url('src/assets/svg/notification-info.svg')",
+    backgroundColor: "#81B8D7"
+  },
+  warn: {
+    icon: "url('src/assets/svg/notification-warn.svg')",
+    // backgroundColor: "#DED15D"
+    backgroundColor: "#E9DB61"
+  },
+  error: {
+    icon: "url('src/assets/svg/notification-error.svg')",
+    backgroundColor: "#D26F6F"
+  }
+};
 
 const side = props.onLeftSide ? '0' : 'auto';
 const reverseAnimation = props.onLeftSide
@@ -58,7 +83,7 @@ const reverseAnimation = props.onLeftSide
   width: 100%;
   padding: 20px;
   text-align: left;
-  background-color: #dc7392;
+  background-color: v-bind('notificationStyle[props.type]["backgroundColor"]');
   animation: show ease;
   animation-duration: 0.5s;
 
@@ -66,7 +91,7 @@ const reverseAnimation = props.onLeftSide
     width: 30px;
     height: 30px;
     flex-shrink: 0;
-    background: url('@/assets/svg/notification-error.svg') no-repeat;
+    background: v-bind('notificationStyle[props.type]["icon"]') no-repeat;
     background-size: contain;
   }
 
