@@ -156,6 +156,8 @@ const register = () => {
 
                   socket.on('verify', (message: VerificationMessage) => {
                     if (message.status === 'success') {
+                      if (message.user !== data.id) return;
+
                       execute().then((captchaResponse) => {
                         userStore
                           .login(
