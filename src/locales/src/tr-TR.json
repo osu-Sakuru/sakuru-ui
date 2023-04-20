@@ -9,6 +9,16 @@
     "login": "Giriş Yap",
     "logout": "Çıkış Yap"   
   },
+  "modal": {
+    "username": "kullanıcı adı",
+    "password": "şifre",
+    "confirm_password": "şifreyi onayla",
+    "email": "e-mail",
+    "not_reg": "kayıtlı değilmisin?",
+    "sign_up": "şimdi kaydolun",
+    "login_btn": "giriş yap",
+    "forgot": "Şifreni mi unuttun?"
+  },
   "home_loggedout": {
     "welcome": "Hoş geldin",
     "welcome_text": "osu! sunucusu keyfiniz için yapıldı",
@@ -37,6 +47,39 @@
     "lobbies": "çok oyunculu lobiler",
     "streams": "canlı yayınlar",
     "connect_button": "nasıl bağlanılır"
+  },
+  "register": {
+    "registration": "Kayıt olma",
+    "post_registration": "Sakuru'ya Hoşgelin!",
+    "note": "ipucu",
+    "note_message": "Lütfen oyundan giriş yaparak hesabınızı etkinleştirin.", 
+    "step": "adım",
+    "continue": "devam",
+    "back": "geri",
+    "already_have_account": "Hesabın mı var? Oturum aç",
+    "validation": {
+      "recaptcha": {
+        "invalid": "Captcha'yı geçemedin. Bir robotsun, değil mi?"
+      },
+      "username": {
+        "required": "Kullanıcı adı gereklidir.",
+        "min": "Kullanıcı adı en az 3 karakter uzunluğunda olmalıdır.",
+        "max": "Kullanıcı adı en fazla 16 karakter uzunluğunda olmalıdır.",
+        "exists": "Kullanıcı adı zaten alınmış.",
+        "invalid": "Kullanıcı adı yalnızca Latin harfleri ve rakamlar içermelidir."
+      },
+      "password": {
+        "required": "Şifre gerekli.",
+        "min": "Şifren en az 8 karakter uzunluğunda olmalıdır.",
+        "max": "Şifren en fazla 32 karakter uzunluğunda olmalıdır.",
+        "confirmed": "Şifreler eşleşmiyor."
+      },
+      "email": {
+        "required": "Email gerekli.",
+        "invalid": "Email geçerli bir e-posta adresi olmalıdır.",
+        "exists": "Email zaten alınmış. Giriş yapmayı veya şifrenizi sıfırlamayı deneyin.."
+      }
+    }
   },
   "meta": {
     "contacts": {
