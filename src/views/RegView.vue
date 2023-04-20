@@ -7,10 +7,19 @@ import AppNotification from '@/components/AppNotification/AppNotification.vue';
 import { backendApi } from '@/main';
 import { useChallengeV3 } from 'vue-recaptcha';
 import { NotificationTypes } from '@/interfaces/error.interface';
+import type { AxiosResponse } from 'axios';
+import type { User } from '@/interfaces/user.interface';
+import type { VerificationMessage } from '@/interfaces/verificationMessage.interface';
+import { useUserStore } from '@/stores/user';
+import { io } from 'socket.io-client';
+import { useRouter } from 'vue-router';
 
 const { execute } = useChallengeV3('register');
 const { t } = useI18n({ useScope: 'global' });
 const step = ref(1);
+
+const router = useRouter();
+const userStore = useUserStore();
 
 watch(
   () => step.value,
@@ -134,8 +143,45 @@ const register = () => {
               .catch((err) => {
                 errors.value['register'] = t(err.response.data.message);
               })
-              .then((res) => {
-                if (res) step.value = 3;
+              .then((response: AxiosResponse<User> | void) => {
+                if (response) {
+                  const { data } = response;
+                  step.value = 3;
+
+                  const socket = io(
+                    import.meta.env.VITE_APP_STAGE === 'DEV'
+                      ? import.meta.env.VITE_WEBSOCKET_ENDPOINT
+                      : '',
+                  );
+
+                  socket.on('verify', (message: VerificationMessage) => {
+                    if (message.status === 'success') {
+                      execute().then((captchaResponse) => {
+                        userStore
+                          .login(
+                            username.value,
+                            password.value,
+                            captchaResponse,
+                          )
+                          .then(() => {
+                            router.push('/home');
+                            socket.close();
+                          });
+                      });
+                    } else if (message.status === 'failed') {
+                      errors.value['register'] = 'Something went wrong.';
+
+                      step.value = 2;
+                      socket.close();
+                    }
+                  });
+
+                  socket.on('connect', () => {
+                    socket.emit('verify', {
+                      user: data.id,
+                    });
+                  });
+                }
               });
           });
       }
@@ -467,6 +513,7 @@ onUnmounted(() => {
 .list-move,
 .list-enter-active,
 .list-leave-active {
+  margin-top: 0px;
   transition: all 0.3s linear;
 }
 
@@ -489,6 +536,6 @@ onUnmounted(() => {
 }
 
 .reg__logo {
-  margin-top: 70px;
+  margin-top: 20px;
 }
 </style>
