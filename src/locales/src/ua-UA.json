@@ -86,6 +86,9 @@
       "caption": "Контакти та медіа",
       "discord": "discord спільнота",
       "youtube": "youtube канал"
+    },
+    "recaptcha": {
+      "agreement": "Цей сайт захищено за допомогою reCAPTCHA, і до нього застосовуються&nbsp;<a href='https://policies.google.com/privacy'>Політика конфіденційності</a>&nbsp;та&nbsp;<a href='https://policies.google.com/terms'>Умови надання послуг</a>&nbsp;Google."
     }
   },
   "footer": {

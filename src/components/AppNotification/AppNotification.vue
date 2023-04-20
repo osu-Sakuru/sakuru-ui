@@ -20,27 +20,27 @@ const props = defineProps({
 
 const notificationStyle: {
   [key: string]: {
-    icon: string
-    backgroundColor: string
-  } 
+    icon: string;
+    backgroundColor: string;
+  };
 } = {
   success: {
     icon: "url('src/assets/svg/notification-success.svg')",
-    backgroundColor: "#79CF92"
+    backgroundColor: '#79CF92',
   },
   info: {
     icon: "url('src/assets/svg/notification-info.svg')",
-    backgroundColor: "#81B8D7"
+    backgroundColor: '#81B8D7',
   },
   warn: {
     icon: "url('src/assets/svg/notification-warn.svg')",
     // backgroundColor: "#DED15D"
-    backgroundColor: "#E9DB61"
+    backgroundColor: '#E9DB61',
   },
   error: {
     icon: "url('src/assets/svg/notification-error.svg')",
-    backgroundColor: "#D26F6F"
-  }
+    backgroundColor: '#D26F6F',
+  },
 };
 
 const side = props.onLeftSide ? '0' : 'auto';

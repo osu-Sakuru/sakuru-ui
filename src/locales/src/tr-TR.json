@@ -86,6 +86,9 @@
       "caption": "İletişim ve medya",
       "discord": "discord topluluğu",
       "youtube": "youtube kanalı"
+    },
+    "recaptcha": {
+      "agreement": "Bu site reCAPTCHA tarafından korunmaktadır ve Google&nbsp;<a href='https://policies.google.com/privacy'>Gizlilik Politikası</a>&nbsp;ve&nbsp;<a href='https://policies.google.com/terms'>Hizmet Şartları</a>&nbsp;geçerlidir."
     }
   },
   "footer": {

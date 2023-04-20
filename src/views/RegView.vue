@@ -6,9 +6,9 @@ import FormStep from '@/components/FormStep/FormStep.vue';
 import AppNotification from '@/components/AppNotification/AppNotification.vue';
 import { backendApi } from '@/main';
 import { useChallengeV3 } from 'vue-recaptcha';
-import { NotificationTypes } from "@/interfaces/error.interface";
+import { NotificationTypes } from '@/interfaces/error.interface';
 
-const { execute } = useChallengeV3('submit');
+const { execute } = useChallengeV3('register');
 const { t } = useI18n({ useScope: 'global' });
 const step = ref(1);
 
@@ -233,19 +233,20 @@ onUnmounted(() => {
           {{ $t('register.continue') }}
         </button>
       </div>
-        <TransitionGroup class="reg__error-wrapper" name="list" tag="ul">
-          <li
-            class="li"
-            v-for="error of errors"
-            :key="error"
-          >
-            <AppNotification
-              :type="NotificationTypes.ERROR"
-              :floating="false"
-              :message="error"
-            />
-          </li>
-        </TransitionGroup>
+      <TransitionGroup class="reg__error-wrapper" name="list" tag="ul">
+        <li class="li" v-for="error of errors" :key="error">
+          <AppNotification
+            :type="NotificationTypes.ERROR"
+            :floating="false"
+            :message="error"
+          />
+        </li>
+      </TransitionGroup>
+      <span
+        v-html="$t('meta.recaptcha.agreement')"
+        class="reg__captcha_agreement"
+      >
+      </span>
       <RouterLink class="reg__link" to="/">{{
         $t('register.already_have_account')
       }}</RouterLink>

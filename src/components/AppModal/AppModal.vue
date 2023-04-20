@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import AppNotification from '@/components/AppNotification/AppNotification.vue';
-import { NotificationTypes, type Error } from '../../interfaces/error.interface';
+import {
+  NotificationTypes,
+  type Error,
+} from '../../interfaces/error.interface';
 import { useUserStore } from '@/stores/user';
 import { useRouter } from 'vue-router';
+import { useChallengeV3 } from 'vue-recaptcha';
+
+const { execute } = useChallengeV3('login');
 
 const userStore = useUserStore();
 const errors = ref<Error[]>([]);
@@ -18,7 +24,12 @@ const username = ref('');
 const password = ref('');
 
 const handleLogin = async () => {
-  const res = await userStore.login(username.value, password.value);
+  const captchaToken = await execute();
+  const res = await userStore.login(
+    username.value,
+    password.value,
+    captchaToken,
+  );
 
   if (!res) {
     emits('close');

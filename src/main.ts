@@ -1,12 +1,7 @@
 import { createApp, type Component, onMounted } from 'vue';
 import { createPinia } from 'pinia';
 import { createPersistedStatePlugin } from 'pinia-plugin-persistedstate-2';
-import {
-  createPlugin,
-  defineScriptLoader,
-  toQueryString,
-  type RecaptchaParams,
-} from 'vue-recaptcha';
+import { createPlugin, defineScriptLoader, toQueryString } from 'vue-recaptcha';
 
 import App from './App.vue';
 import router from './router';
@@ -25,29 +20,24 @@ export const banchoApi = axios.create({
   timeout: 5000,
 });
 
-const loadScript = defineScriptLoader(
-  (options: {
-    recaptchaApiURL: string;
-    params: RecaptchaParams;
-    nonce: string | undefined;
-  }) => {
-    return () => {
-      onMounted(() => {
-        const script = document.createElement('script');
+const loadScript = defineScriptLoader((options) => {
+  return (): any => {
+    return onMounted(() => {
+      const script = document.createElement('script');
 
-        script.src = `${options.recaptchaApiURL}?${toQueryString(
-          options.params,
-        )}`;
-        script.async = true;
-        script.defer = true;
+      script.src = `${options.recaptchaApiURL}?${toQueryString(
+        options.params,
+      )}`;
+      script.async = true;
+      script.defer = true;
+      script.id = 'recaptcha-v3-script';
 
-        if (options.nonce) script.nonce = options.nonce;
+      if (options.nonce) script.nonce = options.nonce;
 
-        document.head.append(script);
-      });
-    };
-  },
-);
+      document.head.append(script);
+    });
+  };
+});
 
 const app = createApp(App);
 const pinia = createPinia();
