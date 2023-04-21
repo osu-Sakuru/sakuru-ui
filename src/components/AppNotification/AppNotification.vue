@@ -110,7 +110,7 @@ const reverseAnimation = props.onLeftSide
       padding: 0;
       font-style: normal;
       font-weight: 400;
-      font-size: 18px;
+      font-size: 16px;
       line-height: 23px;
       margin-left: 10px;
     }
