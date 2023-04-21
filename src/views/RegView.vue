@@ -233,6 +233,7 @@ onUnmounted(() => {
           {{ $t('register.continue') }}
         </button>
       </div>
+      <div class="animation-fix"></div>
       <TransitionGroup class="reg__error-wrapper" name="list" tag="ul">
         <li class="li" v-for="error of errors" :key="error">
           <AppNotification
@@ -279,7 +280,7 @@ onUnmounted(() => {
 }
 
 .reg__title {
-  margin: 160px 0 50px;
+  margin: 100px 0 50px;
   font-style: normal;
   font-weight: 700;
   font-size: 64px;
@@ -467,14 +468,14 @@ onUnmounted(() => {
 .list-move,
 .list-enter-active,
 .list-leave-active {
-  transition: all 0.3s linear;
+  transition: all 0.3s ease;
 }
 
 .list-enter-from,
 .list-leave-to {
   height: 0px;
-  margin-top: 0px;
   opacity: 0;
+  margin: 0 !important;
   transform: translateX(30px);
 }
 
@@ -489,6 +490,6 @@ onUnmounted(() => {
 }
 
 .reg__logo {
-  margin-top: 70px;
+  margin-top: 50px;
 }
 </style>
