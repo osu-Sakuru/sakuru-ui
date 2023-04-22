@@ -24,7 +24,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          password: ${{ secrets.PASSWORD }}
           source: '.'
           target: '/var/www/sakuru-ui'
 
@@ -35,5 +34,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          password: ${{ secrets.PASSWORD }}
-          script: cd /var/www/sakuru-ui/ && yarn build-only
+          script: cd /var/www/sakuru-ui/ && yarn install && yarn build-only
