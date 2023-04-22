@@ -45,10 +45,7 @@ const userStore = useUserStore();
             >
               {{ $t('home_loggedin.connect_button') }}
             </SocialButton>
-            <SocialButton
-              iconName="discord"
-              class="actions__discord"
-            >
+            <SocialButton iconName="discord" class="actions__discord">
               discord community
             </SocialButton>
           </div>

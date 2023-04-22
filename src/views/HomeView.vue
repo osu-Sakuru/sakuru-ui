@@ -58,10 +58,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
                   })
                 }}
               </ActionButton>
-              <SocialButton
-                iconName="discord"
-                class="actions__discord"
-              >
+              <SocialButton iconName="discord" class="actions__discord">
                 {{ $t('meta.contacts.discord') }}
               </SocialButton>
             </div>

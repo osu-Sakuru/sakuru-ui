@@ -5,10 +5,7 @@
     <div class="container">
       <h2 class="contacts__title">{{ $t('meta.contacts.caption') }}</h2>
       <div class="contacts__links">
-        <SocialButton
-          iconName="discord"
-          class="contacts__btn"
-        >
+        <SocialButton iconName="discord" class="contacts__btn">
           {{ $t('meta.contacts.discord') }}
         </SocialButton>
         <SocialButton
@@ -18,10 +15,7 @@
         >
           team@sakuru.cc
         </SocialButton>
-        <SocialButton
-          iconName="youtube"
-          class="contacts__btn youtube"
-        >
+        <SocialButton iconName="youtube" class="contacts__btn youtube">
           {{ $t('meta.contacts.youtube') }}
         </SocialButton>
       </div>

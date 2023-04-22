@@ -1,4 +1,5 @@
 <script lang="ts">
+import { buildIconURI } from '@/utils';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
@@ -14,14 +15,21 @@ export default defineComponent({
     },
   },
   methods: {
-    makeIconHover(iconName: string): string {
-      // edits path to hover icon
-      return new URL(
-        this.noHover
-          ? `/src/assets/svg/${iconName}-icon.svg`
-          : `/src/assets/svg/${iconName}-icon-hover.svg`,
-        import.meta.url,
-      ).href;
+    getDefaultIcon(iconName: string): string {
+      return buildIconURI(
+        new URL(`/src/assets/svg/${iconName}-icon.svg`, import.meta.url).href,
+      );
+    },
+    getHoverIcon(iconName: string): string {
+      return buildIconURI(
+        new URL(`/src/assets/svg/${iconName}-icon-hover.svg`, import.meta.url)
+          .href,
+      );
+    },
+    hoverOrNoHover(iconName: string): string {
+      return this.noHover
+        ? this.getDefaultIcon(iconName)
+        : this.getHoverIcon(iconName);
     },
   },
 });
@@ -59,13 +67,13 @@ export default defineComponent({
     display: block;
     width: 32px;
     height: 32px;
-    background: v-bind(iconName) no-repeat;
+    background: v-bind(getDefaultIcon(iconName)) no-repeat;
     transition: all 0.3s ease;
   }
 
   &:hover::before {
     // v-bind variable should contain a string like "url('/path/to/img')"
-    background: v-bind(makeIconHover(iconName)) no-repeat;
+    background: v-bind(hoverOrNoHover(iconName)) no-repeat;
   }
 }
 </style>
