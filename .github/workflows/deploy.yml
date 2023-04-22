@@ -1,13 +1,21 @@
 name: Deploy
 
-on: [push]
+concurrency:
+  group: production
+  cancel-in-progress: true
+
+on:   
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
+  deployment:
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
 
       - name: Copy repository contents via scp
         uses: appleboy/scp-action@master
