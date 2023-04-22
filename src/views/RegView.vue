@@ -149,9 +149,7 @@ const register = () => {
                   step.value = 3;
 
                   const socket = io(
-                    import.meta.env.VITE_APP_STAGE === 'DEV'
-                      ? import.meta.env.VITE_WEBSOCKET_ENDPOINT
-                      : '',
+                    import.meta.env.VITE_WEBSOCKET_ENDPOINT + '/verification',
                   );
 
                   socket.on('verify', (message: VerificationMessage) => {
@@ -248,7 +246,14 @@ onUnmounted(() => {
       <FormStep v-if="step == 3">
         <div class="reg__note">
           <span>{{ $t('register.note') }}</span>
-          <p>{{ $t('register.note_message') }}</p>
+          <p>Please, activate your account by logging in from the game.</p>
+          <span class="reg__note-help">
+            Do not leave this page until you have activated your account!
+            <p>
+              Stuck? Need help? Read this article
+              <RouterLink to="/faq" target="_blank">How to connect?</RouterLink>
+            </p>
+          </span>
         </div>
       </FormStep>
       <div class="reg__stepper">
@@ -281,8 +286,7 @@ onUnmounted(() => {
           {{ $t('register.continue') }}
         </button>
       </div>
-      <div class="animation-fix"></div>
-      <TransitionGroup class="reg__error-wrapper" name="list" tag="ul">
+      <TransitionGroup name="list" tag="ul" class="reg__error-wrapper">
         <li class="li" v-for="error of errors" :key="error">
           <AppNotification
             :type="NotificationTypes.ERROR"
@@ -349,7 +353,7 @@ onUnmounted(() => {
   color: #ffffff;
   background-color: #262626;
 
-  span {
+  span:first-child {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -364,6 +368,40 @@ onUnmounted(() => {
     font-weight: 600;
     font-size: 24px;
     line-height: 33px;
+  }
+}
+
+.reg__note-help {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 19px;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 10px;
+
+  p {
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 19px;
+    text-align: center;
+    color: $secondary;
+    margin-top: 10px;
+
+    a {
+      font-style: normal;
+      text-decoration: none;
+      color: $main;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $main-hover;
+      }
+    }
   }
 }
 

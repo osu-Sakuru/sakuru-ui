@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import ActionsBar from './ActionsBar/ActionsBar.vue';
 
+const currentStage = import.meta.env.VITE_APP_STAGE;
 const isShow = ref(true);
 
 const isScrolled = ref(false);
@@ -52,10 +53,29 @@ onUnmounted(() => {
         <ActionsBar />
       </div>
     </div>
+    <div v-if="currentStage === 'PROD'" class="nav__attention">
+      <p>
+        This site is still under <b>heavy</b> development. Some features may not
+        work correctly or may not exist at all, and some data may be incorrect.
+      </p>
+    </div>
   </header>
 </template>
 
 <style lang="scss" scoped>
+.nav__attention {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #d26f6f;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 25px;
+  color: #fff;
+}
+
 .fixed {
   position: fixed;
   z-index: $zindex-fixed;
