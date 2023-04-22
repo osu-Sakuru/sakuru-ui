@@ -4,7 +4,7 @@ concurrency:
   group: production
   cancel-in-progress: true
 
-on:   
+on:
   push:
     branches:
       - main
