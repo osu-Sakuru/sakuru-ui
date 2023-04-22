@@ -29,7 +29,7 @@ jobs:
           target: '/var/www/sakuru-ui'
 
       - name: Building the project
-        uses: appleboy/ssh-action@0.1.4
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           USERNAME: ${{ secrets.USERNAME }}
