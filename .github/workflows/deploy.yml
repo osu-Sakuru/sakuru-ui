@@ -34,4 +34,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          script: cd /var/www/sakuru-ui/ && yarn install && yarn build-only
+          script: |
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            cd /var/www/sakuru-ui/
+            yarn install
+            yarn build-only
