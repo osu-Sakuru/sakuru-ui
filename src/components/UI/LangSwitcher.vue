@@ -11,6 +11,10 @@ export default defineComponent({
 </script>
 
 <script setup lang="ts">
+const getFlagUrl = (alfa2: string): string => {
+  return new URL(`/src/assets/svg/flags/${alfa2}.svg`, import.meta.url).href;
+};
+
 const userStore = useUserStore();
 
 const setLocale = (locale: LocalesEnum): void => {
@@ -25,7 +29,7 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
 <template>
   <div @mouseover="menuHandler" @mouseout="menuHandler" class="lang__switcher">
     <div class="lang__select" :class="{ 'menu-active': menuActive }">
-      <img :src="`src/assets/svg/flags/${userStore.language.alfa2}.svg`" />
+      <img :src="getFlagUrl(userStore.language.alfa2)" />
       {{ userStore.language.caption }}
     </div>
     <ul v-show="menuActive" class="lang__options">
@@ -34,7 +38,7 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
         @click="setLocale(locale.value)"
         :key="locale.value"
       >
-        <img :src="`src/assets/svg/flags/${locale.alfa2}.svg`" />
+        <img :src="getFlagUrl(locale.alfa2)" />
         {{ locale.caption }}
       </li>
     </ul>

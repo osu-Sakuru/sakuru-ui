@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { buildIconURI } from '@/utils';
+
 const props = defineProps({
   type: {
     type: String,
@@ -25,20 +27,27 @@ const notificationStyle: {
   };
 } = {
   success: {
-    icon: "url('src/assets/svg/notification-success.svg')",
+    icon: buildIconURI(
+      new URL('/src/assets/svg/notification-success.svg', import.meta.url).href,
+    ),
     backgroundColor: '#79CF92',
   },
   info: {
-    icon: "url('src/assets/svg/notification-info.svg')",
+    icon: buildIconURI(
+      new URL('/src/assets/svg/notification-info.svg', import.meta.url).href,
+    ),
     backgroundColor: '#81B8D7',
   },
   warn: {
-    icon: "url('src/assets/svg/notification-warn.svg')",
-    // backgroundColor: "#DED15D"
+    icon: buildIconURI(
+      new URL('/src/assets/svg/notification-warn.svg', import.meta.url).href,
+    ),
     backgroundColor: '#E9DB61',
   },
   error: {
-    icon: "url('src/assets/svg/notification-error.svg')",
+    icon: buildIconURI(
+      new URL('/src/assets/svg/notification-error.svg', import.meta.url).href,
+    ),
     backgroundColor: '#D26F6F',
   },
 };

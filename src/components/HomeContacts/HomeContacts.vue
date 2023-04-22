@@ -5,23 +5,17 @@
     <div class="container">
       <h2 class="contacts__title">{{ $t('meta.contacts.caption') }}</h2>
       <div class="contacts__links">
-        <SocialButton
-          :iconUrl="'url(\'src/assets/svg/discord-icon.svg\')'"
-          class="contacts__btn"
-        >
+        <SocialButton iconName="discord" class="contacts__btn">
           {{ $t('meta.contacts.discord') }}
         </SocialButton>
         <SocialButton
-          :iconUrl="'url(\'src/assets/svg/email-icon.svg\')'"
+          iconName="email"
           class="contacts__btn"
           href="mailto:team@sakuru.cc"
         >
           team@sakuru.cc
         </SocialButton>
-        <SocialButton
-          :iconUrl="'url(\'src/assets/svg/youtube-icon.svg\')'"
-          class="contacts__btn youtube"
-        >
+        <SocialButton iconName="youtube" class="contacts__btn youtube">
           {{ $t('meta.contacts.youtube') }}
         </SocialButton>
       </div>
