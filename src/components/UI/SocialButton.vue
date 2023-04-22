@@ -4,7 +4,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'SocialButton',
   props: {
-    iconUrl: {
+    iconName: {
       type: String,
       required: true,
     },
@@ -14,9 +14,14 @@ export default defineComponent({
     },
   },
   methods: {
-    makeIconHover(iconUrl: string): string {
+    makeIconHover(iconName: string): string {
       // edits path to hover icon
-      return this.noHover ? iconUrl : iconUrl.replace(".svg')", "-hover.svg')");
+      return new URL(
+        this.noHover
+          ? `/src/assets/svg/${iconName}-icon.svg`
+          : `/src/assets/svg/${iconName}-icon-hover.svg`,
+        import.meta.url,
+      ).href;
     },
   },
 });
@@ -54,13 +59,13 @@ export default defineComponent({
     display: block;
     width: 32px;
     height: 32px;
-    background: v-bind(iconUrl) no-repeat;
+    background: v-bind(iconName) no-repeat;
     transition: all 0.3s ease;
   }
 
   &:hover::before {
     // v-bind variable should contain a string like "url('/path/to/img')"
-    background: v-bind(makeIconHover(iconUrl)) no-repeat;
+    background: v-bind(makeIconHover(iconName)) no-repeat;
   }
 }
 </style>

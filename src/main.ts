@@ -70,6 +70,8 @@ router.beforeEach(
             .get('/users/me')
             .catch()
             .then((response) => {
+              if (!response) return;
+
               userStore.isLoggedIn = true;
               userStore.user = response.data;
 
@@ -89,6 +91,8 @@ router.beforeEach(
           .get('/users/me')
           .catch()
           .then((response) => {
+            if (!response) return;
+
             userStore.isLoggedIn = true;
             userStore.user = response.data;
 

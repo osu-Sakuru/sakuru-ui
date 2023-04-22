@@ -39,14 +39,14 @@ const userStore = useUserStore();
           </div>
           <div class="actions">
             <SocialButton
-              :iconUrl="`url('src/assets/svg/question.svg')`"
+              iconName="question"
               :noHover="true"
               class="actions__connect"
             >
               {{ $t('home_loggedin.connect_button') }}
             </SocialButton>
             <SocialButton
-              :iconUrl="`url('src/assets/svg/discord-icon.svg')`"
+              iconName="discord"
               class="actions__discord"
             >
               discord community

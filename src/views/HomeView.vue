@@ -59,7 +59,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
                 }}
               </ActionButton>
               <SocialButton
-                :iconUrl="`url('src/assets/svg/discord-icon.svg')`"
+                iconName="discord"
                 class="actions__discord"
               >
                 {{ $t('meta.contacts.discord') }}
