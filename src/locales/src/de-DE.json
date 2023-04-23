@@ -1,0 +1,105 @@
+{
+  "navbar": {
+    "leaderboards": "Ranglisten",
+    "clans": "Clans",
+    "beatmaps": "Beatmaps",
+    "info": "Info",
+    "connect": "Verbinden",
+    "search": "Suchen",
+    "login": "Anmelden",
+    "logout": "Abmelden"
+  },
+  "modal": {
+    "username": "Benutzername",
+    "password": "Passwort",
+    "confirm_password": "Passwort bestätigen",
+    "email": "E-Mail",
+    "not_reg": "Noch nicht registriert?",
+    "sign_up": "Jetzt registrieren",
+    "login_btn": "Anmelden",
+    "forgot": "Passwort vergessen?"
+  },
+  "home_loggedout": {
+    "welcome": "Willkommen bei",
+    "welcome_text": "dem osu!-Server, der für dein Vergnügen erstellt wurde",
+    "over": "über",
+    "registered_players": "{players_registered}+ registrierte Spieler",
+    "more_than": "mehr als",
+    "beatmaps_ranked": "{beatmaps_ranked} hochgeschätzte Beatmaps eingestuft",
+    "friendly": "freundliche",
+    "community": "Community- und Support-Team",
+    "action_button": "Jetzt registrieren und den anderen {players_online} Online-Spielern beitreten!",
+    "features": "Hauptfunktionen",
+    "direct_text": "Problemloses Durchsuchen und Herunterladen von Beatmaps im Spiel",
+    "pp_systems": "Performance-Punkte-Systeme für den Relax- und Autopilot-Modus",
+    "pp_systems_text": "Probier es aus und sieh, wie weit du deine grundlegenden Fähigkeiten bringen kannst! Oder vielleicht einige PP farmen?",
+    "leaderboards": "Ranglisten",
+    "leaderboards_text": "Offener Zugriff auf Mod-Filter, Freundesranglisten und Länderranglisten",
+    "players_quotes": "Spielerzitate",
+    "quote_action": "Registrieren",
+    "records": "Unsere Rekorde",
+    "records_setby": "Von gesetzt"
+  },
+  "home_loggedin": {
+    "welcome": "Willkommen zurück, ",
+    "online": "online",
+    "players": "Spieler | Spieler",
+    "lobbies": "Mehrspieler-Lobbys",
+    "streams": "Livestreams",
+    "connect_button": "Wie man sich verbindet"
+  },
+  "register": {
+    "registration": "Registrierung",
+    "post_registration": "Willkommen bei Sakuru!",
+    "note": "Hinweis",
+    "note_message": "Bitte aktiviere dein Konto, indem du dich vom Spiel aus anmeldest.",
+    "step": "Schritt",
+    "continue": "Weiter",
+    "back": "Zurück",
+    "already_have_account": "Hast du bereits ein Konto? Anmelden",
+    "validation": {
+      "recaptcha": {
+        "invalid": "Du hast die Captcha-Prüfung nicht bestanden. Bist du ein Roboter?"
+      },
+      "username": {
+        "required": "Benutzername ist erforderlich.",
+        "min": "Benutzername muss mindestens 3 Zeichen lang sein.",
+        "max": "Benutzername darf höchstens 16 Zeichen lang sein.",
+        "exists": "Benutzername ist bereits vergeben.",
+        "invalid": "Der Benutzername muss ausschließlich aus lateinischen Buchstaben und Zahlen bestehen."
+      },
+      "password": {
+        "required": "Passwort ist erforderlich.",
+        "min": "Passwort muss mindestens 8 Zeichen lang sein.",
+        "max": "Passwort darf höchstens 32 Zeichen lang sein.",
+        "confirmed": "Passwortbestätigung stimmt nicht überein."
+      },
+      "email": {
+        "required": "E-Mail-Adresse ist erforderlich.",
+        "invalid": "E-Mail-Adresse muss eine gültige E-Mail-Adresse sein.",
+        "exists": "E-Mail-Adresse ist bereits vergeben. Versuche dich anzumelden oder dein Passwort zurückzusetzen."
+      }
+    }
+  },
+  "meta": {
+    "contacts": {
+      "caption": "Kontakte und Medien",
+      "discord": "Discord-Community",
+      "youtube": "YouTube-Kanal"
+    },
+    "recaptcha": {
+      "agreement": "Diese Seite wird durch reCAPTCHA und die Google&nbsp;<a href='https://policies.google.com/privacy'>Datenschutzerklärung</a>&nbsp;und&nbsp;<a href='https://policies.google.com/terms'>Nutzungsbedingungen</a>&nbsp;geschützt."
+    }
+  },
+  "footer": {
+    "links": "Links",
+    "beatmaps": "Beatmaps",
+    "connect": "Verbinden",
+    "discord": "Discord-Server",
+    "youtube": "YouTube-Kanal",
+    "leaderboards": "Bestenlisten",
+    "clans": "Clans",
+    "info": "Info",
+    "email": "E-Mail"
+  }
+}
