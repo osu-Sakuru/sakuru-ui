@@ -37,6 +37,23 @@ watch(
   },
 );
 
+watch(
+  () => doVerifiedAnimation.value,
+  (newValue: boolean) => {
+    if (newValue === true) {
+      new Promise((resolve) => setTimeout(resolve, 3000)).then(() => {
+        execute().then((captchaResponse) => {
+          userStore
+            .login(username.value, password.value, captchaResponse)
+            .then(() => {
+              router.push('/home');
+            });
+        });
+      });
+    }
+  },
+);
+
 const errors = ref<{
   [key: string]: string;
 }>({});
@@ -240,18 +257,8 @@ const handleOnFocus = () => {
     !isLoading.value &&
     isVerified.value
   ) {
-    let { execute } = useChallengeV3('login');
-
     doVerifiedAnimation.value = true;
-    new Promise((resolve) => setTimeout(resolve, 4500)).then(() => {
-      execute().then((captchaResponse) => {
-        userStore
-          .login(username.value, password.value, captchaResponse)
-          .then(() => {
-            router.push('/home');
-          });
-      });
-    });
+    isFocused.value = true;
   } else {
     isFocused.value = true;
   }
@@ -340,10 +347,10 @@ onUnmounted(() => {
         </div>
       </FormStep>
       <FormStep v-if="doVerifiedAnimation">
-        <div class="reg__note">
+        <div class="reg__note_verified">
+          <CheckmarkIcon></CheckmarkIcon>
           <div>
-            <p>Вітаю ви дуже крутий чувак маєте чорний каділак піздец</p>
-            <p>Через п'ять секунд вас залогінить ви такі класні боже!!!!</p>
+            <p v-html="$t('register.note_success')"></p>
           </div>
         </div>
       </FormStep>
@@ -435,6 +442,7 @@ onUnmounted(() => {
   text-align: center;
 }
 
+.reg__note_verified,
 .reg__note {
   height: 250px;
   display: grid;
@@ -486,6 +494,18 @@ onUnmounted(() => {
         color: $main-hover;
       }
     }
+  }
+}
+
+.reg__note_verified {
+  text-align: center;
+
+  p {
+    margin: 0;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 33px;
   }
 }
 
