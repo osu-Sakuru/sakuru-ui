@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { buildIconURI } from '@/utils';
+
 const props = defineProps({
   type: {
     type: String,
@@ -20,27 +22,34 @@ const props = defineProps({
 
 const notificationStyle: {
   [key: string]: {
-    icon: string
-    backgroundColor: string
-  } 
+    icon: string;
+    backgroundColor: string;
+  };
 } = {
   success: {
-    icon: "url('src/assets/svg/notification-success.svg')",
-    backgroundColor: "#79CF92"
+    icon: buildIconURI(
+      new URL('/src/assets/svg/notification-success.svg', import.meta.url).href,
+    ),
+    backgroundColor: '#79CF92',
   },
   info: {
-    icon: "url('src/assets/svg/notification-info.svg')",
-    backgroundColor: "#81B8D7"
+    icon: buildIconURI(
+      new URL('/src/assets/svg/notification-info.svg', import.meta.url).href,
+    ),
+    backgroundColor: '#81B8D7',
   },
   warn: {
-    icon: "url('src/assets/svg/notification-warn.svg')",
-    // backgroundColor: "#DED15D"
-    backgroundColor: "#E9DB61"
+    icon: buildIconURI(
+      new URL('/src/assets/svg/notification-warn.svg', import.meta.url).href,
+    ),
+    backgroundColor: '#E9DB61',
   },
   error: {
-    icon: "url('src/assets/svg/notification-error.svg')",
-    backgroundColor: "#D26F6F"
-  }
+    icon: buildIconURI(
+      new URL('/src/assets/svg/notification-error.svg', import.meta.url).href,
+    ),
+    backgroundColor: '#D26F6F',
+  },
 };
 
 const side = props.onLeftSide ? '0' : 'auto';
@@ -110,7 +119,7 @@ const reverseAnimation = props.onLeftSide
       padding: 0;
       font-style: normal;
       font-weight: 400;
-      font-size: 18px;
+      font-size: 16px;
       line-height: 23px;
       margin-left: 10px;
     }

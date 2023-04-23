@@ -66,6 +66,11 @@ onUnmounted(() => {
           </div>
           <LangSwitcher />
         </div>
+        <span
+          v-html="$t('meta.recaptcha.agreement')"
+          class="footer__captcha_agreement"
+        >
+        </span>
       </div>
     </div>
   </footer>

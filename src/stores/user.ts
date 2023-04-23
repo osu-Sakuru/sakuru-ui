@@ -19,6 +19,7 @@ export const useUserStore = defineStore('user', {
     async login(
       username: string,
       password: string,
+      captchaToken: string,
     ): Promise<AxiosError<IErrorResponse> | void> {
       try {
         const request: AxiosResponse<User> = await backendApi.post(
@@ -26,6 +27,7 @@ export const useUserStore = defineStore('user', {
           {
             username: username,
             password: password,
+            captcha_token: captchaToken,
           },
         );
 

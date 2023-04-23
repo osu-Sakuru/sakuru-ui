@@ -6,11 +6,20 @@ import FormStep from '@/components/FormStep/FormStep.vue';
 import AppNotification from '@/components/AppNotification/AppNotification.vue';
 import { backendApi } from '@/main';
 import { useChallengeV3 } from 'vue-recaptcha';
-import { NotificationTypes } from "@/interfaces/error.interface";
+import { NotificationTypes } from '@/interfaces/error.interface';
+import type { AxiosResponse } from 'axios';
+import type { User } from '@/interfaces/user.interface';
+import type { VerificationMessage } from '@/interfaces/verificationMessage.interface';
+import { useUserStore } from '@/stores/user';
+import { io } from 'socket.io-client';
+import { useRouter } from 'vue-router';
 
-const { execute } = useChallengeV3('submit');
+const { execute } = useChallengeV3('register');
 const { t } = useI18n({ useScope: 'global' });
 const step = ref(1);
+
+const router = useRouter();
+const userStore = useUserStore();
 
 watch(
   () => step.value,
@@ -134,8 +143,45 @@ const register = () => {
               .catch((err) => {
                 errors.value['register'] = t(err.response.data.message);
               })
-              .then((res) => {
-                if (res) step.value = 3;
+              .then((response: AxiosResponse<User> | void) => {
+                if (response) {
+                  const { data } = response;
+                  step.value = 3;
+
+                  const socket = io(
+                    import.meta.env.VITE_WEBSOCKET_ENDPOINT + '/verification',
+                  );
+
+                  socket.on('verify', (message: VerificationMessage) => {
+                    if (message.status === 'success') {
+                      if (message.user !== data.id) return;
+
+                      execute().then((captchaResponse) => {
+                        userStore
+                          .login(
+                            username.value,
+                            password.value,
+                            captchaResponse,
+                          )
+                          .then(() => {
+                            router.push('/home');
+                            socket.close();
+                          });
+                      });
+                    } else if (message.status === 'failed') {
+                      errors.value['register'] = 'Something went wrong.';
+
+                      step.value = 2;
+                      socket.close();
+                    }
+                  });
+
+                  socket.on('connect', () => {
+                    socket.emit('verify', {
+                      user: data.id,
+                    });
+                  });
+                }
               });
           });
       }
@@ -200,7 +246,14 @@ onUnmounted(() => {
       <FormStep v-if="step == 3">
         <div class="reg__note">
           <span>{{ $t('register.note') }}</span>
-          <p>{{ $t('register.note_message') }}</p>
+          <p>Please, activate your account by logging in from the game.</p>
+          <span class="reg__note-help">
+            Do not leave this page until you have activated your account!
+            <p>
+              Stuck? Need help? Read this article
+              <RouterLink to="/faq" target="_blank">How to connect?</RouterLink>
+            </p>
+          </span>
         </div>
       </FormStep>
       <div class="reg__stepper">
@@ -233,19 +286,20 @@ onUnmounted(() => {
           {{ $t('register.continue') }}
         </button>
       </div>
-        <TransitionGroup class="reg__error-wrapper" name="list" tag="ul">
-          <li
-            class="li"
-            v-for="error of errors"
-            :key="error"
-          >
-            <AppNotification
-              :type="NotificationTypes.ERROR"
-              :floating="false"
-              :message="error"
-            />
-          </li>
-        </TransitionGroup>
+      <TransitionGroup name="list" tag="ul" class="reg__error-wrapper">
+        <li class="li" v-for="error of errors" :key="error">
+          <AppNotification
+            :type="NotificationTypes.ERROR"
+            :floating="false"
+            :message="error"
+          />
+        </li>
+      </TransitionGroup>
+      <span
+        v-html="$t('meta.recaptcha.agreement')"
+        class="reg__captcha_agreement"
+      >
+      </span>
       <RouterLink class="reg__link" to="/">{{
         $t('register.already_have_account')
       }}</RouterLink>
@@ -278,7 +332,7 @@ onUnmounted(() => {
 }
 
 .reg__title {
-  margin: 160px 0 50px;
+  margin: 100px 0 50px;
   font-style: normal;
   font-weight: 700;
   font-size: 64px;
@@ -299,7 +353,7 @@ onUnmounted(() => {
   color: #ffffff;
   background-color: #262626;
 
-  span {
+  span:first-child {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -317,6 +371,40 @@ onUnmounted(() => {
   }
 }
 
+.reg__note-help {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 19px;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 10px;
+
+  p {
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 19px;
+    text-align: center;
+    color: $secondary;
+    margin-top: 10px;
+
+    a {
+      font-style: normal;
+      text-decoration: none;
+      color: $main;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $main-hover;
+      }
+    }
+  }
+}
+
 .reg__link {
   display: block;
   margin-top: 32px;
@@ -326,7 +414,7 @@ onUnmounted(() => {
   line-height: 25px;
   text-decoration: none;
   color: $main-hover;
-  transition: color 0.3s ease;
+  transition: color 0.3s linear;
 
   &:hover {
     color: $secondary;
@@ -346,7 +434,7 @@ onUnmounted(() => {
     line-height: 27px;
     border: none;
     outline: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s linear;
   }
   .btn-back {
     position: relative;
@@ -411,7 +499,7 @@ onUnmounted(() => {
     margin: 0;
     opacity: 0;
     overflow: hidden;
-    transition: all 0.6s ease;
+    transition: all 0.3s linear;
   }
 
   .initial-fadeIn {
@@ -426,7 +514,7 @@ onUnmounted(() => {
     align-items: center;
     width: 100%;
     background-color: #344f7f;
-    transition: all 0.5s ease;
+    transition: all 0.3s linear;
 
     div {
       display: flex;
@@ -466,14 +554,14 @@ onUnmounted(() => {
 .list-move,
 .list-enter-active,
 .list-leave-active {
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .list-enter-from,
 .list-leave-to {
   height: 0px;
-  margin-top: 0px;
   opacity: 0;
+  margin: 0 !important;
   transform: translateX(30px);
 }
 
@@ -488,6 +576,6 @@ onUnmounted(() => {
 }
 
 .reg__logo {
-  margin-top: 70px;
+  margin-top: 50px;
 }
 </style>

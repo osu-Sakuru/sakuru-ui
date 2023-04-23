@@ -7,7 +7,7 @@
     "connect": "Connect",
     "search": "Search",
     "login": "Login",
-    "logout": "Logout"   
+    "logout": "Logout"
   },
   "modal": {
     "username": "username",
@@ -28,7 +28,7 @@
     "beatmaps_ranked": "{beatmaps_ranked} much favored beatmaps ranked",
     "friendly": "friendly",
     "community": "community and support team",
-    "action_button": "register now and join the other {players_online} players online!",               
+    "action_button": "register now and join the other {players_online} players online!",
     "features": "Key features",
     "direct_text": "Hassle-free in-game beatmap browsing and downloading",
     "pp_systems": "Relax and autopilot performance points systems",
@@ -52,7 +52,7 @@
     "registration": "Registration",
     "post_registration": "Welcome to Sakuru!",
     "note": "hint",
-    "note_message": "Please, activate your account by logging in from the game.", 
+    "note_message": "Please, activate your account by logging in from the game.",
     "step": "step",
     "continue": "continue",
     "back": "back",
@@ -86,6 +86,9 @@
       "caption": "Contacts and media",
       "discord": "discord community",
       "youtube": "youtube channel"
+    },
+    "recaptcha": {
+      "agreement": "This site is protected by reCAPTCHA and the Google&nbsp;<a href='https://policies.google.com/privacy'>Privacy Policy</a>&nbsp;and&nbsp;<a href='https://policies.google.com/terms'>Terms of Service</a>&nbsp;apply."
     }
   },
   "footer": {
