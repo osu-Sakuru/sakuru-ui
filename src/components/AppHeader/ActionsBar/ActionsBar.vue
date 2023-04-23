@@ -78,9 +78,15 @@ onUnmounted(() => {
         ></i>
         <ul v-show="menuActive" class="actions__btn-list searchbar__results">
           <!-- same as searching results, wait for marks design -->
-          <li class="actions__btn-item"><a href="" class="btn-item__link">My profile</a></li>
-          <li class="actions__btn-item"><a href="" class="btn-item__link">Friends</a></li>
-          <li class="actions__btn-item"><a href="" class="btn-item__link">Settings</a></li>
+          <li class="actions__btn-item">
+            <a href="" class="btn-item__link">My profile</a>
+          </li>
+          <li class="actions__btn-item">
+            <a href="" class="btn-item__link">Friends</a>
+          </li>
+          <li class="actions__btn-item">
+            <a href="" class="btn-item__link">Settings</a>
+          </li>
           <li
             @click.prevent="
               userStore.logout();

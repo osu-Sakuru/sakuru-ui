@@ -11,6 +11,7 @@ import type { AxiosResponse } from 'axios';
 import type { User } from '@/interfaces/user.interface';
 import type { VerificationMessage } from '@/interfaces/verificationMessage.interface';
 import { useUserStore } from '@/stores/user';
+import { useMetaStore } from '@/stores/meta';
 import { io } from 'socket.io-client';
 import { useRouter } from 'vue-router';
 import 'vue-loaders/dist/vue-loaders.css';
@@ -18,9 +19,15 @@ import 'vue-loaders/dist/vue-loaders.css';
 const { execute } = useChallengeV3('register');
 const { t } = useI18n({ useScope: 'global' });
 const step = ref(1);
+
+const isFocused = ref(false);
 const isLoading = ref(false);
+const isVerified = ref(false);
+const doVerifiedAnimation = ref(false);
 
 const router = useRouter();
+
+const metaStore = useMetaStore();
 const userStore = useUserStore();
 
 watch(
@@ -73,6 +80,26 @@ const canContinue = () => {
   }
 };
 
+const nextStep = () => {
+  if (step.value < 2 && canContinue() && !isLoading.value) {
+    step.value++;
+  } else if (step.value === 2 && canContinue() && !isLoading.value) {
+    step.value++;
+    register();
+  }
+};
+
+const prevStep = (keepErrors: boolean = false) => {
+  if (step.value > 1 && !isLoading.value) {
+    if (keepErrors && step.value === 3) step.value--;
+
+    if (!keepErrors && step.value < 3) {
+      step.value--;
+      errors.value = {};
+    }
+  }
+};
+
 const regsiterShape = object().shape({
   username: string()
     .required(t('register.validation.username.required'))
@@ -117,6 +144,8 @@ const validate = (field: string) => {
 };
 
 const register = () => {
+  isLoading.value = true;
+
   regsiterShape
     .validate(
       {
@@ -132,9 +161,11 @@ const register = () => {
         execute()
           .catch(() => {
             errors.value['register'] = t('register.validation.captcha');
+
+            isLoading.value = false;
+            prevStep(true);
           })
           .then((captchaResponse) => {
-            isLoading.value = true;
             backendApi
               .post('/users', {
                 username: username.value,
@@ -145,34 +176,26 @@ const register = () => {
               })
               .catch((err) => {
                 errors.value['register'] = t(err.response.data.message);
+
+                isLoading.value = false;
+                prevStep(true);
               })
               .then((response: AxiosResponse<User> | void) => {
                 if (response) {
                   const { data } = response;
-                  step.value = 3;
 
                   const socket = io(import.meta.env.VITE_WEBSOCKET_ENDPOINT);
 
                   socket.on('verify', (message: VerificationMessage) => {
                     if (message.status === 'success') {
                       if (message.user !== data.id) return;
+                      isVerified.value = true;
 
-                      execute().then((captchaResponse) => {
-                        userStore
-                          .login(
-                            username.value,
-                            password.value,
-                            captchaResponse,
-                          )
-                          .then(() => {
-                            router.push('/home');
-                            socket.close();
-                          });
-                      });
+                      socket.close();
                     } else if (message.status === 'failed') {
                       errors.value['register'] = 'Something went wrong.';
 
-                      step.value = 2;
+                      prevStep(true);
                       socket.close();
                     }
                   });
@@ -183,6 +206,9 @@ const register = () => {
                     });
                   });
                 }
+              })
+              .finally(() => {
+                if (isLoading.value) isLoading.value = false;
               });
           });
       }
@@ -191,16 +217,63 @@ const register = () => {
       err.inner.forEach((error) => {
         if (error.path) errors.value[error.path] = error.message;
       });
-    }).finally(() => isLoading.value = false);
+
+      isLoading.value = false;
+      prevStep(true);
+    });
 };
+
+const handleKeyDown = (eventData: KeyboardEvent) => {
+  if (eventData.key === 'Enter') {
+    eventData.preventDefault();
+    nextStep();
+  } else if (eventData.key === 'Escape') {
+    eventData.preventDefault();
+    prevStep();
+  }
+};
+
+const handleOnFocus = () => {
+  if (
+    step.value === 3 &&
+    (!isFocused.value || metaStore.isMobile) &&
+    !isLoading.value &&
+    isVerified.value
+  ) {
+    let { execute } = useChallengeV3('login');
+
+    doVerifiedAnimation.value = true;
+    new Promise((resolve) => setTimeout(resolve, 4500)).then(() => {
+      execute().then((captchaResponse) => {
+        userStore
+          .login(username.value, password.value, captchaResponse)
+          .then(() => {
+            router.push('/home');
+          });
+      });
+    });
+  } else {
+    isFocused.value = true;
+  }
+};
+
+const handleFocusOut = () => (isFocused.value = false);
 
 onMounted(() => {
   window.dispatchEvent(new Event('hideHeader'));
   window.dispatchEvent(new Event('hideFooter'));
+
+  window.addEventListener('focusout', handleFocusOut);
+  window.addEventListener('focus', handleOnFocus);
+  window.addEventListener('keydown', handleKeyDown);
 });
 onUnmounted(() => {
   window.dispatchEvent(new Event('showHeader'));
   window.dispatchEvent(new Event('showFooter'));
+
+  window.removeEventListener('focusout', handleFocusOut);
+  window.removeEventListener('focus', handleOnFocus);
+  window.removeEventListener('keydown', handleKeyDown);
 });
 </script>
 
@@ -208,9 +281,9 @@ onUnmounted(() => {
   <div class="reg-bg">
     <h1 class="reg__title">
       {{
-        step != 3
-          ? $t('register.registration')
-          : $t('register.post_registration')
+        isLoading == false && step === 3
+          ? $t('register.post_registration')
+          : $t('register.registration')
       }}
     </h1>
     <form class="reg__form" @submit.prevent>
@@ -244,31 +317,42 @@ onUnmounted(() => {
           @blur="validate('confirm_password')"
         />
       </FormStep>
-      <FormStep v-if="step == 3">
+      <FormStep v-if="step == 3 && !doVerifiedAnimation">
         <div class="reg__note">
-          <vue-loaders v-if="isLoading" name="ball-scale-multiple" color="white" scale="1.5" class="reg__loader"></vue-loaders>
+          <vue-loaders
+            v-if="isLoading"
+            name="ball-scale-multiple"
+            color="white"
+            scale="1.5"
+            class="reg__loader"
+          ></vue-loaders>
           <div v-else>
             <span>{{ $t('register.note') }}</span>
-            <p>Please, activate your account by logging in from the game.</p>
-            <p>Do not leave this page until you have activated your account!</p>
+            <p>{{ $t('register.note_message') }}</p>
+            <p>{{ $t('register.note_attention') }}</p>
             <span class="reg__note-help">
-              Stuck? Need help? Read this article
-              <RouterLink to="/faq" target="_blank">How to connect?</RouterLink>
+              {{ $t('register.note_stuck') }}
+              <RouterLink to="/faq" target="_blank">{{
+                $t('register.note_stuck_link')
+              }}</RouterLink>
             </span>
+          </div>
+        </div>
+      </FormStep>
+      <FormStep v-if="doVerifiedAnimation">
+        <div class="reg__note">
+          <div>
+            <p>Вітаю ви дуже крутий чувак маєте чорний каділак піздец</p>
+            <p>Через п'ять секунд вас залогінить ви такі класні боже!!!!</p>
           </div>
         </div>
       </FormStep>
       <div class="reg__stepper">
         <button
-          @click="
-            () => {
-              step--;
-              errors = {};
-            }
-          "
+          @click="prevStep()"
           :disabled="step == 1"
           class="reg__btn btn-back initial"
-          :class="{ 'initial-fadeIn': step == 2 }"
+          :class="{ 'initial-fadeIn': step == 2 && !isLoading }"
         >
           {{ $t('register.back') }}
         </button>
@@ -280,10 +364,13 @@ onUnmounted(() => {
           </div>
         </div>
         <button
-          @click="step !== 2 ? step++ : register()"
+          @click="nextStep()"
           :disabled="!isEnabledButton"
           class="reg__btn btn-continue"
-          :class="{ initial: step == 3, disabled: !isEnabledButton }"
+          :class="{
+            initial: step == 3 && !isLoading,
+            disabled: !isEnabledButton,
+          }"
         >
           {{ $t('register.continue') }}
         </button>
@@ -349,7 +436,7 @@ onUnmounted(() => {
 }
 
 .reg__note {
-  height: 230px;
+  height: 250px;
   display: grid;
   padding: 18px 32px;
   margin: 0 0 8px;
