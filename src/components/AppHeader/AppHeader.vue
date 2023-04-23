@@ -53,7 +53,8 @@ onUnmounted(() => {
         <ActionsBar />
       </div>
     </div>
-    <div v-if="currentStage === 'PROD'" class="nav__attention">
+    <!-- <div v-if="currentStage === 'PROD'" class="nav__attention"> -->
+    <div class="nav__attention">
       <p>
         This site is still under <b>heavy</b> development. Some features may not
         work correctly or may not exist at all, and some data may be incorrect.
@@ -67,13 +68,12 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #d26f6f;
+  // background-color: #d26f6f;
+  background-color: #E85E5E;
   font-style: normal;
   font-size: 18px;
   line-height: 25px;
-  color: #fff;
+  color: $main;
 }
 
 .fixed {
@@ -84,7 +84,7 @@ onUnmounted(() => {
 }
 
 .header__bg {
-  background-color: #101010;
+  background-color: $bg15;
 }
 
 .header__wrapper {

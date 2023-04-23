@@ -71,7 +71,7 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
   font-weight: 700;
   font-size: 18px;
   line-height: 25px;
-  border: #252525 1px solid;
+  border: $bg26 1px solid;
   border-radius: 4px;
 
   &::after {
@@ -103,11 +103,11 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
   font-weight: 700;
   font-size: 18px;
   line-height: 25px;
-  background-color: #232322;
+  background-color: $bg26;
   cursor: pointer;
 
   &:hover {
-    background-color: #363635;
+    background-color: $bg33;
   }
 }
 

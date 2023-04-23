@@ -3129,6 +3129,11 @@ vue-i18n@^9.2.2:
     "@intlify/vue-devtools" "9.2.2"
     "@vue/devtools-api" "^6.2.1"
 
+vue-loaders@^4.1.4:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/vue-loaders/-/vue-loaders-4.1.4.tgz#2fc1d806159dcb9e75a7a0a6741b04fb25ba17e2"
+  integrity sha512-YlT9js3/NSQr8CTebto0NM9jaUl+kkGR3HgdCvoDV2H3NLzCrzSUxzo+VkPgPzBrOs8s40Bad+OX1XOZexeeVQ==
+
 vue-recaptcha@^3.0.0-alpha.4:
   version "3.0.0-alpha.4"
   resolved "https://registry.npmjs.org/vue-recaptcha/-/vue-recaptcha-3.0.0-alpha.4.tgz"

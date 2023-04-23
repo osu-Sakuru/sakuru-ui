@@ -111,7 +111,7 @@ const handleLogin = async () => {
 
 .modal__wrapper {
   width: 540px;
-  background-color: #262626;
+  background-color: $bg26;
   padding: 5px;
   margin-top: 90px;
   margin-left: auto;
@@ -127,12 +127,12 @@ const handleLogin = async () => {
     line-height: 27px;
     border: none;
     outline: none;
-    color: #ffffff;
-    background-color: #e00087;
+    color: $main;
+    background-color: $primary-btn;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background: #f10090;
+      background: $primary-btn-hover;
     }
 
     &::after {
@@ -149,7 +149,7 @@ const handleLogin = async () => {
 
 .modal {
   padding: 10px;
-  border: 2px solid #373737;
+  border: 2px solid $bg33;
   border-radius: 4px;
   text-align: center;
 }

@@ -89,7 +89,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
     font-weight: 700;
     font-size: 48px;
     line-height: 66px;
-    color: #2d2d2d;
+    color: $black;
   }
 }
 
@@ -103,7 +103,6 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
   display: flex;
   width: 400px;
   height: 400px;
-  background-color: #555;
   text-align: left;
   text-decoration: none;
   color: $main;
@@ -119,7 +118,7 @@ const { data: serverRecords } = await backendApi.get<IServerRecords>(
     font-weight: 600;
     font-size: 24px;
     line-height: 33px;
-    background-color: #e00087;
+    background-color: $primary-btn;
   }
 
   &::after {

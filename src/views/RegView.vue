@@ -13,10 +13,12 @@ import type { VerificationMessage } from '@/interfaces/verificationMessage.inter
 import { useUserStore } from '@/stores/user';
 import { io } from 'socket.io-client';
 import { useRouter } from 'vue-router';
+import 'vue-loaders/dist/vue-loaders.css';
 
 const { execute } = useChallengeV3('register');
 const { t } = useI18n({ useScope: 'global' });
 const step = ref(1);
+const isLoading = ref(false);
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -132,6 +134,7 @@ const register = () => {
             errors.value['register'] = t('register.validation.captcha');
           })
           .then((captchaResponse) => {
+            isLoading.value = true;
             backendApi
               .post('/users', {
                 username: username.value,
@@ -188,7 +191,7 @@ const register = () => {
       err.inner.forEach((error) => {
         if (error.path) errors.value[error.path] = error.message;
       });
-    });
+    }).finally(() => isLoading.value = false);
 };
 
 onMounted(() => {
@@ -243,15 +246,16 @@ onUnmounted(() => {
       </FormStep>
       <FormStep v-if="step == 3">
         <div class="reg__note">
-          <span>{{ $t('register.note') }}</span>
-          <p>Please, activate your account by logging in from the game.</p>
-          <span class="reg__note-help">
-            Do not leave this page until you have activated your account!
-            <p>
+          <vue-loaders v-if="isLoading" name="ball-scale-multiple" color="white" scale="1.5" class="reg__loader"></vue-loaders>
+          <div v-else>
+            <span>{{ $t('register.note') }}</span>
+            <p>Please, activate your account by logging in from the game.</p>
+            <p>Do not leave this page until you have activated your account!</p>
+            <span class="reg__note-help">
               Stuck? Need help? Read this article
               <RouterLink to="/faq" target="_blank">How to connect?</RouterLink>
-            </p>
-          </span>
+            </span>
+          </div>
         </div>
       </FormStep>
       <div class="reg__stepper">
@@ -285,7 +289,7 @@ onUnmounted(() => {
         </button>
       </div>
       <TransitionGroup name="list" tag="ul" class="reg__error-wrapper">
-        <li class="li" v-for="error of errors" :key="error">
+        <li class="reg__error" v-for="error of errors" :key="error">
           <AppNotification
             :type="NotificationTypes.ERROR"
             :floating="false"
@@ -336,7 +340,7 @@ onUnmounted(() => {
   font-size: 64px;
   line-height: 87px;
   text-align: center;
-  color: #ffffff;
+  color: $main;
 }
 
 .reg__form {
@@ -345,11 +349,13 @@ onUnmounted(() => {
 }
 
 .reg__note {
+  height: 230px;
+  display: grid;
   padding: 18px 32px;
   margin: 0 0 8px;
   text-align: left;
-  color: #ffffff;
-  background-color: #262626;
+  color: $main;
+  background-color: $bg26;
 
   span:first-child {
     font-style: normal;
@@ -367,20 +373,13 @@ onUnmounted(() => {
     font-size: 24px;
     line-height: 33px;
   }
-}
 
-.reg__note-help {
-  display: flex;
-  flex-direction: column;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 21px;
-  line-height: 19px;
-  text-align: center;
-  color: #ffffff;
-  margin-top: 10px;
+  p:nth-child(3) {
+    margin-top: 10px;
+    color: $red;
+  }
 
-  p {
+  .reg__note-help {
     margin: 0;
     font-style: normal;
     font-weight: 400;
@@ -401,6 +400,11 @@ onUnmounted(() => {
       }
     }
   }
+}
+
+.reg__loader {
+  align-self: center;
+  justify-self: center;
 }
 
 .reg__link {
@@ -440,7 +444,7 @@ onUnmounted(() => {
     padding: 26px 32px 26px 67px;
     margin-right: 8px;
     color: $main-hover;
-    background-color: #262626;
+    background-color: $bg26;
 
     &::after {
       content: '';
@@ -454,7 +458,7 @@ onUnmounted(() => {
     }
 
     &:hover {
-      background-color: #333333;
+      background-color: $bg33;
     }
   }
 
@@ -463,8 +467,8 @@ onUnmounted(() => {
     display: flex;
     padding: 26px 32px 26px 67px;
     margin-left: 8px;
-    color: #ffffff;
-    background-color: #e00087;
+    color: $main;
+    background-color: $primary-btn;
 
     &::after {
       content: '';
@@ -478,15 +482,15 @@ onUnmounted(() => {
     }
 
     &:hover {
-      background-color: #d6007f;
+      background-color: $primary-btn-hover;
     }
   }
 
   .disabled {
-    background-color: #b5b5b5;
+    background-color: $secondary;
 
     &:hover {
-      background-color: #b5b5b5;
+      background-color: $secondary;
     }
   }
 
@@ -511,7 +515,7 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     width: 100%;
-    background-color: #344f7f;
+    background-color: $bg-blue;
     transition: all 0.3s linear;
 
     div {
@@ -523,7 +527,7 @@ onUnmounted(() => {
         font-weight: 400;
         font-size: 12px;
         line-height: 16px;
-        color: #ffffff;
+        color: $main;
       }
 
       .step:nth-child(2) {
@@ -532,7 +536,7 @@ onUnmounted(() => {
         font-weight: 700;
         font-size: 20px;
         line-height: 27px;
-        color: #ffffff;
+        color: $main;
         transform: translateY(-2px);
       }
     }
@@ -544,7 +548,7 @@ onUnmounted(() => {
   padding: 0;
   margin: 0;
 
-  & > .li {
+  & > .reg__error {
     margin-top: 10px;
   }
 }

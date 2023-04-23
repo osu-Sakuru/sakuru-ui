@@ -106,8 +106,8 @@ const animatePlaceholder = () => {
     line-height: 33px;
     border: none;
     outline: none;
-    background: #484848;
-    color: #ffffff;
+    background: $bg48;
+    color: $main;
   }
 
   .animate {

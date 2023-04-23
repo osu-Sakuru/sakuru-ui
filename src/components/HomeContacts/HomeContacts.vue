@@ -60,18 +60,18 @@
   color: $main-hover;
 
   &:hover {
-    color: #262626;
+    color: $bg26;
     background-color: $main-hover;
   }
 }
 
 .youtube {
   position: relative;
-  color: #ff6969;
+  color: $red;
 
   &:hover {
-    color: #262626;
-    background-color: #ff6969;
+    color: $bg26;
+    background-color: $red;
   }
 }
 </style>
