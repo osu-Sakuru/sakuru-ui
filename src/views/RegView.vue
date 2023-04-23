@@ -152,6 +152,8 @@ const register = () => {
                     import.meta.env.VITE_WEBSOCKET_ENDPOINT + '/verification',
                   );
 
+                  socket.onAny(console.log);
+
                   socket.on('verify', (message: VerificationMessage) => {
                     if (message.status === 'success') {
                       if (message.user !== data.id) return;
