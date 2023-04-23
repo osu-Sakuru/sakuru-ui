@@ -155,4 +155,5 @@ export default {
     right: 8px;
     top: 38px;
   }
-}</style>
+}
+</style>
