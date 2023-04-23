@@ -150,10 +150,6 @@ const register = () => {
 
                   const socket = io(import.meta.env.VITE_WEBSOCKET_ENDPOINT);
 
-                  socket.onAny((event, ...args) => {
-                    console.log(event, args);
-                  });
-
                   socket.on('verify', (message: VerificationMessage) => {
                     if (message.status === 'success') {
                       if (message.user !== data.id) return;
