@@ -8,6 +8,7 @@ export enum LocalesEnum {
   en_US = 'en_US',
   ua_UA = 'ua_UA',
   tr_TR = 'tr_TR',
+  de_DE = 'de_DE',
 }
 
 export const LANGUAGES: Map<LocalesEnum, Locale> = new Map<LocalesEnum, Locale>(
@@ -23,6 +24,10 @@ export const LANGUAGES: Map<LocalesEnum, Locale> = new Map<LocalesEnum, Locale>(
     [
       LocalesEnum.tr_TR,
       { value: LocalesEnum.tr_TR, caption: 'Türkçe', alfa2: 'tr' },
+    ],
+    [
+      LocalesEnum.de_DE,
+      { value: LocalesEnum.de_DE, caption: 'Deutsch', alfa2: 'de' },
     ],
   ],
 );
