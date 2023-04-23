@@ -195,7 +195,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
     font-weight: 600;
     font-size: 24px;
     line-height: 33px;
-    color: #7e7e7e;
+    color: $grey;
   }
 
   h1 {
@@ -255,7 +255,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
   .hero__item-1 {
     position: relative;
     max-width: 260px;
-    background-color: #2f4771;
+    background-color: $tile-bright;
 
     &::after {
       content: '// stats';
@@ -266,7 +266,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
       font-weight: 700;
       font-size: 48px;
       line-height: 66px;
-      color: #2d2d2d;
+      color: $black;
     }
 
     &::before {
@@ -281,13 +281,12 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
   }
 
   .hero__item-2 {
-    // width: 280px;
-    background-color: #344f7f;
+    background-color: $tile-mid;
   }
 
   .hero__item-3 {
     max-width: 200px;
-    background-color: #3c5b90;
+    background-color: $tile-dark;
   }
 }
 
@@ -302,11 +301,11 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
 
   .actions__discord {
     padding: 22px 82px;
-    color: #9dbaee;
+    color: $main-hover;
 
     &:hover {
-      background-color: #9dbaee;
-      color: #262626;
+      background-color: $main-hover;
+      color: $bg26;
     }
   }
 }
@@ -348,7 +347,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
     font-weight: 400;
     font-size: 18px;
     line-height: 25px;
-    color: #b5b5b5;
+    color: $secondary;
   }
 }
 
@@ -413,7 +412,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
     position: relative;
     height: 50%;
     padding: 42px 97px;
-    background-color: #3c5b90;
+    background-color: $tile-bright;
 
     blockquote {
       font-style: italic;
@@ -438,7 +437,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
   .player-quotes__item-2 {
     height: 50%;
     padding: 42px 97px;
-    background-color: #2f4771;
+    background-color: $tile-dark;
 
     blockquote {
       font-style: italic;
@@ -452,7 +451,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
     position: relative;
     width: 50%;
     padding: 100px;
-    background-color: #344f7f;
+    background-color: $tile-mid;
 
     blockquote {
       margin-bottom: 32px;

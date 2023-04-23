@@ -9,6 +9,7 @@ import components from '@/components/UI';
 import i18n from './locales/locales.main';
 import axios from 'axios';
 import VueCookies from 'vue-cookies';
+import VueLoaders from 'vue-loaders';
 
 export const backendApi = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_ENDPOINT,
@@ -51,6 +52,7 @@ app.use(pinia);
 app.use(createPlugin(loadScript), {
   v3SiteKey: import.meta.env.VITE_RECAPTCHA_V3_SITE_KEY,
 });
+app.use(VueLoaders);
 
 import { useUserStore } from '@/stores/user';
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';

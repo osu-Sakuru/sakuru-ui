@@ -124,7 +124,7 @@ const userStore = useUserStore();
   .hero__item-1 {
     position: relative;
     width: 200px;
-    background-color: #2f4771;
+    background-color: $tile-dark;
 
     &::after {
       content: '// stats';
@@ -135,7 +135,7 @@ const userStore = useUserStore();
       font-weight: 700;
       font-size: 48px;
       line-height: 66px;
-      color: #2d2d2d;
+      color: $black;
     }
 
     &::before {
@@ -151,12 +151,12 @@ const userStore = useUserStore();
 
   .hero__item-2 {
     width: 280px;
-    background-color: #344f7f;
+    background-color: $tile-mid;
   }
 
   .hero__item-3 {
     width: 200px;
-    background-color: #3c5b90;
+    background-color: $tile-bright;
   }
 }
 
@@ -168,21 +168,21 @@ const userStore = useUserStore();
     width: 540px;
     padding: 34px 82px;
     color: $main;
-    background-color: #e00087;
+    background-color: $primary-btn;
 
     &:hover {
       border-radius: 8px;
-      background-color: #d6007f;
+      background-color: $primary-btn-hover;
     }
   }
 
   .actions__discord {
     padding: 22px 82px;
-    color: #9dbaee;
+    color: $main-hover;
 
     &:hover {
-      background-color: #9dbaee;
-      color: #262626;
+      background-color: $main-hover;
+      color: $bg26;
     }
   }
 }

@@ -78,6 +78,15 @@ onUnmounted(() => {
         ></i>
         <ul v-show="menuActive" class="actions__btn-list searchbar__results">
           <!-- same as searching results, wait for marks design -->
+          <li class="actions__btn-item">
+            <a href="" class="btn-item__link">My profile</a>
+          </li>
+          <li class="actions__btn-item">
+            <a href="" class="btn-item__link">Friends</a>
+          </li>
+          <li class="actions__btn-item">
+            <a href="" class="btn-item__link">Settings</a>
+          </li>
           <li
             @click.prevent="
               userStore.logout();
@@ -117,104 +126,104 @@ onUnmounted(() => {
 .actions__wrapper {
   display: flex;
   align-items: center;
+}
 
-  .support__icon {
-    margin-right: 70px;
-    cursor: pointer;
-    transform: translateY(3px);
-    transition: all 0.3s ease;
+.support__icon {
+  margin-right: 70px;
+  cursor: pointer;
+  transform: translateY(3px);
+  transition: all 0.3s ease;
 
-    &:hover {
-      svg > path {
-        stroke: $main-hover;
-        transition: all 0.3s ease;
-      }
-    }
-  }
-
-  .btn {
-    position: relative;
-    padding: 0;
-    padding-right: 10px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 27px;
-    border: none;
-    background: transparent;
-    color: $main;
-    transition: all 0.3s ease;
-  }
-
-  .actions__btn-wrapper {
-    position: relative;
-  }
-
-  .actions__btn-wrapper > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 35px;
-  }
-
-  .actions__avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    margin-right: 5px;
-  }
-
-  .actions__account-icon {
-    &::after {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 20px;
-      background: url('@/assets/svg/down-arrow.svg');
-      transition: transform 0.3s ease;
-    }
-  }
-
-  .menu-hover {
-    color: $main-hover;
-    cursor: default;
-
-    &::after {
-      transform: rotate(180deg);
-      background: url('@/assets/svg/down-arrow-hover.svg');
-    }
-  }
-
-  .log__btn-wrapper {
-    display: flex;
-    align-items: center;
-  }
-
-  .log__icon {
-    transform: translateY(1px);
-    cursor: pointer;
-
-    &::after {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 20px;
-      background: url('@/assets/svg/login-icon.svg');
+  &:hover {
+    svg > path {
+      stroke: $main-hover;
       transition: all 0.3s ease;
     }
   }
+}
 
-  .log__btn-hover {
-    color: $main-hover;
+.btn {
+  position: relative;
+  padding: 0;
+  padding-right: 10px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  border: none;
+  background: transparent;
+  color: $main;
+  transition: all 0.3s ease;
+}
 
-    &::after {
-      background: url('@/assets/svg/login-icon-hover.svg');
-    }
+.actions__btn-wrapper {
+  position: relative;
+}
+
+.actions__btn-wrapper > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 35px;
+}
+
+.actions__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.actions__account-icon {
+  &::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url('@/assets/svg/down-arrow.svg');
+    transition: transform 0.3s ease;
   }
+}
 
-  .modalActive {
-    position: relative;
-    z-index: $zindex-ontop;
+.menu-hover {
+  color: $main-hover;
+  cursor: default;
+
+  &::after {
+    transform: rotate(180deg);
+    background: url('@/assets/svg/down-arrow-hover.svg');
   }
+}
+
+.log__btn-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.log__icon {
+  transform: translateY(1px);
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url('@/assets/svg/login-icon.svg');
+    transition: all 0.3s ease;
+  }
+}
+
+.log__btn-hover {
+  color: $main-hover;
+
+  &::after {
+    background: url('@/assets/svg/login-icon-hover.svg');
+  }
+}
+
+.modalActive {
+  position: relative;
+  z-index: $zindex-ontop;
 }
 </style>

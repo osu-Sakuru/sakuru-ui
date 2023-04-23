@@ -4,6 +4,7 @@ import SocialButton from './SocialButton.vue';
 import FormInput from './FormInput.vue';
 import StepIcon from './StepIcon.vue';
 import AppLogo from './AppLogo.vue';
+import CheckmarkIcon from './CheckmarkIcon.vue';
 
 export default [
   ActionButton,
@@ -12,4 +13,5 @@ export default [
   FormInput,
   StepIcon,
   AppLogo,
+  CheckmarkIcon,
 ];

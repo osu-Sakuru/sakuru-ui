@@ -125,7 +125,7 @@ const search = (query: string) => {
   border: none;
   outline: none;
   background: transparent;
-  color: #ffffff;
+  color: $main;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -154,7 +154,7 @@ const search = (query: string) => {
   width: 100px;
   opacity: 0;
   pointer-events: none;
-  background-color: #484848;
+  background-color: $bg33;
   transition: width 0.6s ease, opacity 0.2s ease;
 }
 
@@ -200,16 +200,15 @@ const search = (query: string) => {
   padding: 0;
   margin: 0;
   list-style: none;
-  background-color: beige;
 
   li {
     display: flex;
     align-items: center;
-    background-color: #484848;
+    background-color: $bg33;
     transition: all 0.1s ease;
 
     &:hover {
-      background-color: #3e3e3e;
+      background-color: $bg48;
     }
 
     a {

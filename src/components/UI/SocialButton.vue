@@ -51,7 +51,7 @@ export default defineComponent({
   line-height: 27px;
   text-align: left;
   text-decoration: none;
-  background-color: #262626;
+  background-color: $bg26;
   cursor: pointer;
   transition: all 0.3s ease;
 

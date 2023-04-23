@@ -12,6 +12,8 @@ I will **NOT** provide any help nor advices how to use this on your project, I m
 
 Current project structure:
 ```sh
+├── CODEOWNERS
+├── LICENSE
 ├── README.md
 ├── env.d.ts
 ├── index.html
@@ -30,32 +32,50 @@ Current project structure:
 │   │   │   ├── ActionsBar
 │   │   │   │   └── ActionsBar.vue
 │   │   │   └── AppHeader.vue
+│   │   ├── AppModal
+│   │   │   └── AppModal.vue
+│   │   ├── AppNotification
+│   │   │   └── AppNotification.vue
+│   │   ├── FormStep
+│   │   │   └── FormStep.vue
 │   │   ├── HomeContacts
 │   │   │   └── HomeContacts.vue
 │   │   ├── HomeRecords
 │   │   │   └── HomeRecords.vue
+│   │   ├── SearchBar
+│   │   │   └── SearchBar.vue
 │   │   └── UI
 │   │       ├── ActionButton.vue
+│   │       ├── AppLogo.vue
+│   │       ├── FormInput.vue
 │   │       ├── LangSwitcher.vue
 │   │       ├── SocialButton.vue
+│   │       ├── StepIcon.vue
 │   │       └── index.ts
+│   ├── enums
+│   │   └── GameModes.enum.ts
 │   ├── interfaces
 │   ├── locales
 │   │   ├── index.ts
 │   │   ├── locales.defaults.ts
 │   │   ├── locales.main.ts
 │   │   └── src
+│   │       ├── de-DE.json
 │   │       ├── en-US.json
 │   │       ├── tr-TR.json
 │   │       └── ua-UA.json
 │   ├── main.ts
+│   ├── public
 │   ├── router
 │   │   └── index.ts
 │   ├── stores
+│   │   ├── meta.ts
 │   │   └── user.ts
+│   ├── utils.ts
 │   └── views
 │       ├── HomeLoggedIn.vue
-│       └── HomeView.vue
+│       ├── HomeView.vue
+│       └── RegView.vue
 ├── tsconfig.config.json
 ├── tsconfig.json
 ├── vite.config.ts

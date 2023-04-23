@@ -1,5 +1,5 @@
 import type { IErrorResponse } from '@/interfaces/errorResponse.interface';
-import type { StateOptions } from '@/interfaces/stateOptions.interface';
+import type { UserStateOptions } from '@/interfaces/stateOptions.interface';
 import type { User } from '@/interfaces/user.interface';
 import { DEFAULT_LOCALE } from '@/locales';
 import { LANGUAGES } from '@/locales/locales.defaults';
@@ -13,7 +13,7 @@ export const useUserStore = defineStore('user', {
       isLoggedIn: false,
       user: {},
       language: Object.assign({}, LANGUAGES.get(DEFAULT_LOCALE)),
-    } as StateOptions),
+    } as UserStateOptions),
   getters: {},
   actions: {
     async login(

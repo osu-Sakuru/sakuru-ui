@@ -106,7 +106,7 @@ onUnmounted(() => {
     transition: color 0.3s ease;
 
     &:hover {
-      color: #b5b5b5;
+      color: $secondary;
     }
   }
 }
@@ -122,7 +122,7 @@ onUnmounted(() => {
 
 .footer__copyright-bg {
   padding: 48px 0;
-  background-color: #151515;
+  background-color: $bg15;
 }
 
 .footer__copyright {

@@ -44,7 +44,7 @@ const props = defineProps({
   .icon__circle {
     width: 10px;
     height: 10px;
-    border: solid 2px #ffffff;
+    border: solid 2px $main;
     border-radius: 50%;
     transition: color 0.5s ease;
   }
@@ -60,6 +60,6 @@ const props = defineProps({
 }
 
 .bg-white {
-  background-color: #ffffff;
+  background-color: $main;
 }
 </style>

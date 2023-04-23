@@ -45,18 +45,14 @@ const props = defineProps({
   border: none;
   cursor: pointer;
   color: $main;
-  background-color: #e00087;
+  background-color: $primary-btn;
   transition: all 0.3s ease;
   text-decoration: none;
 
   &:hover {
     border-radius: 8px;
-    background-color: #d6007f;
+    background-color: $primary-btn-hover;
   }
-}
-
-.green {
-  color: green;
 }
 
 .arrow {

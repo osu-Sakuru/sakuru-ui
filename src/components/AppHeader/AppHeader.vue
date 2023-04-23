@@ -67,13 +67,11 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #d26f6f;
+  background-color: #e85e5e;
   font-style: normal;
   font-size: 18px;
   line-height: 25px;
-  color: #fff;
+  color: $main;
 }
 
 .fixed {
@@ -84,7 +82,7 @@ onUnmounted(() => {
 }
 
 .header__bg {
-  background-color: #101010;
+  background-color: $bg15;
 }
 
 .header__wrapper {
