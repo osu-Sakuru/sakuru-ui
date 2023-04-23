@@ -15,7 +15,7 @@
     "confirm_password": "şifreyi onayla",
     "email": "e-mail",
     "not_reg": "kayıtlı değilmisin?",
-    "sign_up": "şimdi kaydolun",
+    "sign_up": "şimdi kaydol",
     "login_btn": "giriş yap",
     "forgot": "Şifreni mi unuttun?"
   },
@@ -49,8 +49,8 @@
     "connect_button": "nasıl bağlanılır"
   },
   "register": {
-    "registration": "Kayıt olma",
-    "post_registration": "Sakuru'ya Hoşgelin!",
+    "registration": "Kayıt ol",
+    "post_registration": "Sakuru'ya Hoşgeldin!",
     "note": "ipucu",
     "note_message": "Lütfen oyundan giriş yaparak hesabınızı etkinleştirin.", 
     "step": "adım",
