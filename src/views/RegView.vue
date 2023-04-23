@@ -148,11 +148,11 @@ const register = () => {
                   const { data } = response;
                   step.value = 3;
 
-                  const socket = io(
-                    import.meta.env.VITE_WEBSOCKET_ENDPOINT + '/verification',
-                  );
+                  const socket = io(import.meta.env.VITE_WEBSOCKET_ENDPOINT);
 
-                  socket.onAny(console.log);
+                  socket.onAny((event, ...args) => {
+                    console.log(event, args);
+                  });
 
                   socket.on('verify', (message: VerificationMessage) => {
                     if (message.status === 'success') {
