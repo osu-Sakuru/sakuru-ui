@@ -92,7 +92,7 @@
       "youtube": "Youtube kanaal"
     },
     "recaptcha": {
-      "agreement": "Deze site wordt beschermd door reCAPTCHA en het privacybeleid en de servicevoorwaarden van Google zijn van toepassing."
+      "agreement": "Deze site wordt beschermd door reCAPTCHA en het&nbsp;<a href='https://policies.google.com/privacy'>privacybeleid</a>&nbsp;en de&nbsp;<a href='https://policies.google.com/terms'>servicevoorwaarden</a>&nbsp;van Google zijn van toepassing."
     }
   },
   "footer": {
