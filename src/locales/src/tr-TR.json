@@ -7,7 +7,7 @@
     "connect": "Bağlan",
     "search": "Ara",
     "login": "Giriş Yap",
-    "logout": "Çıkış Yap"   
+    "logout": "Çıkış Yap"
   },
   "modal": {
     "username": "kullanıcı adı",
@@ -22,13 +22,13 @@
   "home_loggedout": {
     "welcome": "Hoş geldin",
     "welcome_text": "osu! sunucusu keyfiniz için yapıldı",
-    "over": "",
+    "over": "over",
     "registered_players": "{players_registered}+ kayıtlı oyuncu",
-    "more_than": "",
+    "more_than": "more than",
     "beatmaps_ranked": "{beatmaps_ranked} ranked olan havalı mapler",
     "friendly": "arkadaşça",
     "community": "toplum ve destek eki̇bi̇",
-    "action_button": "şi̇mdi̇ kaydolun ve di̇ğer {players_online} oyunculara katılın!",               
+    "action_button": "şi̇mdi̇ kaydolun ve di̇ğer {players_online} oyunculara katılın!",
     "features": "Temel özellikler",
     "direct_text": "Sorunsuz oyun içi beatmap arama ve indirme",
     "pp_systems": "Relax ve autopilot performans puan sistemleri",
@@ -52,7 +52,11 @@
     "registration": "Kayıt ol",
     "post_registration": "Sakuru'ya Hoşgeldin!",
     "note": "ipucu",
-    "note_message": "Lütfen oyundan giriş yaparak hesabınızı etkinleştirin.", 
+    "note_message": "Lütfen oyundan giriş yaparak hesabınızı etkinleştirin.",
+    "note_attention": "Do not leave this page until you have activated your account!",
+    "note_stuck": "Stuck? Need help? Read this article:",
+    "note_stuck_link": "How to connect?",
+    "note_success": "You have successfully activated your account!<br>You will be logged in shortly and redirected to the main page.",
     "step": "adım",
     "continue": "devam",
     "back": "geri",
