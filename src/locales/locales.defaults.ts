@@ -6,7 +6,7 @@ export interface Locale {
 
 export enum LocalesEnum {
   en_US = 'en_US',
-  ua_UA = 'ua_UA',
+  uk_UA = 'uk_UA',
   tr_TR = 'tr_TR',
   de_DE = 'de_DE',
   nl_NL = 'nl_NL',
@@ -19,8 +19,8 @@ export const LANGUAGES: Map<LocalesEnum, Locale> = new Map<LocalesEnum, Locale>(
       { value: LocalesEnum.en_US, caption: 'English (US)', alfa2: 'us' },
     ],
     [
-      LocalesEnum.ua_UA,
-      { value: LocalesEnum.ua_UA, caption: 'Українська', alfa2: 'ua' },
+      LocalesEnum.uk_UA,
+      { value: LocalesEnum.uk_UA, caption: 'Українська', alfa2: 'ua' },
     ],
     [
       LocalesEnum.tr_TR,
