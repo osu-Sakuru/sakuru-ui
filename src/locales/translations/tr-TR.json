@@ -1,109 +1,109 @@
 {
   "navbar": {
-    "leaderboards": "Лідерборди",
-    "clans": "Клани",
-    "beatmaps": "Бітмапи",
-    "info": "Інформація",
-    "connect": "Підключитися",
-    "search": "Шукати",
-    "login": "Увійти",
-    "logout": "Вийти"
+    "leaderboards": "Liderlik Tablosu",
+    "clans": "Klanlar",
+    "beatmaps": "Beatmapler",
+    "info": "Bilgi",
+    "connect": "Bağlan",
+    "search": "Ara",
+    "login": "Giriş Yap",
+    "logout": "Çıkış Yap"
   },
   "modal": {
-    "username": "ім'я користувача",
-    "password": "пароль",
-    "confirm_password": "підтвердьте пароль",
-    "email": "електронна пошта",
-    "not_reg": "не зареєстрований?",
-    "sign_up": "зареєструватися зараз",
-    "login_btn": "увійти",
-    "forgot": "Забули пароль?"
+    "username": "kullanıcı adı",
+    "password": "şifre",
+    "confirm_password": "şifreyi onayla",
+    "email": "e-mail",
+    "not_reg": "kayıtlı değilmisin?",
+    "sign_up": "şimdi kaydol",
+    "login_btn": "giriş yap",
+    "forgot": "Şifreni mi unuttun?"
   },
   "home_loggedout": {
-    "welcome": "Ласкаво просимо до",
-    "welcome_text": "osu! сервер, створений для вашої радості",
-    "over": "понад",
-    "registered_players": "{players_registered}+ зареєстрованих гравців",
-    "more_than": "більше ніж",
-    "beatmaps_ranked": "{beatmaps_ranked} найбільш улюблених мап ранкнуті",
-    "friendly": "дружня",
-    "community": "спільнота та команда підтримки",
-    "action_button": "зареєструйтеся зараз і приєднайтеся до інших {players_online} гравців онлайн!",
-    "features": "Основні переваги",
-    "direct_text": "Безпроблемний перегляд і завантаження мап у грі",
-    "pp_systems": "PP системи для Relax і Autopilot",
-    "pp_systems_text": "Спробуйте й подивіться, як далеко ви можете просунути свої базові навички! Або, можливо, пофармити трохи pp?",
-    "leaderboards": "Усі лідерборди",
-    "leaderboards_text": "Відкритий доступ до мод-фільтрів, рейтингу друзів і рейтингу країн",
-    "players_quotes": "Що говорять гравці",
-    "quote_action": "зареєструватися",
-    "records": "Наші Рекорди",
-    "records_setby": "Поставив"
+    "welcome": "Hoş geldin",
+    "welcome_text": "osu! sunucusu keyfiniz için yapıldı",
+    "over": "over",
+    "registered_players": "{players_registered}+ kayıtlı oyuncu",
+    "more_than": "more than",
+    "beatmaps_ranked": "{beatmaps_ranked} ranked olan havalı mapler",
+    "friendly": "arkadaşça",
+    "community": "toplum ve destek eki̇bi̇",
+    "action_button": "şi̇mdi̇ kaydolun ve di̇ğer {players_online} oyunculara katılın!",
+    "features": "Temel özellikler",
+    "direct_text": "Sorunsuz oyun içi beatmap arama ve indirme",
+    "pp_systems": "Relax ve autopilot performans puan sistemleri",
+    "pp_systems_text": "Temel becerilerinizi ne kadar ileri götürebileceğinizi deneyin ve görün! Ya da belki biraz pp farmlarsın?",
+    "leaderboards": "Tüm liderlik tabloları",
+    "leaderboards_text": "Mod filtrelerine, arkadaş sıralamalarına ve ülke sıralamalarına açık erişim",
+    "players_quotes": "Oyunculardan alıntılar",
+    "quote_action": "kayıt ol",
+    "records": "Rekorlar",
+    "records_setby": "Şu oyuncu tarafından:"
   },
   "home_loggedin": {
-    "welcome": "З поверненням, ",
-    "online": "онлайн",
-    "players": "гравець | гравців",
-    "lobbies": "мульті лоббі",
-    "streams": "стримів",
-    "connect_button": "як підключитися"
+    "welcome": "Tekrar hoşgeldin, ",
+    "online": "çevrimiçi",
+    "players": "oyuncu | oyuncular",
+    "lobbies": "çok oyunculu lobiler",
+    "streams": "canlı yayınlar",
+    "connect_button": "nasıl bağlanılır"
   },
   "register": {
-    "registration": "Реєстрація",
-    "post_registration": "Ласкаво просимо на Sakuru!",
-    "note": "підказка",
-    "note_message": "Будь ласка, активуйте свій обліковий запис, увійшовши з гри.",
-    "note_attention": "Не залишайте цю сторінку, поки не активуєте свій обліковий запис!",
-    "note_stuck": "Застряг? Потрібна допомога? Прочитайте цю статтю:",
-    "note_stuck_link": "Як підключитися?",
-    "note_success": "Ви успішно активували свій обліковий запис! <br>Незабаром ви увійдете в систему і будете перенаправлені на головну сторінку.",
-    "step": "крок",
-    "continue": "продовжити",
-    "back": "назад",
-    "already_have_account": "Є обліковий запис? Увійти",
+    "registration": "Kayıt ol",
+    "post_registration": "Sakuru'ya Hoşgeldin!",
+    "note": "ipucu",
+    "note_message": "Lütfen oyundan giriş yaparak hesabınızı etkinleştirin.",
+    "note_attention": "Do not leave this page until you have activated your account!",
+    "note_stuck": "Stuck? Need help? Read this article:",
+    "note_stuck_link": "How to connect?",
+    "note_success": "You have successfully activated your account!<br>You will be logged in shortly and redirected to the main page.",
+    "step": "adım",
+    "continue": "devam",
+    "back": "geri",
+    "already_have_account": "Hesabın mı var? Oturum aç",
     "validation": {
       "recaptcha": {
-        "invalid": "Ви не пройшли капчу. Ти робот, чи не так?"
+        "invalid": "Captcha'yı geçemedin. Bir robotsun, değil mi?"
       },
       "username": {
-        "required": "Ім'я користувача обов'язкове.",
-        "min": "Ім'я користувача повиннно бути не менше 3 символів.",
-        "max": "Ім'я користувача повиннно бути не більше 16 символів.",
-        "exists": "Ім'я користувача вже зайняте.",
-        "invalid": "Ім'я користувача має складатися з латинських букв і цифр."
+        "required": "Kullanıcı adı gereklidir.",
+        "min": "Kullanıcı adı en az 3 karakter uzunluğunda olmalıdır.",
+        "max": "Kullanıcı adı en fazla 16 karakter uzunluğunda olmalıdır.",
+        "exists": "Kullanıcı adı zaten alınmış.",
+        "invalid": "Kullanıcı adı yalnızca Latin harfleri ve rakamlar içermelidir."
       },
       "password": {
-        "required": "Пароль обов'язковий.",
-        "min": "Пароль повиннен бути не менше 8 символів.",
-        "max": "Пароль повиннен бути не більше 32 символів.",
-        "confirmed": "Паролі не співпадають."
+        "required": "Şifre gerekli.",
+        "min": "Şifren en az 8 karakter uzunluğunda olmalıdır.",
+        "max": "Şifren en fazla 32 karakter uzunluğunda olmalıdır.",
+        "confirmed": "Şifreler eşleşmiyor."
       },
       "email": {
-        "required": "Пошта обов'язкова.",
-        "invalid": "Пошта має бути дійсною.",
-        "exists": "Електронна пошта вже зайнята. Спробуйте увійти або скинути пароль."
+        "required": "Email gerekli.",
+        "invalid": "Email geçerli bir e-posta adresi olmalıdır.",
+        "exists": "Email zaten alınmış. Giriş yapmayı veya şifrenizi sıfırlamayı deneyin.."
       }
     }
   },
   "meta": {
     "contacts": {
-      "caption": "Контакти та медіа",
-      "discord": "discord спільнота",
-      "youtube": "youtube канал"
+      "caption": "İletişim ve medya",
+      "discord": "discord topluluğu",
+      "youtube": "youtube kanalı"
     },
     "recaptcha": {
-      "agreement": "Цей сайт захищено за допомогою reCAPTCHA, і до нього застосовуються&nbsp;<a href='https://policies.google.com/privacy'>Політика конфіденційності</a>&nbsp;та&nbsp;<a href='https://policies.google.com/terms'>Умови надання послуг</a>&nbsp;Google."
+      "agreement": "Bu site reCAPTCHA tarafından korunmaktadır ve Google&nbsp;<a href='https://policies.google.com/privacy'>Gizlilik Politikası</a>&nbsp;ve&nbsp;<a href='https://policies.google.com/terms'>Hizmet Şartları</a>&nbsp;geçerlidir."
     }
   },
   "footer": {
-    "links": "Посиллання",
-    "beatmaps": "Бітмапи",
-    "connect": "Підключитися",
-    "discord": "Discord сервер",
-    "youtube": "YouTube канал",
-    "leaderboards": "Лідерборди",
-    "clans": "Клани",
-    "info": "Інформація",
-    "email": "Пошта"
+    "links": "Linkler",
+    "beatmaps": "Beatmapler",
+    "connect": "Bağlan",
+    "discord": "Discord sunucusu",
+    "youtube": "YouTube kanalı",
+    "leaderboards": "Liderlik tablosu",
+    "clans": "Klanlar",
+    "info": "Bilgi",
+    "email": "Email"
   }
 }
