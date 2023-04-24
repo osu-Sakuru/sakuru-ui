@@ -1,4 +1,5 @@
 <p align="center">
+<a title="Crowdin" target="_blank" href="https://crowdin.com/project/sakuru"><img src="https://badges.crowdin.net/sakuru/localized.svg"></a>
   <a href="https://www.codefactor.io/repository/github/osu-sakuru/sakuru-ui">
     <img src="https://www.codefactor.io/repository/github/osu-sakuru/sakuru-ui/badge" alt="CodeFactor" />
   </a>
@@ -6,11 +7,14 @@
 
 # Sakuru-UI
 
+##### Want to help with localization? Feel free to contribute on [Crowdin](https://crowdin.com/project/sakuru)!
+
 I will **NOT** provide any help nor advices how to use this on your project, I made this repo public because I feel like some people might use structure, or general idea of my project for their own projects.
 
 **IF YOU DECIDE TO USE THIS, YOU ARE SOLELY RESPONSIBLE FOR IT.**
 
 Current project structure:
+
 ```sh
 ├── CODEOWNERS
 ├── LICENSE
