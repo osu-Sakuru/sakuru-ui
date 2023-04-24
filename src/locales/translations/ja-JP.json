@@ -2,21 +2,21 @@
   "navbar": {
     "leaderboards": "Leaderboards",
     "clans": "Clans",
-    "beatmaps": "Beatmaps",
+    "beatmaps": "ビートマップ",
     "info": "Info",
     "connect": "Connect",
     "search": "Search",
-    "login": "Login",
-    "logout": "Logout"
+    "login": "ログイン",
+    "logout": "ログアウト"
   },
   "modal": {
-    "username": "username",
-    "password": "password",
-    "confirm_password": "confirm password",
-    "email": "e-mail",
+    "username": "ユーザー名",
+    "password": "パスワード",
+    "confirm_password": "パスワードの確認",
+    "email": "メールアドレス",
     "not_reg": "not registered?",
     "sign_up": "sign up now",
-    "login_btn": "login",
+    "login_btn": "ログイン",
     "forgot": "Forgot password?"
   },
   "home_loggedout": {
@@ -42,10 +42,10 @@
   },
   "home_loggedin": {
     "welcome": "Welcome back, ",
-    "online": "online",
+    "online": "オンライン",
     "players": "player | players",
     "lobbies": "multiplayer lobbies",
-    "streams": "livestreams",
+    "streams": "ライブストリーム",
     "connect_button": "how to connect"
   },
   "register": {
@@ -56,7 +56,7 @@
     "note_attention": "Do not leave this page until you have activated your account!",
     "note_stuck": "Stuck? Need help? Read this article:",
     "note_stuck_link": "How to connect?",
-    "note_success": "You have successfully activated your account!<br>You will be logged in shortly and redirected to the main page.",
+    "note_success": "You have successfully activated your account!",
     "note_success_hint": "You will be logged in shortly and redirected to the main page.",
     "step": "step",
     "continue": "continue",
