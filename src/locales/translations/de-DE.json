@@ -56,7 +56,7 @@
     "note_attention": "Do not leave this page until you have activated your account!",
     "note_stuck": "Stuck? Need help? Read this article:",
     "note_stuck_link": "How to connect?",
-    "note_success": "You have successfully activated your account!",
+    "note_success": "You have successfully activated your account!<br>You will be logged in shortly and redirected to the main page.",
     "note_success_hint": "You will be logged in shortly and redirected to the main page.",
     "step": "Schritt",
     "continue": "Weiter",
