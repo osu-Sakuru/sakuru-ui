@@ -41,7 +41,7 @@ watch(
   () => doVerifiedAnimation.value,
   (newValue: boolean) => {
     if (newValue === true) {
-      new Promise((resolve) => setTimeout(resolve, 3000)).then(() => {
+      new Promise((resolve) => setTimeout(resolve, 3500)).then(() => {
         execute().then((captchaResponse) => {
           userStore
             .login(username.value, password.value, captchaResponse)
@@ -240,6 +240,7 @@ const handleKeyDown = (eventData: KeyboardEvent) => {
 
 const handleOnFocus = () => {
   if (
+    canContinue() &&
     step.value === 3 &&
     (!isFocused.value || metaStore.isMobile) &&
     !isLoading.value &&
@@ -338,8 +339,8 @@ onUnmounted(() => {
         <div class="reg__note_verified">
           <CheckmarkIcon></CheckmarkIcon>
           <div>
-            <p v-html="$t('register.note_success')"></p>
-            <span v-html="$t('register.note_success_hint')"></span>
+            <p>{{ $t('register.note_success') }}</p>
+            <span>{{ $t('register.note_success_hint') }}</span>
           </div>
         </div>
       </FormStep>
