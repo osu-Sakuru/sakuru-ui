@@ -22,10 +22,11 @@ watch(
   { immediate: true },
 );
 
-detectLanguage().then((language: Locale | undefined) => {
-  if (language && userStore.language === undefined)
-    userStore.language = language;
-});
+if (userStore.language === undefined)
+  detectLanguage().then((language: Locale | undefined) => {
+    if (language)
+      userStore.language = language;
+  });
 
 onMounted(() => {
   window.dispatchEvent(new Event('showHeader'));
