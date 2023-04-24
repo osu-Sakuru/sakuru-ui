@@ -1,8 +1,6 @@
 import type { IErrorResponse } from '@/interfaces/errorResponse.interface';
 import type { UserStateOptions } from '@/interfaces/stateOptions.interface';
 import type { User } from '@/interfaces/user.interface';
-import { DEFAULT_LOCALE } from '@/locales';
-import { LANGUAGES } from '@/locales/locales.defaults';
 import { backendApi } from '@/main';
 import type { AxiosError, AxiosResponse } from 'axios';
 import { defineStore } from 'pinia';
@@ -12,7 +10,7 @@ export const useUserStore = defineStore('user', {
     ({
       isLoggedIn: false,
       user: {},
-      language: Object.assign({}, LANGUAGES.get(DEFAULT_LOCALE)),
+      language: undefined,
     } as UserStateOptions),
   getters: {},
   actions: {

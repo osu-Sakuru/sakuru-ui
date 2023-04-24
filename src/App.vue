@@ -4,15 +4,28 @@ import AppHeader from '@/components/AppHeader/AppHeader.vue';
 import AppFooter from './components/AppFooter/AppFooter.vue';
 import i18n from '@/locales/locales.main';
 import { useUserStore } from './stores/user';
-import { inject, onMounted } from 'vue';
+import { inject, onMounted, watch } from 'vue';
 import { backendApi } from './main';
 import type { VueCookies } from 'vue-cookies';
 import { useRecaptchaProvider } from 'vue-recaptcha';
+import { detectLanguage } from './utils';
+import type { Locale } from './locales/locales.defaults';
 
 const userStore = useUserStore();
 const cookies = inject<VueCookies>('$cookies');
 
-i18n.global.locale.value = userStore.language.value;
+watch(
+  () => userStore.language,
+  (language) => {
+    if (language) i18n.global.locale.value = language.value;
+  },
+  { immediate: true },
+);
+
+detectLanguage().then((language: Locale | undefined) => {
+  if (language && userStore.language === undefined)
+    userStore.language = language;
+});
 
 onMounted(() => {
   window.dispatchEvent(new Event('showHeader'));

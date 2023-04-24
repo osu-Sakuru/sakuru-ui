@@ -325,7 +325,9 @@ onUnmounted(() => {
           <div v-else>
             <span>{{ $t('register.note') }}</span>
             <p>{{ $t('register.note_message') }}</p>
-            <p class="reg__note-attention">{{ $t('register.note_attention') }}</p>
+            <p class="reg__note-attention">
+              {{ $t('register.note_attention') }}
+            </p>
             <span class="reg__note-help">
               {{ $t('register.note_stuck') }}
               <RouterLink to="/faq" target="_blank">{{
@@ -504,10 +506,10 @@ onUnmounted(() => {
   }
 
   span {
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      color: $secondary;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: $secondary;
   }
 }
 
