@@ -1,109 +1,109 @@
 {
   "navbar": {
-    "leaderboards": "Лідерборди",
-    "clans": "Клани",
-    "beatmaps": "Бітмапи",
-    "info": "Інформація",
-    "connect": "Підключитися",
-    "search": "Шукати",
-    "login": "Увійти",
-    "logout": "Вийти"
+    "leaderboards": "Scorebord",
+    "clans": "Clans",
+    "beatmaps": "Beatmaps",
+    "info": "Informatie",
+    "connect": "Verbinden",
+    "search": "Iets aan het zoeken?",
+    "login": "Inloggen",
+    "logout": "Afmelden"
   },
   "modal": {
-    "username": "ім'я користувача",
-    "password": "пароль",
-    "confirm_password": "підтвердьте пароль",
-    "email": "електронна пошта",
-    "not_reg": "не зареєстрований?",
-    "sign_up": "зареєструватися зараз",
-    "login_btn": "увійти",
-    "forgot": "Забули пароль?"
+    "username": "gebruikersnaam",
+    "password": "wachtwoord",
+    "confirm_password": "wachtwoord bevestigen",
+    "email": "e-mail",
+    "not_reg": "niet geregistreerd?",
+    "sign_up": "registreer nu",
+    "login_btn": "inloggen",
+    "forgot": "ergeten wachtwoord?"
   },
   "home_loggedout": {
-    "welcome": "Ласкаво просимо до",
-    "welcome_text": "osu! сервер, створений для вашої радості",
-    "over": "понад",
-    "registered_players": "{players_registered}+ зареєстрованих гравців",
-    "more_than": "більше ніж",
-    "beatmaps_ranked": "{beatmaps_ranked} найбільш улюблених мап ранкнуті",
-    "friendly": "дружня",
-    "community": "спільнота та команда підтримки",
-    "action_button": "зареєструйтеся зараз і приєднайтеся до інших {players_online} гравців онлайн!",
-    "features": "Основні переваги",
-    "direct_text": "Безпроблемний перегляд і завантаження мап у грі",
-    "pp_systems": "PP системи для Relax і Autopilot",
-    "pp_systems_text": "Спробуйте й подивіться, як далеко ви можете просунути свої базові навички! Або, можливо, пофармити трохи pp?",
-    "leaderboards": "Усі лідерборди",
-    "leaderboards_text": "Відкритий доступ до мод-фільтрів, рейтингу друзів і рейтингу країн",
-    "players_quotes": "Що говорять гравці",
-    "quote_action": "зареєструватися",
-    "records": "Наші Рекорди",
-    "records_setby": "Поставив"
+    "welcome": "Welkom bij",
+    "welcome_text": "osu! server gemaakt voor uw plezier",
+    "over": "over",
+    "registered_players": "{players_registered}+ geregistreerde spelers",
+    "more_than": "meer dan",
+    "beatmaps_ranked": "{beatmaps_ranked} beatmaps gerangschikt door ons",
+    "friendly": "vriendelijk",
+    "community": "gemeenschap en ondersteuningsteam",
+    "action_button": "registreer nu en sluit je aan bij de andere {players_online} spelers online!",
+    "features": "Belangrijkste kenmerken",
+    "direct_text": "Grats osu! direct",
+    "pp_systems": "pp voor relax en autopiloot",
+    "pp_systems_text": "Probeer en zie hoe ver je kunt gaan met je basisvaardigheden! Of misschien wat pp farmen?",
+    "leaderboards": "Alle scoreborden",
+    "leaderboards_text": "Open toegang tot mod-filters, ranglijsten van vrienden en landenranglijsten",
+    "players_quotes": "citaten van spelers",
+    "quote_action": "registreer",
+    "records": "Ons records",
+    "records_setby": "Ingesteld door"
   },
   "home_loggedin": {
-    "welcome": "З поверненням, ",
-    "online": "онлайн",
-    "players": "гравець | гравців",
-    "lobbies": "мульті лоббі",
-    "streams": "стримів",
-    "connect_button": "як підключитися"
+    "welcome": "Hallo daar, ",
+    "online": "online spelers",
+    "players": "speler | spelers",
+    "lobbies": "wedstrijd lijst",
+    "streams": "livestreams",
+    "connect_button": "verbinding stappen"
   },
   "register": {
-    "registration": "Реєстрація",
-    "post_registration": "Ласкаво просимо на Sakuru!",
-    "note": "підказка",
-    "note_message": "Будь ласка, активуйте свій обліковий запис, увійшовши з гри.",
-    "note_attention": "Не залишайте цю сторінку, поки не активуєте свій обліковий запис!",
-    "note_stuck": "Застряг? Потрібна допомога? Прочитайте цю статтю:",
-    "note_stuck_link": "Як підключитися?",
-    "note_success": "Ви успішно активували свій обліковий запис! <br>Незабаром ви увійдете в систему і будете перенаправлені на головну сторінку.",
-    "step": "крок",
-    "continue": "продовжити",
-    "back": "назад",
-    "already_have_account": "Є обліковий запис? Увійти",
+    "registration": "Registreer",
+    "post_registration": "Welkom bij Sakuru!",
+    "note": "wenk",
+    "note_message": "Activeer je account door in te loggen vanuit het spel.",
+    "note_attention": "Verlaat deze pagina niet voordat u uw account heeft geactiveerd!",
+    "note_stuck": "Vast? hulp nodig? Lees dit artikel:",
+    "note_stuck_link": "Hoe te verbinden",
+    "note_success": "U heeft uw account succesvol geactiveerd!<br>U wordt spoedig ingelogd en doorgestuurd naar de hoofdpagina.",
+    "step": "step",
+    "continue": "ga verder",
+    "back": "terug",
+    "already_have_account": "Een account hebben? Loggen",
     "validation": {
       "recaptcha": {
-        "invalid": "Ви не пройшли капчу. Ти робот, чи не так?"
+        "invalid": "Je hebt de captcha niet gehaald. Je bent een robot, nietwaar?"
       },
       "username": {
-        "required": "Ім'я користувача обов'язкове.",
-        "min": "Ім'я користувача повиннно бути не менше 3 символів.",
-        "max": "Ім'я користувача повиннно бути не більше 16 символів.",
-        "exists": "Ім'я користувача вже зайняте.",
-        "invalid": "Ім'я користувача має складатися з латинських букв і цифр."
+        "required": "Gebruikersnaam is vereist.",
+        "min": "Gebruikersnaam moet minimaal 3 tekens lang zijn.",
+        "max": "Gebruikersnaam mag maximaal 16 tekens lang zijn.",
+        "exists": "Er bestaat al een account met deze gebruikersnaam!",
+        "invalid": "Gebruikersnamen mogen alleen Latijnse letters en cijfers bevatten."
       },
       "password": {
-        "required": "Пароль обов'язковий.",
-        "min": "Пароль повиннен бути не менше 8 символів.",
-        "max": "Пароль повиннен бути не більше 32 символів.",
-        "confirmed": "Паролі не співпадають."
+        "required": "Wachtwoord is vereist.",
+        "min": "Wachtwoord moet minimaal 8 tekens lang zijn.",
+        "max": "Wachtwoord mag maximaal 32 tekens lang zijn.",
+        "confirmed": "Wachtwoordbevestiging komt niet overeen."
       },
       "email": {
-        "required": "Пошта обов'язкова.",
-        "invalid": "Пошта має бути дійсною.",
-        "exists": "Електронна пошта вже зайнята. Спробуйте увійти або скинути пароль."
+        "required": "E-mail is vereist.",
+        "invalid": "E-mail moet een geldig e-mailadres zijn.",
+        "exists": "Deze E-mail is al in gebruik. Probeer in te loggen of reset je wachtwoord."
       }
     }
   },
   "meta": {
     "contacts": {
-      "caption": "Контакти та медіа",
-      "discord": "discord спільнота",
-      "youtube": "youtube канал"
+      "caption": "Contacten en media",
+      "discord": "Discord community",
+      "youtube": "Youtube kanaal"
     },
     "recaptcha": {
-      "agreement": "Цей сайт захищено за допомогою reCAPTCHA, і до нього застосовуються&nbsp;<a href='https://policies.google.com/privacy'>Політика конфіденційності</a>&nbsp;та&nbsp;<a href='https://policies.google.com/terms'>Умови надання послуг</a>&nbsp;Google."
+      "agreement": "Deze site wordt beschermd door reCAPTCHA en het privacybeleid en de servicevoorwaarden van Google zijn van toepassing."
     }
   },
   "footer": {
-    "links": "Посиллання",
-    "beatmaps": "Бітмапи",
-    "connect": "Підключитися",
-    "discord": "Discord сервер",
-    "youtube": "YouTube канал",
-    "leaderboards": "Лідерборди",
-    "clans": "Клани",
-    "info": "Інформація",
-    "email": "Пошта"
+    "links": "Koppelingen",
+    "beatmaps": "Beatmaps",
+    "connect": "Verbinden",
+    "discord": "Discord-server",
+    "youtube": "Youtube kanaal",
+    "leaderboards": "Scorebord",
+    "clans": "Clans",
+    "info": "Informatie",
+    "email": "E-mail"
   }
 }
