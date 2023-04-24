@@ -10,6 +10,7 @@ export enum LocalesEnum {
   tr_TR = 'tr_TR',
   de_DE = 'de_DE',
   nl_NL = 'nl_NL',
+  cs_CZ = 'cs_CZ',
 }
 
 export const LANGUAGES: Map<LocalesEnum, Locale> = new Map<LocalesEnum, Locale>(
@@ -33,6 +34,10 @@ export const LANGUAGES: Map<LocalesEnum, Locale> = new Map<LocalesEnum, Locale>(
     [
       LocalesEnum.nl_NL,
       { value: LocalesEnum.nl_NL, caption: 'Dutch (NL)', alfa2: 'nl' },
+    ],
+    [
+      LocalesEnum.cs_CZ,
+      { value: LocalesEnum.cs_CZ, caption: 'Čeština', alfa2: 'cz' },
     ],
   ],
 );
