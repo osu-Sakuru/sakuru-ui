@@ -50,7 +50,7 @@
   },
   "register": {
     "registration": "Registration",
-    "post_registration": "Welcome to Sakuru!",
+    "post_registration": "Vítejte v Sakuru!",
     "note": "hint",
     "note_message": "Please, activate your account by logging in from the game.",
     "note_attention": "Do not leave this page until you have activated your account!",
