@@ -8,6 +8,7 @@ import ua from './sources/uk-UA.json';
 import tr from './translations/tr-TR.json';
 import de from './translations/de-DE.json';
 import nl from './translations/nl-NL.json';
+import cs from './translations/cs-CZ.json';
 
 export const messages = {
   [LocalesEnum.en_US]: en,
@@ -15,6 +16,7 @@ export const messages = {
   [LocalesEnum.tr_TR]: tr,
   [LocalesEnum.de_DE]: de,
   [LocalesEnum.nl_NL]: nl,
+  [LocalesEnum.cs_CZ]: cs,
 };
 
 export const DEFAULT_LOCALE = LocalesEnum.en_US;

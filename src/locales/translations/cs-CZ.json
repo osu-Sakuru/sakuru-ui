@@ -1,109 +1,109 @@
 {
   "navbar": {
-    "leaderboards": "Leaderboards",
-    "clans": "Clans",
-    "beatmaps": "Beatmaps",
-    "info": "Info",
-    "connect": "Connect",
-    "search": "Search",
-    "login": "Login",
-    "logout": "Logout"
+    "leaderboards": "Žebříčky",
+    "clans": "Klany",
+    "beatmaps": "Beatmapy",
+    "info": "Informace",
+    "connect": "Připojte se",
+    "search": "Vyhledat",
+    "login": "Příhlásit se",
+    "logout": "Odhlásit se"
   },
   "modal": {
-    "username": "username",
-    "password": "password",
-    "confirm_password": "confirm password",
+    "username": "jméno",
+    "password": "heslo",
+    "confirm_password": "potvrdte heslo",
     "email": "e-mail",
-    "not_reg": "not registered?",
-    "sign_up": "sign up now",
-    "login_btn": "login",
-    "forgot": "Forgot password?"
+    "not_reg": "nejste zaregistrován?",
+    "sign_up": "přihlašte se teď",
+    "login_btn": "přihlášení",
+    "forgot": "zapomenuté heslo?"
   },
   "home_loggedout": {
-    "welcome": "Welcome to",
-    "welcome_text": "osu! server created for your joy",
-    "over": "over",
-    "registered_players": "{players_registered}+ registered players",
-    "more_than": "more than",
-    "beatmaps_ranked": "{beatmaps_ranked} much favored beatmaps ranked",
-    "friendly": "friendly",
-    "community": "community and support team",
-    "action_button": "register now and join the other {players_online} players online!",
-    "features": "Key features",
-    "direct_text": "Hassle-free in-game beatmap browsing and downloading",
-    "pp_systems": "Relax and autopilot performance points systems",
-    "pp_systems_text": "Try and see how far you can take your basic skills! Or perhaps farm some pp?",
-    "leaderboards": "All leaderboards",
-    "leaderboards_text": "Open access to mod-filters, friend rankings and country rankings",
-    "players_quotes": "Player quotes",
-    "quote_action": "sign up",
-    "records": "Our Records",
-    "records_setby": "Set by"
+    "welcome": "Vítejte ve",
+    "welcome_text": "osu! server vytvořený pro vaši radost",
+    "over": "přes",
+    "registered_players": "{players_registered}+ registrovaní hráči",
+    "more_than": "víc než",
+    "beatmaps_ranked": "{beatmaps_ranked} hodně oblíbený beatmapy rankované",
+    "friendly": "přátelská",
+    "community": "komunita a tým podpory",
+    "action_button": "zaregistrujte se a připojte se k {players_online} hráčů online!",
+    "features": "Klíčové vlastnosti",
+    "direct_text": "Bezproblémové procházení a stahování beatmap ve hře",
+    "pp_systems": "Systémy bodů výkonu Relax a autopilot",
+    "pp_systems_text": "Vyzkoušejte si, jak daleko se dostanete ve svých základních dovednostech! Nebo si třeba vyfarmáři nějaké pp?",
+    "leaderboards": "Všechny žebříčky",
+    "leaderboards_text": "Otevřený přístup k filtrům modů, žebříčkům přátel a žebříčkům zemí",
+    "players_quotes": "Citace hráčů",
+    "quote_action": "zaregistrovat se",
+    "records": "Naše záznamy",
+    "records_setby": "Sada od"
   },
   "home_loggedin": {
-    "welcome": "Welcome back, ",
+    "welcome": "Vítejte Zpět, ",
     "online": "online",
-    "players": "player | players",
-    "lobbies": "multiplayer lobbies",
-    "streams": "livestreams",
-    "connect_button": "how to connect"
+    "players": "hráč | hráči",
+    "lobbies": "lobby pro více hráčů",
+    "streams": "livestreamy",
+    "connect_button": "jak se připojit"
   },
   "register": {
-    "registration": "Registration",
-    "post_registration": "Welcome to Sakuru!",
-    "note": "hint",
-    "note_message": "Please, activate your account by logging in from the game.",
-    "note_attention": "Do not leave this page until you have activated your account!",
-    "note_stuck": "Stuck? Need help? Read this article:",
-    "note_stuck_link": "How to connect?",
-    "note_success": "You have successfully activated your account!<br>You will be logged in shortly and redirected to the main page.",
-    "step": "step",
-    "continue": "continue",
-    "back": "back",
-    "already_have_account": "Have an account? Sign in",
+    "registration": "Registrace",
+    "post_registration": "Vítejte ve Sakuru!",
+    "note": "nápověda",
+    "note_message": "Prosím, aktivujte si váš účet tím že se přihlásíte ve hře.",
+    "note_attention": "Neopouštějte tuto stránku, dokud si neaktivujete účet!",
+    "note_stuck": "Zasekli jste se? Potřebujete pomoc? Přečtěte si tento článek:",
+    "note_stuck_link": "Jak se připojit?",
+    "note_success": "Úspěšně jste aktivovali svůj účet!<br>Brzy budete přihlášeni a přesměrováni na hlavní stránku.",
+    "step": "krok",
+    "continue": "pokračovat",
+    "back": "zpět",
+    "already_have_account": "Máte účet? Přihlaste se",
     "validation": {
       "recaptcha": {
-        "invalid": "You didn't pass the captcha. You are a robot, aren't you?"
+        "invalid": "Neprošel jste captcha. Jste robot, že?"
       },
       "username": {
-        "required": "Username is required.",
-        "min": "Username must be at least 3 characters long.",
-        "max": "Username must be at most 16 characters long.",
-        "exists": "Username is already taken.",
-        "invalid": "The username must contain Latin letters and numbers only."
+        "required": "Uživatelské jméno je povinné.",
+        "min": "Uživatelské jméno musí mít alespoň 3 znaky.",
+        "max": "Uživatelské jméno musí mít maximálně 16 znaků.",
+        "exists": "Uživatelské jméno je již obsazeno.",
+        "invalid": "Uživatelské jméno musí obsahovat pouze písmena a číslice latinky."
       },
       "password": {
-        "required": "Password is required.",
-        "min": "Password must be at least 8 characters long.",
-        "max": "Password must be at most 32 characters long.",
-        "confirmed": "Password confirmation does not match."
+        "required": "Heslo je povinné.",
+        "min": "Heslo musí mít alespoň 8 znaků.",
+        "max": "Heslo musí mít maximálně 32 znaků.",
+        "confirmed": "Potvrzení hesla se neshoduje."
       },
       "email": {
-        "required": "Email is required.",
-        "invalid": "Email must be a valid email address.",
-        "exists": "Email is already taken. Try to login or reset your password."
+        "required": "Je vyžadován e-mail.",
+        "invalid": "E-mailová adresa musí být platná.",
+        "exists": "E-mail je již obsazen. Zkuste se přihlásit nebo obnovit heslo."
       }
     }
   },
   "meta": {
     "contacts": {
-      "caption": "Contacts and media",
-      "discord": "discord community",
-      "youtube": "youtube channel"
+      "caption": "Kontakty a média",
+      "discord": "discord komunita",
+      "youtube": "youtube kanál"
     },
     "recaptcha": {
-      "agreement": "This site is protected by reCAPTCHA and the Google&nbsp;<a href='https://policies.google.com/privacy'>Privacy Policy</a>&nbsp;and&nbsp;<a href='https://policies.google.com/terms'>Terms of Service</a>&nbsp;apply."
+      "agreement": "Tento web je chráněn reCAPTCHA a Google&nbsp;<a href='https://policies.google.com/privacy'>Zásady ochrany osobních údajů</a>&nbsp;a&nbsp;<a href='https://policies.google.com/terms'>Podmínky služby</a>&nbsp;použít."
     }
   },
   "footer": {
-    "links": "Links",
-    "beatmaps": "Beatmaps",
-    "connect": "Connect",
+    "links": "Odkazy",
+    "beatmaps": "Beatmapy",
+    "connect": "Připojit",
     "discord": "Discord server",
-    "youtube": "YouTube channel",
-    "leaderboards": "Leaderboards",
-    "clans": "Clans",
-    "info": "Info",
+    "youtube": "YouTube kanál",
+    "leaderboards": "Žebříčky",
+    "clans": "Klany",
+    "info": "Informace",
     "email": "Email"
   }
 }
