@@ -1,0 +1,109 @@
+{
+  "navbar": {
+    "leaderboards": "Leaderboards",
+    "clans": "Clans",
+    "beatmaps": "Beatmaps",
+    "info": "Info",
+    "connect": "Connect",
+    "search": "Search",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "modal": {
+    "username": "username",
+    "password": "password",
+    "confirm_password": "confirm password",
+    "email": "e-mail",
+    "not_reg": "not registered?",
+    "sign_up": "sign up now",
+    "login_btn": "login",
+    "forgot": "Forgot password?"
+  },
+  "home_loggedout": {
+    "welcome": "Welcome to",
+    "welcome_text": "osu! server created for your joy",
+    "over": "over",
+    "registered_players": "{players_registered}+ registered players",
+    "more_than": "more than",
+    "beatmaps_ranked": "{beatmaps_ranked} much favored beatmaps ranked",
+    "friendly": "friendly",
+    "community": "community and support team",
+    "action_button": "register now and join the other {players_online} players online!",
+    "features": "Key features",
+    "direct_text": "Hassle-free in-game beatmap browsing and downloading",
+    "pp_systems": "Relax and autopilot performance points systems",
+    "pp_systems_text": "Try and see how far you can take your basic skills! Or perhaps farm some pp?",
+    "leaderboards": "All leaderboards",
+    "leaderboards_text": "Open access to mod-filters, friend rankings and country rankings",
+    "players_quotes": "Player quotes",
+    "quote_action": "sign up",
+    "records": "Our Records",
+    "records_setby": "Set by"
+  },
+  "home_loggedin": {
+    "welcome": "Welcome back, ",
+    "online": "online",
+    "players": "player | players",
+    "lobbies": "multiplayer lobbies",
+    "streams": "livestreams",
+    "connect_button": "how to connect"
+  },
+  "register": {
+    "registration": "Registration",
+    "post_registration": "Welcome to Sakuru!",
+    "note": "hint",
+    "note_message": "Please, activate your account by logging in from the game.",
+    "note_attention": "Do not leave this page until you have activated your account!",
+    "note_stuck": "Stuck? Need help? Read this article:",
+    "note_stuck_link": "How to connect?",
+    "note_success": "You have successfully activated your account!<br>You will be logged in shortly and redirected to the main page.",
+    "step": "step",
+    "continue": "continue",
+    "back": "back",
+    "already_have_account": "Have an account? Sign in",
+    "validation": {
+      "recaptcha": {
+        "invalid": "You didn't pass the captcha. You are a robot, aren't you?"
+      },
+      "username": {
+        "required": "Username is required.",
+        "min": "Username must be at least 3 characters long.",
+        "max": "Username must be at most 16 characters long.",
+        "exists": "Username is already taken.",
+        "invalid": "The username must contain Latin letters and numbers only."
+      },
+      "password": {
+        "required": "Password is required.",
+        "min": "Password must be at least 8 characters long.",
+        "max": "Password must be at most 32 characters long.",
+        "confirmed": "Password confirmation does not match."
+      },
+      "email": {
+        "required": "Email is required.",
+        "invalid": "Email must be a valid email address.",
+        "exists": "Email is already taken. Try to login or reset your password."
+      }
+    }
+  },
+  "meta": {
+    "contacts": {
+      "caption": "Contacts and media",
+      "discord": "discord community",
+      "youtube": "youtube channel"
+    },
+    "recaptcha": {
+      "agreement": "This site is protected by reCAPTCHA and the Google&nbsp;<a href='https://policies.google.com/privacy'>Privacy Policy</a>&nbsp;and&nbsp;<a href='https://policies.google.com/terms'>Terms of Service</a>&nbsp;apply."
+    }
+  },
+  "footer": {
+    "links": "Links",
+    "beatmaps": "Beatmaps",
+    "connect": "Connect",
+    "discord": "Discord server",
+    "youtube": "YouTube channel",
+    "leaderboards": "Leaderboards",
+    "clans": "Clans",
+    "info": "Info",
+    "email": "Email"
+  }
+}
