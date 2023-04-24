@@ -7,7 +7,7 @@
 
 # Sakuru-UI
 
-## Want to help with localization? Feel free to contribute on [Crowdin](https://crowdin.com/project/sakuru)!
+### Want to help with localization? Feel free to contribute on [Crowdin](https://crowdin.com/project/sakuru)!
 
 I will **NOT** provide any help nor advices how to use this on your project, I made this repo public because I feel like some people might use structure, or general idea of my project for their own projects.
 
