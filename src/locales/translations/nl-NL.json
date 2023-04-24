@@ -1,109 +1,109 @@
 {
   "navbar": {
-    "leaderboards": "Scorebord",
+    "leaderboards": "Leaderboards",
     "clans": "Clans",
     "beatmaps": "Beatmaps",
-    "info": "Informatie",
-    "connect": "Verbinden",
-    "search": "Iets aan het zoeken?",
-    "login": "Inloggen",
-    "logout": "Afmelden"
+    "info": "Info",
+    "connect": "Connect",
+    "search": "Search",
+    "login": "Login",
+    "logout": "Logout"
   },
   "modal": {
-    "username": "gebruikersnaam",
-    "password": "wachtwoord",
-    "confirm_password": "wachtwoord bevestigen",
+    "username": "username",
+    "password": "password",
+    "confirm_password": "confirm password",
     "email": "e-mail",
-    "not_reg": "niet geregistreerd?",
-    "sign_up": "registreer nu",
-    "login_btn": "inloggen",
-    "forgot": "ergeten wachtwoord?"
+    "not_reg": "not registered?",
+    "sign_up": "sign up now",
+    "login_btn": "login",
+    "forgot": "Forgot password?"
   },
   "home_loggedout": {
-    "welcome": "Welkom bij",
-    "welcome_text": "osu! server gemaakt voor uw plezier",
+    "welcome": "Welcome to",
+    "welcome_text": "osu! server created for your joy",
     "over": "over",
-    "registered_players": "{players_registered}+ geregistreerde spelers",
-    "more_than": "meer dan",
-    "beatmaps_ranked": "{beatmaps_ranked} beatmaps gerangschikt door ons",
-    "friendly": "vriendelijk",
-    "community": "gemeenschap en ondersteuningsteam",
-    "action_button": "registreer nu en sluit je aan bij de andere {players_online} spelers online!",
-    "features": "Belangrijkste kenmerken",
-    "direct_text": "Grats osu! direct",
-    "pp_systems": "pp voor relax en autopiloot",
-    "pp_systems_text": "Probeer en zie hoe ver je kunt gaan met je basisvaardigheden! Of misschien wat pp farmen?",
-    "leaderboards": "Alle scoreborden",
-    "leaderboards_text": "Open toegang tot mod-filters, ranglijsten van vrienden en landenranglijsten",
-    "players_quotes": "citaten van spelers",
-    "quote_action": "registreer",
-    "records": "Ons records",
-    "records_setby": "Ingesteld door"
+    "registered_players": "{players_registered}+ registered players",
+    "more_than": "more than",
+    "beatmaps_ranked": "{beatmaps_ranked} much favored beatmaps ranked",
+    "friendly": "friendly",
+    "community": "community and support team",
+    "action_button": "register now and join the other {players_online} players online!",
+    "features": "Key features",
+    "direct_text": "Hassle-free in-game beatmap browsing and downloading",
+    "pp_systems": "Relax and autopilot performance points systems",
+    "pp_systems_text": "Try and see how far you can take your basic skills! Or perhaps farm some pp?",
+    "leaderboards": "All leaderboards",
+    "leaderboards_text": "Open access to mod-filters, friend rankings and country rankings",
+    "players_quotes": "Player quotes",
+    "quote_action": "sign up",
+    "records": "Our Records",
+    "records_setby": "Set by"
   },
   "home_loggedin": {
-    "welcome": "Hallo daar, ",
-    "online": "online spelers",
-    "players": "speler | spelers",
-    "lobbies": "wedstrijd lijst",
+    "welcome": "Welcome back, ",
+    "online": "online",
+    "players": "player | players",
+    "lobbies": "multiplayer lobbies",
     "streams": "livestreams",
-    "connect_button": "verbinding stappen"
+    "connect_button": "how to connect"
   },
   "register": {
-    "registration": "Registreer",
-    "post_registration": "Welkom bij Sakuru!",
-    "note": "wenk",
-    "note_message": "Activeer je account door in te loggen vanuit het spel.",
-    "note_attention": "Verlaat deze pagina niet voordat u uw account heeft geactiveerd!",
-    "note_stuck": "Vast? hulp nodig? Lees dit artikel:",
-    "note_stuck_link": "Hoe te verbinden",
-    "note_success": "U heeft uw account succesvol geactiveerd!<br>U wordt spoedig ingelogd en doorgestuurd naar de hoofdpagina.",
+    "registration": "Registration",
+    "post_registration": "Welcome to Sakuru!",
+    "note": "hint",
+    "note_message": "Please, activate your account by logging in from the game.",
+    "note_attention": "Do not leave this page until you have activated your account!",
+    "note_stuck": "Stuck? Need help? Read this article:",
+    "note_stuck_link": "How to connect?",
+    "note_success": "You have successfully activated your account!<br>You will be logged in shortly and redirected to the main page.",
     "step": "step",
-    "continue": "ga verder",
-    "back": "terug",
-    "already_have_account": "Een account hebben? Loggen",
+    "continue": "continue",
+    "back": "back",
+    "already_have_account": "Have an account? Sign in",
     "validation": {
       "recaptcha": {
-        "invalid": "Je hebt de captcha niet gehaald. Je bent een robot, nietwaar?"
+        "invalid": "You didn't pass the captcha. You are a robot, aren't you?"
       },
       "username": {
-        "required": "Gebruikersnaam is vereist.",
-        "min": "Gebruikersnaam moet minimaal 3 tekens lang zijn.",
-        "max": "Gebruikersnaam mag maximaal 16 tekens lang zijn.",
-        "exists": "Er bestaat al een account met deze gebruikersnaam!",
-        "invalid": "Gebruikersnamen mogen alleen Latijnse letters en cijfers bevatten."
+        "required": "Username is required.",
+        "min": "Username must be at least 3 characters long.",
+        "max": "Username must be at most 16 characters long.",
+        "exists": "Username is already taken.",
+        "invalid": "The username must contain Latin letters and numbers only."
       },
       "password": {
-        "required": "Wachtwoord is vereist.",
-        "min": "Wachtwoord moet minimaal 8 tekens lang zijn.",
-        "max": "Wachtwoord mag maximaal 32 tekens lang zijn.",
-        "confirmed": "Wachtwoordbevestiging komt niet overeen."
+        "required": "Password is required.",
+        "min": "Password must be at least 8 characters long.",
+        "max": "Password must be at most 32 characters long.",
+        "confirmed": "Password confirmation does not match."
       },
       "email": {
-        "required": "E-mail is vereist.",
-        "invalid": "E-mail moet een geldig e-mailadres zijn.",
-        "exists": "Deze E-mail is al in gebruik. Probeer in te loggen of reset je wachtwoord."
+        "required": "Email is required.",
+        "invalid": "Email must be a valid email address.",
+        "exists": "Email is already taken. Try to login or reset your password."
       }
     }
   },
   "meta": {
     "contacts": {
-      "caption": "Contacten en media",
-      "discord": "Discord community",
-      "youtube": "Youtube kanaal"
+      "caption": "Contacts and media",
+      "discord": "discord community",
+      "youtube": "youtube channel"
     },
     "recaptcha": {
-      "agreement": "Deze site wordt beschermd door reCAPTCHA en het privacybeleid en de servicevoorwaarden van Google zijn van toepassing."
+      "agreement": "This site is protected by reCAPTCHA and the Google&nbsp;<a href='https://policies.google.com/privacy'>Privacy Policy</a>&nbsp;and&nbsp;<a href='https://policies.google.com/terms'>Terms of Service</a>&nbsp;apply."
     }
   },
   "footer": {
-    "links": "Koppelingen",
+    "links": "Links",
     "beatmaps": "Beatmaps",
-    "connect": "Verbinden",
-    "discord": "Discord-server",
-    "youtube": "Youtube kanaal",
-    "leaderboards": "Scorebord",
+    "connect": "Connect",
+    "discord": "Discord server",
+    "youtube": "YouTube channel",
+    "leaderboards": "Leaderboards",
     "clans": "Clans",
-    "info": "Informatie",
-    "email": "E-mail"
+    "info": "Info",
+    "email": "Email"
   }
 }
