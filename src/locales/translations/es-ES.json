@@ -69,28 +69,28 @@
       "username": {
         "required": "Se requiere nombre de usuario.",
         "min": "El nombre de usuario debe de tener al menos 3 caracteres.",
-        "max": "Username must be at most 16 characters long.",
-        "exists": "Username is already taken.",
-        "invalid": "The username must contain Latin letters and numbers only."
+        "max": "El nombre de usuario debe de tener como máximo 16 caracteres.",
+        "exists": "El nombre de usuario ya está en uso.",
+        "invalid": "El nombre de usuario solo debe de contener letras latinas y números."
       },
       "password": {
-        "required": "Password is required.",
-        "min": "Password must be at least 8 characters long.",
-        "max": "Password must be at most 32 characters long.",
-        "confirmed": "Password confirmation does not match."
+        "required": "Se requiere contraseña.",
+        "min": "La contraseña debe de tener al menos 8 caracteres.",
+        "max": "La contraseña debe de tener como máximo 32 caracteres.",
+        "confirmed": "La confirmación de contraseña no coincide."
       },
       "email": {
-        "required": "Email is required.",
-        "invalid": "Email must be a valid email address.",
-        "exists": "Email is already taken. Try to login or reset your password."
+        "required": "Se requiere e-mail.",
+        "invalid": "El e-mail debe de ser un e-mail válido.",
+        "exists": "El e-mail ya está en uso. Intenta iniciar sesión o restablecer tu contraseña."
       }
     }
   },
   "meta": {
     "contacts": {
-      "caption": "Contacts and media",
-      "discord": "discord community",
-      "youtube": "youtube channel"
+      "caption": "Contactos y multimedia",
+      "discord": "comunidad de discord",
+      "youtube": "canal de youtube"
     },
     "recaptcha": {
       "agreement": "This site is protected by reCAPTCHA and the Google&nbsp;<a href='https://policies.google.com/privacy'>Privacy Policy</a>&nbsp;and&nbsp;<a href='https://policies.google.com/terms'>Terms of Service</a>&nbsp;apply."
@@ -98,13 +98,13 @@
   },
   "footer": {
     "links": "Links",
-    "beatmaps": "Beatmaps",
-    "connect": "Connect",
-    "discord": "Discord server",
-    "youtube": "YouTube channel",
-    "leaderboards": "Leaderboards",
-    "clans": "Clans",
-    "info": "Info",
-    "email": "Email"
+    "beatmaps": "Mapas",
+    "connect": "Conectar",
+    "discord": "Servidor de discord",
+    "youtube": "Canal de YouTube",
+    "leaderboards": "Clasificación",
+    "clans": "Clanes",
+    "info": "Información",
+    "email": "E-mail"
   }
 }
