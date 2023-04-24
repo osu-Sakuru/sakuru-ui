@@ -67,31 +67,19 @@ const username = ref(''),
 const canContinue = () => {
   switch (step.value) {
     case 1:
-      if (
+      return (
         Object.keys(errors.value).length === 0 &&
         username.value !== '' &&
         email.value !== ''
-      ) {
-        return true;
-      } else {
-        return false;
-      }
+      );
     case 2:
-      if (
+      return (
         Object.keys(errors.value).length === 0 &&
         password.value !== '' &&
         confirm_password.value !== ''
-      ) {
-        return true;
-      } else {
-        return false;
-      }
+      );
     case 3:
-      if (Object.keys(errors.value).length === 0) {
-        return true;
-      } else {
-        return false;
-      }
+      return Object.keys(errors.value).length === 0;
     default:
       return false;
   }
