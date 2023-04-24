@@ -16,7 +16,7 @@ export default {
 <style lang="scss" scoped>
 .success-checkmark {
   width: 80px;
-  height: 115px;
+  height: 80px;
   margin: 0 auto;
 }
 .success-checkmark .check-icon {

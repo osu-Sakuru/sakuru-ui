@@ -41,7 +41,7 @@ watch(
   () => doVerifiedAnimation.value,
   (newValue: boolean) => {
     if (newValue === true) {
-      new Promise((resolve) => setTimeout(resolve, 3000)).then(() => {
+      new Promise((resolve) => setTimeout(resolve, 3500)).then(() => {
         execute().then((captchaResponse) => {
           userStore
             .login(username.value, password.value, captchaResponse)
@@ -240,6 +240,7 @@ const handleKeyDown = (eventData: KeyboardEvent) => {
 
 const handleOnFocus = () => {
   if (
+    canContinue() &&
     step.value === 3 &&
     (!isFocused.value || metaStore.isMobile) &&
     !isLoading.value &&
@@ -324,7 +325,7 @@ onUnmounted(() => {
           <div v-else>
             <span>{{ $t('register.note') }}</span>
             <p>{{ $t('register.note_message') }}</p>
-            <p>{{ $t('register.note_attention') }}</p>
+            <p class="reg__note-attention">{{ $t('register.note_attention') }}</p>
             <span class="reg__note-help">
               {{ $t('register.note_stuck') }}
               <RouterLink to="/faq" target="_blank">{{
@@ -338,11 +339,12 @@ onUnmounted(() => {
         <div class="reg__note_verified">
           <CheckmarkIcon></CheckmarkIcon>
           <div>
-            <p v-html="$t('register.note_success')"></p>
+            <p>{{ $t('register.note_success') }}</p>
+            <span>{{ $t('register.note_success_hint') }}</span>
           </div>
         </div>
       </FormStep>
-      <div class="reg__stepper">
+      <div class="reg__stepper" v-if="!doVerifiedAnimation">
         <button
           @click="prevStep()"
           :disabled="step == 1"
@@ -384,7 +386,7 @@ onUnmounted(() => {
         class="reg__captcha_agreement"
       >
       </span>
-      <RouterLink class="reg__link" to="/">{{
+      <RouterLink v-if="step !== 3" class="reg__link" to="/">{{
         $t('register.already_have_account')
       }}</RouterLink>
     </form>
@@ -454,11 +456,11 @@ onUnmounted(() => {
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
-    line-height: 33px;
   }
 
-  p:nth-child(3) {
+  .reg__note-attention {
     margin-top: 10px;
+    font-size: 18px;
     color: $red;
   }
 
@@ -487,6 +489,11 @@ onUnmounted(() => {
 
 .reg__note_verified {
   text-align: center;
+  color: $n-success;
+
+  .success-checkmark {
+    transform: scale(0.8);
+  }
 
   p {
     margin: 0;
@@ -494,6 +501,13 @@ onUnmounted(() => {
     font-weight: 600;
     font-size: 20px;
     line-height: 33px;
+  }
+
+  span {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      color: $secondary;
   }
 }
 
