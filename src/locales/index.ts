@@ -1,14 +1,17 @@
 import { LocalesEnum } from './locales.defaults';
 
-import en from './src/en-US.json';
-import ua from './src/ua-UA.json';
-import tr from './src/tr-TR.json';
-import de from './src/de-DE.json';
-import nl from './src/nl-NL.json';
+// Source translations
+import en from './sources/en-US.json';
+import ua from './sources/uk-UA.json';
+
+// Translations
+import tr from './translations/tr-TR.json';
+import de from './translations/de-DE.json';
+import nl from './translations/nl-NL.json';
 
 export const messages = {
   [LocalesEnum.en_US]: en,
-  [LocalesEnum.ua_UA]: ua,
+  [LocalesEnum.uk_UA]: ua,
   [LocalesEnum.tr_TR]: tr,
   [LocalesEnum.de_DE]: de,
   [LocalesEnum.nl_NL]: nl,
