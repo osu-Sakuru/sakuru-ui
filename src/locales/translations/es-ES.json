@@ -38,7 +38,7 @@
     "players_quotes": "Citas de jugadores",
     "quote_action": "registrarse",
     "records": "Nuestros records",
-    "records_setby": "Establecido por"
+    "records_setby": "Jugado por"
   },
   "home_loggedin": {
     "welcome": "Bienvenido de nuevo, ",
@@ -56,7 +56,7 @@
     "note_attention": "¡No abandones esta página hasta que hayas activado tu cuenta!",
     "note_stuck": "¿Estás atascado? ¿Necesitas ayuda? Lee este artículo:",
     "note_stuck_link": "¿Cómo conectarse?",
-    "note_success": "You have successfully activated your account!<br>You will be logged in shortly and redirected to the main page.",
+    "note_success": "¡Has activado tu cuenta con éxito!",
     "note_success_hint": "En breve iniciarás sesión y serás redirigido a la página principal.",
     "step": "paso",
     "continue": "continuar",
@@ -93,7 +93,7 @@
       "youtube": "canal de youtube"
     },
     "recaptcha": {
-      "agreement": "This site is protected by reCAPTCHA and the Google&nbsp;<a href='https://policies.google.com/privacy'>Privacy Policy</a>&nbsp;and&nbsp;<a href='https://policies.google.com/terms'>Terms of Service</a>&nbsp;apply."
+      "agreement": "Este sitio está protegido por reCAPTCHA, se aplica la&nbsp;<a href='https://policies.google.com/privacy'>Politica de privacidad</a>&nbsp;y los&nbsp;<a href='https://policies.google.com/terms'>Términos de servicio</a>&nbsp;de Google."
     }
   },
   "footer": {
