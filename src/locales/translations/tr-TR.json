@@ -13,7 +13,7 @@
     "username": "kullanıcı adı",
     "password": "şifre",
     "confirm_password": "şifreyi onayla",
-    "email": "e-mail",
+    "email": "e-posta",
     "not_reg": "kayıtlı değilmisin?",
     "sign_up": "şimdi kaydol",
     "login_btn": "giriş yap",
@@ -53,11 +53,11 @@
     "post_registration": "Sakuru'ya Hoşgeldin!",
     "note": "ipucu",
     "note_message": "Lütfen oyundan giriş yaparak hesabınızı etkinleştirin.",
-    "note_attention": "Do not leave this page until you have activated your account!",
-    "note_stuck": "Stuck? Need help? Read this article:",
-    "note_stuck_link": "How to connect?",
+    "note_attention": "Hesabınızı etkinleştirene kadar bu sayfadan ayrılmayın!",
+    "note_stuck": "Takılımı kaldınız? Yardıma mı ihtiyacınız var? Bu makaleyi okuyun:",
+    "note_stuck_link": "Nasıl bağlanılır?",
     "note_success": "You have successfully activated your account!<br>You will be logged in shortly and redirected to the main page.",
-    "note_success_hint": "You will be logged in shortly and redirected to the main page.",
+    "note_success_hint": "Kısa süre içinde giriş yapacak ve ana sayfaya yönlendirileceksiniz.",
     "step": "adım",
     "continue": "devam",
     "back": "geri",
@@ -105,6 +105,6 @@
     "leaderboards": "Liderlik tablosu",
     "clans": "Klanlar",
     "info": "Bilgi",
-    "email": "Email"
+    "email": "Eposta"
   }
 }
