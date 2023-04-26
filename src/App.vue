@@ -46,7 +46,7 @@ useRecaptchaProvider();
 
 <style lang="scss">
 html {
-  background: #1b1b1b;
+  background: $main-bg;
   color: $main;
 }
 
@@ -56,7 +56,7 @@ html {
   flex-wrap: wrap;
   font-size: 13px;
   line-height: 16px;
-  color: #b5b5b5;
+  color: $secondary;
   margin-top: 10px;
   margin-left: 4vh;
   margin-right: 4vh;
@@ -76,7 +76,7 @@ html {
 .footer__captcha_agreement {
   font-size: 13px;
   line-height: 16px;
-  color: #b5b5b5;
+  color: $secondary;
   margin-top: 10px;
 
   a {
