@@ -232,8 +232,18 @@ onUnmounted(() => {
     padding: 40px;
     text-decoration: none;
     outline-style: none;
-    background: url('@/assets/img/homeloggedin-bg.jpg') center no-repeat;
-    background-size: cover;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      z-index: $zindex-dropdown;
+      background: url('@/assets/img/homeloggedin-bg.jpg') center no-repeat;
+      background-size: cover;
+      filter: blur(0.7px) brightness(0.7);
+    }
 
     & > img {
       display: block;
@@ -269,11 +279,21 @@ onUnmounted(() => {
     margin: 0;
     list-style: none;
 
+    &:last-child {
+      button {
+        color: $red !important;
+
+        &::after {
+          background-color: $red !important;
+        }
+      }
+    }
+
     .account__menu-item {
       &:hover {
         background-color: $bg33;
       }
-
+      
       .menu-item-link {
         position: relative;
         display: flex;
