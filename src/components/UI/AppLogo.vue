@@ -6,7 +6,7 @@ export default {
 
 <template>
   <RouterLink class="logo" to="/">
-    <img src="@/assets/svg/logo.svg" alt="sakuru-logo" />
+    <img src="@/assets/svg/logo.svg" alt="sakuru-logo" draggable="false" />
   </RouterLink>
 </template>
 
