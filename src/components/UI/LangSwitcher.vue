@@ -38,7 +38,7 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
         @click="setLocale(locale.value)"
         :key="locale.value"
       >
-        <img :src="getFlagUrl(locale.alfa2)" />
+        <img :src="getFlagUrl(locale.alfa2)" alt="country flag" />
         {{ locale.caption }}
       </li>
     </ul>

@@ -68,22 +68,37 @@ onUnmounted(() => {
           alt="avatar"
           draggable="false"
         />
-        <div v-if="menuActive" @click="menuHandler" class="account__menu-bg"></div>
+        <div
+          v-if="menuActive"
+          @click="menuHandler"
+          class="account__menu-bg"
+        ></div>
         <Transition name="fade">
           <div v-if="menuActive" class="account__menu-wrapper">
-            <RouterLink to="/profile" class="account__menu-cover" href="">
+            <RouterLink
+              :to="`users/${userStore.user.id}`"
+              class="account__menu-cover"
+            >
               <img src="@/assets/svg/avatar-placeholder.svg" alt="" />
               <span>{{ userStore.user.name }}</span>
             </RouterLink>
             <ul class="account__menu-list">
               <li class="account__menu-item">
-                <RouterLink to="/profile" class="menu-item-link">My profile</RouterLink>
+                <RouterLink
+                  :to="`users/${userStore.user.id}`"
+                  class="menu-item-link"
+                  >{{ $t('navbar.my_profile') }}</RouterLink
+                >
               </li>
               <li class="account__menu-item">
-                <RouterLink to="/friends" class="menu-item-link">Friends</RouterLink>
+                <RouterLink to="/friends" class="menu-item-link">{{
+                  $t('navbar.friends')
+                }}</RouterLink>
               </li>
               <li class="account__menu-item">
-                <RouterLink to="/settings" class="menu-item-link">Settings</RouterLink>
+                <RouterLink to="/settings" class="menu-item-link">{{
+                  $t('navbar.settings')
+                }}</RouterLink>
               </li>
               <li class="account__menu-item">
                 <button
@@ -94,7 +109,7 @@ onUnmounted(() => {
                   "
                   class="menu-item-link"
                 >
-                  Logout
+                  {{ $t('navbar.logout') }}
                 </button>
               </li>
             </ul>
@@ -214,7 +229,7 @@ onUnmounted(() => {
     position: absolute;
     bottom: 100%;
     right: 20px;
-    content: "";
+    content: '';
     display: block;
     width: 0;
     height: 0;
@@ -234,7 +249,7 @@ onUnmounted(() => {
     outline-style: none;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       display: block;
       width: 100%;
@@ -293,7 +308,7 @@ onUnmounted(() => {
       &:hover {
         background-color: $bg33;
       }
-      
+
       .menu-item-link {
         position: relative;
         display: flex;
@@ -311,7 +326,7 @@ onUnmounted(() => {
         color: $main;
 
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           left: 5px;
           width: 3px;

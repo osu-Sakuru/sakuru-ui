@@ -76,13 +76,15 @@ onUnmounted(() => {
 
 .fixed {
   position: fixed;
+  top: 0;
   z-index: $zindex-fixed;
   width: 100%;
+  padding: 8px 0;
   transition: all 0.3s ease-out;
 }
 
 .header__bg {
-  background-color: $bg15;
+  background-color: $bg10;
 }
 
 .header__wrapper {

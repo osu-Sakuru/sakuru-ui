@@ -24,8 +24,7 @@ watch(
 
 if (userStore.language === undefined)
   detectLanguage().then((language: Locale | undefined) => {
-    if (language)
-      userStore.language = language;
+    if (language) userStore.language = language;
   });
 
 onMounted(() => {
