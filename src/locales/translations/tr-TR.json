@@ -8,9 +8,9 @@
     "search": "Ara",
     "login": "Giriş Yap",
     "logout": "Çıkış Yap",
-    "my_profile": "My profile",
-    "friends": "Friends",
-    "settings": "Settings"
+    "my_profile": "Profilim",
+    "friends": "Arkadaşlar",
+    "settings": "Ayarlar"
   },
   "modal": {
     "username": "kullanıcı adı",
@@ -90,28 +90,28 @@
     }
   },
   "profile": {
-    "player_info": "player info",
-    "also_known": "also known as",
-    "offline": "offline",
-    "online": "online",
+    "player_info": "oyuncu bilgisi",
+    "also_known": "ayrıca şöyle bilinir",
+    "offline": "çevrimdışı",
+    "online": "çevrimiçi",
     "friend": {
-      "add": "add friend",
-      "added": "mutual"
+      "add": "arkadaş ekle",
+      "added": "karşılıklı"
     },
-    "supporter": "Sakuru supporter",
-    "global_ranking": "global ranking",
-    "country_ranking": "country ranking",
+    "supporter": "Sakuru destekleyicisi",
+    "global_ranking": "küresel sıralama",
+    "country_ranking": "ülke sıralaması",
     "details": {
       "pp": "PP",
-      "accuracy": "Accuracy",
-      "ranked_score": "Ranked score",
-      "total_score": "Total score",
-      "max_combo": "Max combo",
-      "play_count": "Play count",
-      "first_places": "First place ranks",
-      "watched_replays": "Watched replays",
-      "playtime": "Playtime",
-      "level": "Level"
+      "accuracy": "İsabetlilik",
+      "ranked_score": "Ranked skoru",
+      "total_score": "Toplam skor",
+      "max_combo": "Maks combo",
+      "play_count": "Oynama sayısı",
+      "first_places": "Birincilik rankları",
+      "watched_replays": "İzlenen tekrarlar",
+      "playtime": "Oynama süresi",
+      "level": "Seviye"
     }
   },
   "meta": {
