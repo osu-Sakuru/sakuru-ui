@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import ProfileGraph from '@/components/ProfileGraph/ProfileGraph.vue';
-import type { User, UserStats } from '@/interfaces/user.interface';
+import type { User, UserGraphs, UserStats } from '@/interfaces/user.interface';
 import { backendApi } from '@/main';
 import { useUserStore } from '@/stores/user';
 import { computed, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import moment from 'moment';
+import type { ChartDataset } from 'chart.js';
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -20,6 +21,7 @@ const currentUser = ref<User>();
 const currentUserStats = ref<UserStats>();
 
 const userAvatar = ref<string>('');
+const graphDatasets = ref<ChartDataset<'line'>[]>([]);
 
 watch(currentUser, () => {
   backendApi
@@ -30,6 +32,20 @@ watch(currentUser, () => {
     })
     .then(({ data: stats }) => {
       currentUserStats.value = stats;
+    });
+
+  backendApi
+    .get<UserGraphs>(`/users/${currentUser.value?.id}/graphs`, {
+      params: {
+        mode: activeGamemode.value,
+      },
+    })
+    .then(({ data: graphs }) => {
+      graphDatasets.value.push({
+        label: 'Global Rank #',
+        tension: 0.1,
+        data: graphs.data.map<number>((value) => value.rank).reverse(),
+      });
     });
 });
 
@@ -215,7 +231,7 @@ const isSupporter = ref(false);
         </div>
         <div class="profile__stats">
           <div class="main-info">
-            <ProfileGraph />
+            <ProfileGraph :datasets="graphDatasets" />
             <div class="stats-wrapper">
               <div class="stats-rankings">
                 <p>
@@ -317,7 +333,9 @@ const isSupporter = ref(false);
                   <dt class="detail__key">
                     {{ $t('profile.details.pp') }}
                   </dt>
-                  <dd class="detail__value">{{ currentUserStats?.pp }}pp</dd>
+                  <dd class="detail__value">
+                    {{ currentUserStats?.pp.toLocaleString() }}pp
+                  </dd>
                 </dl>
                 <dl class="detail__entry">
                   <dt class="detail__key">
@@ -331,20 +349,24 @@ const isSupporter = ref(false);
                   <dt class="detail__key">
                     {{ $t('profile.details.ranked_score') }}
                   </dt>
-                  <dd class="detail__value">{{ currentUserStats?.rscore }}</dd>
+                  <dd class="detail__value">
+                    {{ Number(currentUserStats?.rscore).toLocaleString() }}
+                  </dd>
                 </dl>
                 <dl class="detail__entry">
                   <dt class="detail__key">
                     {{ $t('profile.details.total_score') }}
                   </dt>
-                  <dd class="detail__value">{{ currentUserStats?.tscore }}</dd>
+                  <dd class="detail__value">
+                    {{ Number(currentUserStats?.tscore).toLocaleString() }}
+                  </dd>
                 </dl>
                 <dl class="detail__entry">
                   <dt class="detail__key">
                     {{ $t('profile.details.max_combo') }}
                   </dt>
                   <dd class="detail__value">
-                    {{ currentUserStats?.max_combo }}
+                    {{ currentUserStats?.max_combo.toLocaleString() }}
                   </dd>
                 </dl>
               </div>
@@ -353,7 +375,9 @@ const isSupporter = ref(false);
                   <dt class="detail__key">
                     {{ $t('profile.details.play_count') }}
                   </dt>
-                  <dd class="detail__value">{{ currentUserStats?.plays }}</dd>
+                  <dd class="detail__value">
+                    {{ currentUserStats?.plays.toLocaleString() }}
+                  </dd>
                 </dl>
                 <dl class="detail__entry">
                   <dt class="detail__key">

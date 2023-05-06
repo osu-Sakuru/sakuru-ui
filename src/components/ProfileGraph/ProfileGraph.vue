@@ -13,7 +13,16 @@ import {
   type InteractionMode,
   type TooltipItem,
   type ChartType,
+  type ChartDataset,
 } from 'chart.js';
+import { computed } from 'vue';
+
+const props = defineProps({
+  datasets: {
+    type: Object as () => ChartDataset<'line'>[],
+    required: true,
+  },
+});
 
 const hoverLine = {
   id: 'hoverLine',
@@ -51,7 +60,11 @@ ChartJS.register(
   hoverLine,
 );
 
-const chartData = {
+// Reactivity doesn't work for some reason even with `toRefs`, or `computed`.
+// And even `watch` doesn't work.
+// Figure out why.
+// P.S. This does update `props.datasets` value reactively, but not re-renders the chart.
+const chartData = computed(() => ({
   labels: [
     '1 Days ago',
     '2 Days ago',
@@ -114,31 +127,8 @@ const chartData = {
     '59 Days ago',
     '60 Days ago',
   ].reverse(),
-  datasets: [
-    // {
-    //   label: 'Country Rank #',
-    //   tension: 0.1,
-    //   data: [
-    //     408, 566, 364, 248, 482, 432, 372, 296, 297, 466, 474, 456, 230, 549,
-    //     431, 399, 435, 300, 408, 381, 444, 301, 572, 297, 223, 327, 527, 280,
-    //     465, 278, 447, 474, 325, 365, 348, 353, 363, 360, 327, 247, 220, 338,
-    //     192, 407, 276, 301, 239, 317, 437, 242, 387, 344, 192, 306, 228, 317,
-    //     242, 384, 265, 309,
-    //   ],
-    // },
-    {
-      label: 'Global Rank #',
-      tension: 0.1,
-      data: [
-        408, 566, 364, 248, 482, 432, 372, 296, 297, 466, 474, 456, 230, 549,
-        431, 399, 435, 300, 408, 381, 444, 301, 572, 297, 223, 327, 527, 280,
-        465, 278, 447, 474, 325, 365, 348, 353, 363, 360, 327, 247, 220, 338,
-        192, 407, 276, 301, 239, 317, 437, 242, 387, 344, 192, 306, 228, 317,
-        242, 384, 265, 309,
-      ].reverse(),
-    },
-  ],
-};
+  datasets: [...props.datasets],
+}));
 
 const chartOptions = {
   type: 'line',

@@ -1,3 +1,5 @@
+import { GameModes } from '@/enums/GameModes.enum';
+
 export interface User {
   id: number;
   name: string;
@@ -41,6 +43,18 @@ export interface UserStats {
   first_places: number;
   level: {
     current: number;
-    progress: number;
+    progress: string;
   };
+}
+
+export interface UserGraphs {
+  value: any;
+  [x: string]: any;
+  mode: GameModes;
+  data: {
+    pp: number;
+    rank: number;
+    country_rank: number;
+    captured_at: Date;
+  }[];
 }
