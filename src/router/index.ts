@@ -32,11 +32,12 @@ const router = createRouter({
       },
     },
     {
-      path: '/users/:id',
+      path: '/users/:user',
       name: 'profile',
       component: ProfileView,
       meta: {
-        requiresAuth: true,
+        requiresAuth: false,
+        public: true,
       },
     },
   ],

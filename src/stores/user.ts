@@ -46,5 +46,14 @@ export const useUserStore = defineStore('user', {
         this.isLoggedIn = false;
       }
     },
+    isSelf(clause: string): boolean {
+      return (
+        this.user.name === clause ||
+        this.user.email === clause ||
+        this.user.safe_name === clause ||
+        this.user.id.toString() === clause ||
+        clause === 'me'
+      );
+    },
   },
 });

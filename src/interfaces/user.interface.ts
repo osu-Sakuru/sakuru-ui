@@ -18,3 +18,29 @@ export interface User {
   custom_badge_icon: string | null;
   userpage_content: string | null;
 }
+
+export interface UserStats {
+  id: number;
+  mode: number;
+  tscore: string;
+  rscore: string;
+  pp: number;
+  plays: number;
+  playtime: number;
+  acc: number;
+  max_combo: number;
+  total_hits: number;
+  xh_count: number;
+  x_count: number;
+  sh_count: number;
+  s_count: number;
+  a_count: number;
+  global_rank: number;
+  country_rank: number;
+  replay_views: number;
+  first_places: number;
+  level: {
+    current: number;
+    progress: number;
+  };
+}

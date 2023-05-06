@@ -75,20 +75,15 @@ onUnmounted(() => {
         ></div>
         <Transition name="fade">
           <div v-if="menuActive" class="account__menu-wrapper">
-            <RouterLink
-              :to="`users/${userStore.user.id}`"
-              class="account__menu-cover"
-            >
+            <RouterLink :to="`/users/me`" class="account__menu-cover">
               <img src="@/assets/svg/avatar-placeholder.svg" alt="" />
               <span>{{ userStore.user.name }}</span>
             </RouterLink>
             <ul class="account__menu-list">
               <li class="account__menu-item">
-                <RouterLink
-                  :to="`users/${userStore.user.id}`"
-                  class="menu-item-link"
-                  >{{ $t('navbar.my_profile') }}</RouterLink
-                >
+                <RouterLink :to="`/users/me`" class="menu-item-link">{{
+                  $t('navbar.my_profile')
+                }}</RouterLink>
               </li>
               <li class="account__menu-item">
                 <RouterLink to="/friends" class="menu-item-link">{{
