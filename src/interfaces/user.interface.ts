@@ -48,8 +48,6 @@ export interface UserStats {
 }
 
 export interface UserGraphs {
-  value: any;
-  [x: string]: any;
   mode: GameModes;
   data: {
     pp: number;
