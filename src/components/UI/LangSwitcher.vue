@@ -29,8 +29,8 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
 <template>
   <div @mouseover="menuHandler" @mouseout="menuHandler" class="lang__switcher">
     <div class="lang__select" :class="{ 'menu-active': menuActive }">
-      <img :src="getFlagUrl(userStore.language.alfa2)" />
-      {{ userStore.language.caption }}
+      <img :src="getFlagUrl(userStore.language!.alfa2)" />
+      {{ userStore.language!.caption }}
     </div>
     <ul v-show="menuActive" class="lang__options">
       <li
@@ -38,7 +38,7 @@ const menuHandler = () => (menuActive.value = !menuActive.value);
         @click="setLocale(locale.value)"
         :key="locale.value"
       >
-        <img :src="getFlagUrl(locale.alfa2)" />
+        <img :src="getFlagUrl(locale.alfa2)" alt="country flag" />
         {{ locale.caption }}
       </li>
     </ul>

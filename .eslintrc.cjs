@@ -12,6 +12,18 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
-    semi: ["error", "always"]
+    semi: ["error", "always"],
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    "@typescript-eslint/no-unused-vars": [
+      "warn", // or "error"
+      { 
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
   }
 };

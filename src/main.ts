@@ -103,9 +103,11 @@ router.beforeEach(
             });
           });
       } else if (userStore.isLoggedIn) {
-        next({
-          path: '/home',
-        });
+        if (!to.meta.public)
+          next({
+            path: '/home',
+          });
+        else next();
       } else {
         next();
       }

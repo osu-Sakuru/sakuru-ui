@@ -4,15 +4,28 @@ import AppHeader from '@/components/AppHeader/AppHeader.vue';
 import AppFooter from './components/AppFooter/AppFooter.vue';
 import i18n from '@/locales/locales.main';
 import { useUserStore } from './stores/user';
-import { inject, onMounted } from 'vue';
+import { inject, onMounted, watch } from 'vue';
 import { backendApi } from './main';
 import type { VueCookies } from 'vue-cookies';
 import { useRecaptchaProvider } from 'vue-recaptcha';
+import { detectLanguage } from './utils';
+import type { Locale } from './locales/locales.defaults';
 
 const userStore = useUserStore();
 const cookies = inject<VueCookies>('$cookies');
 
-i18n.global.locale.value = userStore.language.value;
+watch(
+  () => userStore.language,
+  (language) => {
+    if (language) i18n.global.locale.value = language.value;
+  },
+  { immediate: true },
+);
+
+if (userStore.language === undefined)
+  detectLanguage().then((language: Locale | undefined) => {
+    if (language) userStore.language = language;
+  });
 
 onMounted(() => {
   window.dispatchEvent(new Event('showHeader'));
@@ -46,7 +59,7 @@ useRecaptchaProvider();
 
 <style lang="scss">
 html {
-  background: #1b1b1b;
+  background: $main-bg;
   color: $main;
 }
 
@@ -56,7 +69,7 @@ html {
   flex-wrap: wrap;
   font-size: 13px;
   line-height: 16px;
-  color: #b5b5b5;
+  color: $secondary;
   margin-top: 10px;
   margin-left: 4vh;
   margin-right: 4vh;
@@ -76,7 +89,7 @@ html {
 .footer__captcha_agreement {
   font-size: 13px;
   line-height: 16px;
-  color: #b5b5b5;
+  color: $secondary;
   margin-top: 10px;
 
   a {

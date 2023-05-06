@@ -96,6 +96,8 @@ onUnmounted(() => {
 }
 
 .footer__item {
+  padding-bottom: 10px;
+
   a {
     font-style: normal;
     font-weight: 500;

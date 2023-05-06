@@ -33,7 +33,7 @@ onUnmounted(() => {
 
 <template>
   <div class="actions__wrapper">
-    <RouterLink to="/support" class="support__icon">
+    <RouterLink to="/support" class="support-icon">
       <svg
         width="25"
         height="25"
@@ -58,45 +58,58 @@ onUnmounted(() => {
       </svg>
     </RouterLink>
     <SearchBar v-if="userStore.isLoggedIn"></SearchBar>
-    <div
-      @mouseover="menuHandler"
-      @mouseout="menuHandler"
-      v-if="userStore.isLoggedIn"
-      class="actions__btn-wrapper"
-    >
+    <div v-if="userStore.isLoggedIn" class="account-wrapper">
       <div>
-        <button
-          :class="{ 'menu-hover': menuActive }"
-          class="btn actions__btn-account"
-        >
-          {{ userStore.user.name }}
-        </button>
-        <img class="actions__avatar" :src="userAvatar" alt="avatar" />
-        <i
-          :class="{ 'menu-hover': menuActive }"
-          class="actions__account-icon"
-        ></i>
-        <ul v-show="menuActive" class="actions__btn-list searchbar__results">
-          <!-- same as searching results, wait for marks design -->
-          <li class="actions__btn-item">
-            <a href="" class="btn-item__link">My profile</a>
-          </li>
-          <li class="actions__btn-item">
-            <a href="" class="btn-item__link">Friends</a>
-          </li>
-          <li class="actions__btn-item">
-            <a href="" class="btn-item__link">Settings</a>
-          </li>
-          <li
-            @click.prevent="
-              userStore.logout();
-              router.replace('/');
-              cookies?.remove('token');
-            "
-          >
-            Logout
-          </li>
-        </ul>
+        <img
+          @click="menuHandler"
+          class="account__avatar"
+          :class="{ 'dropdown-active': menuActive }"
+          :src="userAvatar"
+          alt="avatar"
+          draggable="false"
+        />
+        <div
+          v-if="menuActive"
+          @click="menuHandler"
+          class="account__menu-bg"
+        ></div>
+        <Transition name="fade">
+          <div v-if="menuActive" class="account__menu-wrapper">
+            <RouterLink :to="`/users/me`" class="account__menu-cover">
+              <img src="@/assets/svg/avatar-placeholder.svg" alt="" />
+              <span>{{ userStore.user.name }}</span>
+            </RouterLink>
+            <ul class="account__menu-list">
+              <li class="account__menu-item">
+                <RouterLink :to="`/users/me`" class="menu-item-link">{{
+                  $t('navbar.my_profile')
+                }}</RouterLink>
+              </li>
+              <li class="account__menu-item">
+                <RouterLink to="/friends" class="menu-item-link">{{
+                  $t('navbar.friends')
+                }}</RouterLink>
+              </li>
+              <li class="account__menu-item">
+                <RouterLink to="/settings" class="menu-item-link">{{
+                  $t('navbar.settings')
+                }}</RouterLink>
+              </li>
+              <li class="account__menu-item">
+                <button
+                  @click.prevent="
+                    userStore.logout();
+                    router.replace('/');
+                    cookies?.remove('token');
+                  "
+                  class="menu-item-link"
+                >
+                  {{ $t('navbar.logout') }}
+                </button>
+              </li>
+            </ul>
+          </div>
+        </Transition>
       </div>
     </div>
     <div
@@ -128,7 +141,7 @@ onUnmounted(() => {
   align-items: center;
 }
 
-.support__icon {
+.support-icon {
   margin-right: 70px;
   cursor: pointer;
   transform: translateY(3px);
@@ -140,6 +153,13 @@ onUnmounted(() => {
       transition: all 0.3s ease;
     }
   }
+}
+
+.account-wrapper > div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
@@ -156,25 +176,23 @@ onUnmounted(() => {
   transition: all 0.3s ease;
 }
 
-.actions__btn-wrapper {
+.account__btn {
   position: relative;
 }
 
-.actions__btn-wrapper > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 35px;
-}
-
-.actions__avatar {
-  width: 32px;
-  height: 32px;
+.account__avatar {
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
-  margin-right: 5px;
+  padding: 3px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: inset 0 0 0 3px $main;
+  }
 }
 
-.actions__account-icon {
+.account__icon {
   &::after {
     content: '';
     display: block;
@@ -185,12 +203,157 @@ onUnmounted(() => {
   }
 }
 
+.account__menu-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.account__menu-wrapper {
+  position: absolute;
+  top: calc(100% + 20px);
+  right: 0;
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  background-color: $bg26;
+
+  &::after {
+    position: absolute;
+    bottom: 100%;
+    right: 20px;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 15px 15px 15px;
+    border-color: transparent transparent $bg26 transparent;
+  }
+
+  .account__menu-cover {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-decoration: none;
+    outline-style: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      z-index: $zindex-dropdown;
+      background: url('@/assets/img/homeloggedin-bg.jpg') center no-repeat;
+      background-size: cover;
+      filter: blur(0.7px) brightness(0.7);
+    }
+
+    & > img {
+      display: block;
+      width: 40px;
+      margin-bottom: 10px;
+      z-index: $zindex-dropdown;
+    }
+
+    & > span {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 27px;
+      color: $main;
+      z-index: $zindex-dropdown;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($color: #000000, $alpha: 0.2);
+    }
+  }
+
+  .account__menu-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    &:last-child {
+      button {
+        color: $red !important;
+
+        &::after {
+          background-color: $red !important;
+        }
+      }
+    }
+
+    .account__menu-item {
+      &:hover {
+        background-color: $bg33;
+      }
+
+      .menu-item-link {
+        position: relative;
+        display: flex;
+        width: 100%;
+        padding: 10px 20px;
+        white-space: nowrap;
+        text-align: left;
+        text-decoration: none;
+        font-style: normal;
+        font-size: 18px;
+        line-height: 24px;
+        border: 0;
+        outline: 0;
+        background-color: transparent;
+        color: $main;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 5px;
+          width: 3px;
+          height: 50%;
+          align-self: center;
+          opacity: 0;
+          background-color: $main;
+          transition: opacity 0.2s ease;
+        }
+
+        &:hover::after {
+          opacity: 1;
+        }
+
+        &:visited {
+          outline-style: none;
+        }
+      }
+    }
+  }
+}
+
+.dropdown-active {
+  box-shadow: inset 0 0 0 3px $main;
+}
+
 .menu-hover {
   color: $main-hover;
   cursor: default;
 
   &::after {
-    transform: rotate(180deg);
+    // transform: rotate(180deg);
     background: url('@/assets/svg/down-arrow-hover.svg');
   }
 }
@@ -225,5 +388,16 @@ onUnmounted(() => {
 .modalActive {
   position: relative;
   z-index: $zindex-ontop;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
 }
 </style>
