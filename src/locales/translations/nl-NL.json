@@ -7,7 +7,10 @@
     "connect": "Verbinden",
     "search": "Iets aan het zoeken?",
     "login": "Inloggen",
-    "logout": "Afmelden"
+    "logout": "Afmelden",
+    "my_profile": "My profile",
+    "friends": "Friends",
+    "settings": "Settings"
   },
   "modal": {
     "username": "gebruikersnaam",
@@ -84,6 +87,31 @@
         "invalid": "E-mail moet een geldig e-mailadres zijn.",
         "exists": "Deze E-mail is al in gebruik. Probeer in te loggen of reset je wachtwoord."
       }
+    }
+  },
+  "profile": {
+    "player_info": "player info",
+    "also_known": "also known as",
+    "offline": "offline",
+    "online": "online",
+    "friend": {
+      "add": "add friend",
+      "added": "mutual"
+    },
+    "supporter": "Sakuru supporter",
+    "global_ranking": "global ranking",
+    "country_ranking": "country ranking",
+    "details": {
+      "pp": "PP",
+      "accuracy": "Accuracy",
+      "ranked_score": "Ranked score",
+      "total_score": "Total score",
+      "max_combo": "Max combo",
+      "play_count": "Play count",
+      "first_places": "First place ranks",
+      "watched_replays": "Watched replays",
+      "playtime": "Playtime",
+      "level": "Level"
     }
   },
   "meta": {
