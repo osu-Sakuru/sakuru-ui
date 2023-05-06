@@ -53,61 +53,58 @@ if (userStore.isLoggedIn) {
   else setUser();
 }
 
-const setCurrentStats = () => {
-  backendApi
-    .get<UserStats>(
-      `/users/${isSelfUser ? userStore.user.id : userPath.value}/stats`,
-      {
-        params: {
-          mode: activeGameMode.value,
-        },
+const setCurrentStats = async () => {
+  const { data: stats } = await backendApi.get<UserStats>(
+    `/users/${isSelfUser ? userStore.user.id : userPath.value}/stats`,
+    {
+      params: {
+        mode: activeGameMode.value,
       },
-    )
-    .then(({ data: stats }) => {
-      currentUserStats.value = stats;
-    });
+    },
+  );
+  currentUserStats.value = stats;
 
-  backendApi
-    .get<UserGraphs>(
-      `/users/${isSelfUser ? userStore.user.id : userPath.value}/graphs`,
-      {
-        params: {
-          mode: activeGameMode.value,
-        },
+  const { data: graphs } = await backendApi.get<UserGraphs>(
+    `/users/${isSelfUser ? userStore.user.id : userPath.value}/graphs`,
+    {
+      params: {
+        mode: activeGameMode.value,
       },
-    )
-    .then(({ data: graphs }) => {
-      // Filling the array with basic value if the length is less than 60
-      if (graphs.data.length !== 60)
-        graphs.data.push(
-          ...new Array(60 - graphs.data.length).fill({
-            captured_at: graphs.data[0].captured_at,
-            pp: graphs.data[0].pp,
-            rank: graphs.data[0].rank,
-            country_rank: graphs.data[0].country_rank,
-          }),
-        );
+    },
+  );
 
-      // Pushing current user stats to the beginning of the array
-      graphs.data.unshift({
-        captured_at: new Date(),
-        pp: currentUserStats.value!.pp,
-        rank: currentUserStats.value!.global_rank,
-        country_rank: currentUserStats.value!.country_rank,
-      });
-      graphDatasets.value.push({
-        label: 'Global Rank #',
-        tension: 0.1,
-        data: graphs.data.map<number>(({ rank }) => rank),
-      });
-    });
+  // Filling the array with basic value if the length is less than 60
+  if (graphs.data.length !== 60)
+    graphs.data.push(
+      ...new Array(60 - graphs.data.length).fill({
+        captured_at: graphs.data[0].captured_at,
+        pp: graphs.data[0].pp,
+        rank: graphs.data[0].rank,
+        country_rank: graphs.data[0].country_rank,
+      }),
+    );
+
+  // Pushing current user stats to the beginning of the array
+  graphs.data.unshift({
+    captured_at: new Date(),
+    pp: currentUserStats.value!.pp,
+    rank: currentUserStats.value!.global_rank,
+    country_rank: currentUserStats.value!.country_rank,
+  });
+
+  // Set the Global Rank graph dataset
+  graphDatasets.value[0] = {
+    label: 'Global Rank #',
+    tension: 0.1,
+    data: graphs.data.map<number>(({ rank }) => rank),
+  };
 };
 
 const isFriend = ref(false);
 const isOnline = ref(false);
 const isSupporter = ref(false);
 
-watch(activeGameMode, () => setCurrentStats(), { immediate: true });
+watch(activeGameMode, async () => await setCurrentStats(), { immediate: true });
 </script>
 
 <template>
