@@ -11,8 +11,9 @@ import type { ChartDataset } from 'chart.js';
 const userStore = useUserStore();
 const router = useRouter();
 
-const activeGamemode = ref(0);
+const activeMode = ref(0);
 const activeMods = ref(0);
+const activeGameMode = computed(() => activeMode.value + 4 * activeMods.value);
 
 const userPath = computed(() => router.currentRoute.value.params.user);
 const isSelfUser = userStore.isSelf(userPath.value as string);
@@ -22,32 +23,6 @@ const currentUserStats = ref<UserStats>();
 
 const userAvatar = ref<string>('');
 const graphDatasets = ref<ChartDataset<'line'>[]>([]);
-
-watch(currentUser, () => {
-  backendApi
-    .get<UserStats>(`/users/${currentUser.value?.id}/stats`, {
-      params: {
-        mode: activeGamemode.value,
-      },
-    })
-    .then(({ data: stats }) => {
-      currentUserStats.value = stats;
-    });
-
-  backendApi
-    .get<UserGraphs>(`/users/${currentUser.value?.id}/graphs`, {
-      params: {
-        mode: activeGamemode.value,
-      },
-    })
-    .then(({ data: graphs }) => {
-      graphDatasets.value.push({
-        label: 'Global Rank #',
-        tension: 0.1,
-        data: graphs.data.map<number>((value) => value.rank).reverse(),
-      });
-    });
-});
 
 const setUser = () => {
   backendApi.get<User>(`/users/${userPath.value}`).then(({ data: user }) => {
@@ -78,9 +53,55 @@ if (userStore.isLoggedIn) {
   else setUser();
 }
 
+const setCurrentStats = () => {
+  backendApi
+    .get<UserStats>(`/users/${currentUser.value?.id}/stats`, {
+      params: {
+        mode: activeGameMode.value,
+      },
+    })
+    .then(({ data: stats }) => {
+      currentUserStats.value = stats;
+    });
+
+  backendApi
+    .get<UserGraphs>(`/users/${currentUser.value?.id}/graphs`, {
+      params: {
+        mode: activeGameMode.value,
+      },
+    })
+    .then(({ data: graphs }) => {
+      // Filling the array with basic value if the length is less than 60
+      if (graphs.data.length !== 60)
+        graphs.data.push(
+          ...new Array(60 - graphs.data.length).fill({
+            captured_at: graphs.data[0].captured_at,
+            pp: graphs.data[0].pp,
+            rank: graphs.data[0].rank,
+            country_rank: graphs.data[0].country_rank,
+          }),
+        );
+
+      // Pushing current user stats to the beginning of the array
+      graphs.data.unshift({
+        captured_at: new Date(),
+        pp: currentUserStats.value!.pp,
+        rank: currentUserStats.value!.global_rank,
+        country_rank: currentUserStats.value!.country_rank,
+      });
+      graphDatasets.value.push({
+        label: 'Global Rank #',
+        tension: 0.1,
+        data: graphs.data.map<number>(({ rank }) => rank),
+      });
+    });
+};
+
 const isFriend = ref(false);
 const isOnline = ref(false);
 const isSupporter = ref(false);
+
+watch(activeGameMode, () => setCurrentStats(), { immediate: true });
 </script>
 
 <template>
@@ -173,33 +194,45 @@ const isSupporter = ref(false);
         <div class="modes-wrapper">
           <div class="modes">
             <button
-              @click="activeGamemode = 1"
+              @click="activeMode = 0"
               class="mode-btn std"
-              :class="{ 'active-gamemode': activeGamemode === 0 }"
+              :class="{ 'active-gamemode': activeMode === 0 }"
             >
               <i></i>
               osu!
             </button>
             <button
-              @click="activeGamemode = 2"
+              @click="activeMode = 1"
               class="mode-btn taiko"
-              :class="{ 'active-gamemode': activeGamemode === 1 }"
+              :disabled="activeMods === 2"
+              :class="{
+                'active-gamemode': activeMode === 1,
+                disabled: activeMods === 2,
+              }"
             >
               <i></i>
               osu!taiko
             </button>
             <button
-              @click="activeGamemode = 3"
+              @click="activeMode = 2"
               class="mode-btn catch"
-              :class="{ 'active-gamemode': activeGamemode === 2 }"
+              :disabled="activeMods === 2"
+              :class="{
+                'active-gamemode': activeMode === 2,
+                disabled: activeMods === 2,
+              }"
             >
               <i></i>
               osu!catch
             </button>
             <button
-              @click="activeGamemode = 4"
+              @click="activeMode = 3"
               class="mode-btn mania"
-              :class="{ 'active-gamemode': activeGamemode === 3 }"
+              :disabled="[1, 2].includes(activeMods)"
+              :class="{
+                'active-gamemode': activeMode === 3,
+                disabled: [1, 2].includes(activeMods),
+              }"
             >
               <i></i>
               osu!mania
@@ -207,23 +240,33 @@ const isSupporter = ref(false);
           </div>
           <div class="mods">
             <button
-              @click="activeMods = 1"
+              @click="activeMods = 0"
               class="mode-btn mod vanilla"
-              :class="{ 'active-mod': activeMods === 0 }"
+              :class="{
+                'active-mod': activeMods === 0,
+              }"
             >
               Vanilla
             </button>
             <button
-              @click="activeMods = 2"
+              @click="activeMods = 1"
               class="mode-btn mod relax"
-              :class="{ 'active-mod': activeMods === 1 }"
+              :disabled="activeMode === 3"
+              :class="{
+                'active-mod': activeMods === 1,
+                disabled: activeMode === 3,
+              }"
             >
               Relax
             </button>
             <button
-              @click="activeMods = 3"
+              @click="activeMods = 2"
               class="mode-btn mod autopilot"
-              :class="{ 'active-mod': activeMods === 2 }"
+              :disabled="[1, 2, 3].includes(activeMode)"
+              :class="{
+                'active-mod': activeMods === 2,
+                disabled: [1, 2, 3].includes(activeMode),
+              }"
             >
               Autopilot
             </button>
@@ -886,5 +929,13 @@ const isSupporter = ref(false);
   line-height: 25px;
   color: $main;
   transform: translateY(2px);
+}
+
+.disabled {
+  background-color: #1a1a1a;
+
+  &:hover {
+    background-color: #1a1a1a;
+  }
 }
 </style>
