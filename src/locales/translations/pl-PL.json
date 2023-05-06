@@ -7,7 +7,10 @@
     "connect": "Połącz się",
     "search": "Search",
     "login": "Zaloguj się",
-    "logout": "Wyloguj się"
+    "logout": "Wyloguj się",
+    "my_profile": "My profile",
+    "friends": "Friends",
+    "settings": "Settings"
   },
   "modal": {
     "username": "nazwa użytkownika",
@@ -84,6 +87,31 @@
         "invalid": "Email must be a valid email address.",
         "exists": "Email is already taken. Try to login or reset your password."
       }
+    }
+  },
+  "profile": {
+    "player_info": "player info",
+    "also_known": "also known as",
+    "offline": "offline",
+    "online": "online",
+    "friend": {
+      "add": "add friend",
+      "added": "mutual"
+    },
+    "supporter": "Sakuru supporter",
+    "global_ranking": "global ranking",
+    "country_ranking": "country ranking",
+    "details": {
+      "pp": "PP",
+      "accuracy": "Accuracy",
+      "ranked_score": "Ranked score",
+      "total_score": "Total score",
+      "max_combo": "Max combo",
+      "play_count": "Play count",
+      "first_places": "First place ranks",
+      "watched_replays": "Watched replays",
+      "playtime": "Playtime",
+      "level": "Level"
     }
   },
   "meta": {
