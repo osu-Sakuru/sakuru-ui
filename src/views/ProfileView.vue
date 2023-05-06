@@ -20,16 +20,16 @@ const isSelfUser = userStore.isSelf(userPath.value as string);
 
 const currentUser = ref<User>();
 const currentUserStats = ref<UserStats>();
+const currentUserAvatar = ref<string>('');
 
-const userAvatar = ref<string>('');
 const graphDatasets = ref<ChartDataset<'line'>[]>([]);
 
 const setUser = () => {
   backendApi.get<User>(`/users/${userPath.value}`).then(({ data: user }) => {
     currentUser.value = user;
-    userAvatar.value = `url('https://a.${import.meta.env.VITE_APP_DOMAIN}/${
-      user.id
-    }')`;
+    currentUserAvatar.value = `url('https://a.${
+      import.meta.env.VITE_APP_DOMAIN
+    }/${user.id}')`;
   });
 };
 
@@ -42,9 +42,9 @@ if (userStore.isLoggedIn) {
       });
 
     currentUser.value = userStore.user;
-    userAvatar.value = `url('https://a.${import.meta.env.VITE_APP_DOMAIN}/${
-      userStore.user.id
-    }')`;
+    currentUserAvatar.value = `url('https://a.${
+      import.meta.env.VITE_APP_DOMAIN
+    }/${userStore.user.id}')`;
   } else {
     setUser();
   }
@@ -55,21 +55,27 @@ if (userStore.isLoggedIn) {
 
 const setCurrentStats = () => {
   backendApi
-    .get<UserStats>(`/users/${currentUser.value?.id}/stats`, {
-      params: {
-        mode: activeGameMode.value,
+    .get<UserStats>(
+      `/users/${isSelfUser ? userStore.user.id : userPath.value}/stats`,
+      {
+        params: {
+          mode: activeGameMode.value,
+        },
       },
-    })
+    )
     .then(({ data: stats }) => {
       currentUserStats.value = stats;
     });
 
   backendApi
-    .get<UserGraphs>(`/users/${currentUser.value?.id}/graphs`, {
-      params: {
-        mode: activeGameMode.value,
+    .get<UserGraphs>(
+      `/users/${isSelfUser ? userStore.user.id : userPath.value}/graphs`,
+      {
+        params: {
+          mode: activeGameMode.value,
+        },
       },
-    })
+    )
     .then(({ data: graphs }) => {
       // Filling the array with basic value if the length is less than 60
       if (graphs.data.length !== 60)
@@ -591,7 +597,7 @@ watch(activeGameMode, () => setCurrentStats(), { immediate: true });
   display: block;
   width: 128px;
   height: 128px;
-  background-image: v-bind(userAvatar);
+  background-image: v-bind(currentUserAvatar);
   background-repeat: no-repeat;
   background-size: cover;
 
