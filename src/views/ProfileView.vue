@@ -76,10 +76,10 @@ const setCurrentStats = async () => {
   if (graphs.data.length !== 60)
     graphs.data.push(
       ...new Array(60 - graphs.data.length).fill({
-        captured_at: graphs.data[0].captured_at,
-        pp: graphs.data[0].pp,
-        rank: graphs.data[0].rank,
-        country_rank: graphs.data[0].country_rank,
+        captured_at: graphs.data[graphs.data.length - 1].captured_at,
+        pp: graphs.data[graphs.data.length - 1].pp,
+        rank: graphs.data[graphs.data.length - 1].rank,
+        country_rank: graphs.data[graphs.data.length - 1].country_rank,
       }),
     );
 
