@@ -95,7 +95,7 @@ const setCurrentStats = async () => {
   graphDatasets.value[0] = {
     label: 'Global Rank #',
     tension: 0.1,
-    data: graphs.data.map<number>(({ rank }) => rank).reverse(),
+    data: graphs.data.map<number>(({ rank }) => rank),
   };
 };
 
