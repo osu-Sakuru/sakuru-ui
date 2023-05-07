@@ -14,10 +14,9 @@ const router = useRouter();
 const activeMode = ref(0);
 const activeMods = ref(0);
 const activeGameMode = computed(() => activeMode.value + 4 * activeMods.value);
-
 const userPath = computed(() => router.currentRoute.value.params.user);
-const isSelfUser = userStore.isSelf(userPath.value as string);
 
+const isSelfUser = userStore.isSelf(userPath.value as string);
 const currentUser = ref<User>();
 const currentUserStats = ref<UserStats>();
 const currentUserAvatar = ref<string>('');

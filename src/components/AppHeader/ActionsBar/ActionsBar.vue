@@ -181,8 +181,16 @@ onUnmounted(() => {
 }
 
 .account__avatar {
-  width: 75px;
-  height: 75px;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.actions__avatar {
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   padding: 3px;
   cursor: pointer;
