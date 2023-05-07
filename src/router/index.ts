@@ -35,6 +35,7 @@ const router = createRouter({
       path: '/users/:user',
       name: 'profile',
       component: ProfileView,
+      alias: '/u/:user',
       meta: {
         requiresAuth: false,
         public: true,

@@ -47,13 +47,17 @@ export const useUserStore = defineStore('user', {
       }
     },
     isSelf(clause: string): boolean {
-      return (
-        this.user.name === clause ||
-        this.user.email === clause ||
-        this.user.safe_name === clause ||
-        this.user.id.toString() === clause ||
-        clause === 'me'
-      );
+      if (!this.isLoggedIn) {
+        return false;
+      } else {
+        return (
+          this.user.name === clause ||
+          this.user.email === clause ||
+          this.user.safe_name === clause ||
+          this.user.id.toString() === clause ||
+          clause === 'me'
+        );
+      }
     },
   },
 });

@@ -1,3 +1,5 @@
+///
+<reference path="./tooltipPositionerMap.d.ts" />
 <script lang="ts" setup>
 import { Line } from 'vue-chartjs';
 import {
@@ -11,11 +13,14 @@ import {
   LinearScale,
   type Point,
   type InteractionAxis,
-  type InteractionMode,
   type TooltipItem,
   type ChartType,
   type ChartDataset,
+  type TooltipModel,
+  type TooltipPosition,
   type ActiveElement,
+  type InteractionMode,
+  type TooltipPositionerMap,
 } from 'chart.js';
 import { computed } from 'vue';
 import { ChartLabels } from './assets/chartLabels';
@@ -72,15 +77,15 @@ const chartData = computed(() => ({
   datasets: [...props.datasets],
 }));
 
-// Fix this TS error.
 Tooltip.positioners.sides = function (
-  chartElements: ActiveElement[],
-  _coordinates: Point,
-): Point {
-  if (chartElements.length === 0) {
-    return { x: 0, y: 0 };
+  this: TooltipModel<'line'>,
+  items: readonly ActiveElement[],
+  _eventPosition: Point,
+): TooltipPosition | false {
+  if (items.length === 0) {
+    return false;
   } else {
-    const { x } = chartElements[0].element;
+    const { x } = items[0].element;
 
     if (x >= 300)
       return {
@@ -143,7 +148,7 @@ const chartOptions = {
       displayColors: false,
       padding: 9,
       cornerRadius: 4,
-      position: 'sides',
+      position: 'sides' as TooltipPositionerMap['sides'],
       caretSize: 0,
       backgroundColor: 'rgb(72, 72, 72)',
       callbacks: {

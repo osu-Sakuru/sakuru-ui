@@ -10,6 +10,9 @@ export default defineConfig({
   plugins: [dynamicImportVars({
     include: ['src/asses/**/*'],
   }), vue()],
+  build: {
+    sourcemap: false,
+  },
   assetsInclude: ['src/assets/**/*'],
   resolve: {
     alias: {
