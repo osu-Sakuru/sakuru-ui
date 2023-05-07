@@ -81,7 +81,7 @@ onUnmounted(() => {
             </RouterLink>
             <ul class="account__menu-list">
               <li class="account__menu-item">
-                <RouterLink :to="`/users/me`" class="menu-item-link">{{
+                <RouterLink :to="'/users/me'" class="menu-item-link">{{
                   $t('navbar.my_profile')
                 }}</RouterLink>
               </li>
