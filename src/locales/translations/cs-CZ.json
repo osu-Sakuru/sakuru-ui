@@ -7,7 +7,10 @@
     "connect": "Připojte se",
     "search": "Vyhledat",
     "login": "Příhlásit se",
-    "logout": "Odhlásit se"
+    "logout": "Odhlásit se",
+    "my_profile": "My profile",
+    "friends": "Friends",
+    "settings": "Settings"
   },
   "modal": {
     "username": "jméno",
@@ -84,6 +87,44 @@
         "invalid": "E-mailová adresa musí být platná.",
         "exists": "E-mail je již obsazen. Zkuste se přihlásit nebo obnovit heslo."
       }
+    }
+  },
+  "profile": {
+    "player_info": "player info",
+    "also_known": "also known as",
+    "offline": "offline",
+    "online": "online",
+    "show_more": "show more",
+    "friend": {
+      "add": "add friend",
+      "added": "mutual"
+    },
+    "supporter": "Sakuru supporter",
+    "global_ranking": "global ranking",
+    "country_ranking": "country ranking",
+    "details": {
+      "pp": "PP",
+      "accuracy": "Accuracy",
+      "ranked_score": "Ranked score",
+      "total_score": "Total score",
+      "max_combo": "Max combo",
+      "play_count": "Play count",
+      "first_places": "First place ranks",
+      "watched_replays": "Watched replays",
+      "playtime": "Playtime",
+      "level": "Level",
+      "joined": "Joined",
+      "plays_with": "Plays with",
+      "subscribers": "subscribers"
+    },
+    "about": {
+      "about_me": "Me!",
+      "edit": "edit",
+      "bio": "// bio"
+    },
+    "activity": {
+      "recent": "Recent",
+      "user_activity": "// user activity"
     }
   },
   "meta": {

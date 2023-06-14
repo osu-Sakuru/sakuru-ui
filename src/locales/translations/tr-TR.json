@@ -7,13 +7,16 @@
     "connect": "Bağlan",
     "search": "Ara",
     "login": "Giriş Yap",
-    "logout": "Çıkış Yap"
+    "logout": "Çıkış Yap",
+    "my_profile": "Profilim",
+    "friends": "Arkadaşlar",
+    "settings": "Ayarlar"
   },
   "modal": {
     "username": "kullanıcı adı",
     "password": "şifre",
     "confirm_password": "şifreyi onayla",
-    "email": "e-mail",
+    "email": "e-posta",
     "not_reg": "kayıtlı değilmisin?",
     "sign_up": "şimdi kaydol",
     "login_btn": "giriş yap",
@@ -53,10 +56,11 @@
     "post_registration": "Sakuru'ya Hoşgeldin!",
     "note": "ipucu",
     "note_message": "Lütfen oyundan giriş yaparak hesabınızı etkinleştirin.",
-    "note_attention": "Do not leave this page until you have activated your account!",
-    "note_stuck": "Stuck? Need help? Read this article:",
-    "note_stuck_link": "How to connect?",
+    "note_attention": "Hesabınızı etkinleştirene kadar bu sayfadan ayrılmayın!",
+    "note_stuck": "Takılımı kaldınız? Yardıma mı ihtiyacınız var? Bu makaleyi okuyun:",
+    "note_stuck_link": "Nasıl bağlanılır?",
     "note_success": "You have successfully activated your account!<br>You will be logged in shortly and redirected to the main page.",
+    "note_success_hint": "Kısa süre içinde giriş yapacak ve ana sayfaya yönlendirileceksiniz.",
     "step": "adım",
     "continue": "devam",
     "back": "geri",
@@ -85,6 +89,44 @@
       }
     }
   },
+  "profile": {
+    "player_info": "oyuncu bilgisi",
+    "also_known": "ayrıca şöyle bilinir",
+    "offline": "çevrimdışı",
+    "online": "çevrimiçi",
+    "show_more": "show more",
+    "friend": {
+      "add": "arkadaş ekle",
+      "added": "karşılıklı"
+    },
+    "supporter": "Sakuru destekleyicisi",
+    "global_ranking": "küresel sıralama",
+    "country_ranking": "ülke sıralaması",
+    "details": {
+      "pp": "PP",
+      "accuracy": "İsabetlilik",
+      "ranked_score": "Ranked skoru",
+      "total_score": "Toplam skor",
+      "max_combo": "Maks combo",
+      "play_count": "Oynama sayısı",
+      "first_places": "Birincilik rankları",
+      "watched_replays": "İzlenen tekrarlar",
+      "playtime": "Oynama süresi",
+      "level": "Seviye",
+      "joined": "Joined",
+      "plays_with": "Plays with",
+      "subscribers": "subscribers"
+    },
+    "about": {
+      "about_me": "Me!",
+      "edit": "edit",
+      "bio": "// bio"
+    },
+    "activity": {
+      "recent": "Recent",
+      "user_activity": "// user activity"
+    }
+  },
   "meta": {
     "contacts": {
       "caption": "İletişim ve medya",
@@ -104,6 +146,6 @@
     "leaderboards": "Liderlik tablosu",
     "clans": "Klanlar",
     "info": "Bilgi",
-    "email": "Email"
+    "email": "Eposta"
   }
 }

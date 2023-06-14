@@ -7,7 +7,10 @@
     "connect": "Connect",
     "search": "Search",
     "login": "Login",
-    "logout": "Logout"
+    "logout": "Logout",
+    "my_profile": "My profile",
+    "friends": "Friends",
+    "settings": "Settings"
   },
   "modal": {
     "username": "username",
@@ -50,13 +53,14 @@
   },
   "register": {
     "registration": "Registration",
-    "post_registration": "Vítejte v Sakuru!",
+    "post_registration": "Welcome to Sakuru!",
     "note": "hint",
     "note_message": "Please, activate your account by logging in from the game.",
     "note_attention": "Do not leave this page until you have activated your account!",
     "note_stuck": "Stuck? Need help? Read this article:",
     "note_stuck_link": "How to connect?",
-    "note_success": "You have successfully activated your account!<br>You will be logged in shortly and redirected to the main page.",
+    "note_success": "You have successfully activated your account!",
+    "note_success_hint": "You will be logged in shortly and redirected to the main page.",
     "step": "step",
     "continue": "continue",
     "back": "back",
@@ -83,6 +87,44 @@
         "invalid": "Email must be a valid email address.",
         "exists": "Email is already taken. Try to login or reset your password."
       }
+    }
+  },
+  "profile": {
+    "player_info": "player info",
+    "also_known": "also known as",
+    "offline": "offline",
+    "online": "online",
+    "show_more": "show more",
+    "friend": {
+      "add": "add friend",
+      "added": "mutual"
+    },
+    "supporter": "Sakuru supporter",
+    "global_ranking": "global ranking",
+    "country_ranking": "country ranking",
+    "details": {
+      "pp": "PP",
+      "accuracy": "Accuracy",
+      "ranked_score": "Ranked score",
+      "total_score": "Total score",
+      "max_combo": "Max combo",
+      "play_count": "Play count",
+      "first_places": "First place ranks",
+      "watched_replays": "Watched replays",
+      "playtime": "Playtime",
+      "level": "Level",
+      "joined": "Joined",
+      "plays_with": "Plays with",
+      "subscribers": "subscribers"
+    },
+    "about": {
+      "about_me": "Me!",
+      "edit": "edit",
+      "bio": "// bio"
+    },
+    "activity": {
+      "recent": "Recent",
+      "user_activity": "// user activity"
     }
   },
   "meta": {

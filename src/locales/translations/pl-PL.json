@@ -1,47 +1,50 @@
 {
   "navbar": {
-    "leaderboards": "Leaderboards",
+    "leaderboards": "Rankingi",
     "clans": "Clans",
-    "beatmaps": "Beatmaps",
+    "beatmaps": "Beatmapy",
     "info": "Info",
-    "connect": "Connect",
+    "connect": "Połącz się",
     "search": "Search",
-    "login": "Login",
-    "logout": "Logout"
+    "login": "Zaloguj się",
+    "logout": "Wyloguj się",
+    "my_profile": "My profile",
+    "friends": "Friends",
+    "settings": "Settings"
   },
   "modal": {
-    "username": "username",
-    "password": "password",
-    "confirm_password": "confirm password",
+    "username": "nazwa użytkownika",
+    "password": "hasło",
+    "confirm_password": "potwierdź hasło",
     "email": "e-mail",
-    "not_reg": "not registered?",
-    "sign_up": "sign up now",
+    "not_reg": "niezarejestrowany?",
+    "sign_up": "zarejestruj się",
     "login_btn": "login",
-    "forgot": "Forgot password?"
+    "forgot": "Zapomniałeś hasło?"
   },
   "home_loggedout": {
-    "welcome": "Welcome to",
-    "welcome_text": "osu! server created for your joy",
-    "over": "over",
-    "registered_players": "{players_registered}+ registered players",
-    "more_than": "more than",
+    "welcome": "Witaj w",
+    "welcome_text": "osu! serwer stworzony dla Twojej radości",
+    "over": "ponad",
+    "registered_players": "{players_registered}+ zarejestrowanych graczów",
+    "more_than": "więcej niż",
     "beatmaps_ranked": "{beatmaps_ranked} much favored beatmaps ranked",
-    "friendly": "friendly",
-    "community": "community and support team",
-    "action_button": "register now and join the other {players_online} players online!",
-    "features": "Key features",
-    "direct_text": "Hassle-free in-game beatmap browsing and downloading",
-    "pp_systems": "Relax and autopilot performance points systems",
-    "pp_systems_text": "Try and see how far you can take your basic skills! Or perhaps farm some pp?",
-    "leaderboards": "All leaderboards",
-    "leaderboards_text": "Open access to mod-filters, friend rankings and country rankings",
-    "players_quotes": "Player quotes",
-    "quote_action": "sign up",
-    "records": "Our Records",
-    "records_setby": "Set by"
+    "friendly": "przyjazna",
+    "community": "wspólnota ta ekipa wsparcia",
+    "action_button": "zarejestruj się teraz ta dołącz do {players_online} użytkowników!",
+    "features": "Kluczowe cechy",
+    "direct_text": "Wyszukaj ta pobieraj beatmapy prosto w grze",
+    "pp_systems": "PP system dla takich modów jak relax ta autopilot",
+    "pp_systems_text": "Spróbuj i zobacz, jak daleko zajdziesz! Albo może pofarmuj trochę pp?",
+    "leaderboards": "Wszystkie rankingi",
+    "leaderboards_text": "Otwarty dostęp do rankingów za wybranymi modami, listy znajomych ta rankingów krajowych",
+    "players_quotes": "Opinie użytkowników",
+    "quote_action": "zarejestruj się",
+    "records": "Nasze Rekordy",
+    "records_setby": "Ustawiony przez"
   },
   "home_loggedin": {
-    "welcome": "Welcome back, ",
+    "welcome": "Witaj z powrotem, ",
     "online": "online",
     "players": "player | players",
     "lobbies": "multiplayer lobbies",
@@ -56,7 +59,8 @@
     "note_attention": "Do not leave this page until you have activated your account!",
     "note_stuck": "Stuck? Need help? Read this article:",
     "note_stuck_link": "How to connect?",
-    "note_success": "You have successfully activated your account!<br>You will be logged in shortly and redirected to the main page.",
+    "note_success": "You have successfully activated your account!",
+    "note_success_hint": "You will be logged in shortly and redirected to the main page.",
     "step": "step",
     "continue": "continue",
     "back": "back",
@@ -83,6 +87,44 @@
         "invalid": "Email must be a valid email address.",
         "exists": "Email is already taken. Try to login or reset your password."
       }
+    }
+  },
+  "profile": {
+    "player_info": "player info",
+    "also_known": "also known as",
+    "offline": "offline",
+    "online": "online",
+    "show_more": "show more",
+    "friend": {
+      "add": "add friend",
+      "added": "mutual"
+    },
+    "supporter": "Sakuru supporter",
+    "global_ranking": "global ranking",
+    "country_ranking": "country ranking",
+    "details": {
+      "pp": "PP",
+      "accuracy": "Accuracy",
+      "ranked_score": "Ranked score",
+      "total_score": "Total score",
+      "max_combo": "Max combo",
+      "play_count": "Play count",
+      "first_places": "First place ranks",
+      "watched_replays": "Watched replays",
+      "playtime": "Playtime",
+      "level": "Level",
+      "joined": "Joined",
+      "plays_with": "Plays with",
+      "subscribers": "subscribers"
+    },
+    "about": {
+      "about_me": "Me!",
+      "edit": "edit",
+      "bio": "// bio"
+    },
+    "activity": {
+      "recent": "Recent",
+      "user_activity": "// user activity"
     }
   },
   "meta": {

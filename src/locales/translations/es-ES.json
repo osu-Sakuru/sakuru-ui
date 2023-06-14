@@ -1,109 +1,151 @@
 {
   "navbar": {
-    "leaderboards": "Leaderboards",
-    "clans": "Clans",
+    "leaderboards": "Clasificación",
+    "clans": "Clanes",
     "beatmaps": "Beatmaps",
-    "info": "Info",
-    "connect": "Connect",
-    "search": "Search",
-    "login": "Login",
-    "logout": "Logout"
+    "info": "Información",
+    "connect": "Conectar",
+    "search": "Buscar",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "my_profile": "My profile",
+    "friends": "Friends",
+    "settings": "Settings"
   },
   "modal": {
-    "username": "username",
-    "password": "password",
-    "confirm_password": "confirm password",
-    "email": "e-mail",
-    "not_reg": "not registered?",
-    "sign_up": "sign up now",
-    "login_btn": "login",
-    "forgot": "Forgot password?"
+    "username": "nombre de usuario",
+    "password": "clave",
+    "confirm_password": "confirmar clave",
+    "email": "correo electrónico",
+    "not_reg": "¿No estás registrado?",
+    "sign_up": "regístrate ahora",
+    "login_btn": "iniciar sesión",
+    "forgot": "¿Olvidaste tu contraseña?"
   },
   "home_loggedout": {
-    "welcome": "Welcome to",
-    "welcome_text": "osu! server created for your joy",
-    "over": "over",
-    "registered_players": "{players_registered}+ registered players",
-    "more_than": "more than",
-    "beatmaps_ranked": "{beatmaps_ranked} much favored beatmaps ranked",
-    "friendly": "friendly",
-    "community": "community and support team",
-    "action_button": "register now and join the other {players_online} players online!",
-    "features": "Key features",
-    "direct_text": "Hassle-free in-game beatmap browsing and downloading",
-    "pp_systems": "Relax and autopilot performance points systems",
-    "pp_systems_text": "Try and see how far you can take your basic skills! Or perhaps farm some pp?",
-    "leaderboards": "All leaderboards",
-    "leaderboards_text": "Open access to mod-filters, friend rankings and country rankings",
-    "players_quotes": "Player quotes",
-    "quote_action": "sign up",
-    "records": "Our Records",
-    "records_setby": "Set by"
+    "welcome": "Bienvenido a",
+    "welcome_text": "servidor de osu! creado para tu disfrute",
+    "over": "más de",
+    "registered_players": "{players_registered}+ jugadores registrados",
+    "more_than": "más de",
+    "beatmaps_ranked": "{beatmaps_ranked} mapas muy populares rankeados",
+    "friendly": "amable",
+    "community": "comunidad y equipo de soporte",
+    "action_button": "¡Regístrate ahora y únete a los otros {players_online} jugadores en línea!",
+    "features": "Características principales",
+    "direct_text": "Exploración y descarga de mapas en el juego sin complicaciones",
+    "pp_systems": "Sistemas de puntos de rendimiento para Relax y Autopilot",
+    "pp_systems_text": "Intenta y ve hasta dónde puedes llevar tus habilidades básicas ¿O tal vez farmea algo de pp?",
+    "leaderboards": "Todas las tablas de clasificación",
+    "leaderboards_text": "Acceso libre a los filtros de modos, las clasificaciones de amigos y las clasificaciones por país",
+    "players_quotes": "Citas de jugadores",
+    "quote_action": "registrarse",
+    "records": "Nuestros records",
+    "records_setby": "Jugado por"
   },
   "home_loggedin": {
-    "welcome": "Welcome back, ",
-    "online": "online",
-    "players": "player | players",
-    "lobbies": "multiplayer lobbies",
-    "streams": "livestreams",
-    "connect_button": "how to connect"
+    "welcome": "Bienvenido de nuevo, ",
+    "online": "en línea",
+    "players": "jugador | jugadores",
+    "lobbies": "salas multijugador",
+    "streams": "transmisiones en vivo",
+    "connect_button": "cómo conectarse"
   },
   "register": {
-    "registration": "Registration",
-    "post_registration": "Welcome to Sakuru!",
-    "note": "hint",
-    "note_message": "Please, activate your account by logging in from the game.",
-    "note_attention": "Do not leave this page until you have activated your account!",
-    "note_stuck": "Stuck? Need help? Read this article:",
-    "note_stuck_link": "How to connect?",
-    "note_success": "You have successfully activated your account!<br>You will be logged in shortly and redirected to the main page.",
-    "step": "step",
-    "continue": "continue",
-    "back": "back",
-    "already_have_account": "Have an account? Sign in",
+    "registration": "Registro",
+    "post_registration": "¡Bienvenido a Sakuru!",
+    "note": "pista",
+    "note_message": "Por favor, activa tu cuenta iniciando sesión desde el juego.",
+    "note_attention": "¡No abandones esta página hasta que hayas activado tu cuenta!",
+    "note_stuck": "¿Estás atascado? ¿Necesitas ayuda? Lee este artículo:",
+    "note_stuck_link": "¿Cómo conectarse?",
+    "note_success": "¡Has activado tu cuenta con éxito!",
+    "note_success_hint": "En breve iniciarás sesión y serás redirigido a la página principal.",
+    "step": "paso",
+    "continue": "continuar",
+    "back": "atrás",
+    "already_have_account": "¿Ya tienes una cuenta? Inicia sesión",
     "validation": {
       "recaptcha": {
-        "invalid": "You didn't pass the captcha. You are a robot, aren't you?"
+        "invalid": "No has pasado el captcha. ¿Eres un robot, verdad?"
       },
       "username": {
-        "required": "Username is required.",
-        "min": "Username must be at least 3 characters long.",
-        "max": "Username must be at most 16 characters long.",
-        "exists": "Username is already taken.",
-        "invalid": "The username must contain Latin letters and numbers only."
+        "required": "Se requiere nombre de usuario.",
+        "min": "El nombre de usuario debe de tener al menos 3 caracteres.",
+        "max": "El nombre de usuario debe de tener como máximo 16 caracteres.",
+        "exists": "El nombre de usuario ya está en uso.",
+        "invalid": "El nombre de usuario solo debe de contener letras latinas y números."
       },
       "password": {
-        "required": "Password is required.",
-        "min": "Password must be at least 8 characters long.",
-        "max": "Password must be at most 32 characters long.",
-        "confirmed": "Password confirmation does not match."
+        "required": "Se requiere contraseña.",
+        "min": "La contraseña debe de tener al menos 8 caracteres.",
+        "max": "La contraseña debe de tener como máximo 32 caracteres.",
+        "confirmed": "La confirmación de contraseña no coincide."
       },
       "email": {
-        "required": "Email is required.",
-        "invalid": "Email must be a valid email address.",
-        "exists": "Email is already taken. Try to login or reset your password."
+        "required": "Se requiere e-mail.",
+        "invalid": "El e-mail debe de ser un e-mail válido.",
+        "exists": "El e-mail ya está en uso. Intenta iniciar sesión o restablecer tu contraseña."
       }
+    }
+  },
+  "profile": {
+    "player_info": "player info",
+    "also_known": "also known as",
+    "offline": "offline",
+    "online": "online",
+    "show_more": "show more",
+    "friend": {
+      "add": "add friend",
+      "added": "mutual"
+    },
+    "supporter": "Sakuru supporter",
+    "global_ranking": "global ranking",
+    "country_ranking": "country ranking",
+    "details": {
+      "pp": "PP",
+      "accuracy": "Accuracy",
+      "ranked_score": "Ranked score",
+      "total_score": "Total score",
+      "max_combo": "Max combo",
+      "play_count": "Play count",
+      "first_places": "First place ranks",
+      "watched_replays": "Watched replays",
+      "playtime": "Playtime",
+      "level": "Level",
+      "joined": "Joined",
+      "plays_with": "Plays with",
+      "subscribers": "subscribers"
+    },
+    "about": {
+      "about_me": "Me!",
+      "edit": "edit",
+      "bio": "// bio"
+    },
+    "activity": {
+      "recent": "Recent",
+      "user_activity": "// user activity"
     }
   },
   "meta": {
     "contacts": {
-      "caption": "Contacts and media",
-      "discord": "discord community",
-      "youtube": "youtube channel"
+      "caption": "Contactos y multimedia",
+      "discord": "comunidad de discord",
+      "youtube": "canal de youtube"
     },
     "recaptcha": {
-      "agreement": "This site is protected by reCAPTCHA and the Google&nbsp;<a href='https://policies.google.com/privacy'>Privacy Policy</a>&nbsp;and&nbsp;<a href='https://policies.google.com/terms'>Terms of Service</a>&nbsp;apply."
+      "agreement": "Este sitio está protegido por reCAPTCHA, se aplica la&nbsp;<a href='https://policies.google.com/privacy'>Politica de privacidad</a>&nbsp;y los&nbsp;<a href='https://policies.google.com/terms'>Términos de servicio</a>&nbsp;de Google."
     }
   },
   "footer": {
     "links": "Links",
-    "beatmaps": "Beatmaps",
-    "connect": "Connect",
-    "discord": "Discord server",
-    "youtube": "YouTube channel",
-    "leaderboards": "Leaderboards",
-    "clans": "Clans",
-    "info": "Info",
-    "email": "Email"
+    "beatmaps": "Mapas",
+    "connect": "Conectar",
+    "discord": "Servidor de discord",
+    "youtube": "Canal de YouTube",
+    "leaderboards": "Clasificación",
+    "clans": "Clanes",
+    "info": "Información",
+    "email": "E-mail"
   }
 }
