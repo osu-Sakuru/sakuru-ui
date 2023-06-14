@@ -94,6 +94,7 @@
     "also_known": "ayrıca şöyle bilinir",
     "offline": "çevrimdışı",
     "online": "çevrimiçi",
+    "show_more": "show more",
     "friend": {
       "add": "arkadaş ekle",
       "added": "karşılıklı"
@@ -111,7 +112,19 @@
       "first_places": "Birincilik rankları",
       "watched_replays": "İzlenen tekrarlar",
       "playtime": "Oynama süresi",
-      "level": "Seviye"
+      "level": "Seviye",
+      "joined": "Joined",
+      "plays_with": "Plays with",
+      "subscribers": "subscribers"
+    },
+    "about": {
+      "about_me": "Me!",
+      "edit": "edit",
+      "bio": "// bio"
+    },
+    "activity": {
+      "recent": "Recent",
+      "user_activity": "// user activity"
     }
   },
   "meta": {
