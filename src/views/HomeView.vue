@@ -312,7 +312,7 @@ const { data: serverStats } = await backendApi.get('/statistics/server_stats');
 
 // Key Features
 .features__bg {
-  background: url('@/assets/svg/features-bg.svg') no-repeat center;
+  background: url('@/assets/svg/block-bg-1.svg') no-repeat center;
   padding: 75px 0;
 }
 

@@ -5,6 +5,7 @@ import FormInput from './FormInput.vue';
 import StepIcon from './StepIcon.vue';
 import AppLogo from './AppLogo.vue';
 import CheckmarkIcon from './CheckmarkIcon.vue';
+import ShowMoreButton from './ShowMoreButton.vue';
 
 export default [
   ActionButton,
@@ -14,4 +15,5 @@ export default [
   StepIcon,
   AppLogo,
   CheckmarkIcon,
+  ShowMoreButton,
 ];
